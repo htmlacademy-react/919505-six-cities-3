@@ -1,10 +1,19 @@
-export default function PlaceCard(): JSX.Element {
+import {CardType} from '../../const';
+
+type PlaceCardProps = {
+  cardType: string;
+};
+
+export default function PlaceCard({cardType}: PlaceCardProps): JSX.Element {
+  const cardParentBlockName = cardType === CardType.DEFAULT ? 'cities' : 'near-places';
   return (
-    <article className="cities__card place-card">
-      <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#"> <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place image"/>
+    <article className={`${cardParentBlockName}__card place-card`}>
+      <div className={`${cardParentBlockName}__image-wrapper place-card__image-wrapper`}>
+        <a href="#">
+          <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place image"/>
         </a>
       </div>
+
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">

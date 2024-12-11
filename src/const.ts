@@ -4,4 +4,18 @@ const Page = {
   OFFER: 'OFFER'
 };
 
-export {Page};
+const CardType = {
+  DEFAULT: 'DEFAULT',
+  NEAR: 'NEAR',
+};
+
+const Cities = [
+  'Paris',
+  'Cologne',
+  'Brussels',
+  'Amsterdam',
+  'Hamburg',
+  'Dusseldorf'
+];
+
+export {Page, CardType, Cities};

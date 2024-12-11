@@ -2,12 +2,13 @@ import {Page} from '../../const.ts';
 import Layout from '../layout/layout';
 import MainPage from '../pages/main-page/main-page';
 import LoginPage from '../pages/login-page/login-page';
+import OfferPage from '../pages/offer-page/offer-page';
 
 type AppScreenProps = {
   offersCount: number;
 }
 
-const currentPage = Page.MAIN;
+const currentPage = Page.OFFER;
 
 const getPage = (offersCount: number) => {
   switch (currentPage) {
@@ -22,6 +23,13 @@ const getPage = (offersCount: number) => {
       return (
         <Layout currentPage={Page.LOGIN}>
           <LoginPage/>
+        </Layout>
+      );
+
+    case Page.OFFER:
+      return (
+        <Layout currentPage={Page.OFFER}>
+          <OfferPage/>
         </Layout>
       );
   }
