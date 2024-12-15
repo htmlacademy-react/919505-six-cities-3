@@ -1,40 +1,40 @@
-import {Page} from '../../const.ts';
+import {Cities, Page} from '../../const.ts';
 import Layout from '../layout/layout';
 import MainPage from '../pages/main-page/main-page';
 import LoginPage from '../pages/login-page/login-page';
 import OfferPage from '../pages/offer-page/offer-page';
+import {offers} from '../../mocks/offers.ts';
+import {getFavoriteOffersQuantity} from '../../utils.ts';
 
-type AppScreenProps = {
-  offersCount: number;
-}
+const currentPage = Page.MAIN;
+const currentCity = Cities[3];
+const offersFilteredByCity = offers.filter((offer) => offer.city.name === currentCity);
 
-const currentPage = Page.OFFER;
-
-const getPage = (offersCount: number) => {
+const getPage = () => {
   switch (currentPage) {
     case Page.MAIN:
       return (
-        <Layout currentPage={Page.MAIN}>
-          <MainPage offersCount={offersCount}/>
+        <Layout currentPage={Page.MAIN} favoritesQuantity={getFavoriteOffersQuantity(offers)}>
+          <MainPage currentCity={currentCity} offers={offersFilteredByCity}/>
         </Layout>
       );
 
     case Page.LOGIN:
       return (
-        <Layout currentPage={Page.LOGIN}>
+        <Layout currentPage={Page.LOGIN} favoritesQuantity={getFavoriteOffersQuantity(offers)}>
           <LoginPage/>
         </Layout>
       );
 
     case Page.OFFER:
       return (
-        <Layout currentPage={Page.OFFER}>
+        <Layout currentPage={Page.OFFER} favoritesQuantity={getFavoriteOffersQuantity(offers)}>
           <OfferPage/>
         </Layout>
       );
   }
 };
 
-export default function App({offersCount}: AppScreenProps) {
-  return getPage(offersCount);
+export default function App() {
+  return getPage();
 }

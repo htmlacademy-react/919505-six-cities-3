@@ -1,29 +1,21 @@
-import PlaceCard from '../../place-card/place-card';
-import CitiesNavList from '../../cities-nav-list/cities-nav-list.tsx';
-import OffersSortingPanel from '../../offers-sorting-panel/offers-sorting-panel.tsx';
 import {CardType} from '../../../const';
+import {OfferType} from '../../../types';
+import PlaceCard from '../../place-card/place-card';
+import CitiesNavList from '../../cities-nav-list/cities-nav-list';
+import OffersSortingPanel from '../../offers-sorting-panel/offers-sorting-panel';
 
 type MainPageProps = {
-  offersCount: number;
+  currentCity: string;
+  offers: OfferType[];
 }
 
-const generatePlaceCards = (offersCount: number) => {
-  const cards = [];
-
-  for (let i = 0; i < offersCount; i++) {
-    cards.push(<PlaceCard cardType={CardType.DEFAULT} key={i}/>);
-  }
-
-  return cards;
-};
-
-function MainPage({offersCount}: MainPageProps) {
+function MainPage({currentCity, offers}: MainPageProps): JSX.Element {
   return (
     <>
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <CitiesNavList/>
+          <CitiesNavList currentCity={currentCity}/>
         </section>
       </div>
 
@@ -31,12 +23,14 @@ function MainPage({offersCount}: MainPageProps) {
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{offersCount} places to stay in Amsterdam</b>
+            <b className="places__found">{offers.length} places to stay in Amsterdam</b>
 
             <OffersSortingPanel/>
 
             <div className="cities__places-list places__list tabs__content">
-              {generatePlaceCards(offersCount)}
+              {offers.map((offer) => (
+                <PlaceCard cardData={offer} cardType={CardType.DEFAULT} key={offer.id}/>
+              ))}
             </div>
           </section>
           <div className="cities__right-section">

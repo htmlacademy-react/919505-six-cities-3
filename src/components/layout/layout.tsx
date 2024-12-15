@@ -4,6 +4,7 @@ import Header from '../header/header';
 
 type LayoutProps = {
   currentPage: string;
+  favoritesQuantity: number
 };
 
 const getPageModifier = (currentPage: string) => {
@@ -28,13 +29,13 @@ const getMainModifier = (currentPage: string) => {
   }
 };
 
-export default function Layout({currentPage, children}: PropsWithChildren<LayoutProps>): JSX.Element {
+export default function Layout({currentPage, favoritesQuantity, children}: PropsWithChildren<LayoutProps>): JSX.Element {
   const pageModifier = getPageModifier(currentPage);
   const mainModifier = getMainModifier(currentPage);
 
   return (
     <div className={`page ${pageModifier}`}>
-      <Header/>
+      <Header favoritesQuantity={favoritesQuantity}/>
       <main className={`page__main page__main--${mainModifier}`}>
         {children}
       </main>
