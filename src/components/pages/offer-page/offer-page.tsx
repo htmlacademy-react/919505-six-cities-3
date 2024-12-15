@@ -5,24 +5,36 @@ import OfferHost from '../../offer-host/offer-host';
 import OfferReviewsList from '../../offer-reviews-list/offer-reviews-list';
 import OfferReviewForm from '../../offer-review-form/offer-review-form';
 import OfferNearPlaces from '../../offer-near-places/offer-near-places';
+import {currentOfferType, OfferType} from '../../../types.ts';
 
-export default function OfferPage(): JSX.Element {
+type OfferPageProps = {
+  currentOffer: currentOfferType;
+  nearOffers: OfferType[];
+};
+
+export default function OfferPage({currentOffer, nearOffers}: OfferPageProps): JSX.Element {
+  const {
+    images,
+    type,
+    isPremium
+  }: currentOfferType = currentOffer;
 
   return (
     <>
       <section className="offer">
         <div className="offer__gallery-container container">
           <div className="offer__gallery">
-            <OfferImage/>
+            {images.map((image) =>
+              <OfferImage image={image} offerType={type} key={image}/>
+            )}
           </div>
         </div>
 
         <div className="offer__container container">
           <div className="offer__wrapper">
-            <div className="offer__mark">
-              <span>Premium</span>
-            </div>
-
+            {isPremium
+              ? <div className="offer__mark"><span>Premium</span></div>
+              : ''}
             <div className="offer__name-wrapper">
               <h1 className="offer__name">Beautiful &amp; luxurious studio at great location</h1>
               <button className="offer__bookmark-button button" type="button">
@@ -63,7 +75,7 @@ export default function OfferPage(): JSX.Element {
         <section className="offer__map map"></section>
       </section>
       <div className="container">
-        <OfferNearPlaces/>
+        <OfferNearPlaces nearOffers={nearOffers}/>
       </div>
     </>
   );

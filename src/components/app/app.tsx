@@ -3,10 +3,11 @@ import Layout from '../layout/layout';
 import MainPage from '../pages/main-page/main-page';
 import LoginPage from '../pages/login-page/login-page';
 import OfferPage from '../pages/offer-page/offer-page';
-import {offers} from '../../mocks/offers.ts';
+import {offers} from '../../mocks/offers';
+import {currentOffer} from '../../mocks/current-offer';
 import {getFavoriteOffersQuantity} from '../../utils.ts';
 
-const currentPage = Page.MAIN;
+const currentPage = Page.OFFER;
 const currentCity = Cities[3];
 const offersFilteredByCity = offers.filter((offer) => offer.city.name === currentCity);
 
@@ -29,7 +30,7 @@ const getPage = () => {
     case Page.OFFER:
       return (
         <Layout currentPage={Page.OFFER} favoritesQuantity={getFavoriteOffersQuantity(offers)}>
-          <OfferPage/>
+          <OfferPage currentOffer={currentOffer} nearOffers={offersFilteredByCity}/>
         </Layout>
       );
   }

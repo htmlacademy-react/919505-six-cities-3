@@ -4,7 +4,7 @@ import Header from '../header/header';
 
 type LayoutProps = {
   currentPage: string;
-  favoritesQuantity: number
+  favoritesQuantity: number;
 };
 
 const getPageModifier = (currentPage: string) => {
@@ -35,7 +35,7 @@ export default function Layout({currentPage, favoritesQuantity, children}: Props
 
   return (
     <div className={`page ${pageModifier}`}>
-      <Header favoritesQuantity={favoritesQuantity}/>
+      <Header currentPage={currentPage} favoritesQuantity={favoritesQuantity}/>
       <main className={`page__main page__main--${mainModifier}`}>
         {children}
       </main>

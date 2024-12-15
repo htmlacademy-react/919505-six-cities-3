@@ -4,20 +4,35 @@ type LocationType = {
   zoom: number;
 }
 
-export type OfferType = {
+type OfferScaffoldingType = {
   id: string;
   title: string;
   type: string;
   price: number;
-  previewImage: string;
   city: {
     name: string;
     location: LocationType;
   };
-
   location: LocationType;
-
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;
 };
+
+export type OfferType = OfferScaffoldingType & {
+  previewImage: string;
+};
+
+export type currentOfferType = OfferScaffoldingType & {
+  description: string;
+  bedrooms: number;
+  goods: string[];
+  host: {
+    name: string;
+    avatarUrl: string;
+    isPro: boolean;
+  };
+  images: string[];
+  maxAdults: number;
+};
+
