@@ -19,20 +19,29 @@ type OfferScaffoldingType = {
   rating: number;
 };
 
-export type OfferType = OfferScaffoldingType & {
+export type UserType = {
+  name: string;
+  avatarUrl: string;
+  isPro: boolean;
+};
+
+export type OfferPreviewType = OfferScaffoldingType & {
   previewImage: string;
 };
 
-export type currentOfferType = OfferScaffoldingType & {
+export type OfferType = OfferScaffoldingType & {
   description: string;
   bedrooms: number;
   goods: string[];
-  host: {
-    name: string;
-    avatarUrl: string;
-    isPro: boolean;
-  };
+  host: UserType;
   images: string[];
   maxAdults: number;
 };
 
+export type ReviewType = {
+  id: string;
+  date: string;
+  user: UserType;
+  comment: string;
+  rating: number;
+};

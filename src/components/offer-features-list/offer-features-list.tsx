@@ -1,9 +1,21 @@
-import OfferFeaturesItem from '../offer-features-item/offer-features-item';
+type OfferFeaturesListProps = {
+  type: string;
+  bedrooms: number;
+  maxAdults: number;
+}
 
-export default function OfferFeaturesList(): JSX.Element {
+export default function OfferFeaturesList({type, bedrooms, maxAdults}: OfferFeaturesListProps): JSX.Element {
   return (
     <ul className="offer__features">
-      <OfferFeaturesItem/>
+      <li className="offer__feature offer__feature--entire">
+        {type}
+      </li>
+      <li className="offer__feature offer__feature--bedrooms">
+        {`${bedrooms} Bedrooms`}
+      </li>
+      <li className="offer__feature offer__feature--adults">
+        {`Max ${maxAdults} adults`}
+      </li>
     </ul>
   );
 }

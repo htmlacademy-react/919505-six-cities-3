@@ -1,12 +1,12 @@
-import {OfferType} from './types.ts';
+import {OfferPreviewType} from './types.ts';
 
 const RATING_COEFFICIENT = 20;
 
 export function calculateRatingWidth(rating: number): number {
-  return rating * RATING_COEFFICIENT;
+  return Math.round(rating) * RATING_COEFFICIENT;
 }
 
-export function getFavoriteOffersQuantity(offers: OfferType[]): number {
+export function getFavoriteOffersQuantity(offers: OfferPreviewType[]): number {
   let result = 0;
 
   offers.forEach((offer) => {

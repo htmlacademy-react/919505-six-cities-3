@@ -1,7 +1,11 @@
-export default function OfferInsideItem(): JSX.Element {
+type OfferInsideItemProps = {
+  feature: string;
+}
+
+export default function OfferInsideItem({feature}: OfferInsideItemProps): JSX.Element {
   return (
     <li className="offer__inside-item">
-      Wi-Fi
+      {feature}
     </li>
   );
 }

@@ -1,9 +1,9 @@
 import {CardType} from '../../const';
-import {OfferType} from '../../types';
+import {OfferPreviewType} from '../../types';
 import {calculateRatingWidth} from '../../utils';
 
 type PlaceCardProps = {
-  cardData: OfferType;
+  cardData: OfferPreviewType;
   cardType: string;
 };
 
@@ -15,7 +15,7 @@ export default function PlaceCard({cardData, cardType}: PlaceCardProps): JSX.Ele
     previewImage,
     isFavorite,
     rating
-  }: OfferType = cardData;
+  }: OfferPreviewType = cardData;
 
   const cardParentBlockName = cardType === CardType.DEFAULT ? 'cities' : 'near-places';
 

@@ -1,4 +1,4 @@
-export const offers = [
+export const offerPreviews = [
   {
     id: 'aea426aa-5afc-4f3b-ab34-b8a5a6cdfb46',
     title: 'Tile House',

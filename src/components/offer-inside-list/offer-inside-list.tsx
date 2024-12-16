@@ -1,9 +1,13 @@
 import OfferInsideItem from '../offer-inside-item/offer-inside-item';
 
-export default function OfferInsideList(): JSX.Element {
+type OfferInsideListProps = {
+  goods: string[];
+}
+
+export default function OfferInsideList({goods}: OfferInsideListProps): JSX.Element {
   return (
     <ul className="offer__inside-list">
-      <OfferInsideItem/>
+      {goods.map((feature) => <OfferInsideItem feature={feature} key={feature}/>)}
     </ul>
   );
 }

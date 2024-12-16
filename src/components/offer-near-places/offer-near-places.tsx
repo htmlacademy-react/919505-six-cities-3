@@ -1,9 +1,9 @@
 import PlaceCard from '../place-card/place-card.tsx';
 import {CardType} from '../../const';
-import {OfferType} from '../../types.ts';
+import {OfferPreviewType} from '../../types.ts';
 
 type OfferNearPlacesProps = {
-  nearOffers: OfferType[];
+  nearOffers: OfferPreviewType[];
 };
 
 export default function OfferNearPlaces({nearOffers}: OfferNearPlacesProps): JSX.Element {

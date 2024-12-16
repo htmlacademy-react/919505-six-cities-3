@@ -1,12 +1,12 @@
 import {CardType} from '../../../const';
-import {OfferType} from '../../../types';
+import {OfferPreviewType} from '../../../types';
 import PlaceCard from '../../place-card/place-card';
 import CitiesNavList from '../../cities-nav-list/cities-nav-list';
 import OffersSortingPanel from '../../offers-sorting-panel/offers-sorting-panel';
 
 type MainPageProps = {
   currentCity: string;
-  offers: OfferType[];
+  offers: OfferPreviewType[];
 }
 
 function MainPage({currentCity, offers}: MainPageProps): JSX.Element {
