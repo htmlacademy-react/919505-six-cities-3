@@ -1,5 +1,5 @@
 import {PropsWithChildren} from 'react';
-import {Page} from '../../common/const.ts';
+import {Page} from '../../utils/const.ts';
 import Header from '../header/header';
 import Footer from '../footer/footer.tsx';
 

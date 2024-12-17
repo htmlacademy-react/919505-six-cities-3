@@ -1,4 +1,4 @@
-import {BookmarkButtonParams} from '../../common/const.ts';
+import {BookmarkButtonParams} from '../../utils/const.ts';
 
 type ButtonBookmarkProps = {
   type: string;

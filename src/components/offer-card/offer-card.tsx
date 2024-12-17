@@ -1,5 +1,5 @@
-import {BookmarkButtonParams, CardTypeParams, RatingPanelType} from '../../common/const.ts';
-import {OfferPreview} from '../../common/types.ts';
+import {BookmarkButtonParams, CardTypeParams, RatingPanelType} from '../../utils/const.ts';
+import {OfferPreview} from '../../utils/types.ts';
 import ButtonBookmark from '../button-bookmark/button-bookmark.tsx';
 import RatingPanel from '../rating-panel/rating-panel.tsx';
 

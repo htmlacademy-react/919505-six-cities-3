@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import {Cities, Page} from './common/const.ts';
+import {Cities, Page} from './utils/const.ts';
 import {offerCards} from './mocks/offer-cards.ts';
 import {offerView} from './mocks/offer-view.ts';
 import {reviews} from './mocks/reviews.ts';
-import {generateFavoriteOffersObject} from './common/utils.ts';
-import {Review} from './common/types.ts';
+import {generateFavoriteOffersObject} from './utils/common.ts';
+import {Review} from './utils/types.ts';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

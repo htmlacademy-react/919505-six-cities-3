@@ -1,14 +1,14 @@
-import OfferImage from '../../offer-image/offer-image';
-import OfferFeaturesList from '../../offer-features-list/offer-features-list';
-import OfferInsideList from '../../offer-inside-list/offer-inside-list';
-import OfferHost from '../../offer-host/offer-host';
-import OfferReviewsList from '../../offer-reviews-list/offer-reviews-list';
-import OfferReviewForm from '../../offer-review-form/offer-review-form';
-import OfferNearPlaces from '../../offer-near-places/offer-near-places';
-import {OfferView, OfferPreview, Review} from '../../../common/types.ts';
-import ButtonBookmark from '../../button-bookmark/button-bookmark.tsx';
-import {BookmarkButtonParams, RatingPanelType} from '../../../common/const.ts';
-import RatingPanel from '../../rating-panel/rating-panel.tsx';
+import OfferImage from '../../components/offer-image/offer-image.tsx';
+import OfferFeaturesList from '../../components/offer-features-list/offer-features-list.tsx';
+import OfferInsideList from '../../components/offer-inside-list/offer-inside-list.tsx';
+import OfferHost from '../../components/offer-host/offer-host.tsx';
+import OfferReviewsList from '../../components/offer-reviews-list/offer-reviews-list.tsx';
+import OfferReviewForm from '../../components/offer-review-form/offer-review-form.tsx';
+import OfferNearPlaces from '../../components/offer-near-places/offer-near-places.tsx';
+import {OfferView, OfferPreview, Review} from '../../utils/types.ts';
+import ButtonBookmark from '../../components/button-bookmark/button-bookmark.tsx';
+import {BookmarkButtonParams, RatingPanelType} from '../../utils/const.ts';
+import RatingPanel from '../../components/rating-panel/rating-panel.tsx';
 
 type OfferPageProps = {
   offerView: OfferView;
@@ -16,7 +16,7 @@ type OfferPageProps = {
   nearOffers: OfferPreview[];
 };
 
-export default function OfferPage({offerView, reviews, nearOffers}: OfferPageProps): JSX.Element {
+export default function OfferScreen({offerView, reviews, nearOffers}: OfferPageProps): JSX.Element {
   const {
     images,
     type,

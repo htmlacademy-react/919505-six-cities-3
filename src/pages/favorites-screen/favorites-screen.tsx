@@ -1,5 +1,5 @@
-import {FavoritesObject} from '../../../common/types.ts';
-import FavoritesList from '../../favorites-list/favorites-list.tsx';
+import {FavoritesObject} from '../../utils/types.ts';
+import FavoritesList from '../../components/favorites-list/favorites-list.tsx';
 
 type FavoritesPageProps = {
   favoritesObject: FavoritesObject;
@@ -28,7 +28,7 @@ function createFavoritesList(favoritesObject: FavoritesObject) {
   );
 }
 
-export default function FavoritesPage({favoritesObject}: FavoritesPageProps): JSX.Element {
+export default function FavoritesScreen({favoritesObject}: FavoritesPageProps): JSX.Element {
   const isEmpty = Object.keys(favoritesObject).length === 0;
   return (
     <main className={`page__main page__main--favorites ${isEmpty ? 'page__main--favorites-empty' : ''}`}>

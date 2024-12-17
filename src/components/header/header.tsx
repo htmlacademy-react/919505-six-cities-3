@@ -1,4 +1,4 @@
-import {Page} from '../../common/const.ts';
+import {Page} from '../../utils/const.ts';
 import NavBlock from '../nav-block/nav-block.tsx';
 
 type HeaderProps = {

@@ -1,10 +1,10 @@
-import {Page} from '../../common/const.ts';
+import {Page} from '../../utils/const.ts';
 import Layout from '../layout/layout';
-import MainPage from '../pages/main-page/main-page';
-import LoginPage from '../pages/login-page/login-page';
-import OfferPage from '../pages/offer-page/offer-page';
-import {FavoritesObject, OfferPreview, OfferView, Review} from '../../common/types.ts';
-import FavoritesPage from '../pages/favorites-page/favorites-page.tsx';
+import MainScreen from '../../pages/main-screen/main-screen.tsx';
+import LoginScreen from '../../pages/login-screen/login-screen.tsx';
+import OfferScreen from '../../pages/offer-screen/offer-screen.tsx';
+import {FavoritesObject, OfferPreview, OfferView, Review} from '../../utils/types.ts';
+import FavoritesScreen from '../../pages/favorites-screen/favorites-screen.tsx';
 
 type AppProps = {
   currentPage: string;
@@ -29,28 +29,28 @@ const getPage = (
     case Page.MAIN:
       return (
         <Layout currentPage={Page.MAIN} favoritesQuantity={favoritesQuantity}>
-          <MainPage currentCity={currentCity} offers={offers}/>
+          <MainScreen currentCity={currentCity} offers={offers}/>
         </Layout>
       );
 
     case Page.LOGIN:
       return (
         <Layout currentPage={Page.LOGIN} favoritesQuantity={favoritesQuantity}>
-          <LoginPage/>
+          <LoginScreen/>
         </Layout>
       );
 
     case Page.OFFER:
       return (
         <Layout currentPage={Page.OFFER} favoritesQuantity={favoritesQuantity}>
-          <OfferPage offerView={offerView} reviews={reviews} nearOffers={offers}/>
+          <OfferScreen offerView={offerView} reviews={reviews} nearOffers={offers}/>
         </Layout>
       );
 
     case Page.FAVORITES:
       return (
         <Layout currentPage={Page.FAVORITES} favoritesQuantity={favoritesQuantity}>
-          <FavoritesPage favoritesObject={favoritesObject}/>
+          <FavoritesScreen favoritesObject={favoritesObject}/>
         </Layout>
       );
   }

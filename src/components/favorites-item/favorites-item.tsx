@@ -1,6 +1,6 @@
-import {OfferPreview} from '../../common/types.ts';
+import {OfferPreview} from '../../utils/types.ts';
 import OfferCard from '../offer-card/offer-card.tsx';
-import {CardTypeParams} from '../../common/const.ts';
+import {CardTypeParams} from '../../utils/const.ts';
 
 type FavoritesItemProps = {
   city: string;

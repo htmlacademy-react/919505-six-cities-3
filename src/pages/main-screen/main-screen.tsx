@@ -1,15 +1,15 @@
-import {CardTypeParams} from '../../../common/const.ts';
-import {OfferPreview} from '../../../common/types.ts';
-import OfferCard from '../../offer-card/offer-card.tsx';
-import CitiesNavList from '../../cities-nav-list/cities-nav-list';
-import OffersSortingPanel from '../../offers-sorting-panel/offers-sorting-panel';
+import {CardTypeParams} from '../../utils/const.ts';
+import {OfferPreview} from '../../utils/types.ts';
+import OfferCard from '../../components/offer-card/offer-card.tsx';
+import CitiesNavList from '../../components/cities-nav-list/cities-nav-list.tsx';
+import OffersSortingPanel from '../../components/offers-sorting-panel/offers-sorting-panel.tsx';
 
 type MainPageProps = {
   currentCity: string;
   offers: OfferPreview[];
 }
 
-function MainPage({currentCity, offers}: MainPageProps): JSX.Element {
+function MainScreen({currentCity, offers}: MainPageProps): JSX.Element {
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -42,4 +42,4 @@ function MainPage({currentCity, offers}: MainPageProps): JSX.Element {
   );
 }
 
-export default MainPage;
+export default MainScreen;

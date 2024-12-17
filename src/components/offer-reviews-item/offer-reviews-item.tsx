@@ -1,6 +1,6 @@
-import {Review} from '../../common/types.ts';
+import {Review} from '../../utils/types.ts';
 import RatingPanel from '../rating-panel/rating-panel.tsx';
-import {RatingPanelType} from '../../common/const.ts';
+import {RatingPanelType} from '../../utils/const.ts';
 
 type OfferReviewsItemProps = {
   review: Review;
