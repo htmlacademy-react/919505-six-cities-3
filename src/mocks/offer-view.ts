@@ -18,7 +18,7 @@ export const offerView = {
   },
   isFavorite: true,
   isPremium: true,
-  rating: 4,
+  rating: 4.6,
   description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
   bedrooms: 3,
   goods: [
@@ -26,7 +26,6 @@ export const offerView = {
     'Wi-Fi',
     'Washing machine',
     'Towels',
-    'Heating',
     'Coffee machine',
     'Baby seat',
     'Kitchen',
@@ -44,8 +43,7 @@ export const offerView = {
     'img/apartment-01.jpg',
     'img/apartment-02.jpg',
     'img/apartment-03.jpg',
-    'img/studio-01.jpg',
-    'img/apartment-01.jpg'
+    'img/studio-01.jpg'
   ],
   maxAdults: 4
 };

@@ -3,7 +3,6 @@ import Layout from '../layout/layout';
 import MainPage from '../pages/main-page/main-page';
 import LoginPage from '../pages/login-page/login-page';
 import OfferPage from '../pages/offer-page/offer-page';
-import {getFavoriteOffersQuantity} from '../../common/utils.ts';
 import {FavoritesObjectType, OfferPreviewType, OfferViewType, ReviewType} from '../../common/types.ts';
 import FavoritesPage from '../pages/favorites-page/favorites-page.tsx';
 
@@ -14,11 +13,18 @@ type AppProps = {
   offerView: OfferViewType;
   reviews: ReviewType[];
   favoritesObject: FavoritesObjectType;
+  favoritesQuantity: number;
 }
 
-const getPage = (currentPage: string, currentCity: string, offers: OfferPreviewType[], offerView: OfferViewType, reviews: ReviewType[], favoritesObject: FavoritesObjectType) => {
-  const favoritesQuantity = getFavoriteOffersQuantity(offers);
-
+const getPage = (
+  currentPage: string,
+  currentCity: string,
+  offers: OfferPreviewType[],
+  offerView: OfferViewType,
+  reviews: ReviewType[],
+  favoritesObject: FavoritesObjectType,
+  favoritesQuantity: number
+) => {
   switch (currentPage) {
     case Page.MAIN:
       return (
@@ -50,6 +56,6 @@ const getPage = (currentPage: string, currentCity: string, offers: OfferPreviewT
   }
 };
 
-export default function App({currentPage, currentCity, offers, offerView, reviews, favoritesObject}: AppProps) {
-  return getPage(currentPage, currentCity, offers, offerView, reviews, favoritesObject);
+export default function App({currentPage, currentCity, offers, offerView, reviews, favoritesObject, favoritesQuantity}: AppProps) {
+  return getPage(currentPage, currentCity, offers, offerView, reviews, favoritesObject, favoritesQuantity);
 }
