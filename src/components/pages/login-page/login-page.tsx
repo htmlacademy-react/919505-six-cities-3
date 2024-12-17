@@ -2,7 +2,9 @@ import Login from '../../login/login.tsx';
 
 function LoginPage(): JSX.Element {
   return (
-    <Login/>
+    <main className="page__main page__main--login">
+      <Login/>
+    </main>
   );
 }
 

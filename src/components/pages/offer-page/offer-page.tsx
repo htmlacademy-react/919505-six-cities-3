@@ -31,7 +31,7 @@ export default function OfferPage({offerView, reviews, nearOffers}: OfferPagePro
   }: OfferViewType = offerView;
 
   return (
-    <>
+    <main className="page__main page__main--offer">
       <section className="offer">
         <div className="offer__gallery-container container">
           <div className="offer__gallery">
@@ -58,7 +58,8 @@ export default function OfferPage({offerView, reviews, nearOffers}: OfferPagePro
 
             <div className="offer__rating rating">
               <div className="offer__stars rating__stars">
-                <span style={{width: `${calculateRatingWidth(rating)}%`}}></span> <span className="visually-hidden">Rating</span>
+                <span style={{width: `${calculateRatingWidth(rating)}%`}}></span>
+                <span className="visually-hidden">Rating</span>
               </div>
               <span className="offer__rating-value rating__value">{rating}</span>
             </div>
@@ -77,9 +78,9 @@ export default function OfferPage({offerView, reviews, nearOffers}: OfferPagePro
             <OfferHost host={host} description={description}/>
 
             <section className="offer__reviews reviews">
-              <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
-              <OfferReviewsList reviews={reviews}/>
-              <OfferReviewForm/>
+              <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span>
+              </h2>
+              <OfferReviewsList reviews={reviews}/> <OfferReviewForm/>
             </section>
           </div>
         </div>
@@ -88,6 +89,6 @@ export default function OfferPage({offerView, reviews, nearOffers}: OfferPagePro
       <div className="container">
         <OfferNearPlaces nearOffers={nearOffers}/>
       </div>
-    </>
+    </main>
   );
 }

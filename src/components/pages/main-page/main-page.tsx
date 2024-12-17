@@ -11,7 +11,7 @@ type MainPageProps = {
 
 function MainPage({currentCity, offers}: MainPageProps): JSX.Element {
   return (
-    <>
+    <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
@@ -38,7 +38,7 @@ function MainPage({currentCity, offers}: MainPageProps): JSX.Element {
           </div>
         </div>
       </div>
-    </>
+    </main>
   );
 }
 

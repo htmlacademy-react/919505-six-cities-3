@@ -21,29 +21,13 @@ const getPageModifier = (currentPage: string, favoritesQuantity: number) => {
   }
 };
 
-const getMainModifier = (currentPage: string) => {
-  switch (currentPage) {
-    case Page.MAIN:
-      return 'index';
-    case Page.LOGIN:
-      return 'login';
-    case Page.OFFER:
-      return 'offer';
-    case Page.FAVORITES:
-      return 'favorites';
-  }
-};
-
 export default function Layout({currentPage, favoritesQuantity, children}: PropsWithChildren<LayoutProps>): JSX.Element {
   const pageModifier = getPageModifier(currentPage, favoritesQuantity);
-  const mainModifier = getMainModifier(currentPage);
 
   return (
     <div className={`page ${pageModifier}`}>
       <Header currentPage={currentPage} favoritesQuantity={favoritesQuantity}/>
-      <main className={`page__main page__main--${mainModifier} ${currentPage === Page.FAVORITES && favoritesQuantity === 0 ? 'page__main--favorites-empty' : ''}`}>
-        {children}
-      </main>
+      {children}
       {currentPage === Page.FAVORITES && <Footer/>}
     </div>
   );

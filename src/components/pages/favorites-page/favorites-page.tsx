@@ -31,12 +31,15 @@ function createFavoritesList(favoritesObject: FavoritesObjectType) {
 export default function FavoritesPage({favoritesObject}: FavoritesPageProps): JSX.Element {
   const isEmpty = Object.keys(favoritesObject).length === 0;
   return (
-    <div className="page__favorites-container container">
-      <section className={`favorites ${isEmpty ? 'favorites--empty' : ''}`}>
-        {isEmpty
-          ? createEmptyStatusContainer()
-          : createFavoritesList(favoritesObject)}
-      </section>
-    </div>
+    <main className={`page__main page__main--favorites ${isEmpty ? 'page__main--favorites-empty' : ''}`}>
+      <div className="page__favorites-container container">
+        <section className={`favorites ${isEmpty ? 'favorites--empty' : ''}`}>
+          {isEmpty
+            ? createEmptyStatusContainer()
+            : createFavoritesList(favoritesObject)}
+        </section>
+      </div>
+    </main>
   );
 }
+
