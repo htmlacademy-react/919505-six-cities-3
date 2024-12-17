@@ -1,5 +1,5 @@
-import {CardType} from '../../../const';
-import {OfferPreviewType} from '../../../types';
+import {CardType} from '../../../common/const.ts';
+import {OfferPreviewType} from '../../../common/types.ts';
 import PlaceCard from '../../place-card/place-card';
 import CitiesNavList from '../../cities-nav-list/cities-nav-list';
 import OffersSortingPanel from '../../offers-sorting-panel/offers-sorting-panel';

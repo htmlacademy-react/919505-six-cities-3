@@ -1,4 +1,4 @@
-import {Page} from '../../const';
+import {Page} from '../../common/const.ts';
 
 type HeaderProps = {
   currentPage: string;

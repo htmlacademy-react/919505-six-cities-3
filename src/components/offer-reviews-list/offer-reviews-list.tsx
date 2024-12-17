@@ -1,5 +1,5 @@
 import OfferReviewsItem from '../offer-reviews-item/offer-reviews-item';
-import {ReviewType} from '../../types';
+import {ReviewType} from '../../common/types.ts';
 
 type OfferReviewsListProps = {
   reviews: ReviewType[];

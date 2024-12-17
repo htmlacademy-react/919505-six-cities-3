@@ -1,6 +1,6 @@
 import PlaceCard from '../place-card/place-card.tsx';
-import {CardType} from '../../const';
-import {OfferPreviewType} from '../../types.ts';
+import {CardType} from '../../common/const.ts';
+import {OfferPreviewType} from '../../common/types.ts';
 
 type OfferNearPlacesProps = {
   nearOffers: OfferPreviewType[];

@@ -45,3 +45,7 @@ export type ReviewType = {
   comment: string;
   rating: number;
 };
+
+export type FavoritesObjectType = {
+  [key: string]: OfferPreviewType[];
+};

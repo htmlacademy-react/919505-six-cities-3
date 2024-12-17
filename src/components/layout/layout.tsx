@@ -1,6 +1,7 @@
 import {PropsWithChildren} from 'react';
-import {Page} from '../../const';
+import {Page} from '../../common/const.ts';
 import Header from '../header/header';
+import Footer from '../footer/footer.tsx';
 
 type LayoutProps = {
   currentPage: string;
@@ -26,6 +27,8 @@ const getMainModifier = (currentPage: string) => {
       return 'login';
     case Page.OFFER:
       return 'offer';
+    case Page.FAVORITES:
+      return 'favorites';
   }
 };
 
@@ -39,6 +42,7 @@ export default function Layout({currentPage, favoritesQuantity, children}: Props
       <main className={`page__main page__main--${mainModifier}`}>
         {children}
       </main>
+      {currentPage === Page.FAVORITES && <Footer/>}
     </div>
   );
 }

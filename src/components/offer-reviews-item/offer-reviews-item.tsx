@@ -1,5 +1,5 @@
-import {ReviewType} from '../../types';
-import {calculateRatingWidth} from '../../utils.ts';
+import {ReviewType} from '../../common/types.ts';
+import {calculateRatingWidth} from '../../common/utils.ts';
 
 type OfferReviewsItemProps = {
   review: ReviewType;

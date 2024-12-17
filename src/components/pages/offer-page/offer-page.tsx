@@ -5,8 +5,8 @@ import OfferHost from '../../offer-host/offer-host';
 import OfferReviewsList from '../../offer-reviews-list/offer-reviews-list';
 import OfferReviewForm from '../../offer-review-form/offer-review-form';
 import OfferNearPlaces from '../../offer-near-places/offer-near-places';
-import {OfferType, OfferPreviewType, ReviewType} from '../../../types';
-import {calculateRatingWidth} from '../../../utils';
+import {OfferType, OfferPreviewType, ReviewType} from '../../../common/types.ts';
+import {calculateRatingWidth} from '../../../common/utils.ts';
 
 type OfferPageProps = {
   currentOffer: OfferType;
