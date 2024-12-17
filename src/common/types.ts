@@ -29,7 +29,7 @@ export type OfferPreviewType = OfferScaffoldingType & {
   previewImage: string;
 };
 
-export type OfferType = OfferScaffoldingType & {
+export type OfferViewType = OfferScaffoldingType & {
   description: string;
   bedrooms: number;
   goods: string[];

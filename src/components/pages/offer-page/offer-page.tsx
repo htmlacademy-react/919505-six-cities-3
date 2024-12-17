@@ -5,16 +5,16 @@ import OfferHost from '../../offer-host/offer-host';
 import OfferReviewsList from '../../offer-reviews-list/offer-reviews-list';
 import OfferReviewForm from '../../offer-review-form/offer-review-form';
 import OfferNearPlaces from '../../offer-near-places/offer-near-places';
-import {OfferType, OfferPreviewType, ReviewType} from '../../../common/types.ts';
+import {OfferViewType, OfferPreviewType, ReviewType} from '../../../common/types.ts';
 import {calculateRatingWidth} from '../../../common/utils.ts';
 
 type OfferPageProps = {
-  currentOffer: OfferType;
+  offerView: OfferViewType;
   reviews: ReviewType[];
   nearOffers: OfferPreviewType[];
 };
 
-export default function OfferPage({currentOffer, reviews, nearOffers}: OfferPageProps): JSX.Element {
+export default function OfferPage({offerView, reviews, nearOffers}: OfferPageProps): JSX.Element {
   const {
     images,
     type,
@@ -28,7 +28,7 @@ export default function OfferPage({currentOffer, reviews, nearOffers}: OfferPage
     goods,
     host,
     description
-  }: OfferType = currentOffer;
+  }: OfferViewType = offerView;
 
   return (
     <>

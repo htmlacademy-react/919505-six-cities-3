@@ -3,22 +3,21 @@ import Layout from '../layout/layout';
 import MainPage from '../pages/main-page/main-page';
 import LoginPage from '../pages/login-page/login-page';
 import OfferPage from '../pages/offer-page/offer-page';
-import {offerPreviews} from '../../mocks/offer-previews';
-import {Offer} from '../../mocks/offer';
 import {getFavoriteOffersQuantity} from '../../common/utils.ts';
-import {FavoritesObjectType, OfferPreviewType, ReviewType} from '../../common/types.ts';
+import {FavoritesObjectType, OfferPreviewType, OfferViewType, ReviewType} from '../../common/types.ts';
 import FavoritesPage from '../pages/favorites-page/favorites-page.tsx';
 
 type AppProps = {
   currentPage: string;
   currentCity: string;
   offers: OfferPreviewType[];
+  offerView: OfferViewType;
   reviews: ReviewType[];
   favoritesObject: FavoritesObjectType;
 }
 
-const getPage = (currentPage: string, currentCity: string, offers: OfferPreviewType[], reviews: ReviewType[], favoritesObject: FavoritesObjectType) => {
-  const favoritesQuantity = getFavoriteOffersQuantity(offerPreviews);
+const getPage = (currentPage: string, currentCity: string, offers: OfferPreviewType[], offerView: OfferViewType, reviews: ReviewType[], favoritesObject: FavoritesObjectType) => {
+  const favoritesQuantity = getFavoriteOffersQuantity(offers);
 
   switch (currentPage) {
     case Page.MAIN:
@@ -38,7 +37,7 @@ const getPage = (currentPage: string, currentCity: string, offers: OfferPreviewT
     case Page.OFFER:
       return (
         <Layout currentPage={Page.OFFER} favoritesQuantity={favoritesQuantity}>
-          <OfferPage currentOffer={Offer} reviews={reviews} nearOffers={offers}/>
+          <OfferPage currentOffer={offerView} reviews={reviews} nearOffers={offers}/>
         </Layout>
       );
 
@@ -51,6 +50,6 @@ const getPage = (currentPage: string, currentCity: string, offers: OfferPreviewT
   }
 };
 
-export default function App({currentPage, currentCity, offers, reviews, favoritesObject}: AppProps) {
-  return getPage(currentPage, currentCity, offers, reviews, favoritesObject);
+export default function App({currentPage, currentCity, offers, offerView, reviews, favoritesObject}: AppProps) {
+  return getPage(currentPage, currentCity, offers, offerView, reviews, favoritesObject);
 }
