@@ -1,3 +1,5 @@
+const RATING_COEFFICIENT = 20;
+
 const Page = {
   MAIN: 'MAIN',
   LOGIN: 'LOGIN',
@@ -51,4 +53,4 @@ const Cities = [
   'Dusseldorf'
 ];
 
-export {Page, CardTypeParams, RatingPanelType, BookmarkButtonParams, Cities};
+export {RATING_COEFFICIENT, Page, CardTypeParams, RatingPanelType, BookmarkButtonParams, Cities};

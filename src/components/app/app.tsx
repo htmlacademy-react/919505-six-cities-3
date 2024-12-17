@@ -3,26 +3,26 @@ import Layout from '../layout/layout';
 import MainPage from '../pages/main-page/main-page';
 import LoginPage from '../pages/login-page/login-page';
 import OfferPage from '../pages/offer-page/offer-page';
-import {FavoritesObjectType, OfferCardType, OfferViewType, ReviewType} from '../../common/types.ts';
+import {FavoritesObject, OfferCard, OfferView, Review} from '../../common/types.ts';
 import FavoritesPage from '../pages/favorites-page/favorites-page.tsx';
 
 type AppProps = {
   currentPage: string;
   currentCity: string;
-  offers: OfferCardType[];
-  offerView: OfferViewType;
-  reviews: ReviewType[];
-  favoritesObject: FavoritesObjectType;
+  offers: OfferCard[];
+  offerView: OfferView;
+  reviews: Review[];
+  favoritesObject: FavoritesObject;
   favoritesQuantity: number;
 }
 
 const getPage = (
   currentPage: string,
   currentCity: string,
-  offers: OfferCardType[],
-  offerView: OfferViewType,
-  reviews: ReviewType[],
-  favoritesObject: FavoritesObjectType,
+  offers: OfferCard[],
+  offerView: OfferView,
+  reviews: Review[],
+  favoritesObject: FavoritesObject,
   favoritesQuantity: number
 ) => {
   switch (currentPage) {

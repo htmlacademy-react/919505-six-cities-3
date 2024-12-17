@@ -1,8 +1,8 @@
 import OfferReviewsItem from '../offer-reviews-item/offer-reviews-item';
-import {ReviewType} from '../../common/types.ts';
+import {Review} from '../../common/types.ts';
 
 type OfferReviewsListProps = {
-  reviews: ReviewType[];
+  reviews: Review[];
 }
 
 export default function OfferReviewsList({reviews}: OfferReviewsListProps): JSX.Element {

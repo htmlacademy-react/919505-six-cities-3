@@ -1,10 +1,10 @@
-import {OfferCardType} from '../../common/types.ts';
+import {OfferCard} from '../../common/types.ts';
 import OfferCard from '../offer-card/offer-card.tsx';
 import {CardTypeParams} from '../../common/const.ts';
 
 type FavoritesItemProps = {
   city: string;
-  offers: OfferCardType[];
+  offers: OfferCard[];
 }
 
 export default function FavoritesItem({city, offers}: FavoritesItemProps): JSX.Element {

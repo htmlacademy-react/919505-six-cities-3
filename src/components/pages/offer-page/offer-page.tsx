@@ -5,15 +5,15 @@ import OfferHost from '../../offer-host/offer-host';
 import OfferReviewsList from '../../offer-reviews-list/offer-reviews-list';
 import OfferReviewForm from '../../offer-review-form/offer-review-form';
 import OfferNearPlaces from '../../offer-near-places/offer-near-places';
-import {OfferViewType, OfferCardType, ReviewType} from '../../../common/types.ts';
+import {OfferView, OfferCard, Review} from '../../../common/types.ts';
 import ButtonBookmark from '../../button-bookmark/button-bookmark.tsx';
 import {BookmarkButtonParams, RatingPanelType} from '../../../common/const.ts';
 import RatingPanel from '../../rating-panel/rating-panel.tsx';
 
 type OfferPageProps = {
-  offerView: OfferViewType;
-  reviews: ReviewType[];
-  nearOffers: OfferCardType[];
+  offerView: OfferView;
+  reviews: Review[];
+  nearOffers: OfferCard[];
 };
 
 export default function OfferPage({offerView, reviews, nearOffers}: OfferPageProps): JSX.Element {
@@ -30,7 +30,7 @@ export default function OfferPage({offerView, reviews, nearOffers}: OfferPagePro
     goods,
     host,
     description
-  }: OfferViewType = offerView;
+  }: OfferView = offerView;
 
   return (
     <main className="page__main page__main--offer">

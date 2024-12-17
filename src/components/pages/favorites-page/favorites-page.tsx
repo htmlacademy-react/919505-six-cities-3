@@ -1,8 +1,8 @@
-import {FavoritesObjectType} from '../../../common/types.ts';
+import {FavoritesObject} from '../../../common/types.ts';
 import FavoritesList from '../../favorites-list/favorites-list.tsx';
 
 type FavoritesPageProps = {
-  favoritesObject: FavoritesObjectType;
+  favoritesObject: FavoritesObject;
 }
 
 function createEmptyStatusContainer() {
@@ -19,7 +19,7 @@ function createEmptyStatusContainer() {
   );
 }
 
-function createFavoritesList(favoritesObject: FavoritesObjectType) {
+function createFavoritesList(favoritesObject: FavoritesObject) {
   return (
     <>
       <h1 className="favorites__title">Saved listing</h1>

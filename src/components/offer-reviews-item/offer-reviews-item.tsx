@@ -1,9 +1,9 @@
-import {ReviewType} from '../../common/types.ts';
+import {Review} from '../../common/types.ts';
 import RatingPanel from '../rating-panel/rating-panel.tsx';
 import {RatingPanelType} from '../../common/const.ts';
 
 type OfferReviewsItemProps = {
-  review: ReviewType;
+  review: Review;
 }
 
 export default function OfferReviewsItem({review}: OfferReviewsItemProps): JSX.Element {

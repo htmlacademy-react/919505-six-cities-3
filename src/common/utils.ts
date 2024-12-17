@@ -1,25 +1,12 @@
-import {FavoritesObjectType, OfferCardType} from './types.ts';
-
-const RATING_COEFFICIENT = 20;
+import {FavoritesObject, OfferCard} from './types.ts';
+import {RATING_COEFFICIENT} from './const.ts';
 
 export function calculateRatingWidth(rating: number): number {
   return Math.round(rating) * RATING_COEFFICIENT;
 }
 
-export function getFavoriteOffersQuantity(offers: OfferCardType[]): number {
-  let result = 0;
-
-  offers.forEach((offer) => {
-    if (offer.isFavorite) {
-      result++;
-    }
-  });
-
-  return result;
-}
-
-export function generateFavoriteOffersObject(offers: OfferCardType[]): FavoritesObjectType {
-  const result: FavoritesObjectType = {};
+export function generateFavoriteOffersObject(offers: OfferCard[]): FavoritesObject {
+  const result: FavoritesObject = {};
 
   offers.forEach((offer) => {
     if (result[offer.city.name]) {

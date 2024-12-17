@@ -1,12 +1,12 @@
 import {CardTypeParams} from '../../../common/const.ts';
-import {OfferCardType} from '../../../common/types.ts';
+import {OfferCard} from '../../../common/types.ts';
 import OfferCard from '../../offer-card/offer-card.tsx';
 import CitiesNavList from '../../cities-nav-list/cities-nav-list';
 import OffersSortingPanel from '../../offers-sorting-panel/offers-sorting-panel';
 
 type MainPageProps = {
   currentCity: string;
-  offers: OfferCardType[];
+  offers: OfferCard[];
 }
 
 function MainPage({currentCity, offers}: MainPageProps): JSX.Element {

@@ -1,9 +1,9 @@
 import OfferCard from '../offer-card/offer-card.tsx';
 import {CardTypeParams} from '../../common/const.ts';
-import {OfferCardType} from '../../common/types.ts';
+import {OfferCard} from '../../common/types.ts';
 
 type OfferNearPlacesProps = {
-  nearOffers: OfferCardType[];
+  nearOffers: OfferCard[];
 };
 
 export default function OfferNearPlaces({nearOffers}: OfferNearPlacesProps): JSX.Element {
