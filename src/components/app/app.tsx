@@ -37,7 +37,7 @@ const getPage = (currentPage: string, currentCity: string, offers: OfferPreviewT
     case Page.OFFER:
       return (
         <Layout currentPage={Page.OFFER} favoritesQuantity={favoritesQuantity}>
-          <OfferPage currentOffer={offerView} reviews={reviews} nearOffers={offers}/>
+          <OfferPage offerView={offerView} reviews={reviews} nearOffers={offers}/>
         </Layout>
       );
 
