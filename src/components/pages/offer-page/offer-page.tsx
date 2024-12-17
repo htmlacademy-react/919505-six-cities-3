@@ -60,7 +60,12 @@ export default function OfferPage({offerView, reviews, nearOffers}: OfferPagePro
               <b className="offer__price-value">&euro;{price}</b> <span className="offer__price-text">&nbsp;night</span>
             </div>
 
-            <OfferInsideList goods={goods}/>
+
+            <div className="offer__inside">
+              <h2 className="offer__inside-title">What&apos;s inside</h2>
+              <OfferInsideList goods={goods}/>
+            </div>
+
             <OfferHost host={host} description={description}/>
 
             <section className="offer__reviews reviews">
@@ -72,7 +77,9 @@ export default function OfferPage({offerView, reviews, nearOffers}: OfferPagePro
         </div>
         <section className="offer__map map"></section>
       </section>
-      <OfferNearPlaces nearOffers={nearOffers}/>
+      <div className="container">
+        <OfferNearPlaces nearOffers={nearOffers}/>
+      </div>
     </main>
   );
 }
