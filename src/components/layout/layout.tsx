@@ -8,12 +8,14 @@ type LayoutProps = {
   favoritesQuantity: number;
 };
 
-const getPageModifier = (currentPage: string) => {
+const getPageModifier = (currentPage: string, favoritesQuantity: number) => {
   switch (currentPage) {
     case Page.MAIN:
       return 'page--gray page--main';
     case Page.LOGIN:
       return 'page--gray page--login';
+    case Page.FAVORITES:
+      return favoritesQuantity === 0 ? 'page--favorites-empty' : '';
     default:
       return '';
   }
@@ -33,13 +35,13 @@ const getMainModifier = (currentPage: string) => {
 };
 
 export default function Layout({currentPage, favoritesQuantity, children}: PropsWithChildren<LayoutProps>): JSX.Element {
-  const pageModifier = getPageModifier(currentPage);
+  const pageModifier = getPageModifier(currentPage, favoritesQuantity);
   const mainModifier = getMainModifier(currentPage);
 
   return (
     <div className={`page ${pageModifier}`}>
       <Header currentPage={currentPage} favoritesQuantity={favoritesQuantity}/>
-      <main className={`page__main page__main--${mainModifier}`}>
+      <main className={`page__main page__main--${mainModifier} ${currentPage === Page.FAVORITES && favoritesQuantity === 0 ? 'page__main--favorites-empty' : ''}`}>
         {children}
       </main>
       {currentPage === Page.FAVORITES && <Footer/>}
