@@ -1,10 +1,10 @@
 import {BookmarkButtonParams, CardTypeParams, RatingPanelType} from '../../common/const.ts';
-import {OfferCard} from '../../common/types.ts';
+import {OfferPreview} from '../../common/types.ts';
 import ButtonBookmark from '../button-bookmark/button-bookmark.tsx';
 import RatingPanel from '../rating-panel/rating-panel.tsx';
 
 type PlaceCardProps = {
-  cardData: OfferCard;
+  cardData: OfferPreview;
   cardType: string;
 };
 
@@ -30,7 +30,7 @@ export default function OfferCard({cardData, cardType}: PlaceCardProps): JSX.Ele
     isFavorite,
     rating,
     isPremium
-  }: OfferCard = cardData;
+  }: OfferPreview = cardData;
 
   const cardParentBlockName = getParentBlockName(cardType);
 

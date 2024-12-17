@@ -1,11 +1,11 @@
-import {FavoritesObject, OfferCard} from './types.ts';
+import {FavoritesObject, OfferPreview} from './types.ts';
 import {RATING_COEFFICIENT} from './const.ts';
 
 export function calculateRatingWidth(rating: number): number {
   return Math.round(rating) * RATING_COEFFICIENT;
 }
 
-export function generateFavoriteOffersObject(offers: OfferCard[]): FavoritesObject {
+export function generateFavoriteOffersObject(offers: OfferPreview[]): FavoritesObject {
   const result: FavoritesObject = {};
 
   offers.forEach((offer) => {
