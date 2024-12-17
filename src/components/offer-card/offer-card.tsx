@@ -1,4 +1,4 @@
-import {BookmarkButtonParams, CardType, RatingPanelType} from '../../common/const.ts';
+import {BookmarkButtonParams, CardTypeParams, RatingPanelType} from '../../common/const.ts';
 import {OfferCardType} from '../../common/types.ts';
 import ButtonBookmark from '../button-bookmark/button-bookmark.tsx';
 import RatingPanel from '../rating-panel/rating-panel.tsx';
@@ -10,13 +10,13 @@ type PlaceCardProps = {
 
 function getParentBlockName(cardType: string) {
   switch (cardType) {
-    case CardType.DEFAULT:
+    case CardTypeParams.DEFAULT:
       return 'cities';
 
-    case CardType.NEAR:
+    case CardTypeParams.NEAR:
       return 'near-places';
 
-    case CardType.FAVORITE:
+    case CardTypeParams.FAVORITE:
       return 'favorites';
   }
 }
@@ -42,14 +42,14 @@ export default function OfferCard({cardData, cardType}: PlaceCardProps): JSX.Ele
           <img
             className="place-card__image"
             src={previewImage}
-            width={cardType === CardType.FAVORITE ? '150' : '260'}
-            height={cardType === CardType.FAVORITE ? '110' : '200'}
+            width={cardType === CardTypeParams.FAVORITE ? CardTypeParams.width.little : CardTypeParams.width.big}
+            height={cardType === CardTypeParams.FAVORITE ? CardTypeParams.height.little : CardTypeParams.height.big}
             alt="Place image"
           />
         </a>
       </div>
 
-      <div className={`${cardType === CardType.FAVORITE ? 'favorites__card-info' : ''} place-card__info`}>
+      <div className={`${cardType === CardTypeParams.FAVORITE ? 'favorites__card-info' : ''} place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>

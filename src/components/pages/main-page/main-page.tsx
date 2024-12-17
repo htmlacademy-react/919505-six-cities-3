@@ -1,4 +1,4 @@
-import {CardType} from '../../../common/const.ts';
+import {CardTypeParams} from '../../../common/const.ts';
 import {OfferCardType} from '../../../common/types.ts';
 import OfferCard from '../../offer-card/offer-card.tsx';
 import CitiesNavList from '../../cities-nav-list/cities-nav-list';
@@ -29,7 +29,7 @@ function MainPage({currentCity, offers}: MainPageProps): JSX.Element {
 
             <div className="cities__places-list places__list tabs__content">
               {offers.map((offer) => (
-                <OfferCard cardData={offer} cardType={CardType.DEFAULT} key={offer.id}/>
+                <OfferCard cardData={offer} cardType={CardTypeParams.DEFAULT} key={offer.id}/>
               ))}
             </div>
           </section>

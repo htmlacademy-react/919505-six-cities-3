@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const currentPage = Page.OFFER;
+const currentPage = Page.MAIN;
 
 const currentCity = Cities[3];
 const offersFilteredByCity = offerCards.filter((offer) => offer.city.name === currentCity);

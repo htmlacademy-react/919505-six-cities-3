@@ -5,10 +5,20 @@ const Page = {
   FAVORITES: 'FAVORITES'
 };
 
-const CardType = {
+const CardTypeParams = {
   DEFAULT: 'DEFAULT',
   NEAR: 'NEAR',
-  FAVORITE: 'FAVORITE'
+  FAVORITE: 'FAVORITE',
+
+  width: {
+    little: '150',
+    big: '260',
+  },
+
+  height: {
+    little: '110',
+    big: '200',
+  }
 };
 
 const RatingPanelType = {
@@ -41,4 +51,4 @@ const Cities = [
   'Dusseldorf'
 ];
 
-export {Page, CardType, RatingPanelType, BookmarkButtonParams, Cities};
+export {Page, CardTypeParams, RatingPanelType, BookmarkButtonParams, Cities};
