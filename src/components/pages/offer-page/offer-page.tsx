@@ -60,25 +60,19 @@ export default function OfferPage({offerView, reviews, nearOffers}: OfferPagePro
               <b className="offer__price-value">&euro;{price}</b> <span className="offer__price-text">&nbsp;night</span>
             </div>
 
-            <div className="offer__inside">
-              <h2 className="offer__inside-title">What&apos;s inside</h2>
-              <OfferInsideList goods={goods}/>
-            </div>
-
+            <OfferInsideList goods={goods}/>
             <OfferHost host={host} description={description}/>
 
             <section className="offer__reviews reviews">
-              <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span>
-              </h2>
-              <OfferReviewsList reviews={reviews}/> <OfferReviewForm/>
+              <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
+              <OfferReviewsList reviews={reviews}/>
+              <OfferReviewForm/>
             </section>
           </div>
         </div>
         <section className="offer__map map"></section>
       </section>
-      <div className="container">
-        <OfferNearPlaces nearOffers={nearOffers}/>
-      </div>
+      <OfferNearPlaces nearOffers={nearOffers}/>
     </main>
   );
 }
