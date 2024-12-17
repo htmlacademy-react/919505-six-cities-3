@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 import {Cities, Page} from './common/const.ts';
-import {offerPreviews} from './mocks/offer-previews.ts';
+import {offerCards} from './mocks/offer-cards.ts';
 import {offerView} from './mocks/offer-view.ts';
 import {reviews} from './mocks/reviews.ts';
 import {generateFavoriteOffersObject} from './common/utils.ts';
@@ -15,8 +15,8 @@ const root = ReactDOM.createRoot(
 const currentPage = Page.MAIN;
 
 const currentCity = Cities[3];
-const offersFilteredByCity = offerPreviews.filter((offer) => offer.city.name === currentCity);
-const favoriteOffers = offerPreviews.filter((offer) => offer.isFavorite);
+const offersFilteredByCity = offerCards.filter((offer) => offer.city.name === currentCity);
+const favoriteOffers = offerCards.filter((offer) => offer.isFavorite);
 const favoritesObject = generateFavoriteOffersObject(favoriteOffers);
 
 root.render(
