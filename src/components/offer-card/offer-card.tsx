@@ -1,10 +1,10 @@
 import {BookmarkButtonParams, CardType, RatingPanelType} from '../../common/const.ts';
-import {OfferPreviewType} from '../../common/types.ts';
+import {OfferCardType} from '../../common/types.ts';
 import ButtonBookmark from '../button-bookmark/button-bookmark.tsx';
 import RatingPanel from '../rating-panel/rating-panel.tsx';
 
 type PlaceCardProps = {
-  cardData: OfferPreviewType;
+  cardData: OfferCardType;
   cardType: string;
 };
 
@@ -21,7 +21,7 @@ function getParentBlockName(cardType: string) {
   }
 }
 
-export default function PlaceCard({cardData, cardType}: PlaceCardProps): JSX.Element {
+export default function OfferCard({cardData, cardType}: PlaceCardProps): JSX.Element {
   const {
     title,
     type,
@@ -30,7 +30,7 @@ export default function PlaceCard({cardData, cardType}: PlaceCardProps): JSX.Ele
     isFavorite,
     rating,
     isPremium
-  }: OfferPreviewType = cardData;
+  }: OfferCardType = cardData;
 
   const cardParentBlockName = getParentBlockName(cardType);
 
@@ -39,7 +39,13 @@ export default function PlaceCard({cardData, cardType}: PlaceCardProps): JSX.Ele
       {isPremium && <div className="place-card__mark"><span>Premium</span></div>}
       <div className={`${cardParentBlockName}__image-wrapper place-card__image-wrapper`}>
         <a href="#">
-          <img className="place-card__image" src={previewImage} width={cardType === CardType.FAVORITE ? '150' : '260'} height={cardType === CardType.FAVORITE ? '110' : '200'} alt="Place image"/>
+          <img
+            className="place-card__image"
+            src={previewImage}
+            width={cardType === CardType.FAVORITE ? '150' : '260'}
+            height={cardType === CardType.FAVORITE ? '110' : '200'}
+            alt="Place image"
+          />
         </a>
       </div>
 

@@ -1,12 +1,12 @@
 import {CardType} from '../../../common/const.ts';
-import {OfferPreviewType} from '../../../common/types.ts';
-import PlaceCard from '../../place-card/place-card';
+import {OfferCardType} from '../../../common/types.ts';
+import OfferCard from '../../offer-card/offer-card.tsx';
 import CitiesNavList from '../../cities-nav-list/cities-nav-list';
 import OffersSortingPanel from '../../offers-sorting-panel/offers-sorting-panel';
 
 type MainPageProps = {
   currentCity: string;
-  offers: OfferPreviewType[];
+  offers: OfferCardType[];
 }
 
 function MainPage({currentCity, offers}: MainPageProps): JSX.Element {
@@ -29,7 +29,7 @@ function MainPage({currentCity, offers}: MainPageProps): JSX.Element {
 
             <div className="cities__places-list places__list tabs__content">
               {offers.map((offer) => (
-                <PlaceCard cardData={offer} cardType={CardType.DEFAULT} key={offer.id}/>
+                <OfferCard cardData={offer} cardType={CardType.DEFAULT} key={offer.id}/>
               ))}
             </div>
           </section>

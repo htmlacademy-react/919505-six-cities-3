@@ -3,13 +3,13 @@ import Layout from '../layout/layout';
 import MainPage from '../pages/main-page/main-page';
 import LoginPage from '../pages/login-page/login-page';
 import OfferPage from '../pages/offer-page/offer-page';
-import {FavoritesObjectType, OfferPreviewType, OfferViewType, ReviewType} from '../../common/types.ts';
+import {FavoritesObjectType, OfferCardType, OfferViewType, ReviewType} from '../../common/types.ts';
 import FavoritesPage from '../pages/favorites-page/favorites-page.tsx';
 
 type AppProps = {
   currentPage: string;
   currentCity: string;
-  offers: OfferPreviewType[];
+  offers: OfferCardType[];
   offerView: OfferViewType;
   reviews: ReviewType[];
   favoritesObject: FavoritesObjectType;
@@ -19,7 +19,7 @@ type AppProps = {
 const getPage = (
   currentPage: string,
   currentCity: string,
-  offers: OfferPreviewType[],
+  offers: OfferCardType[],
   offerView: OfferViewType,
   reviews: ReviewType[],
   favoritesObject: FavoritesObjectType,

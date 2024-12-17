@@ -25,7 +25,7 @@ export type UserType = {
   isPro: boolean;
 };
 
-export type OfferPreviewType = OfferScaffoldingType & {
+export type OfferCardType = OfferScaffoldingType & {
   previewImage: string;
 };
 
@@ -47,5 +47,5 @@ export type ReviewType = {
 };
 
 export type FavoritesObjectType = {
-  [key: string]: OfferPreviewType[];
+  [key: string]: OfferCardType[];
 };
