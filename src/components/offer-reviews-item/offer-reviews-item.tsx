@@ -1,5 +1,6 @@
 import {ReviewType} from '../../common/types.ts';
-import {calculateRatingWidth} from '../../common/utils.ts';
+import RatingPanel from '../rating-panel/rating-panel.tsx';
+import {RatingPanelType} from '../../common/const.ts';
 
 type OfferReviewsItemProps = {
   review: ReviewType;
@@ -16,14 +17,8 @@ export default function OfferReviewsItem({review}: OfferReviewsItemProps): JSX.E
       </div>
 
       <div className="reviews__info">
-        <div className="reviews__rating rating">
-          <div className="reviews__stars rating__stars">
-            <span style={{width: `${calculateRatingWidth(review.rating)}%`}}></span> <span className="visually-hidden">Rating</span>
-          </div>
-        </div>
-        <p className="reviews__text">
-          {review.comment}
-        </p>
+        <RatingPanel type={RatingPanelType.REVIEWS} rating={review.rating}/>
+        <p className="reviews__text">{review.comment}</p>
         <time className="reviews__time" dateTime="2019-04-24">April 2019</time>
       </div>
     </li>

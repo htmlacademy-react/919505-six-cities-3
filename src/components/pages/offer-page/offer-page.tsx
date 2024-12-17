@@ -6,7 +6,9 @@ import OfferReviewsList from '../../offer-reviews-list/offer-reviews-list';
 import OfferReviewForm from '../../offer-review-form/offer-review-form';
 import OfferNearPlaces from '../../offer-near-places/offer-near-places';
 import {OfferViewType, OfferPreviewType, ReviewType} from '../../../common/types.ts';
-import {calculateRatingWidth} from '../../../common/utils.ts';
+import ButtonBookmark from '../../button-bookmark/button-bookmark.tsx';
+import {BookmarkButtonParams, RatingPanelType} from '../../../common/const.ts';
+import RatingPanel from '../../rating-panel/rating-panel.tsx';
 
 type OfferPageProps = {
   offerView: OfferViewType;
@@ -48,22 +50,10 @@ export default function OfferPage({offerView, reviews, nearOffers}: OfferPagePro
               : ''}
             <div className="offer__name-wrapper">
               <h1 className="offer__name">{title}</h1>
-              <button className={`offer__bookmark-button ${isFavorite ? 'offer__bookmark-button--active' : ''} button`} type="button">
-                <svg className="offer__bookmark-icon" width="31" height="33">
-                  <use xlinkHref="#icon-bookmark"></use>
-                </svg>
-                <span className="visually-hidden">{isFavorite ? 'In bookmarks' : 'To bookmarks'}</span>
-              </button>
+              <ButtonBookmark type={BookmarkButtonParams.VIEW} isActive={isFavorite}/>
             </div>
 
-            <div className="offer__rating rating">
-              <div className="offer__stars rating__stars">
-                <span style={{width: `${calculateRatingWidth(rating)}%`}}></span>
-                <span className="visually-hidden">Rating</span>
-              </div>
-              <span className="offer__rating-value rating__value">{rating}</span>
-            </div>
-
+            <RatingPanel type={RatingPanelType.OFFER} rating={rating}/>
             <OfferFeaturesList type={type} bedrooms={bedrooms} maxAdults={maxAdults}/>
 
             <div className="offer__price">
