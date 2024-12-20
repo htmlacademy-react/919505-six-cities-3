@@ -6,7 +6,6 @@ import {offerCards} from './mocks/offer-cards.ts';
 import {offerView} from './mocks/offer-view.ts';
 import {reviews} from './mocks/reviews.ts';
 import {generateFavoriteOffersObject} from './utils/common.ts';
-import {Review} from './utils/types.ts';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -20,12 +19,7 @@ const favoritesObject = generateFavoriteOffersObject(favoriteOffers);
 root.render(
   <React.StrictMode>
     <App
-      currentCity={currentCity}
-      offers={offersFilteredByCity}
-      offerView={offerView}
-      reviews={reviews as Review[]}
-      favoritesObject={favoritesObject}
-      favoritesQuantity={favoriteOffers.length}
+      pageProps={{currentCity, offers: offersFilteredByCity, offerView, reviews, favoritesObject, favoritesQuantity: favoriteOffers.length}}
     />
   </React.StrictMode>
 );
