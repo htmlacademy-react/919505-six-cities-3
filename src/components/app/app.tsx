@@ -1,4 +1,5 @@
-import {Page} from '../../utils/const.ts';
+import {Route, BrowserRouter, Routes} from 'react-router-dom';
+import {Page, AppRoute} from '../../utils/const.ts';
 import Layout from '../layout/layout';
 import MainScreen from '../../pages/main-screen/main-screen.tsx';
 import LoginScreen from '../../pages/login-screen/login-screen.tsx';
@@ -7,7 +8,6 @@ import {FavoritesObject, OfferPreview, OfferView, Review} from '../../utils/type
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen.tsx';
 
 type AppProps = {
-  currentPage: string;
   currentCity: string;
   offers: OfferPreview[];
   offerView: OfferView;
@@ -56,6 +56,15 @@ const getPage = (
   }
 };
 
-export default function App({currentPage, currentCity, offers, offerView, reviews, favoritesObject, favoritesQuantity}: AppProps) {
-  return getPage(currentPage, currentCity, offers, offerView, reviews, favoritesObject, favoritesQuantity);
+export default function App({currentCity, offers, offerView, reviews, favoritesObject, favoritesQuantity}: AppProps) {
+  return(
+    <BrowserRouter>
+      <Routes>
+        <Route path={AppRoute.Root} element={getPage(Page.MAIN, currentCity, offers, offerView, reviews, favoritesObject, favoritesQuantity)}/>
+        <Route path={AppRoute.Login} element={getPage(Page.LOGIN, currentCity, offers, offerView, reviews, favoritesObject, favoritesQuantity)}/>
+        <Route path={AppRoute.Offer} element={getPage(Page.OFFER, currentCity, offers, offerView, reviews, favoritesObject, favoritesQuantity)}/>
+        <Route path={AppRoute.Favorites} element={getPage(Page.FAVORITES, currentCity, offers, offerView, reviews, favoritesObject, favoritesQuantity)}/>
+      </Routes>
+    </BrowserRouter>
+  );
 }

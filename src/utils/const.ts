@@ -1,5 +1,12 @@
 const RATING_COEFFICIENT = 20;
 
+enum AppRoute {
+  Root = '/',
+  Login = '/login',
+  Offer = '/offer',
+  Favorites = '/favorites',
+}
+
 const Page = {
   MAIN: 'MAIN',
   LOGIN: 'LOGIN',
@@ -53,4 +60,4 @@ const Cities = [
   'Dusseldorf'
 ];
 
-export {RATING_COEFFICIENT, Page, CardTypeParams, RatingPanelType, BookmarkButtonParams, Cities};
+export {RATING_COEFFICIENT, AppRoute, Page, CardTypeParams, RatingPanelType, BookmarkButtonParams, Cities};
