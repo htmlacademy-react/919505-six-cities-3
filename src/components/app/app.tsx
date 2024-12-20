@@ -1,4 +1,5 @@
-import {Page} from '../../utils/const.ts';
+import {Route, BrowserRouter, Routes} from 'react-router-dom';
+import {Page, AppRoute} from '../../utils/const.ts';
 import Layout from '../layout/layout';
 import MainScreen from '../../pages/main-screen/main-screen.tsx';
 import LoginScreen from '../../pages/login-screen/login-screen.tsx';
@@ -6,8 +7,7 @@ import OfferScreen from '../../pages/offer-screen/offer-screen.tsx';
 import {FavoritesObject, OfferPreview, OfferView, Review} from '../../utils/types.ts';
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen.tsx';
 
-type AppProps = {
-  currentPage: string;
+type PageProps = {
   currentCity: string;
   offers: OfferPreview[];
   offerView: OfferView;
@@ -16,15 +16,13 @@ type AppProps = {
   favoritesQuantity: number;
 }
 
-const getPage = (
-  currentPage: string,
-  currentCity: string,
-  offers: OfferPreview[],
-  offerView: OfferView,
-  reviews: Review[],
-  favoritesObject: FavoritesObject,
-  favoritesQuantity: number
-) => {
+type AppProps = {
+  pageProps: PageProps;
+};
+
+function getPage(currentPage: string, props: PageProps) {
+  const {currentCity, offers, offerView, reviews, favoritesObject, favoritesQuantity}: PageProps = props;
+
   switch (currentPage) {
     case Page.MAIN:
       return (
@@ -54,8 +52,17 @@ const getPage = (
         </Layout>
       );
   }
-};
+}
 
-export default function App({currentPage, currentCity, offers, offerView, reviews, favoritesObject, favoritesQuantity}: AppProps) {
-  return getPage(currentPage, currentCity, offers, offerView, reviews, favoritesObject, favoritesQuantity);
+export default function App({pageProps}: AppProps) {
+  return(
+    <BrowserRouter>
+      <Routes>
+        <Route path={AppRoute.Root} element={getPage(Page.MAIN, pageProps)}/>
+        <Route path={AppRoute.Login} element={getPage(Page.LOGIN, pageProps)}/>
+        <Route path={AppRoute.Offer} element={getPage(Page.OFFER, pageProps)}/>
+        <Route path={AppRoute.Favorites} element={getPage(Page.FAVORITES, pageProps)}/>
+      </Routes>
+    </BrowserRouter>
+  );
 }
