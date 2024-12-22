@@ -1,4 +1,4 @@
-import {Route, Routes} from 'react-router-dom';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {Page} from '../utils/const.ts';
 import {AppProps, PageProps} from '../utils/types.ts';
 import Layout from '../components/layout/layout.tsx';
@@ -63,8 +63,10 @@ export default function AppRouter({pageProps}: AppProps): JSX.Element {
   const routes = generateRoutes(pageProps);
 
   return (
-    <Routes>
-      {routes.map((route) => (route))}
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+        {routes.map((route) => (route))}
+      </Routes>
+    </BrowserRouter>
   );
 }
