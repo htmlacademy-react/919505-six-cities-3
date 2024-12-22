@@ -7,12 +7,18 @@ enum AppRoute {
   Favorites = '/favorites',
 }
 
-const Page = {
-  MAIN: 'MAIN',
-  LOGIN: 'LOGIN',
-  OFFER: 'OFFER',
-  FAVORITES: 'FAVORITES'
-};
+enum Page {
+  Main = 'Main',
+  Login = 'Login',
+  Offer = 'Offer',
+  Favorites = 'Favorites'
+}
+
+enum RatingPanelType {
+  Reviews = 'Reviews',
+  Offer = 'Offer',
+  Card = 'Card'
+}
 
 const CardTypeParams = {
   DEFAULT: 'DEFAULT',
@@ -28,12 +34,6 @@ const CardTypeParams = {
     little: '110',
     big: '200',
   }
-};
-
-const RatingPanelType = {
-  REVIEWS: 'REVIEWS',
-  OFFER: 'OFFER',
-  CARD: 'CARD'
 };
 
 const BookmarkButtonParams = {

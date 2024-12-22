@@ -2,7 +2,7 @@ import {Page} from '../../utils/const.ts';
 import NavBlock from '../nav-block/nav-block.tsx';
 
 type HeaderProps = {
-  currentPage: string;
+  currentPage: Page;
   favoritesQuantity: number;
 };
 
@@ -16,7 +16,7 @@ export default function Header({currentPage, favoritesQuantity}: HeaderProps): J
               <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
             </a>
           </div>
-          {currentPage === Page.LOGIN
+          {currentPage === Page.Login
             ? ''
             : <NavBlock favoritesQuantity={favoritesQuantity}/>}
         </div>

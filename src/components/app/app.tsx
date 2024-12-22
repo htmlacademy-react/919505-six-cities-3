@@ -24,30 +24,30 @@ function getPage(currentPage: string, props: PageProps) {
   const {currentCity, offers, offerView, reviews, favoritesObject, favoritesQuantity}: PageProps = props;
 
   switch (currentPage) {
-    case Page.MAIN:
+    case Page.Main:
       return (
-        <Layout currentPage={Page.MAIN} favoritesQuantity={favoritesQuantity}>
+        <Layout currentPage={Page.Main} favoritesQuantity={favoritesQuantity}>
           <MainScreen currentCity={currentCity} offers={offers}/>
         </Layout>
       );
 
-    case Page.LOGIN:
+    case Page.Login:
       return (
-        <Layout currentPage={Page.LOGIN} favoritesQuantity={favoritesQuantity}>
+        <Layout currentPage={Page.Login} favoritesQuantity={favoritesQuantity}>
           <LoginScreen/>
         </Layout>
       );
 
-    case Page.OFFER:
+    case Page.Offer:
       return (
-        <Layout currentPage={Page.OFFER} favoritesQuantity={favoritesQuantity}>
+        <Layout currentPage={Page.Offer} favoritesQuantity={favoritesQuantity}>
           <OfferScreen offerView={offerView} reviews={reviews} nearOffers={offers}/>
         </Layout>
       );
 
-    case Page.FAVORITES:
+    case Page.Favorites:
       return (
-        <Layout currentPage={Page.FAVORITES} favoritesQuantity={favoritesQuantity}>
+        <Layout currentPage={Page.Favorites} favoritesQuantity={favoritesQuantity}>
           <FavoritesScreen favoritesObject={favoritesObject}/>
         </Layout>
       );
@@ -58,10 +58,10 @@ export default function App({pageProps}: AppProps) {
   return(
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Root} element={getPage(Page.MAIN, pageProps)}/>
-        <Route path={AppRoute.Login} element={getPage(Page.LOGIN, pageProps)}/>
-        <Route path={AppRoute.Offer} element={getPage(Page.OFFER, pageProps)}/>
-        <Route path={AppRoute.Favorites} element={getPage(Page.FAVORITES, pageProps)}/>
+        <Route path={AppRoute.Root} element={getPage(Page.Main, pageProps)}/>
+        <Route path={AppRoute.Login} element={getPage(Page.Login, pageProps)}/>
+        <Route path={AppRoute.Offer} element={getPage(Page.Offer, pageProps)}/>
+        <Route path={AppRoute.Favorites} element={getPage(Page.Favorites, pageProps)}/>
       </Routes>
     </BrowserRouter>
   );

@@ -53,7 +53,7 @@ export default function OfferScreen({offerView, reviews, nearOffers}: OfferPageP
               <ButtonBookmark type={BookmarkButtonParams.VIEW} isActive={isFavorite}/>
             </div>
 
-            <RatingPanel type={RatingPanelType.OFFER} rating={rating}/>
+            <RatingPanel type={RatingPanelType.Offer} rating={rating}/>
             <OfferFeaturesList type={type} bedrooms={bedrooms} maxAdults={maxAdults}/>
 
             <div className="offer__price">

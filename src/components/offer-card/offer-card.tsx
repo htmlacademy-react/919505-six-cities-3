@@ -57,7 +57,7 @@ export default function OfferCard({cardData, cardType}: PlaceCardProps): JSX.Ele
           </div>
           <ButtonBookmark type={BookmarkButtonParams.CARD} isActive={isFavorite}/>
         </div>
-        <RatingPanel type={RatingPanelType.CARD} rating={rating}/>
+        <RatingPanel type={RatingPanelType.Card} rating={rating}/>
         <h2 className="place-card__name">
           <a href="#">{title}</a>
         </h2>
