@@ -1,3 +1,12 @@
+export type PageProps = {
+  currentCity: string;
+  offers: OfferPreview[];
+  offerView: OfferView;
+  reviews: Review[];
+  favoritesObject: FavoritesObject;
+  favoritesQuantity: number;
+}
+
 type Location = {
   latitude: number;
   longitude: number;
