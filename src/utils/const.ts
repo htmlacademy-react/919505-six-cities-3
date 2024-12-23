@@ -13,10 +13,12 @@ enum RatingPanelType {
   Card = 'Card'
 }
 
-const CardTypeParams = {
-  DEFAULT: 'DEFAULT',
-  NEAR: 'NEAR',
-  FAVORITE: 'FAVORITE',
+const OfferCardParams = {
+  type: {
+    default: 'default',
+    near: 'near',
+    favorite: 'favorite',
+  },
 
   width: {
     little: '150',
@@ -30,8 +32,10 @@ const CardTypeParams = {
 };
 
 const BookmarkButtonParams = {
-  CARD: 'CARD',
-  VIEW: 'VIEW',
+  type: {
+    card: 'card',
+    view: 'view',
+  },
 
   width: {
     little: '18',
@@ -53,4 +57,4 @@ const Cities = [
   'Dusseldorf'
 ];
 
-export {RATING_COEFFICIENT, Page, CardTypeParams, RatingPanelType, BookmarkButtonParams, Cities};
+export {RATING_COEFFICIENT, Page, OfferCardParams, RatingPanelType, BookmarkButtonParams, Cities};

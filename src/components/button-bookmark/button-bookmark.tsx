@@ -6,9 +6,9 @@ type ButtonBookmarkProps = {
 }
 
 export default function ButtonBookmark({type, isActive}: ButtonBookmarkProps): JSX.Element {
-  const classNamePrefix = type === BookmarkButtonParams.CARD ? 'place-card' : 'offer';
-  const width = type === BookmarkButtonParams.CARD ? BookmarkButtonParams.width.little : BookmarkButtonParams.width.big;
-  const height = type === BookmarkButtonParams.CARD ? BookmarkButtonParams.height.little : BookmarkButtonParams.height.big;
+  const classNamePrefix = type === BookmarkButtonParams.type.card ? 'place-card' : 'offer';
+  const width = type === BookmarkButtonParams.type.card ? BookmarkButtonParams.width.little : BookmarkButtonParams.width.big;
+  const height = type === BookmarkButtonParams.type.card ? BookmarkButtonParams.height.little : BookmarkButtonParams.height.big;
 
   return (
     <button className={`${classNamePrefix}__bookmark-button ${isActive ? `${classNamePrefix}__bookmark-button--active` : ''} button`} type="button">

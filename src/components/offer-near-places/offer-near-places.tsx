@@ -1,5 +1,5 @@
 import OfferCard from '../offer-card/offer-card.tsx';
-import {CardTypeParams} from '../../utils/const.ts';
+import {OfferCardParams} from '../../utils/const.ts';
 import {OfferPreview} from '../../utils/types.ts';
 
 type OfferNearPlacesProps = {
@@ -11,7 +11,7 @@ export default function OfferNearPlaces({nearOffers}: OfferNearPlacesProps): JSX
     <section className="near-places places">
       <h2 className="near-places__title">Other places in the neighbourhood</h2>
       <div className="near-places__list places__list">
-        {nearOffers.map((offer) => <OfferCard cardData={offer} cardType={CardTypeParams.NEAR} key={offer.id}/>)}
+        {nearOffers.map((offer) => <OfferCard cardData={offer} cardType={OfferCardParams.type.near} key={offer.id}/>)}
       </div>
     </section>
   );

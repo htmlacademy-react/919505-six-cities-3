@@ -1,4 +1,4 @@
-import {CardTypeParams} from '../../utils/const.ts';
+import {OfferCardParams} from '../../utils/const.ts';
 import {OfferPreview} from '../../utils/types.ts';
 import OfferCard from '../../components/offer-card/offer-card.tsx';
 import CitiesNavList from '../../components/cities-nav-list/cities-nav-list.tsx';
@@ -29,7 +29,7 @@ function MainScreen({currentCity, offers}: MainPageProps): JSX.Element {
 
             <div className="cities__places-list places__list tabs__content">
               {offers.map((offer) => (
-                <OfferCard cardData={offer} cardType={CardTypeParams.DEFAULT} key={offer.id}/>
+                <OfferCard cardData={offer} cardType={OfferCardParams.type.default} key={offer.id}/>
               ))}
             </div>
           </section>
