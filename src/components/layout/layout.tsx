@@ -1,7 +1,7 @@
 import {PropsWithChildren} from 'react';
 import {Page} from '../../utils/const.ts';
-import Header from '../header/header';
 import Footer from '../footer/footer.tsx';
+import Header from '../header/header.tsx';
 
 type LayoutProps = {
   currentPage: Page;
@@ -16,6 +16,8 @@ const getPageModifier = (currentPage: string, favoritesQuantity: number) => {
       return 'page--gray page--login';
     case Page.Favorites:
       return favoritesQuantity === 0 ? 'page--favorites-empty' : '';
+    case Page.PageNotFound:
+      return 'page--gray page--main';
     default:
       return '';
   }
@@ -26,7 +28,7 @@ export default function Layout({currentPage, favoritesQuantity, children}: Props
 
   return (
     <div className={`page ${pageModifier}`}>
-      <Header currentPage={currentPage} favoritesQuantity={favoritesQuantity}/>
+      {currentPage !== Page.PageNotFound && <Header currentPage={currentPage} favoritesQuantity={favoritesQuantity}/>}
       {children}
       {currentPage === Page.Favorites && <Footer/>}
     </div>

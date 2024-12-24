@@ -7,6 +7,7 @@ import LoginScreen from '../pages/login-screen/login-screen.tsx';
 import OfferScreen from '../pages/offer-screen/offer-screen.tsx';
 import FavoritesScreen from '../pages/favorites-screen/favorites-screen.tsx';
 import PrivateRoute from '../components/private-route/private-route.tsx';
+import NotFoundScreen from '../pages/not-found-screen/not-found-screen.tsx';
 
 function getPage(currentPage: string, props: PageProps) {
   const {currentCity, offers, offerView, reviews, favoritesObject, favoritesQuantity}: PageProps = props;
@@ -40,6 +41,13 @@ function getPage(currentPage: string, props: PageProps) {
             <FavoritesScreen favoritesObject={favoritesObject}/>
           </Layout>
         </PrivateRoute>
+      );
+
+    case Page.PageNotFound:
+      return (
+        <Layout currentPage={Page.PageNotFound} favoritesQuantity={favoritesQuantity}>
+          <NotFoundScreen/>
+        </Layout>
       );
   }
 }

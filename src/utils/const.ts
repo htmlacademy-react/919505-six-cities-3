@@ -10,7 +10,8 @@ enum Page {
   Main = 'Main',
   Login = 'Login',
   Offer = 'Offer',
-  Favorites = 'Favorites'
+  Favorites = 'Favorites',
+  PageNotFound = 'PageNotFound'
 }
 
 const AppRoute = {
@@ -18,6 +19,7 @@ const AppRoute = {
   [Page.Login]: '/login',
   [Page.Offer]: '/offer',
   [Page.Favorites]: '/favorites',
+  [Page.PageNotFound]: '*',
 };
 
 enum RatingPanelType {
