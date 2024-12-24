@@ -1,5 +1,7 @@
 const RATING_COEFFICIENT = 20;
 
+const RatingInputTitles = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
+
 enum AuthorizationStatus {
   Auth = 'Auth',
   NoAuth = 'NoAuth',
@@ -72,4 +74,4 @@ const Cities = [
   'Dusseldorf'
 ];
 
-export {RATING_COEFFICIENT, AuthorizationStatus, Page, AppRoute, OfferCardParams, RatingPanelType, BookmarkButtonParams, Cities};
+export {RATING_COEFFICIENT, RatingInputTitles, AuthorizationStatus, Page, AppRoute, OfferCardParams, RatingPanelType, BookmarkButtonParams, Cities};
