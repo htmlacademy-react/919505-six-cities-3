@@ -1,6 +1,7 @@
 import OfferCard from '../offer-card/offer-card.tsx';
 import {OfferPreview} from '../../utils/types.ts';
 import {OfferCardParams} from '../../utils/const.ts';
+import {useState} from 'react';
 
 type OfferCardListProps = {
   offers: OfferPreview[];
@@ -20,9 +21,12 @@ const getContainerClassName = (cardType: string) => {
 
 export default function OfferCardList({offers, cardType}: OfferCardListProps): JSX.Element {
   const containerClassName = getContainerClassName(cardType);
+
+  const [currentActiveOffer, setCurrentActiveOffer] = useState('');
+
   return (
     <div className={containerClassName}>
-      {offers.map((offer) => <OfferCard cardData={offer} cardType={cardType} key={offer.id}/>)}
+      {offers.map((offer) => <OfferCard cardData={offer} cardType={cardType} onCardActivate={setCurrentActiveOffer} key={offer.id}/>)}
     </div>
   );
 }
