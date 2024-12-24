@@ -55,8 +55,8 @@ function getPage(currentPage: string, props: PageProps) {
 function generateRoutes(pageProps: PageProps) {
   const routes: JSX.Element[] = [];
 
-  for (const [key, value] of Object.entries(AppRoute)) {
-    routes.push(<Route path={value} element={getPage(key, pageProps)} key={value}/>);
+  for (const [page, path] of Object.entries(AppRoute)) {
+    routes.push(<Route path={path} element={getPage(page, pageProps)} key={path}/>);
   }
 
   return routes;
