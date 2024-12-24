@@ -36,7 +36,7 @@ function getPage(currentPage: string, props: PageProps) {
 
     case Page.Favorites:
       return (
-        <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+        <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth} rerouteDestination={AppRoute[Page.Login]}>
           <Layout currentPage={Page.Favorites} favoritesQuantity={favoritesQuantity}>
             <FavoritesScreen favoritesObject={favoritesObject}/>
           </Layout>
