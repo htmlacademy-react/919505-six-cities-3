@@ -27,7 +27,7 @@ function getPage(currentPage: string, props: PageProps) {
         </Layout>
       );
 
-    case Page.Offer:
+    case Page.OfferId:
       return (
         <Layout currentPage={Page.Offer} favoritesQuantity={favoritesQuantity}>
           <OfferScreen offerView={offerView} reviews={reviews} nearOffers={offers}/>

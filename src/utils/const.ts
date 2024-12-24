@@ -12,6 +12,7 @@ enum Page {
   Main = 'Main',
   Login = 'Login',
   Offer = 'Offer',
+  OfferId = 'OfferId',
   Favorites = 'Favorites',
   PageNotFound = 'PageNotFound'
 }
@@ -19,7 +20,8 @@ enum Page {
 const AppRoute = {
   [Page.Main]: '/',
   [Page.Login]: '/login',
-  [Page.Offer]: '/offer',
+  [Page.Offer]: '/offer/',
+  [Page.OfferId]: '/offer/:id',
   [Page.Favorites]: '/favorites',
   [Page.PageNotFound]: '*',
 };
