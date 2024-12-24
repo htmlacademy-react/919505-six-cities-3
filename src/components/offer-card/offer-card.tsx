@@ -1,4 +1,4 @@
-import {BookmarkButtonParams, CardTypeParams, RatingPanelType} from '../../utils/const.ts';
+import {BookmarkButtonParams, OfferCardParams, RatingPanelType} from '../../utils/const.ts';
 import {OfferPreview} from '../../utils/types.ts';
 import ButtonBookmark from '../button-bookmark/button-bookmark.tsx';
 import RatingPanel from '../rating-panel/rating-panel.tsx';
@@ -10,13 +10,13 @@ type PlaceCardProps = {
 
 function getParentBlockName(cardType: string) {
   switch (cardType) {
-    case CardTypeParams.DEFAULT:
+    case OfferCardParams.type.default:
       return 'cities';
 
-    case CardTypeParams.NEAR:
+    case OfferCardParams.type.near:
       return 'near-places';
 
-    case CardTypeParams.FAVORITE:
+    case OfferCardParams.type.favorite:
       return 'favorites';
   }
 }
@@ -42,22 +42,22 @@ export default function OfferCard({cardData, cardType}: PlaceCardProps): JSX.Ele
           <img
             className="place-card__image"
             src={previewImage}
-            width={cardType === CardTypeParams.FAVORITE ? CardTypeParams.width.little : CardTypeParams.width.big}
-            height={cardType === CardTypeParams.FAVORITE ? CardTypeParams.height.little : CardTypeParams.height.big}
+            width={cardType === OfferCardParams.type.favorite ? OfferCardParams.width.little : OfferCardParams.width.big}
+            height={cardType === OfferCardParams.type.favorite ? OfferCardParams.height.little : OfferCardParams.height.big}
             alt="Place image"
           />
         </a>
       </div>
 
-      <div className={`${cardType === CardTypeParams.FAVORITE ? 'favorites__card-info' : ''} place-card__info`}>
+      <div className={`${cardType === OfferCardParams.type.favorite ? 'favorites__card-info' : ''} place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <ButtonBookmark type={BookmarkButtonParams.CARD} isActive={isFavorite}/>
+          <ButtonBookmark type={BookmarkButtonParams.type.card} isActive={isFavorite}/>
         </div>
-        <RatingPanel type={RatingPanelType.CARD} rating={rating}/>
+        <RatingPanel type={RatingPanelType.Card} rating={rating}/>
         <h2 className="place-card__name">
           <a href="#">{title}</a>
         </h2>

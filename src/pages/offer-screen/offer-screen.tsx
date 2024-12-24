@@ -50,10 +50,10 @@ export default function OfferScreen({offerView, reviews, nearOffers}: OfferPageP
               : ''}
             <div className="offer__name-wrapper">
               <h1 className="offer__name">{title}</h1>
-              <ButtonBookmark type={BookmarkButtonParams.VIEW} isActive={isFavorite}/>
+              <ButtonBookmark type={BookmarkButtonParams.type.view} isActive={isFavorite}/>
             </div>
 
-            <RatingPanel type={RatingPanelType.OFFER} rating={rating}/>
+            <RatingPanel type={RatingPanelType.Offer} rating={rating}/>
             <OfferFeaturesList type={type} bedrooms={bedrooms} maxAdults={maxAdults}/>
 
             <div className="offer__price">

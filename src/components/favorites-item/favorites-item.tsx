@@ -1,6 +1,6 @@
 import {OfferPreview} from '../../utils/types.ts';
 import OfferCard from '../offer-card/offer-card.tsx';
-import {CardTypeParams} from '../../utils/const.ts';
+import {OfferCardParams} from '../../utils/const.ts';
 
 type FavoritesItemProps = {
   city: string;
@@ -17,7 +17,7 @@ export default function FavoritesItem({city, offers}: FavoritesItemProps): JSX.E
       </div>
 
       <div className="favorites__places">
-        {offers.map((offer) => <OfferCard cardData={offer} cardType={CardTypeParams.FAVORITE} key={offer.id}/>)}
+        {offers.map((offer) => <OfferCard cardData={offer} cardType={OfferCardParams.type.favorite} key={offer.id}/>)}
       </div>
     </li>
   );

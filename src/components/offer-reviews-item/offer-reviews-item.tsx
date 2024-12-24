@@ -17,7 +17,7 @@ export default function OfferReviewsItem({review}: OfferReviewsItemProps): JSX.E
       </div>
 
       <div className="reviews__info">
-        <RatingPanel type={RatingPanelType.REVIEWS} rating={review.rating}/>
+        <RatingPanel type={RatingPanelType.Reviews} rating={review.rating}/>
         <p className="reviews__text">{review.comment}</p>
         <time className="reviews__time" dateTime="2019-04-24">April 2019</time>
       </div>

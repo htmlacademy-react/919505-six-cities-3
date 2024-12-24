@@ -2,17 +2,17 @@ import {calculateRatingWidth} from '../../utils/common.ts';
 import {RatingPanelType} from '../../utils/const.ts';
 
 type RatingPanelProps = {
-  type: string;
+  type: RatingPanelType;
   rating: number;
 }
 
 function getClassNamePrefix(type: string) {
   switch (type) {
-    case RatingPanelType.REVIEWS:
+    case RatingPanelType.Reviews:
       return 'reviews';
-    case RatingPanelType.OFFER:
+    case RatingPanelType.Offer:
       return 'offer';
-    case RatingPanelType.CARD:
+    case RatingPanelType.Card:
       return 'place-card';
   }
 }
@@ -26,7 +26,7 @@ export default function RatingPanel({type, rating}: RatingPanelProps): JSX.Eleme
         <span style={{width: `${calculateRatingWidth(rating)}%`}}></span>
         <span className="visually-hidden">Rating</span>
       </div>
-      {type === RatingPanelType.OFFER && <span className="offer__rating-value rating__value">{rating}</span>}
+      {type === RatingPanelType.Offer && <span className="offer__rating-value rating__value">{rating}</span>}
     </div>
   );
 }

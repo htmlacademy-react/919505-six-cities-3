@@ -1,8 +1,21 @@
+export type PageProps = {
+  currentCity: string;
+  offers: OfferPreview[] | [];
+  offerView: OfferView;
+  reviews: Review[] | [];
+  favoritesObject: FavoritesObject;
+  favoritesQuantity: number;
+};
+
+export type AppProps = {
+  pageProps: PageProps;
+};
+
 type Location = {
   latitude: number;
   longitude: number;
   zoom: number;
-}
+};
 
 type OfferScaffolding = {
   id: string;

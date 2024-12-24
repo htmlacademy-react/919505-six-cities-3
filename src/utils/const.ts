@@ -1,16 +1,39 @@
 const RATING_COEFFICIENT = 20;
 
-const Page = {
-  MAIN: 'MAIN',
-  LOGIN: 'LOGIN',
-  OFFER: 'OFFER',
-  FAVORITES: 'FAVORITES'
+enum AuthorizationStatus {
+  Auth = 'Auth',
+  NoAuth = 'NoAuth',
+  Unknown = 'Unknown',
+}
+
+enum Page {
+  Main = 'Main',
+  Login = 'Login',
+  Offer = 'Offer',
+  Favorites = 'Favorites',
+  PageNotFound = 'PageNotFound'
+}
+
+const AppRoute = {
+  [Page.Main]: '/',
+  [Page.Login]: '/login',
+  [Page.Offer]: '/offer',
+  [Page.Favorites]: '/favorites',
+  [Page.PageNotFound]: '*',
 };
 
-const CardTypeParams = {
-  DEFAULT: 'DEFAULT',
-  NEAR: 'NEAR',
-  FAVORITE: 'FAVORITE',
+enum RatingPanelType {
+  Reviews = 'Reviews',
+  Offer = 'Offer',
+  Card = 'Card'
+}
+
+const OfferCardParams = {
+  type: {
+    default: 'default',
+    near: 'near',
+    favorite: 'favorite',
+  },
 
   width: {
     little: '150',
@@ -23,15 +46,11 @@ const CardTypeParams = {
   }
 };
 
-const RatingPanelType = {
-  REVIEWS: 'REVIEWS',
-  OFFER: 'OFFER',
-  CARD: 'CARD'
-};
-
 const BookmarkButtonParams = {
-  CARD: 'CARD',
-  VIEW: 'VIEW',
+  type: {
+    card: 'card',
+    view: 'view',
+  },
 
   width: {
     little: '18',
@@ -53,4 +72,4 @@ const Cities = [
   'Dusseldorf'
 ];
 
-export {RATING_COEFFICIENT, Page, CardTypeParams, RatingPanelType, BookmarkButtonParams, Cities};
+export {RATING_COEFFICIENT, AuthorizationStatus, Page, AppRoute, OfferCardParams, RatingPanelType, BookmarkButtonParams, Cities};
