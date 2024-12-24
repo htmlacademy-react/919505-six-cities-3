@@ -26,6 +26,7 @@ export default function OfferCardList({offers, cardType}: OfferCardListProps): J
 
   return (
     <div className={containerClassName}>
+      {currentActiveOffer && <span className="visually-hidden">{currentActiveOffer}</span>}
       {offers.map((offer) => <OfferCard cardData={offer} cardType={cardType} onCardActivate={setCurrentActiveOffer} key={offer.id}/>)}
     </div>
   );
