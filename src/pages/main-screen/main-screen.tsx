@@ -1,8 +1,8 @@
 import {OfferCardParams} from '../../utils/const.ts';
 import {OfferPreview} from '../../utils/types.ts';
-import OfferCard from '../../components/offer-card/offer-card.tsx';
 import CitiesNavList from '../../components/cities-nav-list/cities-nav-list.tsx';
 import OffersSortingPanel from '../../components/offers-sorting-panel/offers-sorting-panel.tsx';
+import OfferCardList from '../../components/offer-card-list/offer-card-list.tsx';
 
 type MainPageProps = {
   currentCity: string;
@@ -26,11 +26,7 @@ function createOffersList(offers: OfferPreview[]) {
       <h2 className="visually-hidden">Places</h2>
       <b className="places__found">{offers.length} places to stay in Amsterdam</b>
       <OffersSortingPanel/>
-      <div className="cities__places-list places__list tabs__content">
-        {offers.map((offer) => (
-          <OfferCard cardData={offer} cardType={OfferCardParams.type.default} key={offer.id}/>
-        ))}
-      </div>
+      <OfferCardList offers={offers} cardType={OfferCardParams.type.default}/>
     </section>
   );
 }

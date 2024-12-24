@@ -1,5 +1,7 @@
 const RATING_COEFFICIENT = 20;
 
+const RatingInputTitles = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
+
 enum AuthorizationStatus {
   Auth = 'Auth',
   NoAuth = 'NoAuth',
@@ -10,6 +12,7 @@ enum Page {
   Main = 'Main',
   Login = 'Login',
   Offer = 'Offer',
+  OfferId = 'OfferId',
   Favorites = 'Favorites',
   PageNotFound = 'PageNotFound'
 }
@@ -17,7 +20,8 @@ enum Page {
 const AppRoute = {
   [Page.Main]: '/',
   [Page.Login]: '/login',
-  [Page.Offer]: '/offer',
+  [Page.Offer]: '/offer/',
+  [Page.OfferId]: '/offer/:id',
   [Page.Favorites]: '/favorites',
   [Page.PageNotFound]: '*',
 };
@@ -72,4 +76,4 @@ const Cities = [
   'Dusseldorf'
 ];
 
-export {RATING_COEFFICIENT, AuthorizationStatus, Page, AppRoute, OfferCardParams, RatingPanelType, BookmarkButtonParams, Cities};
+export {RATING_COEFFICIENT, RatingInputTitles, AuthorizationStatus, Page, AppRoute, OfferCardParams, RatingPanelType, BookmarkButtonParams, Cities};

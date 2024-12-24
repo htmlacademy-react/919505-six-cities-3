@@ -27,7 +27,7 @@ function getPage(currentPage: string, props: PageProps) {
         </Layout>
       );
 
-    case Page.Offer:
+    case Page.OfferId:
       return (
         <Layout currentPage={Page.Offer} favoritesQuantity={favoritesQuantity}>
           <OfferScreen offerView={offerView} reviews={reviews} nearOffers={offers}/>
@@ -36,7 +36,7 @@ function getPage(currentPage: string, props: PageProps) {
 
     case Page.Favorites:
       return (
-        <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+        <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth} rerouteDestination={AppRoute[Page.Login]}>
           <Layout currentPage={Page.Favorites} favoritesQuantity={favoritesQuantity}>
             <FavoritesScreen favoritesObject={favoritesObject}/>
           </Layout>
@@ -55,8 +55,8 @@ function getPage(currentPage: string, props: PageProps) {
 function generateRoutes(pageProps: PageProps) {
   const routes: JSX.Element[] = [];
 
-  for (const [key, value] of Object.entries(AppRoute)) {
-    routes.push(<Route path={value} element={getPage(key, pageProps)} key={value}/>);
+  for (const [page, path] of Object.entries(AppRoute)) {
+    routes.push(<Route path={path} element={getPage(page, pageProps)} key={path}/>);
   }
 
   return routes;
