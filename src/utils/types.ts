@@ -1,8 +1,8 @@
 export type PageProps = {
   currentCity: string;
-  offers: OfferPreview[];
+  offers: OfferPreview[] | [];
   offerView: OfferView;
-  reviews: Review[];
+  reviews: Review[] | [];
   favoritesObject: FavoritesObject;
   favoritesQuantity: number;
 };
