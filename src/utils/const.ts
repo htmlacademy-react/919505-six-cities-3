@@ -1,11 +1,24 @@
 const RATING_COEFFICIENT = 20;
 
+enum AuthorizationStatus {
+  Auth = 'Auth',
+  NoAuth = 'NoAuth',
+  Unknown = 'Unknown',
+}
+
 enum Page {
   Main = 'Main',
   Login = 'Login',
   Offer = 'Offer',
   Favorites = 'Favorites'
 }
+
+const AppRoute = {
+  [Page.Main]: '/',
+  [Page.Login]: '/login',
+  [Page.Offer]: '/offer',
+  [Page.Favorites]: '/favorites',
+};
 
 enum RatingPanelType {
   Reviews = 'Reviews',
@@ -57,4 +70,4 @@ const Cities = [
   'Dusseldorf'
 ];
 
-export {RATING_COEFFICIENT, Page, OfferCardParams, RatingPanelType, BookmarkButtonParams, Cities};
+export {RATING_COEFFICIENT, AuthorizationStatus, Page, AppRoute, OfferCardParams, RatingPanelType, BookmarkButtonParams, Cities};

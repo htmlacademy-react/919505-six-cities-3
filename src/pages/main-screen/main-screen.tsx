@@ -37,7 +37,6 @@ function createOffersList(offers: OfferPreview[]) {
 
 function MainScreen({currentCity, offers}: MainPageProps): JSX.Element {
   const isEmpty = offers.length === 0;
-  console.log(currentCity);
 
   return (
     <main className={`page__main page__main--index ${isEmpty ? 'page__main--index-empty' : ''}`}>

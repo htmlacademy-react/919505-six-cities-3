@@ -1,18 +1,12 @@
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {Page} from '../utils/const.ts';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {AuthorizationStatus, Page, AppRoute} from '../utils/const.ts';
 import {AppProps, PageProps} from '../utils/types.ts';
 import Layout from '../components/layout/layout.tsx';
 import MainScreen from '../pages/main-screen/main-screen.tsx';
 import LoginScreen from '../pages/login-screen/login-screen.tsx';
 import OfferScreen from '../pages/offer-screen/offer-screen.tsx';
 import FavoritesScreen from '../pages/favorites-screen/favorites-screen.tsx';
-
-const AppRoute = {
-  [Page.Main]: '/',
-  [Page.Login]: '/login',
-  [Page.Offer]: '/offer',
-  [Page.Favorites]: '/favorites',
-};
+import PrivateRoute from '../components/private-route/private-route.tsx';
 
 function getPage(currentPage: string, props: PageProps) {
   const {currentCity, offers, offerView, reviews, favoritesObject, favoritesQuantity}: PageProps = props;
@@ -41,9 +35,11 @@ function getPage(currentPage: string, props: PageProps) {
 
     case Page.Favorites:
       return (
-        <Layout currentPage={Page.Favorites} favoritesQuantity={favoritesQuantity}>
-          <FavoritesScreen favoritesObject={favoritesObject}/>
-        </Layout>
+        <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+          <Layout currentPage={Page.Favorites} favoritesQuantity={favoritesQuantity}>
+            <FavoritesScreen favoritesObject={favoritesObject}/>
+          </Layout>
+        </PrivateRoute>
       );
   }
 }
@@ -57,7 +53,6 @@ function generateRoutes(pageProps: PageProps) {
 
   return routes;
 }
-
 
 export default function AppRouter({pageProps}: AppProps): JSX.Element {
   const routes = generateRoutes(pageProps);
