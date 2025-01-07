@@ -19,7 +19,12 @@ const favoritesObject = generateFavoriteOffersObject(favoriteOffers);
 root.render(
   <React.StrictMode>
     <App
-      pageProps={{currentCity, offers: offersFilteredByCity, offerView, reviews, favoritesObject, favoritesQuantity: favoriteOffers.length}}
+      currentCity={currentCity}
+      offers={offersFilteredByCity}
+      offerView={offerView}
+      reviews={reviews}
+      favoritesObject={favoritesObject}
+      favoritesQuantity={favoriteOffers.length}
     />
   </React.StrictMode>
 );

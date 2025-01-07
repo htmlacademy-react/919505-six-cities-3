@@ -8,23 +8,13 @@ enum AuthorizationStatus {
   Unknown = 'Unknown',
 }
 
-enum Page {
-  Main = 'Main',
-  Login = 'Login',
-  Offer = 'Offer',
-  OfferId = 'OfferId',
-  Favorites = 'Favorites',
-  PageNotFound = 'PageNotFound'
+enum AppRoute {
+  Root = '/',
+  Login = '/login',
+  Offer = '/offer/:id',
+  Favorites = '/favorites',
+  PageNotFound = '*',
 }
-
-const AppRoute = {
-  [Page.Main]: '/',
-  [Page.Login]: '/login',
-  [Page.Offer]: '/offer/',
-  [Page.OfferId]: '/offer/:id',
-  [Page.Favorites]: '/favorites',
-  [Page.PageNotFound]: '*',
-};
 
 enum RatingPanelType {
   Reviews = 'Reviews',
@@ -76,4 +66,4 @@ const Cities = [
   'Dusseldorf'
 ];
 
-export {RATING_COEFFICIENT, RatingInputTitles, AuthorizationStatus, Page, AppRoute, OfferCardParams, RatingPanelType, BookmarkButtonParams, Cities};
+export {RATING_COEFFICIENT, RatingInputTitles, AuthorizationStatus, AppRoute, OfferCardParams, RatingPanelType, BookmarkButtonParams, Cities};

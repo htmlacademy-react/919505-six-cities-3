@@ -1,0 +1,77 @@
+import OfferImage from '../offer-image/offer-image.tsx';
+import ButtonBookmark from '../button-bookmark/button-bookmark.tsx';
+import {AuthorizationStatus, BookmarkButtonParams, RatingPanelType} from '../../utils/const.ts';
+import RatingPanel from '../rating-panel/rating-panel.tsx';
+import OfferFeaturesList from '../offer-features-list/offer-features-list.tsx';
+import OfferInsideList from '../offer-inside-list/offer-inside-list.tsx';
+import OfferHost from '../offer-host/offer-host.tsx';
+import OfferReviewsList from '../offer-reviews-list/offer-reviews-list.tsx';
+import OfferReviewForm from '../offer-review-form/offer-review-form.tsx';
+import {OfferView, Review} from '../../utils/types.ts';
+import {getAuthorizationStatus} from '../../utils/common.ts';
+
+type OfferProps = {
+  offerView: OfferView;
+  reviews: Review[];
+};
+
+export default function Offer({offerView, reviews}: OfferProps): JSX.Element {
+  const {
+    images,
+    type,
+    isPremium,
+    title,
+    isFavorite,
+    rating,
+    bedrooms,
+    maxAdults,
+    price,
+    goods,
+    host,
+    description
+  } = offerView;
+
+  const authorizationStatus = getAuthorizationStatus();
+
+  return (
+    <section className="offer">
+      <div className="offer__gallery-container container">
+        <div className="offer__gallery">
+          {images.map((image) =>
+            <OfferImage image={image} offerType={type} key={image}/>
+          )}
+        </div>
+      </div>
+
+      <div className="offer__container container">
+        <div className="offer__wrapper">
+          {isPremium
+            ? <div className="offer__mark"><span>Premium</span></div>
+            : ''}
+          <div className="offer__name-wrapper">
+            <h1 className="offer__name">{title}</h1>
+            <ButtonBookmark type={BookmarkButtonParams.type.view} isActive={isFavorite}/>
+          </div>
+
+          <RatingPanel type={RatingPanelType.Offer} rating={rating}/>
+          <OfferFeaturesList type={type} bedrooms={bedrooms} maxAdults={maxAdults}/>
+
+          <div className="offer__price">
+            <b className="offer__price-value">&euro;{price}</b> <span className="offer__price-text">&nbsp;night</span>
+          </div>
+
+          <OfferInsideList goods={goods}/> <OfferHost host={host} description={description}/>
+
+          <section className="offer__reviews reviews">
+            <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span>
+            </h2>
+            <OfferReviewsList reviews={reviews}/> {authorizationStatus === AuthorizationStatus.Auth
+              ? <OfferReviewForm/>
+              : ''}
+          </section>
+        </div>
+      </div>
+      <section className="offer__map map"></section>
+    </section>
+  );
+}

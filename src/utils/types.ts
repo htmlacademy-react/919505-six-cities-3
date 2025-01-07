@@ -1,14 +1,10 @@
-export type PageProps = {
+export type AppProps = {
   currentCity: string;
   offers: OfferPreview[] | [];
   offerView: OfferView;
   reviews: Review[] | [];
   favoritesObject: FavoritesObject;
   favoritesQuantity: number;
-};
-
-export type AppProps = {
-  pageProps: PageProps;
 };
 
 type Location = {

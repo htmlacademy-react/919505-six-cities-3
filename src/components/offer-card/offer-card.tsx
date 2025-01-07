@@ -1,4 +1,4 @@
-import {AppRoute, BookmarkButtonParams, OfferCardParams, Page, RatingPanelType} from '../../utils/const.ts';
+import {AppRoute, BookmarkButtonParams, OfferCardParams, RatingPanelType} from '../../utils/const.ts';
 import {OfferPreview} from '../../utils/types.ts';
 import ButtonBookmark from '../button-bookmark/button-bookmark.tsx';
 import RatingPanel from '../rating-panel/rating-panel.tsx';
@@ -49,7 +49,7 @@ export default function OfferCard({cardData, cardType, onCardActivate}: PlaceCar
     <article className={`${cardParentBlockName}__card place-card`} onMouseEnter={handleCardEnter} onMouseLeave={handleCardLeave}>
       {isPremium && <div className="place-card__mark"><span>Premium</span></div>}
       <div className={`${cardParentBlockName}__image-wrapper place-card__image-wrapper`}>
-        <Link to={AppRoute[Page.Offer] + id}>
+        <Link to={AppRoute.Offer + id}>
           <img
             className="place-card__image"
             src={previewImage}
@@ -70,7 +70,7 @@ export default function OfferCard({cardData, cardType, onCardActivate}: PlaceCar
         </div>
         <RatingPanel type={RatingPanelType.Card} rating={rating}/>
         <h2 className="place-card__name">
-          <Link to={AppRoute[Page.Offer] + id}>{title}</Link>
+          <Link to={AppRoute.Offer + id}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
