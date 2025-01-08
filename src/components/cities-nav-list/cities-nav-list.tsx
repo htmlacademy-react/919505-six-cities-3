@@ -1,5 +1,5 @@
 import {Cities} from '../../utils/const.ts';
-import CitiesNavItem from '../cities-nav-item/cities-nav-item';
+import CitiesNavItem from '../cities-nav-item';
 
 type CitiesNavListProps = {
   currentCity: string;

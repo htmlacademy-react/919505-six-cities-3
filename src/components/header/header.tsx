@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../utils/const.ts';
-import NavBlock from '../nav-block/nav-block.tsx';
+import NavBlock from '../nav-block';
 
 type HeaderProps = {
   linkClassName: string;

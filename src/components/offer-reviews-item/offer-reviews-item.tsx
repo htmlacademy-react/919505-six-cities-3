@@ -1,5 +1,5 @@
 import {Review} from '../../utils/types.ts';
-import RatingPanel from '../rating-panel/rating-panel.tsx';
+import RatingPanel from '../rating-panel';
 import {RatingPanelType} from '../../utils/const.ts';
 
 type OfferReviewsItemProps = {

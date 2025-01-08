@@ -1,12 +1,12 @@
-import OfferImage from '../offer-image/offer-image.tsx';
-import ButtonBookmark from '../button-bookmark/button-bookmark.tsx';
 import {AuthorizationStatus, BookmarkButtonParams, RatingPanelType} from '../../utils/const.ts';
-import RatingPanel from '../rating-panel/rating-panel.tsx';
-import OfferFeaturesList from '../offer-features-list/offer-features-list.tsx';
-import OfferInsideList from '../offer-inside-list/offer-inside-list.tsx';
-import OfferHost from '../offer-host/offer-host.tsx';
-import OfferReviewsList from '../offer-reviews-list/offer-reviews-list.tsx';
-import OfferReviewForm from '../offer-review-form/offer-review-form.tsx';
+import OfferImage from '../offer-image';
+import ButtonBookmark from '../button-bookmark';
+import RatingPanel from '../rating-panel';
+import OfferFeaturesList from '../offer-features-list';
+import OfferInsideList from '../offer-inside-list';
+import OfferHost from '../offer-host';
+import OfferReviewsList from '../offer-reviews-list';
+import OfferReviewForm from '../offer-review-form';
 import {OfferView, Review} from '../../utils/types.ts';
 import {getAuthorizationStatus} from '../../utils/common.ts';
 

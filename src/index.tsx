@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './components/app/app';
+import App from './components/app';
 import {Cities} from './utils/const.ts';
 import {offerCards} from './mocks/offer-cards.ts';
 import {offerView} from './mocks/offer-view.ts';

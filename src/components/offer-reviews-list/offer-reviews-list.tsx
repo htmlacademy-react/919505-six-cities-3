@@ -1,4 +1,4 @@
-import OfferReviewsItem from '../offer-reviews-item/offer-reviews-item';
+import OfferReviewsItem from '../offer-reviews-item';
 import {Review} from '../../utils/types.ts';
 
 type OfferReviewsListProps = {

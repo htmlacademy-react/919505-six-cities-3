@@ -1,6 +1,6 @@
 import {ChangeEvent, useState} from 'react';
 import {RatingInputTitles} from '../../utils/const.ts';
-import RatingInput from '../rating-input/rating-input.tsx';
+import RatingInput from '../rating-input';
 
 export default function OfferReviewForm(): JSX.Element {
   const [rating, setRating] = useState('');

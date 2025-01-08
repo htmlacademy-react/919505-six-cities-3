@@ -1,13 +1,13 @@
 import {AppProps} from '../../utils/types.ts';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {AppRoute} from '../../utils/const.ts';
-import Layout from '../layout/layout.tsx';
-import MainScreen from '../../pages/main-screen/main-screen.tsx';
-import LoginScreen from '../../pages/login-screen/login-screen.tsx';
-import PrivateRoute from '../private-route/private-route.tsx';
-import FavoritesScreen from '../../pages/favorites-screen/favorites-screen.tsx';
-import OfferScreen from '../../pages/offer-screen/offer-screen.tsx';
-import NotFoundScreen from '../../pages/not-found-screen/not-found-screen.tsx';
+import Layout from '../layout';
+import MainScreen from '../../pages/main-screen';
+import LoginScreen from '../../pages/login-screen';
+import PrivateRoute from '../private-route';
+import FavoritesScreen from '../../pages/favorites-screen';
+import OfferScreen from '../../pages/offer-screen';
+import NotFoundScreen from '../../pages/not-found-screen';
 import {getAuthorizationStatus} from '../../utils/common.ts';
 
 export default function App(props: AppProps) {
