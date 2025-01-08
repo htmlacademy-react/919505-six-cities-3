@@ -1,6 +1,6 @@
 import {AppRoute} from '../../utils/const';
 
-export const getLayoutState = (pathName: AppRoute, favoritesQuantity: number) => {
+export function getLayoutState(pathName: AppRoute, favoritesQuantity: number) {
   let rootClassName = '';
   let linkClassName = '';
   let shouldRenderUser = true;
@@ -27,4 +27,4 @@ export const getLayoutState = (pathName: AppRoute, favoritesQuantity: number) =>
   }
 
   return {rootClassName, linkClassName, shouldRenderUser, shouldRenderHeader, shouldRenderFooter};
-};
+}

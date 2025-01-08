@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom';
 import {AppRoute, BookmarkButtonParams, OfferCardParams, RatingPanelType} from '../../utils/const';
 import {OfferPreview} from '../../utils/types';
+import {getParentBlockName} from './utils';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
 
@@ -9,19 +10,6 @@ type PlaceCardProps = {
   cardType: string;
   onCardActivate: (cardId: string) => void;
 };
-
-function getParentBlockName(cardType: string) {
-  switch (cardType) {
-    case OfferCardParams.type.default:
-      return 'cities';
-
-    case OfferCardParams.type.near:
-      return 'near-places';
-
-    case OfferCardParams.type.favorite:
-      return 'favorites';
-  }
-}
 
 export default function OfferCard({cardData, cardType, onCardActivate}: PlaceCardProps): JSX.Element {
   const {
