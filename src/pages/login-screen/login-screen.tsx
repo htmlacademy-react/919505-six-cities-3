@@ -1,4 +1,4 @@
-import Login from '../../components/login/login.tsx';
+import Login from '../../components/login';
 
 function LoginScreen(): JSX.Element {
   return (

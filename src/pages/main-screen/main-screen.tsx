@@ -1,8 +1,8 @@
-import {OfferCardParams} from '../../utils/const.ts';
-import {OfferPreview} from '../../utils/types.ts';
-import CitiesNavList from '../../components/cities-nav-list/cities-nav-list.tsx';
-import OffersSortingPanel from '../../components/offers-sorting-panel/offers-sorting-panel.tsx';
-import OfferCardList from '../../components/offer-card-list/offer-card-list.tsx';
+import {OfferCardParams} from '../../utils/const';
+import {OfferPreview} from '../../utils/types';
+import CitiesNavList from '../../components/cities-nav-list';
+import OffersSortingPanel from '../../components/offers-sorting-panel';
+import OfferCardList from '../../components/offer-card-list';
 
 type MainPageProps = {
   currentCity: string;

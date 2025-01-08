@@ -1,4 +1,6 @@
+import {getAuthorizationStatus} from '../../utils/common';
 import {AuthorizationStatus, BookmarkButtonParams, RatingPanelType} from '../../utils/const.ts';
+import {OfferView, Review} from '../../utils/types';
 import OfferImage from '../offer-image';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
@@ -7,8 +9,6 @@ import OfferInsideList from '../offer-inside-list';
 import OfferHost from '../offer-host';
 import OfferReviewsList from '../offer-reviews-list';
 import OfferReviewForm from '../offer-review-form';
-import {OfferView, Review} from '../../utils/types.ts';
-import {getAuthorizationStatus} from '../../utils/common.ts';
 
 type OfferProps = {
   offerView: OfferView;

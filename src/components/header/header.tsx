@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../../utils/const.ts';
+import {AppRoute} from '../../utils/const';
 import NavBlock from '../nav-block';
 
 type HeaderProps = {

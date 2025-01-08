@@ -1,5 +1,5 @@
-import {AuthorizationStatus} from '../../utils/const.ts';
-import {getAuthorizationStatus} from '../../utils/common.ts';
+import {getAuthorizationStatus} from '../../utils/common';
+import {AuthorizationStatus} from '../../utils/const';
 
 type NavBlockProps = {
   favoritesQuantity: number;

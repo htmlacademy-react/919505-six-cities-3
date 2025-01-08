@@ -1,4 +1,4 @@
-import {Cities} from '../../utils/const.ts';
+import {Cities} from '../../utils/const';
 import CitiesNavItem from '../cities-nav-item';
 
 type CitiesNavListProps = {

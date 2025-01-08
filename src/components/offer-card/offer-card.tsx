@@ -1,8 +1,8 @@
-import {AppRoute, BookmarkButtonParams, OfferCardParams, RatingPanelType} from '../../utils/const.ts';
-import {OfferPreview} from '../../utils/types.ts';
+import {Link} from 'react-router-dom';
+import {AppRoute, BookmarkButtonParams, OfferCardParams, RatingPanelType} from '../../utils/const';
+import {OfferPreview} from '../../utils/types';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
-import {Link} from 'react-router-dom';
 
 type PlaceCardProps = {
   cardData: OfferPreview;

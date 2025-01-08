@@ -1,7 +1,7 @@
 import {useState} from 'react';
+import {OfferCardParams} from '../../utils/const';
+import {OfferPreview} from '../../utils/types';
 import OfferCard from '../offer-card';
-import {OfferPreview} from '../../utils/types.ts';
-import {OfferCardParams} from '../../utils/const.ts';
 
 type OfferCardListProps = {
   offers: OfferPreview[];

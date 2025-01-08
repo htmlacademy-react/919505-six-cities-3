@@ -1,5 +1,5 @@
-import {OfferPreview} from '../../utils/types.ts';
-import {OfferCardParams} from '../../utils/const.ts';
+import {OfferCardParams} from '../../utils/const';
+import {OfferPreview} from '../../utils/types';
 import OfferCardList from '../offer-card-list';
 
 type FavoritesItemProps = {

@@ -1,5 +1,5 @@
 import {ChangeEvent, useState} from 'react';
-import {RatingInputTitles} from '../../utils/const.ts';
+import {RatingInputTitles} from '../../utils/const';
 import RatingInput from '../rating-input';
 
 export default function OfferReviewForm(): JSX.Element {

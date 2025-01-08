@@ -1,5 +1,5 @@
-import {calculateRatingWidth} from '../../utils/common.ts';
-import {RatingPanelType} from '../../utils/const.ts';
+import {calculateRatingWidth} from '../../utils/common';
+import {RatingPanelType} from '../../utils/const';
 
 type RatingPanelProps = {
   type: RatingPanelType;

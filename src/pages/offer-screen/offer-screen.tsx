@@ -1,6 +1,6 @@
-import OfferNearPlaces from '../../components/offer-near-places/offer-near-places.tsx';
-import {OfferPreview, OfferView, Review} from '../../utils/types.ts';
-import Offer from '../../components/offer/offer.tsx';
+import {OfferPreview, OfferView, Review} from '../../utils/types';
+import OfferNearPlaces from '../../components/offer-near-places';
+import Offer from '../../components/offer';
 
 type OfferPageProps = {
   offerView: OfferView;

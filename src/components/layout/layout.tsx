@@ -1,8 +1,8 @@
 import {PropsWithChildren} from 'react';
 import {Outlet, useLocation} from 'react-router-dom';
-import {AppRoute} from '../../utils/const.ts';
-import Footer from '../footer/footer.tsx';
-import Header from '../header/header.tsx';
+import {AppRoute} from '../../utils/const';
+import Footer from '../footer';
+import Header from '../header';
 
 type LayoutProps = {
   favoritesQuantity: number;
