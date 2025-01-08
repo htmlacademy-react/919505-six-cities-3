@@ -1,5 +1,7 @@
 const RATING_COEFFICIENT = 20;
 
+const REVIEW_DATE_FORMAT = 'MMMM YYYY';
+
 const RatingInputTitles = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
 
 enum AuthorizationStatus {
@@ -66,4 +68,4 @@ const Cities = [
   'Dusseldorf'
 ];
 
-export {RATING_COEFFICIENT, RatingInputTitles, AuthorizationStatus, AppRoute, OfferCardParams, RatingPanelType, BookmarkButtonParams, Cities};
+export {RATING_COEFFICIENT, REVIEW_DATE_FORMAT, RatingInputTitles, AuthorizationStatus, AppRoute, OfferCardParams, RatingPanelType, BookmarkButtonParams, Cities};
