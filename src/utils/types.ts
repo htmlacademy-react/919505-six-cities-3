@@ -1,7 +1,7 @@
 export type AppProps = {
   currentCity: string;
-  offers: OfferPreview[] | [];
-  offerView: OfferView;
+  offerPreviews: OfferPreview[] | [];
+  offer: Offer;
   reviews: Review[] | [];
   favoritesObject: FavoritesObject;
   favoritesQuantity: number;
@@ -38,7 +38,7 @@ export type OfferPreview = OfferScaffolding & {
   previewImage: string;
 };
 
-export type OfferView = OfferScaffolding & {
+export type Offer = OfferScaffolding & {
   description: string;
   bedrooms: number;
   goods: string[];

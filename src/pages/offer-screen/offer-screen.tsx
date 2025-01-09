@@ -1,17 +1,17 @@
-import {OfferPreview, OfferView, Review} from '../../utils/types';
+import {OfferPreview, Offer, Review} from '../../utils/types';
 import OfferNearPlaces from '../../components/offer-near-places';
-import Offer from '../../components/offer';
+import OfferDetails from '../../components/offer-details';
 
 type OfferPageProps = {
-  offerView: OfferView;
+  offer: Offer;
   reviews: Review[];
   nearOffers: OfferPreview[];
 };
 
-export default function OfferScreen({offerView, reviews, nearOffers}: OfferPageProps): JSX.Element {
+export default function OfferScreen({offer, reviews, nearOffers}: OfferPageProps): JSX.Element {
   return (
     <main className="page__main page__main--offer">
-      <Offer offerView={offerView} reviews={reviews}/>
+      <OfferDetails offer={offer} reviews={reviews}/>
       <div className="container">
         <OfferNearPlaces nearOffers={nearOffers}/>
       </div>

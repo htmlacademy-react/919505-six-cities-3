@@ -11,7 +11,7 @@ import OfferScreen from '../../pages/offer-screen';
 import NotFoundScreen from '../../pages/not-found-screen';
 
 export default function App(props: AppProps) {
-  const {currentCity, offers, offerView, reviews, favoritesObject, favoritesQuantity} = props;
+  const {currentCity, offerPreviews, offer, reviews, favoritesObject, favoritesQuantity} = props;
   return(
     <BrowserRouter>
       <Routes>
@@ -22,7 +22,7 @@ export default function App(props: AppProps) {
 
           <Route
             index
-            element={<MainScreen currentCity={currentCity} offers={offers}/>}
+            element={<MainScreen currentCity={currentCity} offers={offerPreviews}/>}
           />
 
           <Route
@@ -45,7 +45,7 @@ export default function App(props: AppProps) {
 
           <Route
             path={AppRoute.Offer}
-            element={<OfferScreen offerView={offerView} reviews={reviews} nearOffers={offers}/>}
+            element={<OfferScreen offer={offer} reviews={reviews} nearOffers={offerPreviews}/>}
           />
 
           <Route

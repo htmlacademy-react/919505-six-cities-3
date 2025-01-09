@@ -1,5 +1,6 @@
 const RATING_COEFFICIENT = 20;
-
+const MAX_OFFER_PHOTOS = 6;
+const OFFER_DETAILS_CHECK_NUMBER = 1;
 const REVIEW_DATE_FORMAT = 'MMMM YYYY';
 
 const RatingInputTitles = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
@@ -23,6 +24,11 @@ enum RatingPanelType {
   Offer = 'Offer',
   Card = 'Card'
 }
+
+const ReviewLength = {
+  MIN: 50,
+  MAX: 300
+};
 
 const OfferCardParams = {
   type: {
@@ -68,4 +74,4 @@ const Cities = [
   'Dusseldorf'
 ];
 
-export {RATING_COEFFICIENT, REVIEW_DATE_FORMAT, RatingInputTitles, AuthorizationStatus, AppRoute, OfferCardParams, RatingPanelType, BookmarkButtonParams, Cities};
+export {RATING_COEFFICIENT, MAX_OFFER_PHOTOS, REVIEW_DATE_FORMAT, OFFER_DETAILS_CHECK_NUMBER, RatingInputTitles, ReviewLength, AuthorizationStatus, AppRoute, OfferCardParams, RatingPanelType, BookmarkButtonParams, Cities};

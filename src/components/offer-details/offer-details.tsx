@@ -1,6 +1,6 @@
 import {getAuthorizationStatus} from '../../utils/common';
-import {AuthorizationStatus, BookmarkButtonParams, RatingPanelType} from '../../utils/const.ts';
-import {OfferView, Review} from '../../utils/types';
+import {AuthorizationStatus, BookmarkButtonParams, MAX_OFFER_PHOTOS, RatingPanelType} from '../../utils/const.ts';
+import {Offer, Review} from '../../utils/types';
 import OfferImage from '../offer-image';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
@@ -11,11 +11,11 @@ import OfferReviewsList from '../offer-reviews-list';
 import OfferReviewForm from '../offer-review-form';
 
 type OfferProps = {
-  offerView: OfferView;
+  offer: Offer;
   reviews: Review[];
 };
 
-export default function Offer({offerView, reviews}: OfferProps): JSX.Element {
+export default function OfferDetails({offer, reviews}: OfferProps): JSX.Element {
   const {
     images,
     type,
@@ -29,7 +29,7 @@ export default function Offer({offerView, reviews}: OfferProps): JSX.Element {
     goods,
     host,
     description
-  } = offerView;
+  } = offer;
 
   const authorizationStatus = getAuthorizationStatus();
 
@@ -37,7 +37,7 @@ export default function Offer({offerView, reviews}: OfferProps): JSX.Element {
     <section className="offer">
       <div className="offer__gallery-container container">
         <div className="offer__gallery">
-          {images.map((image) =>
+          {images.slice(0, MAX_OFFER_PHOTOS).map((image) =>
             <OfferImage image={image} offerType={type} key={image}/>
           )}
         </div>

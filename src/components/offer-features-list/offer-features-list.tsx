@@ -1,3 +1,5 @@
+import {OFFER_DETAILS_CHECK_NUMBER} from '../../utils/const';
+
 type OfferFeaturesListProps = {
   type: string;
   bedrooms: number;
@@ -11,10 +13,10 @@ export default function OfferFeaturesList({type, bedrooms, maxAdults}: OfferFeat
         {type}
       </li>
       <li className="offer__feature offer__feature--bedrooms">
-        {`${bedrooms} Bedrooms`}
+        {`${bedrooms} ${bedrooms === OFFER_DETAILS_CHECK_NUMBER ? 'Bedroom' : 'Bedrooms'}`}
       </li>
       <li className="offer__feature offer__feature--adults">
-        {`Max ${maxAdults} adults`}
+        {`Max ${maxAdults} ${maxAdults === OFFER_DETAILS_CHECK_NUMBER ? 'Adult' : 'Adults'}`}
       </li>
     </ul>
   );
