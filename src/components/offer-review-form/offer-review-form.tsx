@@ -1,29 +1,15 @@
-import {ChangeEvent, useEffect, useState} from 'react';
 import {RatingInputTitles, ReviewLength} from '../../utils/const';
 import RatingInput from '../rating-input';
+import {useReviewForm} from '../../hooks/use-review-form';
 
 export default function OfferReviewForm(): JSX.Element {
-  const [rating, setRating] = useState('');
-  const [comment, setComment] = useState({value: '', isValid: false});
-  const [isFormValid, setIsFormValid] = useState(false);
-
-  useEffect(() => {
-    if(comment.isValid && rating) {
-      setIsFormValid(true);
-    } else {
-      setIsFormValid(false);
-    }
-  }, [comment, rating]);
-
-  const handleRatingChange = (evt: ChangeEvent<HTMLInputElement>) => {
-    setRating(evt.target.value);
-  };
-
-  const handleCommentChange = (evt: ChangeEvent<HTMLTextAreaElement>) => {
-    const newValue = evt.target.value;
-    const isCommentValid = newValue.length >= ReviewLength.MIN && newValue.length <= ReviewLength.MAX;
-    setComment({value: newValue, isValid: isCommentValid});
-  };
+  const {
+    comment,
+    rating,
+    isFormValid,
+    handleRatingChange,
+    handleCommentChange
+  } = useReviewForm();
 
   return (
     <form className="reviews__form form" action="#" method="post">
@@ -45,10 +31,10 @@ export default function OfferReviewForm(): JSX.Element {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        minLength={50}
-        maxLength={300}
+        minLength={ReviewLength.MIN}
+        maxLength={ReviewLength.MAX}
         onChange={handleCommentChange}
-        value={comment.value}
+        value={comment}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
