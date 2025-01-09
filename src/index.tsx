@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 
 const currentCity = Cities[3];
 const offersFilteredByCity = offerPreviews.filter((offerPreview) => offerPreview.city.name === currentCity);
-const favoriteOffers = offerPreviews.filter((offer) => offer.isFavorite);
+const favoriteOffers = offerPreviews.filter((offerPreview) => offerPreview.isFavorite);
 const favoritesObject = generateFavoriteOffersObject(favoriteOffers);
 
 root.render(
