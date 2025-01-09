@@ -1,5 +1,6 @@
+import {Link} from 'react-router-dom';
 import {getAuthorizationStatus} from '../../utils/common';
-import {AuthorizationStatus} from '../../utils/const';
+import {AppRoute, AuthorizationStatus} from '../../utils/const';
 
 type NavBlockProps = {
   favoritesQuantity: number;
@@ -17,7 +18,9 @@ export default function NavBlock({favoritesQuantity}: NavBlockProps): JSX.Elemen
             {authorizationStatus === AuthorizationStatus.Auth
               ? (
                 <>
-                  <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                  <Link to={AppRoute.Favorites}>
+                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                  </Link>
                   <span className="header__favorite-count">{favoritesQuantity}</span>
                 </>)
               : <span className="header__login">Sign in</span>}
