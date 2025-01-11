@@ -9,11 +9,13 @@ import PrivateRoute from '../private-route';
 import FavoritesScreen from '../../pages/favorites-screen';
 import OfferScreen from '../../pages/offer-screen';
 import NotFoundScreen from '../../pages/not-found-screen';
+import ScrollToTop from '../scroll-to-top';
 
 export default function App(props: AppProps) {
   const {currentCity, offerPreviews, offer, reviews, favoritesObject, favoritesQuantity} = props;
   return(
     <BrowserRouter>
+      <ScrollToTop/>
       <Routes>
         <Route
           path={AppRoute.Root}
