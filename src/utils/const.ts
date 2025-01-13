@@ -1,4 +1,9 @@
 const RATING_COEFFICIENT = 20;
+const MAX_OFFER_PHOTOS = 6;
+const OFFER_DETAILS_CHECK_NUMBER = 1;
+const REVIEW_DATE_FORMAT = 'MMMM YYYY';
+
+const RatingInputTitles = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
 
 enum AuthorizationStatus {
   Auth = 'Auth',
@@ -6,27 +11,24 @@ enum AuthorizationStatus {
   Unknown = 'Unknown',
 }
 
-enum Page {
-  Main = 'Main',
-  Login = 'Login',
-  Offer = 'Offer',
-  Favorites = 'Favorites',
-  PageNotFound = 'PageNotFound'
+enum AppRoute {
+  Root = '/',
+  Login = '/login',
+  Offer = '/offer/:id',
+  Favorites = '/favorites',
+  PageNotFound = '*',
 }
-
-const AppRoute = {
-  [Page.Main]: '/',
-  [Page.Login]: '/login',
-  [Page.Offer]: '/offer',
-  [Page.Favorites]: '/favorites',
-  [Page.PageNotFound]: '*',
-};
 
 enum RatingPanelType {
   Reviews = 'Reviews',
   Offer = 'Offer',
   Card = 'Card'
 }
+
+const ReviewLength = {
+  MIN: 50,
+  MAX: 300
+};
 
 const OfferCardParams = {
   type: {
@@ -72,4 +74,4 @@ const Cities = [
   'Dusseldorf'
 ];
 
-export {RATING_COEFFICIENT, AuthorizationStatus, Page, AppRoute, OfferCardParams, RatingPanelType, BookmarkButtonParams, Cities};
+export {RATING_COEFFICIENT, MAX_OFFER_PHOTOS, REVIEW_DATE_FORMAT, OFFER_DETAILS_CHECK_NUMBER, RatingInputTitles, ReviewLength, AuthorizationStatus, AppRoute, OfferCardParams, RatingPanelType, BookmarkButtonParams, Cities};

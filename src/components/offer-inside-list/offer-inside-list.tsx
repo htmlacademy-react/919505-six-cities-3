@@ -1,4 +1,4 @@
-import OfferInsideItem from '../offer-inside-item/offer-inside-item';
+import OfferInsideItem from '../offer-inside-item';
 
 type OfferInsideListProps = {
   goods: string[];

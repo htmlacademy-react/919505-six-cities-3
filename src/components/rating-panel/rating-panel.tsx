@@ -1,20 +1,10 @@
-import {calculateRatingWidth} from '../../utils/common.ts';
-import {RatingPanelType} from '../../utils/const.ts';
+import {calculateRatingWidth} from '../../utils/common';
+import {RatingPanelType} from '../../utils/const';
+import {getClassNamePrefix} from './utils';
 
 type RatingPanelProps = {
   type: RatingPanelType;
   rating: number;
-}
-
-function getClassNamePrefix(type: string) {
-  switch (type) {
-    case RatingPanelType.Reviews:
-      return 'reviews';
-    case RatingPanelType.Offer:
-      return 'offer';
-    case RatingPanelType.Card:
-      return 'place-card';
-  }
 }
 
 export default function RatingPanel({type, rating}: RatingPanelProps): JSX.Element {

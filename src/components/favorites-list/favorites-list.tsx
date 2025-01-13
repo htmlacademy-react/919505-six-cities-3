@@ -1,5 +1,5 @@
-import {FavoritesObject} from '../../utils/types.ts';
-import FavoritesItem from '../favorites-item/favorites-item';
+import {FavoritesObject} from '../../utils/types';
+import FavoritesItem from '../favorites-item';
 
 type FavoritesListProps = {
   favoritesObject: FavoritesObject;

@@ -1,5 +1,5 @@
-import OfferDescription from '../offer-description/offer-description';
-import {User} from '../../utils/types.ts';
+import {User} from '../../utils/types';
+import OfferDescription from '../offer-description';
 
 type OfferHostProps = {
   host: User;

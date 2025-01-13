@@ -1,5 +1,5 @@
 import {FavoritesObject, OfferPreview} from './types.ts';
-import {RATING_COEFFICIENT} from './const.ts';
+import {AuthorizationStatus, RATING_COEFFICIENT} from './const.ts';
 
 export function calculateRatingWidth(rating: number): number {
   return Math.round(rating) * RATING_COEFFICIENT;
@@ -17,4 +17,8 @@ export function generateFavoriteOffersObject(offers: OfferPreview[]): FavoritesO
   });
 
   return result;
+}
+
+export function getAuthorizationStatus() {
+  return AuthorizationStatus.Auth;
 }
