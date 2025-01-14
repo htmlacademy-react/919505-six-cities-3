@@ -11,7 +11,7 @@ import NotFoundScreen from '../../pages/not-found-screen';
 import ScrollToTop from '../scroll-to-top';
 import {TFavoritesObject, TOffer, TOfferPreview, TReview} from '../../utils/types';
 
-type AppProps = {
+type TAppProps = {
   currentCity: string;
   offerPreviews: TOfferPreview[] | [];
   offer: TOffer;
@@ -20,7 +20,7 @@ type AppProps = {
   favoritesQuantity: number;
 };
 
-export default function App(props: AppProps) {
+export default function App(props: TAppProps) {
   const {currentCity, offerPreviews, offer, reviews, favoritesObject, favoritesQuantity} = props;
   return(
     <BrowserRouter>

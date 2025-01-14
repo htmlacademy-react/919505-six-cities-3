@@ -1,7 +1,7 @@
 import {TFavoritesObject} from '../../utils/types';
 import FavoritesList from '../../components/favorites-list';
 
-type FavoritesPageProps = {
+type TFavoritesPageProps = {
   favoritesObject: TFavoritesObject;
 }
 
@@ -28,7 +28,7 @@ function createFavoritesList(favoritesObject: TFavoritesObject) {
   );
 }
 
-export default function FavoritesScreen({favoritesObject}: FavoritesPageProps): JSX.Element {
+export default function FavoritesScreen({favoritesObject}: TFavoritesPageProps): JSX.Element {
   const isEmpty = Object.keys(favoritesObject).length === 0;
   return (
     <main className={`page__main page__main--favorites ${isEmpty ? 'page__main--favorites-empty' : ''}`}>

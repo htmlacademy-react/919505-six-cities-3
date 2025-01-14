@@ -2,11 +2,11 @@ import {OfferCardParams} from '../../utils/const';
 import {TOfferPreview} from '../../utils/types';
 import OfferCardList from '../offer-card-list';
 
-type OfferNearPlacesProps = {
+type TOfferNearPlacesProps = {
   nearOffers: TOfferPreview[];
 };
 
-export default function OfferNearPlaces({nearOffers}: OfferNearPlacesProps): JSX.Element {
+export default function OfferNearPlaces({nearOffers}: TOfferNearPlacesProps): JSX.Element {
   return (
     <section className="near-places places">
       <h2 className="near-places__title">Other places in the neighbourhood</h2>

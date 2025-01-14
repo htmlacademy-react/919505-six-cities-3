@@ -5,13 +5,13 @@ import {getParentBlockName} from './utils';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
 
-type PlaceCardProps = {
+type TPlaceCardProps = {
   cardData: TOfferPreview;
   cardType: string;
   onCardActivate: (cardId: string) => void;
 };
 
-export default function OfferCard({cardData, cardType, onCardActivate}: PlaceCardProps): JSX.Element {
+export default function OfferCard({cardData, cardType, onCardActivate}: TPlaceCardProps): JSX.Element {
   const {
     id,
     title,

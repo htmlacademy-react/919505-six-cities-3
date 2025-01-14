@@ -2,13 +2,13 @@ import {Link} from 'react-router-dom';
 import {AppRoute} from '../../utils/const';
 import NavBlock from '../nav-block';
 
-type HeaderProps = {
+type THeaderProps = {
   linkClassName: string;
   shouldRenderUser: boolean;
   favoritesQuantity: number;
 };
 
-export default function Header({linkClassName, shouldRenderUser, favoritesQuantity}: HeaderProps): JSX.Element {
+export default function Header({linkClassName, shouldRenderUser, favoritesQuantity}: THeaderProps): JSX.Element {
   return (
     <header className="header">
       <div className="container">

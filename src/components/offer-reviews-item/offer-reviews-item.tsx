@@ -3,11 +3,11 @@ import {REVIEW_DATE_FORMAT, RatingPanelType} from '../../utils/const';
 import {TReview} from '../../utils/types';
 import RatingPanel from '../rating-panel';
 
-type OfferReviewsItemProps = {
+type TOfferReviewsItemProps = {
   review: TReview;
 }
 
-export default function OfferReviewsItem({review}: OfferReviewsItemProps): JSX.Element {
+export default function OfferReviewsItem({review}: TOfferReviewsItemProps): JSX.Element {
   const {user, rating, comment, date} = review;
   const reviewDate = dayjs(review.date).format(REVIEW_DATE_FORMAT);
 

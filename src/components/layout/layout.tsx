@@ -5,11 +5,11 @@ import {getLayoutState} from './utils';
 import Footer from '../footer';
 import Header from '../header';
 
-type LayoutProps = {
+type TLayoutProps = {
   favoritesQuantity: number;
 };
 
-export default function Layout({favoritesQuantity}: PropsWithChildren<LayoutProps>): JSX.Element {
+export default function Layout({favoritesQuantity}: PropsWithChildren<TLayoutProps>): JSX.Element {
   const currentPage = useLocation().pathname;
 
   const {rootClassName,

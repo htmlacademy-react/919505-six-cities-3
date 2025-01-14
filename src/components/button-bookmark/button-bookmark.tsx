@@ -1,11 +1,11 @@
 import {BookmarkButtonParams} from '../../utils/const';
 
-type ButtonBookmarkProps = {
+type TButtonBookmarkProps = {
   type: string;
   isActive: boolean;
 }
 
-export default function ButtonBookmark({type, isActive}: ButtonBookmarkProps): JSX.Element {
+export default function ButtonBookmark({type, isActive}: TButtonBookmarkProps): JSX.Element {
   const classNamePrefix = type === BookmarkButtonParams.type.card ? 'place-card' : 'offer';
   const width = type === BookmarkButtonParams.type.card ? BookmarkButtonParams.width.little : BookmarkButtonParams.width.big;
   const height = type === BookmarkButtonParams.type.card ? BookmarkButtonParams.height.little : BookmarkButtonParams.height.big;

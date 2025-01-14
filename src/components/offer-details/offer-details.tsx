@@ -10,12 +10,12 @@ import OfferHost from '../offer-host';
 import OfferReviewsList from '../offer-reviews-list';
 import OfferReviewForm from '../offer-review-form';
 
-type OfferProps = {
+type TOfferProps = {
   offer: TOffer;
   reviews: TReview[];
 };
 
-export default function OfferDetails({offer, reviews}: OfferProps): JSX.Element {
+export default function OfferDetails({offer, reviews}: TOfferProps): JSX.Element {
   const {
     images,
     type,

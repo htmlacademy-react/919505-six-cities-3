@@ -1,11 +1,11 @@
 import {TFavoritesObject} from '../../utils/types';
 import FavoritesItem from '../favorites-item';
 
-type FavoritesListProps = {
+type TFavoritesListProps = {
   favoritesObject: TFavoritesObject;
 }
 
-export default function FavoritesList({favoritesObject}: FavoritesListProps): JSX.Element {
+export default function FavoritesList({favoritesObject}: TFavoritesListProps): JSX.Element {
 
   return (
     <ul className="favorites__list">

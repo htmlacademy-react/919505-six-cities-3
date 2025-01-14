@@ -3,12 +3,12 @@ import {TOfferPreview} from '../../utils/types';
 import {getContainerClassName} from './utils';
 import OfferCard from '../offer-card';
 
-type OfferCardListProps = {
+type TOfferCardListProps = {
   offers: TOfferPreview[];
   cardType: string;
 };
 
-export default function OfferCardList({offers, cardType}: OfferCardListProps): JSX.Element {
+export default function OfferCardList({offers, cardType}: TOfferCardListProps): JSX.Element {
   const containerClassName = getContainerClassName(cardType);
 
   const [currentActiveOffer, setCurrentActiveOffer] = useState('');

@@ -4,7 +4,7 @@ import CitiesNavList from '../../components/cities-nav-list';
 import OffersSortingPanel from '../../components/offers-sorting-panel';
 import OfferCardList from '../../components/offer-card-list';
 
-type MainPageProps = {
+type TMainPageProps = {
   currentCity: string;
   offers: TOfferPreview[];
 }
@@ -31,7 +31,7 @@ function createOffersList(offers: TOfferPreview[]) {
   );
 }
 
-function MainScreen({currentCity, offers}: MainPageProps): JSX.Element {
+function MainScreen({currentCity, offers}: TMainPageProps): JSX.Element {
   const isEmpty = offers.length === 0;
 
   return (

@@ -1,13 +1,13 @@
 import {ChangeEvent} from 'react';
 
-type RatingInputProps = {
+type TRatingInputProps = {
   value: string;
   rating: string;
   title: string;
   onRatingChange: (evt: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function RatingInput({value, rating, title, onRatingChange}: RatingInputProps): JSX.Element {
+export default function RatingInput({value, rating, title, onRatingChange}: TRatingInputProps): JSX.Element {
   return (
     <>
       <input

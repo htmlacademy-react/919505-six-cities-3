@@ -2,12 +2,12 @@ import {calculateRatingWidth} from '../../utils/common';
 import {RatingPanelType} from '../../utils/const';
 import {getClassNamePrefix} from './utils';
 
-type RatingPanelProps = {
+type TRatingPanelProps = {
   type: RatingPanelType;
   rating: number;
 }
 
-export default function RatingPanel({type, rating}: RatingPanelProps): JSX.Element {
+export default function RatingPanel({type, rating}: TRatingPanelProps): JSX.Element {
   const classNamePrefix = getClassNamePrefix(type);
 
   return (
