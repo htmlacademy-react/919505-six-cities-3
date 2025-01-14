@@ -1,5 +1,4 @@
-import {getAuthorizationStatus} from '../../utils/common';
-import {AuthorizationStatus, BookmarkButtonParams, MAX_OFFER_PHOTOS, RatingPanelType} from '../../utils/const.ts';
+import {BookmarkButtonParams, MAX_OFFER_PHOTOS, RatingPanelType} from '../../utils/const.ts';
 import {TOffer, TReview} from '../../utils/types';
 import OfferImage from '../offer-image';
 import ButtonBookmark from '../button-bookmark';
@@ -7,8 +6,7 @@ import RatingPanel from '../rating-panel';
 import OfferFeaturesList from '../offer-features-list';
 import OfferInsideList from '../offer-inside-list';
 import OfferHost from '../offer-host';
-import OfferReviewsList from '../offer-reviews-list';
-import OfferReviewForm from '../offer-review-form';
+import ReviewsSection from '../reviews-section';
 
 type TOfferProps = {
   offer: TOffer;
@@ -30,8 +28,6 @@ export default function OfferDetails({offer, reviews}: TOfferProps): JSX.Element
     host,
     description
   } = offer;
-
-  const authorizationStatus = getAuthorizationStatus();
 
   return (
     <section className="offer">
@@ -60,15 +56,9 @@ export default function OfferDetails({offer, reviews}: TOfferProps): JSX.Element
             <b className="offer__price-value">&euro;{price}</b> <span className="offer__price-text">&nbsp;night</span>
           </div>
 
-          <OfferInsideList goods={goods}/> <OfferHost host={host} description={description}/>
-
-          <section className="offer__reviews reviews">
-            <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span>
-            </h2>
-            <OfferReviewsList reviews={reviews}/> {authorizationStatus === AuthorizationStatus.Auth
-              ? <OfferReviewForm/>
-              : ''}
-          </section>
+          <OfferInsideList goods={goods}/>
+          <OfferHost host={host} description={description}/>
+          <ReviewsSection reviews={reviews}/>
         </div>
       </div>
       <section className="offer__map map"></section>
