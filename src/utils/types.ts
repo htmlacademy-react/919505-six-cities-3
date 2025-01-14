@@ -6,15 +6,17 @@ type TLocation = {
   zoom: number;
 };
 
+export type TCity = {
+  name: string;
+  location: TLocation;
+}
+
 type TOfferScaffolding = {
   id: string;
   title: string;
   type: string;
   price: number;
-  city: {
-    name: string;
-    location: TLocation;
-  };
+  city: TCity;
   location: TLocation;
   isFavorite: boolean;
   isPremium: boolean;
@@ -23,6 +25,20 @@ type TOfferScaffolding = {
 
 export type TInputChangeHandler = ChangeEventHandler<HTMLInputElement>;
 export type TReviewChangeHandler = ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+
+export type TMapCity = {
+  title: string;
+  lat: number;
+  lng: number;
+  zoom: number;
+};
+
+export type TMapPoint = {
+  id: string;
+  title: string;
+  lat: number;
+  lng: number;
+};
 
 export type TUser = {
   name: string;
