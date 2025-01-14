@@ -8,10 +8,10 @@ import RatingPanel from '../rating-panel';
 type TPlaceCardProps = {
   cardData: TOfferPreview;
   cardType: string;
-  onCardActivate: (cardId: string) => void;
+  handleCardHover: (cardId?: string) => void;
 };
 
-export default function OfferCard({cardData, cardType, onCardActivate}: TPlaceCardProps): JSX.Element {
+export default function OfferCard({cardData, cardType, handleCardHover}: TPlaceCardProps): JSX.Element {
   const {
     id,
     title,
@@ -25,16 +25,16 @@ export default function OfferCard({cardData, cardType, onCardActivate}: TPlaceCa
 
   const cardParentBlockName = getParentBlockName(cardType);
 
-  const handleCardEnter = () => {
-    onCardActivate(id);
+  const mouseEnterHandler = () => {
+    handleCardHover(id);
   };
 
-  const handleCardLeave = () => {
-    onCardActivate('');
+  const mouseLeaveHandler = () => {
+    handleCardHover();
   };
 
   return (
-    <article className={`${cardParentBlockName}__card place-card`} onMouseEnter={handleCardEnter} onMouseLeave={handleCardLeave}>
+    <article className={`${cardParentBlockName}__card place-card`} onMouseEnter={mouseEnterHandler} onMouseLeave={mouseLeaveHandler}>
       {isPremium && <div className="place-card__mark"><span>Premium</span></div>}
       <div className={`${cardParentBlockName}__image-wrapper place-card__image-wrapper`}>
         <Link to={AppRoute.Offer + id}>

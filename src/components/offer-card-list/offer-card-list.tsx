@@ -1,7 +1,8 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {TOfferPreview} from '../../utils/types';
 import {getContainerClassName} from './utils';
 import OfferCard from '../offer-card';
+import {Nullable} from 'vitest';
 
 type TOfferCardListProps = {
   offers: TOfferPreview[];
@@ -11,12 +12,18 @@ type TOfferCardListProps = {
 export default function OfferCardList({offers, cardType}: TOfferCardListProps): JSX.Element {
   const containerClassName = getContainerClassName(cardType);
 
-  const [currentActiveOffer, setCurrentActiveOffer] = useState('');
+  const [currentActiveOffer, setCurrentActiveOffer] = useState<Nullable<string>>(null);
+
+  useEffect(() => {
+  }, [currentActiveOffer]);
+
+  const handleCardHover = (cardId?: string) => {
+    setCurrentActiveOffer(cardId || null);
+  };
 
   return (
     <div className={containerClassName}>
-      {currentActiveOffer && <span className="visually-hidden">{currentActiveOffer}</span>}
-      {offers.map((offer) => <OfferCard cardData={offer} cardType={cardType} onCardActivate={setCurrentActiveOffer} key={offer.id}/>)}
+      {offers.map((offer) => <OfferCard cardData={offer} cardType={cardType} handleCardHover={handleCardHover} key={offer.id}/>)}
     </div>
   );
 }
