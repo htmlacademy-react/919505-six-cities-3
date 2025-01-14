@@ -6,8 +6,8 @@ import useReviewForm from '../../hooks/use-review-form';
 export default function OfferReviewForm(): JSX.Element {
   const {
     review,
-    isFormValid,
     handleReviewChange,
+    isSubmitButtonDisabled,
   } = useReviewForm();
 
   const reviewChangeHandler: TReviewChangeHandler = (evt) => {
@@ -34,7 +34,6 @@ export default function OfferReviewForm(): JSX.Element {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        minLength={ReviewLength.MIN}
         maxLength={ReviewLength.MAX}
         onChange={reviewChangeHandler}
         value={review.review}
@@ -43,7 +42,7 @@ export default function OfferReviewForm(): JSX.Element {
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span>and describe your stay with at least <b className="reviews__text-amount">{ReviewLength.MIN} characters</b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled={!isFormValid}>Submit</button>
+        <button className="reviews__submit form__submit button" type="submit" disabled={isSubmitButtonDisabled}>Submit</button>
       </div>
     </form>
   );
