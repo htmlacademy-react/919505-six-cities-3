@@ -1,5 +1,5 @@
 import {BookmarkButtonParams, MapType, MAX_OFFER_PHOTOS, RatingPanelType} from '../../utils/const.ts';
-import {TMapCity, TMapPoint, TOffer, TReview} from '../../utils/types';
+import {TMapCity, TMapPoint, TOffer} from '../../utils/types';
 import OfferImage from '../offer-image';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
@@ -11,13 +11,12 @@ import Map from '../map';
 
 type TOfferProps = {
   offer: TOffer;
-  reviews: TReview[];
   cityObjectForMap: TMapCity;
   pointsForMap: TMapPoint[];
   currentActivePoint: TMapPoint | null;
 };
 
-export default function OfferDetails({offer, reviews, cityObjectForMap, pointsForMap, currentActivePoint}: TOfferProps): JSX.Element {
+export default function OfferDetails({offer, cityObjectForMap, pointsForMap, currentActivePoint}: TOfferProps): JSX.Element {
   const {
     images,
     type,
@@ -62,7 +61,7 @@ export default function OfferDetails({offer, reviews, cityObjectForMap, pointsFo
 
           <OfferInsideList goods={goods}/>
           <OfferHost host={host} description={description}/>
-          <OfferReviewsSection reviews={reviews}/>
+          <OfferReviewsSection/>
         </div>
       </div>
       <section className="offer__map map">

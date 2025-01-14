@@ -1,6 +1,7 @@
 export const RATING_COEFFICIENT = 20;
 export const MAX_OFFER_PHOTOS = 6;
 export const OFFER_DETAILS_CHECK_NUMBER = 1;
+export const MAX_NEARBY_OFFERS = 3;
 export const REVIEW_DATE_FORMAT = 'MMMM YYYY';
 
 export const RatingInputTitles = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
@@ -19,7 +20,8 @@ export enum AuthorizationStatus {
 export enum AppRoute {
   Root = '/',
   Login = '/login',
-  Offer = '/offer/:id',
+  Offer = '/offer/',
+  OfferId = '/offer/:id',
   Favorites = '/favorites',
   PageNotFound = '*',
 }

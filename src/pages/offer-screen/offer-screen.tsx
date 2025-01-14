@@ -1,32 +1,31 @@
-import {filterOffersByCity} from '../../utils/common';
-import {Cities} from '../../utils/const';
-import {TOffer, TReview} from '../../utils/types';
+import {getScreenData} from '../../utils/common';
+import {MAX_NEARBY_OFFERS} from '../../utils/const';
 import OfferNearPlaces from '../../components/offer-near-places';
 import OfferDetails from '../../components/offer-details';
-import {offerPreviews} from '../../mocks/offer-previews';
 import useMapData from '../../hooks/use-map-data';
+import {offer} from '../../mocks/offer';
 
-type TOfferPageProps = {
-  offer: TOffer;
-  reviews: TReview[];
-};
-
-export default function OfferScreen({offer, reviews}: TOfferPageProps): JSX.Element {
-  const currentCity = Cities[3];
-  const nearOffers = filterOffersByCity(offerPreviews, currentCity);
+export default function OfferScreen(): JSX.Element {
+  const [, offers] = getScreenData();
+  const nearOffers = offers.filter((item) => item.id !== offer.id).slice(0, MAX_NEARBY_OFFERS);
+  const dataForPins = [...nearOffers, offer];
 
   const {
     cityObjectForMap,
     pointsForMap,
-    currentActivePoint,
-    handleCardHover
-  } = useMapData(nearOffers);
+    currentActivePoint
+  } = useMapData(dataForPins, offer);
 
   return (
     <main className="page__main page__main--offer">
-      <OfferDetails offer={offer} reviews={reviews} cityObjectForMap={cityObjectForMap} pointsForMap={pointsForMap} currentActivePoint={currentActivePoint}/>
+      <OfferDetails
+        offer={offer}
+        cityObjectForMap={cityObjectForMap}
+        pointsForMap={pointsForMap}
+        currentActivePoint={currentActivePoint}
+      />
       <div className="container">
-        <OfferNearPlaces nearOffers={nearOffers} handleCardHover={handleCardHover}/>
+        <OfferNearPlaces nearOffers={nearOffers}/>
       </div>
     </main>
   );

@@ -1,5 +1,6 @@
-import {TCity, TFavoritesObject, TMapCity, TMapPoint, TOfferPreview} from './types.ts';
-import {AuthorizationStatus, RATING_COEFFICIENT} from './const.ts';
+import {TCity, TFavoritesObject, TMapCity, TMapPoint, TOffer, TOfferPreview} from './types.ts';
+import {AuthorizationStatus, Cities, RATING_COEFFICIENT} from './const.ts';
+import {offerPreviews} from '../mocks/offer-previews';
 
 export function calculateRatingWidth(rating: number): number {
   return Math.round(rating) * RATING_COEFFICIENT;
@@ -36,13 +37,22 @@ export function adaptCityObjectToMap(city: TCity): TMapCity {
   };
 }
 
-export function adaptOffersToMapPoints(offers: TOfferPreview[]): TMapPoint[] {
-  return offers.map((offer) => (
-    {
-      id: offer.id,
-      title: offer.title,
-      lat: offer.location.latitude,
-      lng: offer.location.longitude
-    }
-  ));
+export function adaptOfferToMapPoint(offer: TOfferPreview | TOffer): TMapPoint {
+  return {
+    id: offer.id,
+    title: offer.title,
+    lat: offer.location.latitude,
+    lng: offer.location.longitude
+  };
+}
+
+export function adaptOffersToMapPoints(offers: Array<TOfferPreview | TOffer>): TMapPoint[] {
+  return offers.map((offer) => adaptOfferToMapPoint(offer));
+}
+
+export function getScreenData() {
+  const currentCityName = Cities[3];
+  const offers = filterOffersByCity(offerPreviews, currentCityName);
+
+  return [currentCityName, offers] as const;
 }

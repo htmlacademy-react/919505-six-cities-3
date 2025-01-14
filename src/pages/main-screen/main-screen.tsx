@@ -1,12 +1,9 @@
-import {filterOffersByCity} from '../../utils/common';
-import {Cities} from '../../utils/const';
+import {getScreenData} from '../../utils/common';
 import CitiesNavList from '../../components/cities-nav-list';
 import MainContainer from '../../components/main-container';
-import {offerPreviews} from '../../mocks/offer-previews';
 
 function MainScreen(): JSX.Element {
-  const currentCityName = Cities[3];
-  const currentCityOffers = filterOffersByCity(offerPreviews, currentCityName);
+  const [currentCityName, currentCityOffers ] = getScreenData();
   const isEmpty = currentCityOffers.length === 0;
 
   return (

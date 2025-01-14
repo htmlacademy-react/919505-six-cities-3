@@ -14,20 +14,21 @@ type TMapProps = {
 
 const URL_MARKER_DEFAULT = 'img/pin.svg';
 const URL_MARKER_CURRENT = 'img/pin-active.svg';
-const ICON_WIDTH = 27;
-const ICON_HEIGHT = 39;
+const ICON_ANCHOR = 14;
+const ICON_WIDTH = 28;
+const ICON_HEIGHT = 40;
 
 
 const defaultCustomIcon = new Icon({
   iconUrl: URL_MARKER_DEFAULT,
   iconSize: [ICON_WIDTH, ICON_HEIGHT],
-  iconAnchor: [ICON_WIDTH, ICON_HEIGHT]
+  iconAnchor: [ICON_ANCHOR, ICON_HEIGHT]
 });
 
 const currentCustomIcon = new Icon({
   iconUrl: URL_MARKER_CURRENT,
   iconSize: [ICON_WIDTH, ICON_HEIGHT],
-  iconAnchor: [ICON_WIDTH, ICON_HEIGHT]
+  iconAnchor: [ICON_ANCHOR, ICON_HEIGHT]
 });
 
 function getStyle(mapType?: MapType) {
