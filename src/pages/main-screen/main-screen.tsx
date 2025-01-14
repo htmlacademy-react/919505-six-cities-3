@@ -1,12 +1,12 @@
 import {OfferCardParams} from '../../utils/const';
-import {OfferPreview} from '../../utils/types';
+import {TOfferPreview} from '../../utils/types';
 import CitiesNavList from '../../components/cities-nav-list';
 import OffersSortingPanel from '../../components/offers-sorting-panel';
 import OfferCardList from '../../components/offer-card-list';
 
 type MainPageProps = {
   currentCity: string;
-  offers: OfferPreview[];
+  offers: TOfferPreview[];
 }
 
 function createEmptyOffersList(currentCity: string) {
@@ -20,7 +20,7 @@ function createEmptyOffersList(currentCity: string) {
   );
 }
 
-function createOffersList(offers: OfferPreview[]) {
+function createOffersList(offers: TOfferPreview[]) {
   return (
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>

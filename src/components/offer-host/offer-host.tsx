@@ -1,13 +1,13 @@
-import {User} from '../../utils/types';
+import {TUser} from '../../utils/types';
 import OfferDescription from '../offer-description';
 
 type OfferHostProps = {
-  host: User;
+  host: TUser;
   description: string;
 };
 
 export default function OfferHost({host, description}: OfferHostProps): JSX.Element {
-  const {name, avatarUrl, isPro}: User = host;
+  const {name, avatarUrl, isPro}: TUser = host;
 
   return (
     <div className="offer__host">

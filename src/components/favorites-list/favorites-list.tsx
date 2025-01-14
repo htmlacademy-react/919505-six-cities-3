@@ -1,8 +1,8 @@
-import {FavoritesObject} from '../../utils/types';
+import {TFavoritesObject} from '../../utils/types';
 import FavoritesItem from '../favorites-item';
 
 type FavoritesListProps = {
-  favoritesObject: FavoritesObject;
+  favoritesObject: TFavoritesObject;
 }
 
 export default function FavoritesList({favoritesObject}: FavoritesListProps): JSX.Element {

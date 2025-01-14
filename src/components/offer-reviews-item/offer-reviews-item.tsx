@@ -1,10 +1,10 @@
 import dayjs from 'dayjs';
 import {REVIEW_DATE_FORMAT, RatingPanelType} from '../../utils/const';
-import {Review} from '../../utils/types';
+import {TReview} from '../../utils/types';
 import RatingPanel from '../rating-panel';
 
 type OfferReviewsItemProps = {
-  review: Review;
+  review: TReview;
 }
 
 export default function OfferReviewsItem({review}: OfferReviewsItemProps): JSX.Element {

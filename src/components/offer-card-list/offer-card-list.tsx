@@ -1,10 +1,10 @@
 import {useState} from 'react';
-import {OfferPreview} from '../../utils/types';
+import {TOfferPreview} from '../../utils/types';
 import {getContainerClassName} from './utils';
 import OfferCard from '../offer-card';
 
 type OfferCardListProps = {
-  offers: OfferPreview[];
+  offers: TOfferPreview[];
   cardType: string;
 };
 

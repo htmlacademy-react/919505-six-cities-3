@@ -1,9 +1,9 @@
 import {OfferCardParams} from '../../utils/const';
-import {OfferPreview} from '../../utils/types';
+import {TOfferPreview} from '../../utils/types';
 import OfferCardList from '../offer-card-list';
 
 type OfferNearPlacesProps = {
-  nearOffers: OfferPreview[];
+  nearOffers: TOfferPreview[];
 };
 
 export default function OfferNearPlaces({nearOffers}: OfferNearPlacesProps): JSX.Element {

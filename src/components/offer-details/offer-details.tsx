@@ -1,6 +1,6 @@
 import {getAuthorizationStatus} from '../../utils/common';
 import {AuthorizationStatus, BookmarkButtonParams, MAX_OFFER_PHOTOS, RatingPanelType} from '../../utils/const.ts';
-import {Offer, Review} from '../../utils/types';
+import {TOffer, TReview} from '../../utils/types';
 import OfferImage from '../offer-image';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
@@ -11,8 +11,8 @@ import OfferReviewsList from '../offer-reviews-list';
 import OfferReviewForm from '../offer-review-form';
 
 type OfferProps = {
-  offer: Offer;
-  reviews: Review[];
+  offer: TOffer;
+  reviews: TReview[];
 };
 
 export default function OfferDetails({offer, reviews}: OfferProps): JSX.Element {

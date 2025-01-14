@@ -1,12 +1,12 @@
 import {Link} from 'react-router-dom';
 import {AppRoute, BookmarkButtonParams, OfferCardParams, RatingPanelType} from '../../utils/const';
-import {OfferPreview} from '../../utils/types';
+import {TOfferPreview} from '../../utils/types';
 import {getParentBlockName} from './utils';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
 
 type PlaceCardProps = {
-  cardData: OfferPreview;
+  cardData: TOfferPreview;
   cardType: string;
   onCardActivate: (cardId: string) => void;
 };
@@ -21,7 +21,7 @@ export default function OfferCard({cardData, cardType, onCardActivate}: PlaceCar
     isFavorite,
     rating,
     isPremium
-  }: OfferPreview = cardData;
+  }: TOfferPreview = cardData;
 
   const cardParentBlockName = getParentBlockName(cardType);
 

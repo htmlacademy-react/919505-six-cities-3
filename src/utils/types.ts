@@ -1,60 +1,51 @@
-export type AppProps = {
-  currentCity: string;
-  offerPreviews: OfferPreview[] | [];
-  offer: Offer;
-  reviews: Review[] | [];
-  favoritesObject: FavoritesObject;
-  favoritesQuantity: number;
-};
-
-type Location = {
+type TLocation = {
   latitude: number;
   longitude: number;
   zoom: number;
 };
 
-type OfferScaffolding = {
+type TOfferScaffolding = {
   id: string;
   title: string;
   type: string;
   price: number;
   city: {
     name: string;
-    location: Location;
+    location: TLocation;
   };
-  location: Location;
+  location: TLocation;
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;
 };
 
-export type User = {
+export type TUser = {
   name: string;
   avatarUrl: string;
   isPro: boolean;
 };
 
-export type OfferPreview = OfferScaffolding & {
+export type TOfferPreview = TOfferScaffolding & {
   previewImage: string;
 };
 
-export type Offer = OfferScaffolding & {
+export type TOffer = TOfferScaffolding & {
   description: string;
   bedrooms: number;
   goods: string[];
-  host: User;
+  host: TUser;
   images: string[];
   maxAdults: number;
 };
 
-export type Review = {
+export type TReview = {
   id: string;
   date: string;
-  user: User;
+  user: TUser;
   comment: string;
   rating: number;
 };
 
-export type FavoritesObject = {
-  [city: string]: OfferPreview[];
+export type TFavoritesObject = {
+  [city: string]: TOfferPreview[];
 };

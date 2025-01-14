@@ -1,11 +1,11 @@
-import {OfferPreview, Offer, Review} from '../../utils/types';
+import {TOfferPreview, TOffer, TReview} from '../../utils/types';
 import OfferNearPlaces from '../../components/offer-near-places';
 import OfferDetails from '../../components/offer-details';
 
 type OfferPageProps = {
-  offer: Offer;
-  reviews: Review[];
-  nearOffers: OfferPreview[];
+  offer: TOffer;
+  reviews: TReview[];
+  nearOffers: TOfferPreview[];
 };
 
 export default function OfferScreen({offer, reviews, nearOffers}: OfferPageProps): JSX.Element {

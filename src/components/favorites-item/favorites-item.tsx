@@ -1,10 +1,10 @@
 import {OfferCardParams} from '../../utils/const';
-import {OfferPreview} from '../../utils/types';
+import {TOfferPreview} from '../../utils/types';
 import OfferCardList from '../offer-card-list';
 
 type FavoritesItemProps = {
   city: string;
-  offers: OfferPreview[];
+  offers: TOfferPreview[];
 }
 
 export default function FavoritesItem({city, offers}: FavoritesItemProps): JSX.Element {

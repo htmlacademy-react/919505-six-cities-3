@@ -1,8 +1,8 @@
-import {FavoritesObject} from '../../utils/types';
+import {TFavoritesObject} from '../../utils/types';
 import FavoritesList from '../../components/favorites-list';
 
 type FavoritesPageProps = {
-  favoritesObject: FavoritesObject;
+  favoritesObject: TFavoritesObject;
 }
 
 function createEmptyStatusContainer() {
@@ -19,7 +19,7 @@ function createEmptyStatusContainer() {
   );
 }
 
-function createFavoritesList(favoritesObject: FavoritesObject) {
+function createFavoritesList(favoritesObject: TFavoritesObject) {
   return (
     <>
       <h1 className="favorites__title">Saved listing</h1>
