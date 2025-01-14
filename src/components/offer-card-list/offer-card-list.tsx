@@ -5,7 +5,7 @@ import OfferCard from '../offer-card';
 type TOfferCardListProps = {
   offers: TOfferPreview[];
   cardType: string;
-  handleCardHover: (cardId?: string) => void;
+  handleCardHover?: (cardId?: string) => void;
 };
 
 export default function OfferCardList({offers, cardType, handleCardHover}: TOfferCardListProps): JSX.Element {

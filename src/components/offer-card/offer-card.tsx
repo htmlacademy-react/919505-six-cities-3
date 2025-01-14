@@ -8,7 +8,7 @@ import RatingPanel from '../rating-panel';
 type TPlaceCardProps = {
   cardData: TOfferPreview;
   cardType: string;
-  handleCardHover: (cardId?: string) => void;
+  handleCardHover?: (cardId?: string) => void;
 };
 
 export default function OfferCard({cardData, cardType, handleCardHover}: TPlaceCardProps): JSX.Element {
@@ -26,11 +26,15 @@ export default function OfferCard({cardData, cardType, handleCardHover}: TPlaceC
   const cardParentBlockName = getParentBlockName(cardType);
 
   const mouseEnterHandler = () => {
-    handleCardHover(id);
+    if (handleCardHover) {
+      handleCardHover(id);
+    }
   };
 
   const mouseLeaveHandler = () => {
-    handleCardHover();
+    if (handleCardHover) {
+      handleCardHover();
+    }
   };
 
   return (
