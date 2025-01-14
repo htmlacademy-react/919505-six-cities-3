@@ -22,3 +22,7 @@ export function generateFavoriteOffersObject(offers: TOfferPreview[]): TFavorite
 export function getAuthorizationStatus() {
   return AuthorizationStatus.Auth;
 }
+
+export function filterOffersByCity(offers: TOfferPreview[], city: string) {
+  return offers.filter((offerPreview) => offerPreview.city.name === city);
+}

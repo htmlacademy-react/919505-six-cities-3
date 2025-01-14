@@ -9,11 +9,9 @@ import FavoritesScreen from '../../pages/favorites-screen';
 import OfferScreen from '../../pages/offer-screen';
 import NotFoundScreen from '../../pages/not-found-screen';
 import ScrollToTop from '../scroll-to-top';
-import {TFavoritesObject, TOffer, TOfferPreview, TReview} from '../../utils/types';
+import {TFavoritesObject, TOffer, TReview} from '../../utils/types';
 
 type TAppProps = {
-  currentCity: string;
-  offerPreviews: TOfferPreview[] | [];
   offer: TOffer;
   reviews: TReview[] | [];
   favoritesObject: TFavoritesObject;
@@ -21,7 +19,7 @@ type TAppProps = {
 };
 
 export default function App(props: TAppProps) {
-  const {currentCity, offerPreviews, offer, reviews, favoritesObject, favoritesQuantity} = props;
+  const {offer, reviews, favoritesObject, favoritesQuantity} = props;
   return(
     <BrowserRouter>
       <ScrollToTop/>
@@ -33,7 +31,7 @@ export default function App(props: TAppProps) {
 
           <Route
             index
-            element={<MainScreen currentCity={currentCity} offers={offerPreviews}/>}
+            element={<MainScreen/>}
           />
 
           <Route
@@ -56,7 +54,7 @@ export default function App(props: TAppProps) {
 
           <Route
             path={AppRoute.Offer}
-            element={<OfferScreen offer={offer} reviews={reviews} nearOffers={offerPreviews}/>}
+            element={<OfferScreen offer={offer} reviews={reviews}/>}
           />
 
           <Route

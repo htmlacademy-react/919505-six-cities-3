@@ -1,13 +1,10 @@
-import {OfferCardParams} from '../../utils/const';
+import {Cities, OfferCardParams} from '../../utils/const';
 import {TOfferPreview} from '../../utils/types';
 import CitiesNavList from '../../components/cities-nav-list';
 import OffersSortingPanel from '../../components/offers-sorting-panel';
 import OfferCardList from '../../components/offer-card-list';
-
-type TMainPageProps = {
-  currentCity: string;
-  offers: TOfferPreview[];
-}
+import {offerPreviews} from '../../mocks/offer-previews';
+import {filterOffersByCity} from '../../utils/common';
 
 function createEmptyOffersList(currentCity: string) {
   return (
@@ -31,8 +28,10 @@ function createOffersList(offers: TOfferPreview[]) {
   );
 }
 
-function MainScreen({currentCity, offers}: TMainPageProps): JSX.Element {
-  const isEmpty = offers.length === 0;
+function MainScreen(): JSX.Element {
+  const currentCity = Cities[3];
+  const currentCityOffers = filterOffersByCity(offerPreviews, currentCity);
+  const isEmpty = currentCityOffers.length === 0;
 
   return (
     <main className={`page__main page__main--index ${isEmpty ? 'page__main--index-empty' : ''}`}>
@@ -47,7 +46,7 @@ function MainScreen({currentCity, offers}: TMainPageProps): JSX.Element {
         <div className={`cities__places-container ${isEmpty ? 'cities__places-container--empty' : ''} container`}>
           {isEmpty
             ? createEmptyOffersList(currentCity)
-            : createOffersList(offers)}
+            : createOffersList(currentCityOffers)}
           <div className="cities__right-section">
             {!isEmpty && <section className="cities__map map"></section>}
           </div>
