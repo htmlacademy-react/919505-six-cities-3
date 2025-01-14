@@ -1,3 +1,5 @@
+import {ChangeEventHandler} from 'react';
+
 type TLocation = {
   latitude: number;
   longitude: number;
@@ -18,6 +20,9 @@ type TOfferScaffolding = {
   isPremium: boolean;
   rating: number;
 };
+
+export type TInputChangeHandler = ChangeEventHandler<HTMLInputElement>;
+export type TReviewChangeHandler = ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 
 export type TUser = {
   name: string;

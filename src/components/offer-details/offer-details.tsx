@@ -6,7 +6,7 @@ import RatingPanel from '../rating-panel';
 import OfferFeaturesList from '../offer-features-list';
 import OfferInsideList from '../offer-inside-list';
 import OfferHost from '../offer-host';
-import ReviewsSection from '../reviews-section';
+import OfferReviewsSection from '../offer-reviews-section';
 
 type TOfferProps = {
   offer: TOffer;
@@ -58,7 +58,7 @@ export default function OfferDetails({offer, reviews}: TOfferProps): JSX.Element
 
           <OfferInsideList goods={goods}/>
           <OfferHost host={host} description={description}/>
-          <ReviewsSection reviews={reviews}/>
+          <OfferReviewsSection reviews={reviews}/>
         </div>
       </div>
       <section className="offer__map map"></section>

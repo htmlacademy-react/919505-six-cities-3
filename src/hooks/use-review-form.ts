@@ -1,28 +1,26 @@
-import {ChangeEventHandler, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
+import {TReviewChangeHandler} from '../utils/types';
 import {ReviewLength} from '../utils/const';
 
 export function useReviewForm() {
-  const [rating, setRating] = useState('');
-  const [comment, setComment] = useState({value: '', isValid: false});
+  const [review, setReview] = useState({rating: 0, review: ''});
   const [isFormValid, setIsFormValid] = useState(false);
 
   useEffect(() => {
-    if(comment.isValid && rating) {
+    const commentLength = review.review.length;
+    const isReviewValid = commentLength >= ReviewLength.MIN && commentLength <= ReviewLength.MAX;
+
+    if(isReviewValid && review.rating) {
       setIsFormValid(true);
     } else {
       setIsFormValid(false);
     }
-  }, [comment, rating]);
+  }, [review]);
 
-  const handleRatingChange: ChangeEventHandler<HTMLInputElement> = (evt) => {
-    setRating(evt.target.value);
+  const handleReviewChange: TReviewChangeHandler = (evt) => {
+    const {name, value} = evt.target;
+    setReview({...review, [name]: value});
   };
 
-  const handleCommentChange: ChangeEventHandler<HTMLTextAreaElement> = (evt) => {
-    const newValue = evt.target.value;
-    const isCommentValid = newValue.length >= ReviewLength.MIN && newValue.length <= ReviewLength.MAX;
-    setComment({value: newValue, isValid: isCommentValid});
-  };
-
-  return {comment: comment.value, rating, isFormValid, handleRatingChange, handleCommentChange};
+  return {review, isFormValid, handleReviewChange};
 }

@@ -1,15 +1,18 @@
 import {RatingInputTitles, ReviewLength} from '../../utils/const';
 import RatingInput from '../rating-input';
 import {useReviewForm} from '../../hooks/use-review-form';
+import {TReviewChangeHandler} from '../../utils/types';
 
 export default function OfferReviewForm(): JSX.Element {
   const {
-    comment,
-    rating,
+    review,
     isFormValid,
-    handleRatingChange,
-    handleCommentChange
+    handleReviewChange,
   } = useReviewForm();
+
+  const reviewChangeHandler: TReviewChangeHandler = (evt) => {
+    handleReviewChange(evt);
+  };
 
   return (
     <form className="reviews__form form" action="#" method="post">
@@ -19,9 +22,9 @@ export default function OfferReviewForm(): JSX.Element {
           <RatingInput
             key={title}
             value={(RatingInputTitles.length - i).toString()}
-            rating={rating}
+            rating={review.rating.toString()}
             title={title}
-            onRatingChange={handleRatingChange}
+            onRatingChange={reviewChangeHandler}
           />)
         )}
       </div>
@@ -33,8 +36,8 @@ export default function OfferReviewForm(): JSX.Element {
         placeholder="Tell how was your stay, what you like and what can be improved"
         minLength={ReviewLength.MIN}
         maxLength={ReviewLength.MAX}
-        onChange={handleCommentChange}
-        value={comment}
+        onChange={reviewChangeHandler}
+        value={review.review}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">

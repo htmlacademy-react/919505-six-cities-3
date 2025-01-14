@@ -1,13 +1,17 @@
-import {ChangeEvent} from 'react';
+import {TInputChangeHandler} from '../../utils/types';
 
 type TRatingInputProps = {
   value: string;
   rating: string;
   title: string;
-  onRatingChange: (evt: ChangeEvent<HTMLInputElement>) => void;
+  onRatingChange: TInputChangeHandler;
 }
 
 export default function RatingInput({value, rating, title, onRatingChange}: TRatingInputProps): JSX.Element {
+  const ratingChangeHandler: TInputChangeHandler = (evt) => {
+    onRatingChange(evt);
+  };
+
   return (
     <>
       <input
@@ -17,7 +21,7 @@ export default function RatingInput({value, rating, title, onRatingChange}: TRat
         id={`${value}-stars`}
         type="radio"
         checked={rating === value}
-        onChange={onRatingChange}
+        onChange={ratingChangeHandler}
       />
       <label
         htmlFor={`${value}-stars`}

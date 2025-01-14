@@ -8,7 +8,7 @@ type TReviewsSectionProps = {
   reviews: TReview[];
 };
 
-export default function ReviewsSection({reviews}: TReviewsSectionProps): JSX.Element {
+export default function OfferReviewsSection({reviews}: TReviewsSectionProps): JSX.Element {
   const isAuthorized = getAuthorizationStatus() === AuthorizationStatus.Auth;
 
   return (
