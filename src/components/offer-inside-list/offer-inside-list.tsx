@@ -1,10 +1,10 @@
 import OfferInsideItem from '../offer-inside-item';
 
-type OfferInsideListProps = {
+type TOfferInsideListProps = {
   goods: string[];
 }
 
-export default function OfferInsideList({goods}: OfferInsideListProps): JSX.Element {
+export default function OfferInsideList({goods}: TOfferInsideListProps): JSX.Element {
   return (
     <div className="offer__inside">
       <h2 className="offer__inside-title">What&apos;s inside</h2>

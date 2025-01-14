@@ -2,11 +2,11 @@ import {Link} from 'react-router-dom';
 import {getAuthorizationStatus} from '../../utils/common';
 import {AppRoute, AuthorizationStatus} from '../../utils/const';
 
-type NavBlockProps = {
+type TNavBlockProps = {
   favoritesQuantity: number;
 }
 
-export default function NavBlock({favoritesQuantity}: NavBlockProps): JSX.Element {
+export default function NavBlock({favoritesQuantity}: TNavBlockProps): JSX.Element {
   const isAuthorized = getAuthorizationStatus() === AuthorizationStatus.Auth;
 
   return (

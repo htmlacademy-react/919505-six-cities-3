@@ -3,6 +3,9 @@ const MAX_OFFER_PHOTOS = 6;
 const OFFER_DETAILS_CHECK_NUMBER = 1;
 const REVIEW_DATE_FORMAT = 'MMMM YYYY';
 
+export const URL_MARKER_DEFAULT = 'img/pin.svg';
+export const URL_MARKER_CURRENT = 'img/pin-active.svg';
+
 const RatingInputTitles = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
 
 enum AuthorizationStatus {

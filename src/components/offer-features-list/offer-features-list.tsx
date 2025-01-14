@@ -1,12 +1,12 @@
 import {OFFER_DETAILS_CHECK_NUMBER} from '../../utils/const';
 
-type OfferFeaturesListProps = {
+type TOfferFeaturesListProps = {
   type: string;
   bedrooms: number;
   maxAdults: number;
 }
 
-export default function OfferFeaturesList({type, bedrooms, maxAdults}: OfferFeaturesListProps): JSX.Element {
+export default function OfferFeaturesList({type, bedrooms, maxAdults}: TOfferFeaturesListProps): JSX.Element {
   return (
     <ul className="offer__features">
       <li className="offer__feature offer__feature--entire">

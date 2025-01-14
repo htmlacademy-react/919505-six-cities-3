@@ -1,11 +1,11 @@
 import {Cities} from '../../utils/const';
 import CitiesNavItem from '../cities-nav-item';
 
-type CitiesNavListProps = {
+type TCitiesNavListProps = {
   currentCity: string;
 };
 
-export default function CitiesNavList({currentCity}: CitiesNavListProps): JSX.Element {
+export default function CitiesNavList({currentCity}: TCitiesNavListProps): JSX.Element {
   return (
     <ul className="locations__list tabs__list">
       {Cities.map((city) => (

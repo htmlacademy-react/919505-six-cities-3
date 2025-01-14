@@ -1,15 +1,20 @@
-import {FavoritesObject} from '../../utils/types';
+import {TFavoritesObject} from '../../utils/types';
 import FavoritesItem from '../favorites-item';
 
-type FavoritesListProps = {
-  favoritesObject: FavoritesObject;
+type TFavoritesListProps = {
+  favoritesObject: TFavoritesObject;
 }
 
-export default function FavoritesList({favoritesObject}: FavoritesListProps): JSX.Element {
+export default function FavoritesList({favoritesObject}: TFavoritesListProps): JSX.Element {
 
   return (
-    <ul className="favorites__list">
-      {Object.keys(favoritesObject).map((city) => <FavoritesItem city={city} offers={favoritesObject[city]} key={city}/>)}
-    </ul>
+    <>
+      <h1 className="favorites__title">Saved listing</h1>
+      <ul className="favorites__list">
+        {Object.keys(favoritesObject).map((city) =>
+          <FavoritesItem city={city} offers={favoritesObject[city]} key={city}/>
+        )}
+      </ul>
+    </>
   );
 }

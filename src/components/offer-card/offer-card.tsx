@@ -1,17 +1,17 @@
 import {Link} from 'react-router-dom';
 import {AppRoute, BookmarkButtonParams, OfferCardParams, RatingPanelType} from '../../utils/const';
-import {OfferPreview} from '../../utils/types';
+import {TOfferPreview} from '../../utils/types';
 import {getParentBlockName} from './utils';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
 
-type PlaceCardProps = {
-  cardData: OfferPreview;
+type TPlaceCardProps = {
+  cardData: TOfferPreview;
   cardType: string;
-  onCardActivate: (cardId: string) => void;
+  handleCardHover?: (cardId?: string) => void;
 };
 
-export default function OfferCard({cardData, cardType, onCardActivate}: PlaceCardProps): JSX.Element {
+export default function OfferCard({cardData, cardType, handleCardHover}: TPlaceCardProps): JSX.Element {
   const {
     id,
     title,
@@ -21,20 +21,24 @@ export default function OfferCard({cardData, cardType, onCardActivate}: PlaceCar
     isFavorite,
     rating,
     isPremium
-  }: OfferPreview = cardData;
+  }: TOfferPreview = cardData;
 
   const cardParentBlockName = getParentBlockName(cardType);
 
-  const handleCardEnter = () => {
-    onCardActivate(id);
+  const mouseEnterHandler = () => {
+    if (handleCardHover) {
+      handleCardHover(id);
+    }
   };
 
-  const handleCardLeave = () => {
-    onCardActivate('');
+  const mouseLeaveHandler = () => {
+    if (handleCardHover) {
+      handleCardHover();
+    }
   };
 
   return (
-    <article className={`${cardParentBlockName}__card place-card`} onMouseEnter={handleCardEnter} onMouseLeave={handleCardLeave}>
+    <article className={`${cardParentBlockName}__card place-card`} onMouseEnter={mouseEnterHandler} onMouseLeave={mouseLeaveHandler}>
       {isPremium && <div className="place-card__mark"><span>Premium</span></div>}
       <div className={`${cardParentBlockName}__image-wrapper place-card__image-wrapper`}>
         <Link to={AppRoute.Offer + id}>

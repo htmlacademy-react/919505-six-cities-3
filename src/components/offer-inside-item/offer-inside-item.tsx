@@ -1,8 +1,8 @@
-type OfferInsideItemProps = {
+type TOfferInsideItemProps = {
   feature: string;
 }
 
-export default function OfferInsideItem({feature}: OfferInsideItemProps): JSX.Element {
+export default function OfferInsideItem({feature}: TOfferInsideItemProps): JSX.Element {
   return (
     <li className="offer__inside-item">
       {feature}

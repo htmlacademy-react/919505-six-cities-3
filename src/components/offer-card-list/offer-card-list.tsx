@@ -1,22 +1,19 @@
-import {useState} from 'react';
-import {OfferPreview} from '../../utils/types';
+import {TOfferPreview} from '../../utils/types';
 import {getContainerClassName} from './utils';
 import OfferCard from '../offer-card';
 
-type OfferCardListProps = {
-  offers: OfferPreview[];
+type TOfferCardListProps = {
+  offers: TOfferPreview[];
   cardType: string;
+  handleCardHover?: (cardId?: string) => void;
 };
 
-export default function OfferCardList({offers, cardType}: OfferCardListProps): JSX.Element {
+export default function OfferCardList({offers, cardType, handleCardHover}: TOfferCardListProps): JSX.Element {
   const containerClassName = getContainerClassName(cardType);
-
-  const [currentActiveOffer, setCurrentActiveOffer] = useState('');
 
   return (
     <div className={containerClassName}>
-      {currentActiveOffer && <span className="visually-hidden">{currentActiveOffer}</span>}
-      {offers.map((offer) => <OfferCard cardData={offer} cardType={cardType} onCardActivate={setCurrentActiveOffer} key={offer.id}/>)}
+      {offers.map((offer) => <OfferCard cardData={offer} cardType={cardType} handleCardHover={handleCardHover} key={offer.id}/>)}
     </div>
   );
 }

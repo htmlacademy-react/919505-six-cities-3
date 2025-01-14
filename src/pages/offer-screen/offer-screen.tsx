@@ -1,14 +1,19 @@
-import {OfferPreview, Offer, Review} from '../../utils/types';
+import {TOffer, TReview} from '../../utils/types';
 import OfferNearPlaces from '../../components/offer-near-places';
 import OfferDetails from '../../components/offer-details';
+import {filterOffersByCity} from '../../utils/common';
+import {offerPreviews} from '../../mocks/offer-previews';
+import {Cities} from '../../utils/const';
 
-type OfferPageProps = {
-  offer: Offer;
-  reviews: Review[];
-  nearOffers: OfferPreview[];
+type TOfferPageProps = {
+  offer: TOffer;
+  reviews: TReview[];
 };
 
-export default function OfferScreen({offer, reviews, nearOffers}: OfferPageProps): JSX.Element {
+export default function OfferScreen({offer, reviews}: TOfferPageProps): JSX.Element {
+  const currentCity = Cities[3];
+  const nearOffers = filterOffersByCity(offerPreviews, currentCity);
+
   return (
     <main className="page__main page__main--offer">
       <OfferDetails offer={offer} reviews={reviews}/>
