@@ -1,20 +1,22 @@
-const RATING_COEFFICIENT = 20;
-const MAX_OFFER_PHOTOS = 6;
-const OFFER_DETAILS_CHECK_NUMBER = 1;
-const REVIEW_DATE_FORMAT = 'MMMM YYYY';
+export const RATING_COEFFICIENT = 20;
+export const MAX_OFFER_PHOTOS = 6;
+export const OFFER_DETAILS_CHECK_NUMBER = 1;
+export const REVIEW_DATE_FORMAT = 'MMMM YYYY';
 
-export const URL_MARKER_DEFAULT = 'img/pin.svg';
-export const URL_MARKER_CURRENT = 'img/pin-active.svg';
+export const RatingInputTitles = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
 
-const RatingInputTitles = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
+export enum MapType {
+  Main = 'Main',
+  Offer = 'Offer'
+}
 
-enum AuthorizationStatus {
+export enum AuthorizationStatus {
   Auth = 'Auth',
   NoAuth = 'NoAuth',
   Unknown = 'Unknown',
 }
 
-enum AppRoute {
+export enum AppRoute {
   Root = '/',
   Login = '/login',
   Offer = '/offer/:id',
@@ -22,18 +24,18 @@ enum AppRoute {
   PageNotFound = '*',
 }
 
-enum RatingPanelType {
+export enum RatingPanelType {
   Reviews = 'Reviews',
   Offer = 'Offer',
   Card = 'Card'
 }
 
-const ReviewLength = {
+export const ReviewLength = {
   MIN: 50,
   MAX: 300
 };
 
-const OfferCardParams = {
+export const OfferCardParams = {
   type: {
     default: 'default',
     near: 'near',
@@ -51,7 +53,7 @@ const OfferCardParams = {
   }
 };
 
-const BookmarkButtonParams = {
+export const BookmarkButtonParams = {
   type: {
     card: 'card',
     view: 'view',
@@ -68,7 +70,7 @@ const BookmarkButtonParams = {
   }
 };
 
-const Cities = [
+export const Cities = [
   'Paris',
   'Cologne',
   'Brussels',
@@ -76,5 +78,3 @@ const Cities = [
   'Hamburg',
   'Dusseldorf'
 ];
-
-export {RATING_COEFFICIENT, MAX_OFFER_PHOTOS, REVIEW_DATE_FORMAT, OFFER_DETAILS_CHECK_NUMBER, RatingInputTitles, ReviewLength, AuthorizationStatus, AppRoute, OfferCardParams, RatingPanelType, BookmarkButtonParams, Cities};

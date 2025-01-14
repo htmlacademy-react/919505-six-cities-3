@@ -1,7 +1,7 @@
 import {RatingInputTitles, ReviewLength} from '../../utils/const';
-import RatingInput from '../rating-input';
-import {useReviewForm} from '../../hooks/use-review-form';
 import {TReviewChangeHandler} from '../../utils/types';
+import RatingInput from '../rating-input';
+import useReviewForm from '../../hooks/use-review-form';
 
 export default function OfferReviewForm(): JSX.Element {
   const {

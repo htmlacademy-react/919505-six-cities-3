@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {TReviewChangeHandler} from '../utils/types';
 import {ReviewLength} from '../utils/const';
 
-export function useReviewForm() {
+export default function useReviewForm() {
   const [review, setReview] = useState({rating: 0, review: ''});
   const [isFormValid, setIsFormValid] = useState(false);
 

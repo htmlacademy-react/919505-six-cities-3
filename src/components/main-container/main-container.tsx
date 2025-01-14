@@ -1,9 +1,8 @@
-import {useState} from 'react';
-import {adaptCityObjectToMap, adaptOffersToMapPoints} from '../../utils/common';
-import {TMapPoint, TOfferPreview} from '../../utils/types';
+import {TOfferPreview} from '../../utils/types';
 import OfferListEmpty from '../offer-list-empty';
 import OfferList from '../offer-list';
 import Map from '../map';
+import useMapData from '../../hooks/use-map-data';
 
 type TMainContainerProps = {
   currentCityName: string;
@@ -12,15 +11,12 @@ type TMainContainerProps = {
 }
 
 export default function MainContainer({currentCityName, currentCityOffers, isEmpty}: TMainContainerProps): JSX.Element {
-  const cityObjectForMap = adaptCityObjectToMap(currentCityOffers[0].city);
-  const pointsForMap: TMapPoint[] = adaptOffersToMapPoints(currentCityOffers);
-
-  const [currentActivePoint, setCurrentActivePoint] = useState<TMapPoint | null>(null);
-
-  const handleCardHover = (cardId?: string) => {
-    const currentPoint = pointsForMap.find((point) => point.id === cardId);
-    setCurrentActivePoint(currentPoint || null);
-  };
+  const {
+    cityObjectForMap,
+    pointsForMap,
+    currentActivePoint,
+    handleCardHover
+  } = useMapData(currentCityOffers);
 
   return (
     <div className="cities">

@@ -2,7 +2,7 @@ import {useEffect, useState, MutableRefObject, useRef} from 'react';
 import {Map, TileLayer} from 'leaflet';
 import {TMapCity} from '../utils/types';
 
-function useMap(
+export default function useMap(
   mapRef: MutableRefObject<HTMLElement | null>,
   city: TMapCity
 ): Map | null {
@@ -36,5 +36,3 @@ function useMap(
 
   return map;
 }
-
-export default useMap;
