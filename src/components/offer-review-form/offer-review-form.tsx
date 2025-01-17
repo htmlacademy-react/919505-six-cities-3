@@ -1,17 +1,18 @@
 import {RatingInputTitles, ReviewLength} from '../../utils/const';
-import {TReviewChangeHandler} from '../../utils/types';
+import {TFormChangeHandler, TReviewFormData} from '../../utils/types';
 import RatingInput from '../rating-input';
-import useReviewForm from '../../hooks/use-review-form';
+import useForm from '../../hooks/use-form';
 
 export default function OfferReviewForm(): JSX.Element {
   const {
-    review,
-    handleReviewChange,
-    isSubmitButtonDisabled,
-  } = useReviewForm();
+    formData,
+    handleFormChange,
+  } = useForm<TReviewFormData>({rating: 0, review: ''});
 
-  const reviewChangeHandler: TReviewChangeHandler = (evt) => {
-    handleReviewChange(evt);
+  const isSubmitButtonDisabled = formData.rating === 0 || formData.review.length < ReviewLength.MIN;
+
+  const reviewChangeHandler: TFormChangeHandler = (evt) => {
+    handleFormChange(evt);
   };
 
   return (
@@ -22,7 +23,7 @@ export default function OfferReviewForm(): JSX.Element {
           <RatingInput
             key={title}
             value={(RatingInputTitles.length - i).toString()}
-            rating={review.rating.toString()}
+            rating={formData.rating.toString()}
             title={title}
             onRatingChange={reviewChangeHandler}
           />)
@@ -36,7 +37,7 @@ export default function OfferReviewForm(): JSX.Element {
         placeholder="Tell how was your stay, what you like and what can be improved"
         maxLength={ReviewLength.MAX}
         onChange={reviewChangeHandler}
-        value={review.review}
+        value={formData.review}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
