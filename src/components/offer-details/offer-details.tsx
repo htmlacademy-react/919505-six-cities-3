@@ -35,7 +35,7 @@ export default function OfferDetails({offer, nearOffers}: TOfferProps): JSX.Elem
     cityObjectForMap,
     pointsForMap,
     currentActivePoint
-  } = useMapData([...nearOffers], offer);
+  } = useMapData(nearOffers, offer);
 
   return (
     <section className="offer">
