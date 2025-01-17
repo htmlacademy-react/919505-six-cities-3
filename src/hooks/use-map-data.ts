@@ -3,14 +3,16 @@ import {adaptCityObjectToMap, adaptOffersToMapPoints, adaptOfferToMapPoint} from
 import {TMapPoint, TOffer, TOfferPreview} from '../utils/types';
 
 export default function useMapData(offers: Array<TOfferPreview | TOffer>, defaultActiveOffer: TOffer | null = null) {
-  const cityObjectForMap = adaptCityObjectToMap(offers[0].city);
-  const pointsForMap: TMapPoint[] = adaptOffersToMapPoints(offers);
-
   let initialActivePoint: TMapPoint | null = null;
 
   if (defaultActiveOffer) {
+    //offers = [...offers, defaultActiveOffer];
+    offers.push(defaultActiveOffer);
     initialActivePoint = adaptOfferToMapPoint(defaultActiveOffer);
   }
+
+  const cityObjectForMap = adaptCityObjectToMap(offers[0].city);
+  const pointsForMap: TMapPoint[] = adaptOffersToMapPoints(offers);
 
   const [currentActivePoint, setCurrentActivePoint] = useState<TMapPoint | null>(initialActivePoint);
 
