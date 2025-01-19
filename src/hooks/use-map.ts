@@ -2,6 +2,10 @@ import {useEffect, useState, MutableRefObject, useRef} from 'react';
 import {Map, TileLayer} from 'leaflet';
 import {TMapCity} from '../utils/types';
 
+const DEFAULT_ZOOM = 10;
+const URL_TEMPLATE = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+const ATTRIBUTE = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
+
 export default function useMap(
   mapRef: MutableRefObject<HTMLElement | null>,
   city: TMapCity
@@ -16,16 +20,10 @@ export default function useMap(
           lat: city.lat,
           lng: city.lng
         },
-        zoom: 10
+        zoom: DEFAULT_ZOOM
       });
 
-      const layer = new TileLayer(
-        'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-        {
-          attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-        }
-      );
+      const layer = new TileLayer(URL_TEMPLATE, {attribution: ATTRIBUTE});
 
       instance.addLayer(layer);
 
