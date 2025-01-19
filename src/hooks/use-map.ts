@@ -4,7 +4,7 @@ import {TMapCity} from '../utils/types';
 
 const DEFAULT_ZOOM = 10;
 const URL_TEMPLATE = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
-const ATTRIBUTE = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
+const ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
 
 export default function useMap(
   mapRef: MutableRefObject<HTMLElement | null>,
@@ -23,7 +23,7 @@ export default function useMap(
         zoom: DEFAULT_ZOOM
       });
 
-      const layer = new TileLayer(URL_TEMPLATE, {attribution: ATTRIBUTE});
+      const layer = new TileLayer(URL_TEMPLATE, {attribution: ATTRIBUTION});
 
       instance.addLayer(layer);
 

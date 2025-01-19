@@ -50,6 +50,12 @@ export default function Map(props: TMapProps): JSX.Element {
 
   useEffect(() => {
     if (map) {
+      map.setView([city.lat, city.lng], city.zoom);
+    }
+  }, [city, map]);
+
+  useEffect(() => {
+    if (map) {
       const markerLayer = layerGroup().addTo(map);
       points.forEach((point) => {
         const marker = new Marker({
