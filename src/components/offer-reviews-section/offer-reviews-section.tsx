@@ -1,14 +1,10 @@
 import OfferReviewsList from '../offer-reviews-list';
 import {AuthorizationStatus} from '../../utils/const';
 import OfferReviewForm from '../offer-review-form';
-import {TReview} from '../../utils/types';
 import {getAuthorizationStatus} from '../../utils/common';
+import {reviews} from '../../mocks/reviews';
 
-type TReviewsSectionProps = {
-  reviews: TReview[];
-};
-
-export default function OfferReviewsSection({reviews}: TReviewsSectionProps): JSX.Element {
+export default function OfferReviewsSection(): JSX.Element {
   const isAuthorized = getAuthorizationStatus() === AuthorizationStatus.Auth;
 
   return (

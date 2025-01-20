@@ -1,5 +1,5 @@
-import {BookmarkButtonParams, MAX_OFFER_PHOTOS, RatingPanelType} from '../../utils/const.ts';
-import {TOffer, TReview} from '../../utils/types';
+import {BookmarkButtonParams, MapType, MAX_OFFER_PHOTOS, RatingPanelType} from '../../utils/const.ts';
+import {TOffer, TOfferPreview} from '../../utils/types';
 import OfferImage from '../offer-image';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
@@ -7,13 +7,15 @@ import OfferFeaturesList from '../offer-features-list';
 import OfferInsideList from '../offer-inside-list';
 import OfferHost from '../offer-host';
 import OfferReviewsSection from '../offer-reviews-section';
+import Map from '../map';
+import useMapData from '../../hooks/use-map-data';
 
 type TOfferProps = {
   offer: TOffer;
-  reviews: TReview[];
+  nearOffers: TOfferPreview[];
 };
 
-export default function OfferDetails({offer, reviews}: TOfferProps): JSX.Element {
+export default function OfferDetails({offer, nearOffers}: TOfferProps): JSX.Element {
   const {
     images,
     type,
@@ -28,6 +30,12 @@ export default function OfferDetails({offer, reviews}: TOfferProps): JSX.Element
     host,
     description
   } = offer;
+
+  const {
+    cityObjectForMap,
+    pointsForMap,
+    currentActivePoint
+  } = useMapData(nearOffers, offer);
 
   return (
     <section className="offer">
@@ -58,10 +66,12 @@ export default function OfferDetails({offer, reviews}: TOfferProps): JSX.Element
 
           <OfferInsideList goods={goods}/>
           <OfferHost host={host} description={description}/>
-          <OfferReviewsSection reviews={reviews}/>
+          <OfferReviewsSection/>
         </div>
       </div>
-      <section className="offer__map map"></section>
+      <section className="offer__map map">
+        <Map city={cityObjectForMap} points={pointsForMap} selectedPoint={currentActivePoint} mapType={MapType.Offer}/>
+      </section>
     </section>
   );
 }

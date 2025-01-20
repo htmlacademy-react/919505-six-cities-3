@@ -1,20 +1,20 @@
 export const offer = {
-  id: '6af6f711-c28d-4121-82cd-e0b462a27f00',
+  id: '843afec7-4e33-430f-8042-cd2d928c95a0',
   title: 'Beautiful & luxurious studio at great location',
   type: 'apartment',
   price: 180,
   city: {
     name: 'Amsterdam',
     location: {
-      latitude: 52.35514938496378,
-      longitude: 4.673877537499948,
-      zoom: 8
+      latitude: 52.37454,
+      longitude: 4.897976,
+      zoom: 13
     }
   },
   location: {
-    latitude: 52.35514938496378,
-    longitude: 4.673877537499948,
-    zoom: 8
+    latitude: 52.385540000000006,
+    longitude: 4.902976,
+    zoom: 16
   },
   isFavorite: true,
   isPremium: true,

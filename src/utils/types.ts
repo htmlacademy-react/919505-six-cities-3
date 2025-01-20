@@ -1,5 +1,10 @@
 import {ChangeEventHandler} from 'react';
 
+export type TReviewFormData = {
+  review: string;
+  rating: number;
+}
+
 type TLocation = {
   latitude: number;
   longitude: number;
@@ -24,7 +29,7 @@ type TOfferScaffolding = {
 };
 
 export type TInputChangeHandler = ChangeEventHandler<HTMLInputElement>;
-export type TReviewChangeHandler = ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+export type TFormChangeHandler = ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 
 export type TMapCity = {
   title: string;

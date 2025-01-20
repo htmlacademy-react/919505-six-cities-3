@@ -1,17 +1,18 @@
 import {RatingInputTitles, ReviewLength} from '../../utils/const';
+import {TFormChangeHandler, TReviewFormData} from '../../utils/types';
 import RatingInput from '../rating-input';
-import {useReviewForm} from '../../hooks/use-review-form';
-import {TReviewChangeHandler} from '../../utils/types';
+import useForm from '../../hooks/use-form';
 
 export default function OfferReviewForm(): JSX.Element {
   const {
-    review,
-    isFormValid,
-    handleReviewChange,
-  } = useReviewForm();
+    formData,
+    handleFormChange,
+  } = useForm<TReviewFormData>({rating: 0, review: ''});
 
-  const reviewChangeHandler: TReviewChangeHandler = (evt) => {
-    handleReviewChange(evt);
+  const isSubmitButtonDisabled = formData.rating === 0 || formData.review.length < ReviewLength.MIN;
+
+  const reviewChangeHandler: TFormChangeHandler = (evt) => {
+    handleFormChange(evt);
   };
 
   return (
@@ -22,7 +23,7 @@ export default function OfferReviewForm(): JSX.Element {
           <RatingInput
             key={title}
             value={(RatingInputTitles.length - i).toString()}
-            rating={review.rating.toString()}
+            rating={formData.rating.toString()}
             title={title}
             onRatingChange={reviewChangeHandler}
           />)
@@ -34,16 +35,15 @@ export default function OfferReviewForm(): JSX.Element {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        minLength={ReviewLength.MIN}
         maxLength={ReviewLength.MAX}
         onChange={reviewChangeHandler}
-        value={review.review}
+        value={formData.review}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span>and describe your stay with at least <b className="reviews__text-amount">{ReviewLength.MIN} characters</b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled={!isFormValid}>Submit</button>
+        <button className="reviews__submit form__submit button" type="submit" disabled={isSubmitButtonDisabled}>Submit</button>
       </div>
     </form>
   );

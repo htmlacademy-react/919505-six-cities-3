@@ -1,22 +1,20 @@
-import {TOffer, TReview} from '../../utils/types';
+import {filterOffersByCity} from '../../utils/common';
+import {Cities, MAX_NEARBY_OFFERS} from '../../utils/const';
 import OfferNearPlaces from '../../components/offer-near-places';
 import OfferDetails from '../../components/offer-details';
-import {filterOffersByCity} from '../../utils/common';
+import {offer} from '../../mocks/offer';
 import {offerPreviews} from '../../mocks/offer-previews';
-import {Cities} from '../../utils/const';
 
-type TOfferPageProps = {
-  offer: TOffer;
-  reviews: TReview[];
-};
-
-export default function OfferScreen({offer, reviews}: TOfferPageProps): JSX.Element {
-  const currentCity = Cities[3];
-  const nearOffers = filterOffersByCity(offerPreviews, currentCity);
+export default function OfferScreen(): JSX.Element {
+  const offers = filterOffersByCity(offerPreviews, Cities[3]);
+  const nearOffers = offers.filter((item) => item.id !== offer.id).slice(0, MAX_NEARBY_OFFERS);
 
   return (
     <main className="page__main page__main--offer">
-      <OfferDetails offer={offer} reviews={reviews}/>
+      <OfferDetails
+        offer={offer}
+        nearOffers={nearOffers}
+      />
       <div className="container">
         <OfferNearPlaces nearOffers={nearOffers}/>
       </div>
