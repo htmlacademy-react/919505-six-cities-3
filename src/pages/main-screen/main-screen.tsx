@@ -4,8 +4,8 @@ import MainContainer from '../../components/main-container';
 import {useAppSelector} from '../../hooks/store';
 
 function MainScreen(): JSX.Element {
-  const currentCity = useAppSelector((state) => state.currentCity);
-  const offers = useAppSelector((state) => state.offers);
+  const currentCity = useAppSelector((state) => state.APP.currentCity);
+  const offers = useAppSelector((state) => state.DATA.offers);
 
   const currentCityOffers = filterOffersByCity(offers, currentCity);
   const isEmpty = currentCityOffers.length === 0;

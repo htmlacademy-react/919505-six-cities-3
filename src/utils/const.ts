@@ -7,7 +7,8 @@ export const REVIEW_DATE_FORMAT = 'MMMM YYYY';
 export const RatingInputTitles = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
 
 export enum NameSpace {
-  App = 'APP'
+  App = 'APP',
+  Data = 'DATA'
 }
 
 export enum MapType {

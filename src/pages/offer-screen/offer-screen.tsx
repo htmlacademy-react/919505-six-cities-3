@@ -6,9 +6,9 @@ import {offer} from '../../mocks/offer';
 import {useAppSelector} from '../../hooks/store';
 
 export default function OfferScreen(): JSX.Element {
-  const currentCity = useAppSelector((state) => state.currentCity);
+  const currentCity = useAppSelector((state) => state.APP.currentCity);
+  const offers = useAppSelector((state) => state.DATA.offers);
 
-  const offers = useAppSelector((state) => state.offers);
   const currentCityOffers = filterOffersByCity(offers, currentCity);
   const nearOffers = currentCityOffers.filter((item) => item.id !== offer.id).slice(0, MAX_NEARBY_OFFERS);
 
