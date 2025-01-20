@@ -6,7 +6,7 @@ import {offerPreviews} from '../../mocks/offer-previews';
 import {Cities} from '../../utils/const';
 
 function MainScreen(): JSX.Element {
-  const [currentCity, setCurrentCity] = useState<string>(Cities[3]);
+  const [currentCity, setCurrentCity] = useState<string>(Cities[0]);
 
   const currentCityOffers = filterOffersByCity(offerPreviews, currentCity);
   const isEmpty = currentCityOffers.length === 0;

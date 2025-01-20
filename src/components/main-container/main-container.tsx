@@ -23,7 +23,7 @@ export default function MainContainer({currentCityName, currentCityOffers, isEmp
       <div className={`cities__places-container ${isEmpty ? 'cities__places-container--empty' : ''} container`}>
         {isEmpty
           ? <OfferListEmpty currentCity={currentCityName}/>
-          : <OfferList offers={currentCityOffers} handleCardHover={handleCardHover}/>}
+          : <OfferList currentCityName={currentCityName} offers={currentCityOffers} handleCardHover={handleCardHover}/>}
         <div className="cities__right-section">
           {!isEmpty &&
             <section className="cities__map map">
