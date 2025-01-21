@@ -1,4 +1,5 @@
 import {ChangeEventHandler} from 'react';
+import {Cities} from './const';
 
 export type TReviewFormData = {
   review: string;
@@ -11,8 +12,10 @@ type TLocation = {
   zoom: number;
 };
 
+export type TCityName = (typeof Cities)[number];
+
 export type TCity = {
-  name: string;
+  name: TCityName;
   location: TLocation;
 }
 

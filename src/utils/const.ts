@@ -84,4 +84,4 @@ export const Cities = [
   'Amsterdam',
   'Hamburg',
   'Dusseldorf'
-];
+] as const;

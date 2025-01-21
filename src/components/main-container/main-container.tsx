@@ -1,11 +1,11 @@
-import {TOfferPreview} from '../../utils/types';
+import {TCityName, TOfferPreview} from '../../utils/types';
 import OfferListEmpty from '../offer-list-empty';
 import OfferList from '../offer-list';
 import Map from '../map';
 import useMapData from '../../hooks/use-map-data';
 
 type TMainContainerProps = {
-  currentCityName: string;
+  currentCityName: TCityName;
   currentCityOffers: TOfferPreview[];
   isEmpty: boolean;
 }

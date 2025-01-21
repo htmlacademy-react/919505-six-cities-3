@@ -1,4 +1,6 @@
-export const offerPreviews = [
+import {TOfferPreview} from '../utils/types';
+
+export const offerPreviews: TOfferPreview[] = [
   {
     id: 'aea426aa-5afc-4f3b-ab34-b8a5a6cdfb46',
     title: 'Tile House',

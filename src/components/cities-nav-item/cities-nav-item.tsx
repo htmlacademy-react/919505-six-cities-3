@@ -1,9 +1,10 @@
 import {useAppDispatch} from '../../hooks/store';
 import {changeCity} from '../../store/app-process/app-process';
+import {TCityName} from '../../utils/types';
 
 type TCitiesNavItemProps = {
-  city: string;
-  currentCity: string;
+  city: TCityName;
+  currentCity: TCityName;
 }
 
 export default function CitiesNavItem({city, currentCity}: TCitiesNavItemProps): JSX.Element {

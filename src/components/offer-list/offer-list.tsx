@@ -1,10 +1,10 @@
-import {TOfferPreview} from '../../utils/types';
+import {TCityName, TOfferPreview} from '../../utils/types';
 import OffersSortingPanel from '../offers-sorting-panel';
 import OfferCardList from '../offer-card-list';
 import {OfferCardParams} from '../../utils/const';
 
 type TOfferListProps = {
-  currentCityName: string;
+  currentCityName: TCityName;
   offers: TOfferPreview[];
   handleCardHover: (cardId?: string) => void;
 }

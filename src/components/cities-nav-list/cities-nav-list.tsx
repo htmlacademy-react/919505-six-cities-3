@@ -1,8 +1,9 @@
 import {Cities} from '../../utils/const';
 import CitiesNavItem from '../cities-nav-item';
+import {TCityName} from '../../utils/types';
 
 type TCitiesNavListProps = {
-  currentCity: string;
+  currentCity: TCityName;
 };
 
 export default function CitiesNavList({currentCity}: TCitiesNavListProps): JSX.Element {

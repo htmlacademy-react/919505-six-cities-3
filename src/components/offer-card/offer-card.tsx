@@ -4,6 +4,8 @@ import {TOfferPreview} from '../../utils/types';
 import {getParentBlockName} from './utils';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
+import {useAppDispatch} from '../../hooks/store';
+import {changeCurrentOffer} from '../../store/app-process/app-process';
 
 type TPlaceCardProps = {
   cardData: TOfferPreview;
@@ -23,6 +25,8 @@ export default function OfferCard({cardData, cardType, handleCardHover}: TPlaceC
     isPremium
   }: TOfferPreview = cardData;
 
+  const dispatch = useAppDispatch();
+
   const cardParentBlockName = getParentBlockName(cardType);
 
   const mouseEnterHandler = () => {
@@ -37,11 +41,17 @@ export default function OfferCard({cardData, cardType, handleCardHover}: TPlaceC
     }
   };
 
+  const cardClickHandler = () => {
+    if (cardType === OfferCardParams.type.default) {
+      dispatch(changeCurrentOffer({offerId: id}));
+    }
+  };
+
   return (
     <article className={`${cardParentBlockName}__card place-card`} onMouseEnter={mouseEnterHandler} onMouseLeave={mouseLeaveHandler}>
       {isPremium && <div className="place-card__mark"><span>Premium</span></div>}
       <div className={`${cardParentBlockName}__image-wrapper place-card__image-wrapper`}>
-        <Link to={AppRoute.Offer + id}>
+        <Link to={AppRoute.Offer + id} onClick={cardClickHandler}>
           <img
             className="place-card__image"
             src={previewImage}
@@ -62,7 +72,7 @@ export default function OfferCard({cardData, cardType, handleCardHover}: TPlaceC
         </div>
         <RatingPanel type={RatingPanelType.Card} rating={rating}/>
         <h2 className="place-card__name">
-          <Link to={AppRoute.Offer + id}>{title}</Link>
+          <Link to={AppRoute.Offer + id} onClick={cardClickHandler}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
