@@ -1,14 +1,15 @@
-import {filterOffersByCity} from '../../utils/common';
 import CitiesNavList from '../../components/cities-nav-list';
 import MainContainer from '../../components/main-container';
-import {useState} from 'react';
-import {offerPreviews} from '../../mocks/offer-previews';
-import {Cities} from '../../utils/const';
+import {useAppSelector} from '../../hooks/store';
+import {getOffers} from '../../store/app-data/selectors';
+import {getCurrentCity} from '../../store/app-process/selectors';
 
 function MainScreen(): JSX.Element {
-  const [currentCity, setCurrentCity] = useState<string>(Cities[3]);
+  const currentCity = useAppSelector(getCurrentCity);
+  const offers = useAppSelector(getOffers);
 
-  const currentCityOffers = filterOffersByCity(offerPreviews, currentCity);
+  const currentCityOffers = offers.filter((offer) => offer.city.name === currentCity);
+
   const isEmpty = currentCityOffers.length === 0;
 
   return (
@@ -16,7 +17,7 @@ function MainScreen(): JSX.Element {
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <CitiesNavList currentCity={currentCity} handleCityChange={setCurrentCity}/>
+          <CitiesNavList currentCity={currentCity}/>
         </section>
       </div>
       <MainContainer currentCityName={currentCity} currentCityOffers={currentCityOffers} isEmpty={isEmpty}/>

@@ -1,18 +1,19 @@
-import {TOfferPreview} from '../../utils/types';
+import {TCityName, TOfferPreview} from '../../utils/types';
 import OffersSortingPanel from '../offers-sorting-panel';
 import OfferCardList from '../offer-card-list';
 import {OfferCardParams} from '../../utils/const';
 
 type TOfferListProps = {
+  currentCityName: TCityName;
   offers: TOfferPreview[];
   handleCardHover: (cardId?: string) => void;
 }
 
-export default function OfferList({offers, handleCardHover}: TOfferListProps) {
+export default function OfferList({currentCityName, offers, handleCardHover}: TOfferListProps) {
   return (
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
-      <b className="places__found">{offers.length} places to stay in Amsterdam</b>
+      <b className="places__found">{offers.length} places to stay in {currentCityName}</b>
       <OffersSortingPanel/>
       <OfferCardList offers={offers} cardType={OfferCardParams.type.default} handleCardHover={handleCardHover}/>
     </section>

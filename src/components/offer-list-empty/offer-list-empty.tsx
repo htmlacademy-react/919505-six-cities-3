@@ -1,5 +1,7 @@
+import {TCityName} from '../../utils/types';
+
 type TOfferListEmptyProps = {
-  currentCity: string;
+  currentCity: TCityName;
 }
 
 export default function OfferListEmpty({currentCity}: TOfferListEmptyProps): JSX.Element {

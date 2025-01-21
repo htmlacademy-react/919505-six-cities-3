@@ -1,4 +1,6 @@
-export const offer = {
+import {TOffer} from '../utils/types';
+
+export const offer: TOffer = {
   id: '843afec7-4e33-430f-8042-cd2d928c95a0',
   title: 'Beautiful & luxurious studio at great location',
   type: 'apartment',

@@ -6,6 +6,11 @@ export const REVIEW_DATE_FORMAT = 'MMMM YYYY';
 
 export const RatingInputTitles = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
 
+export enum NameSpace {
+  App = 'APP',
+  Data = 'DATA'
+}
+
 export enum MapType {
   Main = 'Main',
   Offer = 'Offer'
@@ -79,4 +84,4 @@ export const Cities = [
   'Amsterdam',
   'Hamburg',
   'Dusseldorf'
-];
+] as const;
