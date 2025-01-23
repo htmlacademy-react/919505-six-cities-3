@@ -1,13 +1,9 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {Cities, NameSpace} from '../../utils/const';
-import {TCityName} from '../../utils/types';
+import {TCityName} from '../../types/offers';
+import {TAppProcessState} from '../../types/state';
 
-type TAppState = {
-  currentCity: TCityName;
-  currentOffer: string | null;
-}
-
-const initialState: TAppState = {
+const initialState: TAppProcessState = {
   currentCity: Cities[0],
   currentOffer: null
 };

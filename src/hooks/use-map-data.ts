@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {adaptCityObjectToMap, adaptOffersToMapPoints, adaptOfferToMapPoint} from '../utils/common';
-import {TMapPoint, TOffer, TOfferPreview} from '../utils/types';
+import {TOffer, TOfferPreview} from '../types/offers';
+import {TMapPoint} from '../types/map';
 
 export default function useMapData(offers: Array<TOfferPreview | TOffer>, defaultActiveOffer: TOffer | null = null) {
   let initialActivePoint: TMapPoint | null = null;

@@ -1,4 +1,4 @@
-import {TInputChangeHandler} from '../../utils/types';
+import {TInputChangeHandler} from '../../types/event-handlers';
 
 type TRatingInputProps = {
   value: string;

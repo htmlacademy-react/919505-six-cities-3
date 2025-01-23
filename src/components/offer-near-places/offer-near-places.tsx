@@ -1,5 +1,5 @@
 import {OfferCardParams} from '../../utils/const';
-import {TOfferPreview} from '../../utils/types';
+import {TOfferPreview} from '../../types/offers';
 import OfferCardList from '../offer-card-list';
 
 type TOfferNearPlacesProps = {

@@ -1,4 +1,4 @@
-import {TOfferPreview} from '../utils/types';
+import {TOfferPreview} from '../types/offers';
 
 export const offerPreviews: TOfferPreview[] = [
   {

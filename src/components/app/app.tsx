@@ -9,7 +9,7 @@ import FavoritesScreen from '../../pages/favorites-screen';
 import OfferScreen from '../../pages/offer-screen';
 import NotFoundScreen from '../../pages/not-found-screen';
 import ScrollToTop from '../scroll-to-top';
-import {TFavoritesObject} from '../../utils/types';
+import {TFavoritesObject} from '../../types/offers';
 
 type TAppProps = {
   favoritesObject: TFavoritesObject;

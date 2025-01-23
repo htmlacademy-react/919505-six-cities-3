@@ -1,5 +1,5 @@
 import {BookmarkButtonParams, MapType, MAX_OFFER_PHOTOS, RatingPanelType} from '../../utils/const.ts';
-import {TOffer, TOfferPreview} from '../../utils/types';
+import {TOffer, TOfferPreview} from '../../types/offers';
 import OfferImage from '../offer-image';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';

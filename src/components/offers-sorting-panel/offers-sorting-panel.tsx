@@ -1,10 +1,11 @@
-import {MouseEventHandler, useState} from 'react';
+import {useState} from 'react';
 import OffersSortingPanelList from '../offers-sorting-panel-list';
+import {TSpanClickHandler} from '../../types/event-handlers';
 
 export default function OffersSortingPanel(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
 
-  const clickHandler: MouseEventHandler<HTMLSpanElement> = () => {
+  const clickHandler: TSpanClickHandler = () => {
     setIsOpen((prevState) => !prevState);
   };
 

@@ -1,5 +1,6 @@
 import {RatingInputTitles, ReviewLength} from '../../utils/const';
-import {TFormChangeHandler, TReviewFormData} from '../../utils/types';
+import {TFormChangeHandler} from '../../types/event-handlers';
+import {TReviewFormData} from '../../types/reviews';
 import RatingInput from '../rating-input';
 import useForm from '../../hooks/use-form';
 

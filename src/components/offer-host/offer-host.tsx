@@ -1,4 +1,4 @@
-import {TUser} from '../../utils/types';
+import {TUser} from '../../types/user';
 import OfferDescription from '../offer-description';
 
 type TOfferHostProps = {

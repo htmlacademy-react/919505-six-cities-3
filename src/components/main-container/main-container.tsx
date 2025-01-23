@@ -1,4 +1,4 @@
-import {TCityName, TOfferPreview} from '../../utils/types';
+import {TCityName, TOfferPreview} from '../../types/offers';
 import OfferListEmpty from '../offer-list-empty';
 import OfferList from '../offer-list';
 import Map from '../map';

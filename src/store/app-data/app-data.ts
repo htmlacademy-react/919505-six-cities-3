@@ -1,13 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {NameSpace} from '../../utils/const';
-import {TOfferPreview} from '../../utils/types';
+import {TAppDataState} from '../../types/state';
 import {offerPreviews} from '../../mocks/offer-previews';
 
-type TAppState = {
-  offers: TOfferPreview[];
-}
-
-const initialState: TAppState = {
+const initialState: TAppDataState = {
   offers: offerPreviews
 };
 

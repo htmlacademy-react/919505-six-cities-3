@@ -1,6 +1,6 @@
 import {useAppDispatch} from '../../hooks/store';
 import {changeCity} from '../../store/app-process/app-process';
-import {TCityName} from '../../utils/types';
+import {TCityName} from '../../types/offers';
 
 type TCitiesNavItemProps = {
   city: TCityName;

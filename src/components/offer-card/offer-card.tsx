@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 import {AppRoute, BookmarkButtonParams, OfferCardParams, RatingPanelType} from '../../utils/const';
-import {TOfferPreview} from '../../utils/types';
+import {TOfferPreview} from '../../types/offers';
 import {getParentBlockName} from './utils';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
