@@ -7,15 +7,6 @@ type TLocation = {
   zoom: number;
 };
 
-export type TCityName = (typeof Cities)[number];
-
-export type TOfferSortType = (typeof SortingTypes)[keyof typeof SortingTypes];
-
-export type TCity = {
-  name: TCityName;
-  location: TLocation;
-}
-
 type TOfferScaffolding = {
   id: string;
   title: string;
@@ -27,6 +18,14 @@ type TOfferScaffolding = {
   isPremium: boolean;
   rating: number;
 };
+
+export type TCityName = (typeof Cities)[number];
+export type TOfferSortType = (typeof SortingTypes)[keyof typeof SortingTypes];
+
+export type TCity = {
+  name: TCityName;
+  location: TLocation;
+}
 
 export type TOfferPreview = TOfferScaffolding & {
   previewImage: string;
