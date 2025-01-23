@@ -1,14 +1,12 @@
 import CitiesNavList from '../../components/cities-nav-list';
 import MainContainer from '../../components/main-container';
 import {useAppSelector} from '../../hooks/store';
-import {getOffers} from '../../store/app-data/selectors';
+import {getCurrentCityOffers} from '../../store/app-data/selectors';
 import {getCurrentCity} from '../../store/app-process/selectors';
 
 function MainScreen(): JSX.Element {
   const currentCity = useAppSelector(getCurrentCity);
-  const offers = useAppSelector(getOffers);
-
-  const currentCityOffers = offers.filter((offer) => offer.city.name === currentCity);
+  const currentCityOffers = useAppSelector(getCurrentCityOffers);
 
   const isEmpty = currentCityOffers.length === 0;
 

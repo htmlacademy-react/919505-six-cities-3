@@ -1,5 +1,5 @@
 import {store} from '../store';
-import {TCityName, TOfferPreview} from './offers';
+import {TCityName, TOfferPreview, TOfferSortType} from './offers';
 
 export type TAppDataState = {
   offers: TOfferPreview[];
@@ -8,6 +8,8 @@ export type TAppDataState = {
 export type TAppProcessState = {
   currentCity: TCityName;
   currentOffer: string | null;
+  isOffersSortingPanelOpen: boolean;
+  currentOffersSortType: TOfferSortType;
 }
 
 export type State = ReturnType<typeof store.getState>;

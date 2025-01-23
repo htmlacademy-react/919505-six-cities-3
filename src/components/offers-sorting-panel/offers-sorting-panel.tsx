@@ -1,12 +1,15 @@
-import {useState} from 'react';
 import OffersSortingPanelList from '../offers-sorting-panel-list';
 import {TSpanClickHandler} from '../../types/event-handlers';
+import {useAppDispatch, useAppSelector} from '../../hooks/store';
+import {toggleSortingPanel} from '../../store/app-process/app-process';
+import {getCurrentOffersSortType} from '../../store/app-process/selectors';
 
 export default function OffersSortingPanel(): JSX.Element {
-  const [isOpen, setIsOpen] = useState(false);
+  const currentSortType = useAppSelector(getCurrentOffersSortType);
+  const dispatch = useAppDispatch();
 
   const clickHandler: TSpanClickHandler = () => {
-    setIsOpen((prevState) => !prevState);
+    dispatch(toggleSortingPanel());
   };
 
   return (
@@ -17,13 +20,13 @@ export default function OffersSortingPanel(): JSX.Element {
         tabIndex={0}
         onClick={clickHandler}
       >
-        Popular
+        {currentSortType}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
       </span>
 
-      <OffersSortingPanelList isOpen={isOpen}/>
+      <OffersSortingPanelList currentSortType={currentSortType}/>
     </form>
   );
 }

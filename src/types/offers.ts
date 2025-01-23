@@ -1,4 +1,4 @@
-import {Cities} from '../common/const';
+import {Cities, SortingTypes} from '../common/const';
 import {TUser} from './user';
 
 type TLocation = {
@@ -8,6 +8,8 @@ type TLocation = {
 };
 
 export type TCityName = (typeof Cities)[number];
+
+export type TOfferSortType = (typeof SortingTypes)[keyof typeof SortingTypes];
 
 export type TCity = {
   name: TCityName;
