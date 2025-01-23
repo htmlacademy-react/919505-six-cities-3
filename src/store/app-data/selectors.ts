@@ -1,4 +1,4 @@
-import {NameSpace} from '../../utils/const';
+import {NameSpace} from '../../common/const';
 import {State} from '../../types/state';
 import {TOfferPreview} from '../../types/offers';
 

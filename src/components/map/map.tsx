@@ -1,7 +1,7 @@
 import {useRef, useEffect} from 'react';
 import {Icon, Marker, layerGroup} from 'leaflet';
 import {TMapCity, TMapPoint} from '../../types/map';
-import {MapType} from '../../utils/const';
+import {MapType} from '../../common/const';
 import useMap from '../../hooks/use-map';
 import 'leaflet/dist/leaflet.css';
 

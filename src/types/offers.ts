@@ -1,4 +1,4 @@
-import {Cities} from '../utils/const';
+import {Cities} from '../common/const';
 import {TUser} from './user';
 
 type TLocation = {

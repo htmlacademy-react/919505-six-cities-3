@@ -1,5 +1,5 @@
 import {combineReducers} from '@reduxjs/toolkit';
-import {NameSpace} from '../utils/const';
+import {NameSpace} from '../common/const';
 import {appData} from './app-data/app-data';
 import {appProcess} from './app-process/app-process';
 

@@ -1,4 +1,4 @@
-import {OfferCardParams} from '../../utils/const';
+import {OfferCardParams} from '../../common/const';
 import {TOfferPreview} from '../../types/offers';
 import OfferCardList from '../offer-card-list';
 

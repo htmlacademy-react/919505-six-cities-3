@@ -1,4 +1,4 @@
-import {RatingInputTitles, ReviewLength} from '../../utils/const';
+import {RatingInputTitles, ReviewLength} from '../../common/const';
 import {TFormChangeHandler} from '../../types/event-handlers';
 import {TReviewFormData} from '../../types/reviews';
 import RatingInput from '../rating-input';

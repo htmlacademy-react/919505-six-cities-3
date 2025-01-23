@@ -1,4 +1,4 @@
-import {BookmarkButtonParams} from '../../utils/const';
+import {BookmarkButtonParams} from '../../common/const';
 
 type TButtonBookmarkProps = {
   type: string;

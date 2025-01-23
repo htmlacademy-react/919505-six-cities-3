@@ -1,7 +1,7 @@
 import {TCityName, TOfferPreview} from '../../types/offers';
 import OffersSortingPanel from '../offers-sorting-panel';
 import OfferCardList from '../offer-card-list';
-import {OfferCardParams} from '../../utils/const';
+import {OfferCardParams} from '../../common/const';
 
 type TOfferListProps = {
   currentCityName: TCityName;

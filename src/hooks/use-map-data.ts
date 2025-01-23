@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {adaptCityObjectToMap, adaptOffersToMapPoints, adaptOfferToMapPoint} from '../utils/common';
+import {adaptCityObjectToMap, adaptOffersToMapPoints, adaptOfferToMapPoint} from '../common/utils';
 import {TOffer, TOfferPreview} from '../types/offers';
 import {TMapPoint} from '../types/map';
 

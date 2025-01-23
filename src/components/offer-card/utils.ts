@@ -1,4 +1,4 @@
-import {OfferCardParams} from '../../utils/const';
+import {OfferCardParams} from '../../common/const';
 
 export function getParentBlockName(cardType: string) {
   switch (cardType) {

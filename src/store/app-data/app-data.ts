@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {NameSpace} from '../../utils/const';
+import {NameSpace} from '../../common/const';
 import {TAppDataState} from '../../types/state';
 import {offerPreviews} from '../../mocks/offer-previews';
 

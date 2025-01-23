@@ -4,7 +4,7 @@ import App from './components/app';
 import {Provider} from 'react-redux';
 import {store} from './store';
 import {offerPreviews} from './mocks/offer-previews.ts';
-import {generateFavoriteOffersObject} from './utils/common.ts';
+import {generateFavoriteOffersObject} from './common/utils.ts';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

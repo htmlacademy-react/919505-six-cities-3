@@ -1,6 +1,6 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import {getAuthorizationStatus} from '../../utils/common';
-import {AppRoute} from '../../utils/const';
+import {getAuthorizationStatus} from '../../common/utils';
+import {AppRoute} from '../../common/const';
 import Layout from '../layout';
 import MainScreen from '../../pages/main-screen';
 import LoginScreen from '../../pages/login-screen';

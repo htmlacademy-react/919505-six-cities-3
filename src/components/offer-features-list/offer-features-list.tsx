@@ -1,4 +1,4 @@
-import {OFFER_DETAILS_CHECK_NUMBER} from '../../utils/const';
+import {OFFER_DETAILS_CHECK_NUMBER} from '../../common/const';
 
 type TOfferFeaturesListProps = {
   type: string;
