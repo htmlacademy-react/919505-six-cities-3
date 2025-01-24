@@ -1,7 +1,7 @@
 import {SortingTypes} from '../../common/const';
 import OffersSortingPanelItem from '../offers-sorting-panel-item';
 import {useAppSelector} from '../../hooks/store';
-import {getOffersSortingPanelState} from '../../store/app-process/selectors';
+import {checkIsOffersSortingPanelOpen} from '../../store/app-process/selectors';
 import {TOfferSortType} from '../../types/offers';
 
 type TOffersSortingPanelListProps = {
@@ -9,7 +9,7 @@ type TOffersSortingPanelListProps = {
 }
 
 export default function OffersSortingPanelList({currentSortType}: TOffersSortingPanelListProps): JSX.Element {
-  const isOpen = useAppSelector(getOffersSortingPanelState);
+  const isOpen = useAppSelector(checkIsOffersSortingPanelOpen);
 
   return (
     <ul className={`places__options places__options--custom ${isOpen ? 'places__options--opened' : ''}`}>
