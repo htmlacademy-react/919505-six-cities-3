@@ -1,6 +1,6 @@
 import {TCity, TCityName, TFavoritesObject, TOffer, TOfferPreview, TOfferSortType} from '../types/offers';
 import {TMapCity, TMapPoint} from '../types/map';
-import {AuthorizationStatus, RATING_COEFFICIENT, SortingTypes} from './const.ts';
+import {AuthorizationStatus, RATING_COEFFICIENT, SortingType} from './const.ts';
 
 export function calculateRatingWidth(rating: number): number {
   return Math.round(rating) * RATING_COEFFICIENT;
@@ -55,13 +55,13 @@ export function getProcessedOffers(offers: TOfferPreview[], city: TCityName, sor
     .filter((offer) => offer.city.name === city);
 
   switch (sortType) {
-    case SortingTypes.POPULAR:
+    case SortingType.POPULAR:
       return currentCityOffers;
-    case SortingTypes.HIGH_TO_LOW:
+    case SortingType.HIGH_TO_LOW:
       return currentCityOffers.sort((a, b) => b.price - a.price);
-    case SortingTypes.LOW_TO_HIGH:
+    case SortingType.LOW_TO_HIGH:
       return currentCityOffers.sort((a, b) => a.price - b.price);
-    case SortingTypes.TOP_RATED_FIRST:
+    case SortingType.TOP_RATED_FIRST:
       return currentCityOffers.sort((a, b) => b.rating - a.rating);
     default:
       return currentCityOffers;

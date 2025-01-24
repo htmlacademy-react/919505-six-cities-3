@@ -8,7 +8,7 @@ import 'leaflet/dist/leaflet.css';
 type TMapProps = {
   city: TMapCity;
   points: TMapPoint[];
-  selectedPoint: TMapPoint | null;
+  selectedPointId: string | null | undefined;
   mapType?: MapType;
 };
 
@@ -43,7 +43,7 @@ function getStyle(mapType?: MapType) {
 }
 
 export default function Map(props: TMapProps): JSX.Element {
-  const {city, points, selectedPoint, mapType} = props;
+  const {city, points, selectedPointId, mapType} = props;
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
@@ -65,7 +65,7 @@ export default function Map(props: TMapProps): JSX.Element {
 
         marker
           .setIcon(
-            selectedPoint && point.id === selectedPoint.id
+            selectedPointId && point.id === selectedPointId
               ? currentCustomIcon
               : defaultCustomIcon
           )
@@ -76,7 +76,7 @@ export default function Map(props: TMapProps): JSX.Element {
         map.removeLayer(markerLayer);
       };
     }
-  }, [map, points, selectedPoint]);
+  }, [map, points, selectedPointId]);
 
   return <div style={getStyle(mapType)} ref={mapRef}></div>;
 }

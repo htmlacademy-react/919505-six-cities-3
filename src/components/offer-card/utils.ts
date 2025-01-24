@@ -1,14 +1,14 @@
-import {OfferCardParams} from '../../common/const';
+import {CardType, OfferCardParams} from '../../common/const';
 
 export function getParentBlockName(cardType: string) {
   switch (cardType) {
     case OfferCardParams.type.default:
-      return 'cities';
+      return CardType.CITIES;
 
     case OfferCardParams.type.near:
-      return 'near-places';
+      return CardType.NEAR_PLACES;
 
     case OfferCardParams.type.favorite:
-      return 'favorites';
+      return CardType.FAVORITES;
   }
 }
