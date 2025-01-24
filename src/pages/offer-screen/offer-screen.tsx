@@ -7,12 +7,12 @@ import {appProcessSelectors} from '../../store/app-process';
 import {appDataSelectors} from '../../store/app-data';
 
 export default function OfferScreen(): JSX.Element {
-  const currentOffer = useAppSelector(appProcessSelectors.currentOffer);
+  const currentOfferId = useAppSelector(appProcessSelectors.currentOfferId);
   const currentCity = useAppSelector(appProcessSelectors.currentCity);
   const offers = useAppSelector(appDataSelectors.currentCitySortedOffers);
 
   const nearOffers = offers.filter((item) =>
-    item.city.name === currentCity && item.id !== currentOffer)
+    item.city.name === currentCity && item.id !== currentOfferId)
     .slice(0, MAX_NEARBY_OFFERS);
 
   return (

@@ -5,7 +5,7 @@ import {TAppProcessState} from '../../types/state';
 
 const initialState: TAppProcessState = {
   currentCity: Cities[0],
-  currentOffer: null,
+  currentOfferId: null,
   hoveredOffer: null,
   isOffersSortingPanelOpen: false,
   currentOffersSortType: SortingType.POPULAR
@@ -19,8 +19,8 @@ const appProcess = createSlice({
       state.currentCity = action.payload;
     },
 
-    changeCurrentOffer: (state, action: PayloadAction<string>) => {
-      state.currentOffer = action.payload;
+    changeCurrentOfferId: (state, action: PayloadAction<string>) => {
+      state.currentOfferId = action.payload;
     },
 
     changeHoveredOffer: (state, action: PayloadAction<string | null>) => {
@@ -39,7 +39,7 @@ const appProcess = createSlice({
 
   selectors: {
     currentCity: (state: TAppProcessState): TCityName => state.currentCity,
-    currentOffer: (state: TAppProcessState): string | null => state.currentOffer,
+    currentOfferId: (state: TAppProcessState): string | null => state.currentOfferId,
     hoveredOffer: (state: TAppProcessState): string | null => state.hoveredOffer,
     isOffersSortingPanelOpen: (state: TAppProcessState): boolean => state.isOffersSortingPanelOpen,
     currentOffersSortType: (state: TAppProcessState): TOfferSortType => state.currentOffersSortType,

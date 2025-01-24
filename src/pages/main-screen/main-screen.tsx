@@ -18,7 +18,7 @@ function MainScreen(): JSX.Element {
           <CitiesNavList currentCity={currentCity}/>
         </section>
       </div>
-      <MainContainer currentCityName={currentCity} currentCityOffers={offers} isEmpty={isEmpty}/>
+      <MainContainer currentCityName={currentCity} offers={offers} isEmpty={isEmpty}/>
     </main>
   );
 }

@@ -8,7 +8,9 @@ import OfferInsideList from '../offer-inside-list';
 import OfferHost from '../offer-host';
 import OfferReviewsSection from '../offer-reviews-section';
 import Map from '../map';
-import useMapData from '../../hooks/use-map-data';
+import {useAppSelector} from '../../hooks/store';
+import {appDataSelectors} from '../../store/app-data';
+import {appProcessSelectors} from '../../store/app-process';
 
 type TOfferProps = {
   offer: TOffer;
@@ -31,10 +33,15 @@ export default function OfferDetails({offer, nearOffers}: TOfferProps): JSX.Elem
     description
   } = offer;
 
-  const {
-    cityObjectForMap,
-    pointsForMap,
-  } = useMapData(nearOffers, offer);
+  const offers = useAppSelector(appDataSelectors.offers);
+  const currentOfferId = useAppSelector(appProcessSelectors.currentOfferId);
+  const currentOfferPreview = offers.find((item) => item.id === currentOfferId);
+
+  const offersForMap = [...nearOffers];
+
+  if (currentOfferPreview) {
+    offersForMap.push(currentOfferPreview);
+  }
 
   return (
     <section className="offer">
@@ -69,7 +76,7 @@ export default function OfferDetails({offer, nearOffers}: TOfferProps): JSX.Elem
         </div>
       </div>
       <section className="offer__map map">
-        <Map city={cityObjectForMap} points={pointsForMap} selectedPointId={offer.id} mapType={MapType.Offer}/>
+        <Map offers={offersForMap} mapType={MapType.Offer}/>
       </section>
     </section>
   );
