@@ -1,14 +1,14 @@
 import CitiesNavList from '../../components/cities-nav-list';
 import MainContainer from '../../components/main-container';
 import {useAppSelector} from '../../hooks/store';
-import {getCurrentCityOffers} from '../../store/app-data/selectors';
 import {appProcessSelectors} from '../../store/app-process/app-process';
+import {appDataSelectors} from '../../store/app-data/app-data';
 
 function MainScreen(): JSX.Element {
   const currentCity = useAppSelector(appProcessSelectors.currentCity);
-  const currentCityOffers = useAppSelector(getCurrentCityOffers);
+  const offers = useAppSelector(appDataSelectors.currentCitySortedOffers);
 
-  const isEmpty = currentCityOffers.length === 0;
+  const isEmpty = offers.length === 0;
 
   return (
     <main className={`page__main page__main--index ${isEmpty ? 'page__main--index-empty' : ''}`}>
@@ -18,7 +18,7 @@ function MainScreen(): JSX.Element {
           <CitiesNavList currentCity={currentCity}/>
         </section>
       </div>
-      <MainContainer currentCityName={currentCity} currentCityOffers={currentCityOffers} isEmpty={isEmpty}/>
+      <MainContainer currentCityName={currentCity} currentCityOffers={offers} isEmpty={isEmpty}/>
     </main>
   );
 }
