@@ -2,7 +2,7 @@ import {SortingTypes} from '../../common/const';
 import OffersSortingPanelItem from '../offers-sorting-panel-item';
 import {useAppSelector} from '../../hooks/store';
 import {TOfferSortType} from '../../types/offers';
-import {appProcessSelectors} from '../../store/app-process/app-process';
+import {appProcessSelectors} from '../../store/app-process';
 
 type TOffersSortingPanelListProps = {
   currentSortType: TOfferSortType;

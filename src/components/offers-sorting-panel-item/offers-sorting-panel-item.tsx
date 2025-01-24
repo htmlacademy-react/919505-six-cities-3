@@ -1,6 +1,6 @@
 import {TOfferSortType} from '../../types/offers';
 import {useActionCreators} from '../../hooks/store';
-import {appProcessActions} from '../../store/app-process/app-process';
+import {appProcessActions} from '../../store/app-process';
 
 type TOffersSortingPanelItemProps = {
   sortType: TOfferSortType;

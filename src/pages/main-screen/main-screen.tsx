@@ -1,8 +1,8 @@
 import CitiesNavList from '../../components/cities-nav-list';
 import MainContainer from '../../components/main-container';
 import {useAppSelector} from '../../hooks/store';
-import {appProcessSelectors} from '../../store/app-process/app-process';
-import {appDataSelectors} from '../../store/app-data/app-data';
+import {appProcessSelectors} from '../../store/app-process';
+import {appDataSelectors} from '../../store/app-data';
 
 function MainScreen(): JSX.Element {
   const currentCity = useAppSelector(appProcessSelectors.currentCity);

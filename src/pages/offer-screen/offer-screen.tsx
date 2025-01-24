@@ -3,8 +3,8 @@ import OfferDetails from '../../components/offer-details';
 import {offer} from '../../mocks/offer';
 import {useAppSelector} from '../../hooks/store';
 import {MAX_NEARBY_OFFERS} from '../../common/const';
-import {appProcessSelectors} from '../../store/app-process/app-process';
-import {appDataSelectors} from '../../store/app-data/app-data';
+import {appProcessSelectors} from '../../store/app-process';
+import {appDataSelectors} from '../../store/app-data';
 
 export default function OfferScreen(): JSX.Element {
   const currentOffer = useAppSelector(appProcessSelectors.currentOffer);
