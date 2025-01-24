@@ -5,14 +5,15 @@ import OfferCard from '../offer-card';
 type TOfferCardListProps = {
   offers: TOfferPreview[];
   cardType: string;
+  handleCardHover?: (cardId?: string) => void;
 };
 
-export default function OfferCardList({offers, cardType}: TOfferCardListProps): JSX.Element {
+export default function OfferCardList({offers, cardType, handleCardHover}: TOfferCardListProps): JSX.Element {
   const containerClassName = getContainerClassName(cardType);
 
   return (
     <div className={containerClassName}>
-      {offers.map((offer) => <OfferCard cardData={offer} cardType={cardType} key={offer.id}/>)}
+      {offers.map((offer) => <OfferCard cardData={offer} cardType={cardType} handleCardHover={handleCardHover} key={offer.id}/>)}
     </div>
   );
 }

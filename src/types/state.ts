@@ -8,7 +8,6 @@ export type TAppDataState = {
 export type TAppProcessState = {
   currentCity: TCityName;
   currentOffer: string | null;
-  hoveredOffer: string | null;
   isOffersSortingPanelOpen: boolean;
   currentOffersSortType: TOfferSortType;
 }

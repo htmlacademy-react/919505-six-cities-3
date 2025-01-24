@@ -10,9 +10,10 @@ import {appProcessActions} from '../../store/app-process';
 type TPlaceCardProps = {
   cardData: TOfferPreview;
   cardType: string;
+  handleCardHover?: (cardId?: string) => void;
 };
 
-export default function OfferCard({cardData, cardType}: TPlaceCardProps): JSX.Element {
+export default function OfferCard({cardData, cardType, handleCardHover}: TPlaceCardProps): JSX.Element {
   const {
     id,
     title,
@@ -25,19 +26,18 @@ export default function OfferCard({cardData, cardType}: TPlaceCardProps): JSX.El
   }: TOfferPreview = cardData;
 
   const {changeCurrentOffer} = useActionCreators(appProcessActions);
-  const {changeHoveredOffer} = useActionCreators(appProcessActions);
 
   const cardParentBlockName = getParentBlockName(cardType);
 
   const mouseEnterHandler = () => {
-    if (cardType === OfferCardParams.type.default) {
-      changeHoveredOffer(id);
+    if (handleCardHover) {
+      handleCardHover(id);
     }
   };
 
   const mouseLeaveHandler = () => {
-    if (cardType === OfferCardParams.type.default) {
-      changeHoveredOffer(null);
+    if (handleCardHover) {
+      handleCardHover();
     }
   };
 

@@ -1,14 +1,13 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {Cities, NameSpace, SortingType} from '../../common/const';
+import {Cities, NameSpace, SortingTypes} from '../../common/const';
 import {TCityName, TOfferSortType} from '../../types/offers';
 import {TAppProcessState} from '../../types/state';
 
 const initialState: TAppProcessState = {
   currentCity: Cities[0],
   currentOffer: null,
-  hoveredOffer: null,
   isOffersSortingPanelOpen: false,
-  currentOffersSortType: SortingType.POPULAR
+  currentOffersSortType: SortingTypes.POPULAR
 };
 
 const appProcess = createSlice({
@@ -21,10 +20,6 @@ const appProcess = createSlice({
 
     changeCurrentOffer: (state, action: PayloadAction<string>) => {
       state.currentOffer = action.payload;
-    },
-
-    changeHoveredOffer: (state, action: PayloadAction<string | null>) => {
-      state.hoveredOffer = action.payload;
     },
 
     toggleSortingPanel: (state) => {
@@ -40,7 +35,6 @@ const appProcess = createSlice({
   selectors: {
     currentCity: (state: TAppProcessState): TCityName => state.currentCity,
     currentOffer: (state: TAppProcessState): string | null => state.currentOffer,
-    hoveredOffer: (state: TAppProcessState): string | null => state.hoveredOffer,
     isOffersSortingPanelOpen: (state: TAppProcessState): boolean => state.isOffersSortingPanelOpen,
     currentOffersSortType: (state: TAppProcessState): TOfferSortType => state.currentOffersSortType,
   }

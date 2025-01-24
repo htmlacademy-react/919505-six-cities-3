@@ -6,15 +6,16 @@ import {OfferCardParams} from '../../common/const';
 type TOfferListProps = {
   currentCityName: TCityName;
   offers: TOfferPreview[];
+  handleCardHover: (cardId?: string) => void;
 }
 
-export default function OfferList({currentCityName, offers}: TOfferListProps) {
+export default function OfferList({currentCityName, offers, handleCardHover}: TOfferListProps) {
   return (
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
       <b className="places__found">{offers.length} place{offers.length > 1 && 's'} to stay in {currentCityName}</b>
       <OffersSortingPanel/>
-      <OfferCardList offers={offers} cardType={OfferCardParams.type.default}/>
+      <OfferCardList offers={offers} cardType={OfferCardParams.type.default} handleCardHover={handleCardHover}/>
     </section>
   );
 }
