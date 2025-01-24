@@ -4,8 +4,8 @@ import {TOfferPreview} from '../../types/offers';
 import {getParentBlockName} from './utils';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
-import {useAppDispatch} from '../../hooks/store';
-import {changeCurrentOffer} from '../../store/app-process/app-process';
+import {useActionCreators} from '../../hooks/store';
+import {appProcessActions} from '../../store/app-process/app-process';
 
 type TPlaceCardProps = {
   cardData: TOfferPreview;
@@ -25,7 +25,7 @@ export default function OfferCard({cardData, cardType, handleCardHover}: TPlaceC
     isPremium
   }: TOfferPreview = cardData;
 
-  const dispatch = useAppDispatch();
+  const {changeCurrentOffer} = useActionCreators(appProcessActions);
 
   const cardParentBlockName = getParentBlockName(cardType);
 
@@ -43,7 +43,7 @@ export default function OfferCard({cardData, cardType, handleCardHover}: TPlaceC
 
   const cardClickHandler = () => {
     if (cardType === OfferCardParams.type.default) {
-      dispatch(changeCurrentOffer(id));
+      changeCurrentOffer(id);
     }
   };
 

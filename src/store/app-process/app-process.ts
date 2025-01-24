@@ -10,7 +10,7 @@ const initialState: TAppProcessState = {
   currentOffersSortType: SortingTypes.POPULAR
 };
 
-export const appProcess = createSlice({
+const appProcess = createSlice({
   name: NameSpace.App,
   initialState,
   reducers: {
@@ -30,12 +30,17 @@ export const appProcess = createSlice({
       state.currentOffersSortType = action.payload;
       state.isOffersSortingPanelOpen = false;
     }
+  },
+
+  selectors: {
+    currentCity: (state: TAppProcessState): TCityName => state.currentCity,
+    currentOffer: (state: TAppProcessState): string | null => state.currentOffer,
+    isOffersSortingPanelOpen: (state: TAppProcessState): boolean => state.isOffersSortingPanelOpen,
+    currentOffersSortType: (state: TAppProcessState): TOfferSortType => state.currentOffersSortType,
   }
 });
 
-export const {
-  changeCity,
-  changeCurrentOffer,
-  changeOffersSortType,
-  toggleSortingPanel
-} = appProcess.actions;
+const appProcessActions = appProcess.actions;
+const appProcessSelectors = appProcess.selectors;
+
+export {appProcess, appProcessActions, appProcessSelectors};

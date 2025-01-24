@@ -3,12 +3,12 @@ import OfferDetails from '../../components/offer-details';
 import {offer} from '../../mocks/offer';
 import {useAppSelector} from '../../hooks/store';
 import {getCurrentCityOffers} from '../../store/app-data/selectors';
-import {getCurrentCity, getCurrentOffer} from '../../store/app-process/selectors';
 import {MAX_NEARBY_OFFERS} from '../../common/const';
+import {appProcessSelectors} from '../../store/app-process/app-process';
 
 export default function OfferScreen(): JSX.Element {
-  const currentOffer = useAppSelector(getCurrentOffer);
-  const currentCity = useAppSelector(getCurrentCity);
+  const currentOffer = useAppSelector(appProcessSelectors.currentOffer);
+  const currentCity = useAppSelector(appProcessSelectors.currentCity);
   const currentCityOffers = useAppSelector(getCurrentCityOffers);
 
   const nearOffers = currentCityOffers.filter((item) =>
