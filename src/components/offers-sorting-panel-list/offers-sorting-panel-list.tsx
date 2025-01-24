@@ -1,4 +1,4 @@
-import {SortingTypes} from '../../common/const';
+import {SortingType} from '../../common/const';
 import OffersSortingPanelItem from '../offers-sorting-panel-item';
 import {useAppSelector} from '../../hooks/store';
 import {TOfferSortType} from '../../types/offers';
@@ -13,7 +13,7 @@ export default function OffersSortingPanelList({currentSortType}: TOffersSorting
 
   return (
     <ul className={`places__options places__options--custom ${isOpen ? 'places__options--opened' : ''}`}>
-      {Object.values(SortingTypes).map((value,) =>
+      {Object.values(SortingType).map((value,) =>
         <OffersSortingPanelItem key={value} sortType={value} currentSortType={currentSortType}/>
       )}
     </ul>

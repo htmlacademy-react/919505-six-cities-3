@@ -1,4 +1,4 @@
-import {Cities, SortingTypes} from '../common/const';
+import {CardType, Cities, SortingType} from '../common/const';
 import {TUser} from './user';
 
 type TLocation = {
@@ -20,7 +20,8 @@ type TOfferScaffolding = {
 };
 
 export type TCityName = (typeof Cities)[number];
-export type TOfferSortType = (typeof SortingTypes)[keyof typeof SortingTypes];
+export type TOfferSortType = (typeof SortingType)[keyof typeof SortingType];
+export type TCardType = (typeof CardType)[keyof typeof CardType];
 
 export type TCity = {
   name: TCityName;

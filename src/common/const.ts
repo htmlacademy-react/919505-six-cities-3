@@ -6,7 +6,13 @@ export const REVIEW_DATE_FORMAT = 'MMMM YYYY';
 
 export const RatingInputTitles = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
 
-export const SortingTypes = {
+export const CardType = {
+  CITIES: 'cities',
+  NEAR_PLACES: 'near-places',
+  FAVORITES: 'favorites'
+} as const;
+
+export const SortingType = {
   POPULAR: 'Popular',
   LOW_TO_HIGH: 'Price: low to high',
   HIGH_TO_LOW: 'Price: high to low',

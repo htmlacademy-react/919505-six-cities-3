@@ -1,26 +1,17 @@
-import {useState} from 'react';
 import {adaptCityObjectToMap, adaptOffersToMapPoints, adaptOfferToMapPoint} from '../common/utils';
 import {TOffer, TOfferPreview} from '../types/offers';
 import {TMapPoint} from '../types/map';
 
-export default function useMapData(offers: Array<TOfferPreview | TOffer>, defaultActiveOffer: TOffer | null = null) {
-  let initialActivePoint: TMapPoint | null = null;
-  const pinsData = [...offers];
+export default function useMapData(offers: Array<TOfferPreview | TOffer>, hoveredCardObject: TOfferPreview | TOffer | undefined) {
+  let activeMapPoint = null;
 
-  if (defaultActiveOffer) {
-    pinsData.push(defaultActiveOffer);
-    initialActivePoint = adaptOfferToMapPoint(defaultActiveOffer);
+  const cityObjectForMap = adaptCityObjectToMap(offers[0].city);
+  const pointsForMap: TMapPoint[] = adaptOffersToMapPoints(offers);
+
+  if (hoveredCardObject) {
+    activeMapPoint = adaptOfferToMapPoint(hoveredCardObject);
+    pointsForMap.push(activeMapPoint);
   }
 
-  const cityObjectForMap = adaptCityObjectToMap(pinsData[0].city);
-  const pointsForMap: TMapPoint[] = adaptOffersToMapPoints(pinsData);
-
-  const [currentActivePoint, setCurrentActivePoint] = useState<TMapPoint | null>(initialActivePoint);
-
-  const handleCardHover = (cardId?: string) => {
-    const currentPoint = pointsForMap.find((point) => point.id === cardId);
-    setCurrentActivePoint(currentPoint || null);
-  };
-
-  return {cityObjectForMap, pointsForMap, currentActivePoint, handleCardHover};
+  return {cityObjectForMap, pointsForMap};
 }
