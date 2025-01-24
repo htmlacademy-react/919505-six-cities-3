@@ -43,7 +43,7 @@ export default function OfferCard({cardData, cardType, handleCardHover}: TPlaceC
 
   const cardClickHandler = () => {
     if (cardType === OfferCardParams.type.default) {
-      dispatch(changeCurrentOffer({offerId: id}));
+      dispatch(changeCurrentOffer(id));
     }
   };
 

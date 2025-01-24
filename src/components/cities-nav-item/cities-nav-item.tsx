@@ -15,7 +15,7 @@ export default function CitiesNavItem({city, currentCity}: TCitiesNavItemProps):
       <a
         className={`locations__item-link tabs__item ${city === currentCity ? 'tabs__item--active' : ''}`}
         href="#"
-        onClick={() => dispatch(changeCity({city}))}
+        onClick={() => dispatch(changeCity(city))}
       >
         <span>{city}</span>
       </a>

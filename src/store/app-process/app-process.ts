@@ -14,23 +14,20 @@ export const appProcess = createSlice({
   name: NameSpace.App,
   initialState,
   reducers: {
-    changeCity: (state, action: PayloadAction<{city: TCityName}>) => {
-      const {city} = action.payload;
-      state.currentCity = city;
+    changeCity: (state, action: PayloadAction<TCityName>) => {
+      state.currentCity = action.payload;
     },
 
-    changeCurrentOffer: (state, action: PayloadAction<{offerId: string}>) => {
-      const {offerId} = action.payload;
-      state.currentOffer = offerId;
+    changeCurrentOffer: (state, action: PayloadAction<string>) => {
+      state.currentOffer = action.payload;
     },
 
     toggleSortingPanel: (state) => {
       state.isOffersSortingPanelOpen = !state.isOffersSortingPanelOpen;
     },
 
-    changeOffersSortType: (state, action: PayloadAction<{sortType: TOfferSortType}>) => {
-      const {sortType} = action.payload;
-      state.currentOffersSortType = sortType;
+    changeOffersSortType: (state, action: PayloadAction<TOfferSortType>) => {
+      state.currentOffersSortType = action.payload;
       state.isOffersSortingPanelOpen = false;
     }
   }

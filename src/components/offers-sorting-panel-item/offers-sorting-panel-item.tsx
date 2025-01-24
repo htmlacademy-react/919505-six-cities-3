@@ -11,7 +11,7 @@ export default function OffersSortingPanelItem({sortType, currentSortType}: TOff
   const dispatch = useAppDispatch();
 
   const sortTypeClickHandler = () => {
-    dispatch(changeOffersSortType({sortType}));
+    dispatch(changeOffersSortType(sortType));
   };
 
   return (
