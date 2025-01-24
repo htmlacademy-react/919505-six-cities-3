@@ -13,7 +13,7 @@ export default function OfferList({currentCityName, offers, handleCardHover}: TO
   return (
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
-      <b className="places__found">{offers.length} places to stay in {currentCityName}</b>
+      <b className="places__found">{offers.length} place{offers.length > 1 && 's'} to stay in {currentCityName}</b>
       <OffersSortingPanel/>
       <OfferCardList offers={offers} cardType={OfferCardParams.type.default} handleCardHover={handleCardHover}/>
     </section>
