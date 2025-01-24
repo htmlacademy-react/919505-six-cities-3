@@ -1,6 +1,6 @@
 import {TOfferSortType} from '../../types/offers';
 import {useAppDispatch} from '../../hooks/store';
-import {changeCurrentOffersSortType} from '../../store/app-process/app-process';
+import {changeOffersSortType} from '../../store/app-process/app-process';
 
 type TOffersSortingPanelItemProps = {
   sortType: TOfferSortType;
@@ -11,7 +11,7 @@ export default function OffersSortingPanelItem({sortType, currentSortType}: TOff
   const dispatch = useAppDispatch();
 
   const sortTypeClickHandler = () => {
-    dispatch(changeCurrentOffersSortType({sortType}));
+    dispatch(changeOffersSortType({sortType}));
   };
 
   return (

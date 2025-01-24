@@ -28,7 +28,7 @@ export const appProcess = createSlice({
       state.isOffersSortingPanelOpen = !state.isOffersSortingPanelOpen;
     },
 
-    changeCurrentOffersSortType: (state, action: PayloadAction<{sortType: TOfferSortType}>) => {
+    changeOffersSortType: (state, action: PayloadAction<{sortType: TOfferSortType}>) => {
       const {sortType} = action.payload;
       state.currentOffersSortType = sortType;
       state.isOffersSortingPanelOpen = false;
@@ -39,6 +39,6 @@ export const appProcess = createSlice({
 export const {
   changeCity,
   changeCurrentOffer,
-  changeCurrentOffersSortType,
+  changeOffersSortType,
   toggleSortingPanel
 } = appProcess.actions;
