@@ -25,19 +25,19 @@ export default function OfferCard({cardData, cardType}: TPlaceCardProps): JSX.El
   }: TOfferPreview = cardData;
 
   const {changeCurrentOfferId} = useActionCreators(appProcessActions);
-  const {changeHoveredOffer} = useActionCreators(appProcessActions);
+  const {changeHoveredOfferId} = useActionCreators(appProcessActions);
 
   const cardParentBlockName = getParentBlockName(cardType);
 
   const mouseEnterHandler = () => {
     if (cardType === OfferCardParams.type.default) {
-      changeHoveredOffer(id);
+      changeHoveredOfferId(id);
     }
   };
 
   const mouseLeaveHandler = () => {
     if (cardType === OfferCardParams.type.default) {
-      changeHoveredOffer(null);
+      changeHoveredOfferId(null);
     }
   };
 
