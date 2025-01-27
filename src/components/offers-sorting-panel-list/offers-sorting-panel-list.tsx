@@ -1,20 +1,18 @@
 import {SortingType} from '../../common/const';
 import OffersSortingPanelItem from '../offers-sorting-panel-item';
-import {useAppSelector} from '../../hooks/store';
 import {TOfferSortType} from '../../types/offers';
-import {appProcessSelectors} from '../../store/app-process';
 
 type TOffersSortingPanelListProps = {
   currentSortType: TOfferSortType;
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
 }
 
-export default function OffersSortingPanelList({currentSortType}: TOffersSortingPanelListProps): JSX.Element {
-  const isOpen = useAppSelector(appProcessSelectors.isOffersSortingPanelOpen);
-
+export default function OffersSortingPanelList({currentSortType, isOpen, setIsOpen}: TOffersSortingPanelListProps): JSX.Element {
   return (
     <ul className={`places__options places__options--custom ${isOpen ? 'places__options--opened' : ''}`}>
       {Object.values(SortingType).map((value,) =>
-        <OffersSortingPanelItem key={value} sortType={value} currentSortType={currentSortType}/>
+        <OffersSortingPanelItem key={value} sortType={value} currentSortType={currentSortType} setIsOpen={setIsOpen}/>
       )}
     </ul>
   );
