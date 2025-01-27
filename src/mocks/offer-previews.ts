@@ -20,7 +20,7 @@ export const offerPreviews: TOfferPreview[] = [
       longitude: 2.342499,
       zoom: 16
     },
-    isFavorite: false,
+    isFavorite: true,
     isPremium: true,
     rating: 4.7
   },

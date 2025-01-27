@@ -44,7 +44,7 @@ function getStyle(mapType?: MapType) {
 }
 
 export default function Map({offers, mapType}: TMapProps): JSX.Element {
-  const hoveredCardId = useAppSelector(appProcessSelectors.hoveredOfferId);
+  const hoveredCardId = useAppSelector(appProcessSelectors.activeOfferId);
   const hoveredCardObject = offers.find((offer) => offer.id === hoveredCardId);
 
   const [city, points] = getMapData(offers, hoveredCardObject);

@@ -34,8 +34,8 @@ export default function OfferDetails({offer, nearOffers}: TOfferProps): JSX.Elem
   } = offer;
 
   const offers = useAppSelector(appDataSelectors.offers);
-  const currentOfferId = useAppSelector(appProcessSelectors.currentOfferId);
-  const currentOfferPreview = offers.find((item) => item.id === currentOfferId);
+  const activeOfferId = useAppSelector(appProcessSelectors.activeOfferId);
+  const currentOfferPreview = offers.find((item) => item.id === activeOfferId);
 
   const offersForMap = [...nearOffers];
 

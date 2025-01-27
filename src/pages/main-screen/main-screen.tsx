@@ -1,14 +1,20 @@
 import CitiesNavList from '../../components/cities-nav-list';
 import MainContainer from '../../components/main-container';
-import {useAppSelector} from '../../hooks/store';
-import {appProcessSelectors} from '../../store/app-process';
+import {useActionCreators, useAppSelector} from '../../hooks/store';
+import {appProcessActions, appProcessSelectors} from '../../store/app-process';
 import {appDataSelectors} from '../../store/app-data';
+import {useEffect} from 'react';
 
 function MainScreen(): JSX.Element {
   const currentCity = useAppSelector(appProcessSelectors.currentCity);
   const offers = useAppSelector(appDataSelectors.currentCitySortedOffers);
+  const {changeActiveOfferId} = useActionCreators(appProcessActions);
 
   const isEmpty = offers.length === 0;
+
+  useEffect(() => {
+    changeActiveOfferId(null);
+  }, [changeActiveOfferId]);
 
   return (
     <main className={`page__main page__main--index ${isEmpty ? 'page__main--index-empty' : ''}`}>

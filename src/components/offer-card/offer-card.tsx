@@ -24,26 +24,25 @@ export default function OfferCard({cardData, cardType}: TPlaceCardProps): JSX.El
     isPremium
   }: TOfferPreview = cardData;
 
-  const {changeCurrentOfferId} = useActionCreators(appProcessActions);
-  const {changeHoveredOfferId} = useActionCreators(appProcessActions);
+  const {changeActiveOfferId} = useActionCreators(appProcessActions);
 
   const cardParentBlockName = getParentBlockName(cardType);
 
   const mouseEnterHandler = () => {
     if (cardType === OfferCardParams.type.default) {
-      changeHoveredOfferId(id);
+      changeActiveOfferId(id);
     }
   };
 
   const mouseLeaveHandler = () => {
     if (cardType === OfferCardParams.type.default) {
-      changeHoveredOfferId(null);
+      changeActiveOfferId(null);
     }
   };
 
   const cardClickHandler = () => {
     if (cardType === OfferCardParams.type.default) {
-      changeCurrentOfferId(id);
+      changeActiveOfferId(id);
     }
   };
 
