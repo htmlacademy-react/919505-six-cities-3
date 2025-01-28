@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
-import {getAuthorizationStatus} from '../../utils/common';
-import {AppRoute, AuthorizationStatus} from '../../utils/const';
+import {getAuthorizationStatus} from '../../common/utils';
+import {AppRoute, AuthorizationStatus} from '../../common/const';
 
 type TNavBlockProps = {
   favoritesQuantity: number;

@@ -1,6 +1,6 @@
-import {Cities} from '../../utils/const';
+import {Cities} from '../../common/const';
 import CitiesNavItem from '../cities-nav-item';
-import {TCityName} from '../../utils/types';
+import {TCityName} from '../../types/offers';
 
 type TCitiesNavListProps = {
   currentCity: TCityName;

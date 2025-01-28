@@ -1,4 +1,4 @@
-import {TFavoritesObject} from '../../utils/types';
+import {TFavoritesObject} from '../../types/offers';
 import FavoritesList from '../../components/favorites-list';
 import FavoritesListEmpty from '../../components/favorites-list-empty';
 

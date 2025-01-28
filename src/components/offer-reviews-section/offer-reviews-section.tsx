@@ -1,7 +1,7 @@
 import OfferReviewsList from '../offer-reviews-list';
-import {AuthorizationStatus} from '../../utils/const';
+import {AuthorizationStatus} from '../../common/const';
 import OfferReviewForm from '../offer-review-form';
-import {getAuthorizationStatus} from '../../utils/common';
+import {getAuthorizationStatus} from '../../common/utils';
 import {reviews} from '../../mocks/reviews';
 
 export default function OfferReviewsSection(): JSX.Element {

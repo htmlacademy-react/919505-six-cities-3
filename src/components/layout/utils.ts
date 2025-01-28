@@ -1,4 +1,4 @@
-import {AppRoute} from '../../utils/const';
+import {AppRoute} from '../../common/const';
 
 export function getLayoutState(pathName: AppRoute, favoritesQuantity: number) {
   let rootClassName = '';

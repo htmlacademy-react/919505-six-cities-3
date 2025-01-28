@@ -1,5 +1,5 @@
-import {BookmarkButtonParams, MapType, MAX_OFFER_PHOTOS, RatingPanelType} from '../../utils/const.ts';
-import {TOffer, TOfferPreview} from '../../utils/types';
+import {BookmarkButtonParams, MapType, MAX_OFFER_PHOTOS, RatingPanelType} from '../../common/const.ts';
+import {TOffer, TOfferPreview} from '../../types/offers';
 import OfferImage from '../offer-image';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
@@ -8,7 +8,9 @@ import OfferInsideList from '../offer-inside-list';
 import OfferHost from '../offer-host';
 import OfferReviewsSection from '../offer-reviews-section';
 import Map from '../map';
-import useMapData from '../../hooks/use-map-data';
+import {useAppSelector} from '../../hooks/store';
+import {appDataSelectors} from '../../store/app-data';
+import {appProcessSelectors} from '../../store/app-process';
 
 type TOfferProps = {
   offer: TOffer;
@@ -31,11 +33,15 @@ export default function OfferDetails({offer, nearOffers}: TOfferProps): JSX.Elem
     description
   } = offer;
 
-  const {
-    cityObjectForMap,
-    pointsForMap,
-    currentActivePoint
-  } = useMapData(nearOffers, offer);
+  const offers = useAppSelector(appDataSelectors.offers);
+  const activeOfferId = useAppSelector(appProcessSelectors.activeOfferId);
+  const currentOfferPreview = offers.find((item) => item.id === activeOfferId);
+
+  const offersForMap = [...nearOffers];
+
+  if (currentOfferPreview) {
+    offersForMap.push(currentOfferPreview);
+  }
 
   return (
     <section className="offer">
@@ -70,7 +76,7 @@ export default function OfferDetails({offer, nearOffers}: TOfferProps): JSX.Elem
         </div>
       </div>
       <section className="offer__map map">
-        <Map city={cityObjectForMap} points={pointsForMap} selectedPoint={currentActivePoint} mapType={MapType.Offer}/>
+        <Map offers={offersForMap} mapType={MapType.Offer}/>
       </section>
     </section>
   );

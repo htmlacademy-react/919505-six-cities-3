@@ -1,4 +1,4 @@
-import {TFavoritesObject} from '../../utils/types';
+import {TFavoritesObject} from '../../types/offers';
 import FavoritesItem from '../favorites-item';
 
 type TFavoritesListProps = {

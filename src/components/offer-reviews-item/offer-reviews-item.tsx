@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
-import {REVIEW_DATE_FORMAT, RatingPanelType} from '../../utils/const';
-import {TReview} from '../../utils/types';
+import {REVIEW_DATE_FORMAT, RatingPanelType} from '../../common/const';
+import {TReview} from '../../types/reviews';
 import RatingPanel from '../rating-panel';
 
 type TOfferReviewsItemProps = {

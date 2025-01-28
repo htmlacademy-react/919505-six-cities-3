@@ -1,19 +1,18 @@
 import {Link} from 'react-router-dom';
-import {AppRoute, BookmarkButtonParams, OfferCardParams, RatingPanelType} from '../../utils/const';
-import {TOfferPreview} from '../../utils/types';
+import {AppRoute, BookmarkButtonParams, OfferCardParams, RatingPanelType} from '../../common/const';
+import {TOfferPreview} from '../../types/offers';
 import {getParentBlockName} from './utils';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
-import {useAppDispatch} from '../../hooks/store';
-import {changeCurrentOffer} from '../../store/app-process/app-process';
+import {useActionCreators} from '../../hooks/store';
+import {appProcessActions} from '../../store/app-process';
 
 type TPlaceCardProps = {
   cardData: TOfferPreview;
   cardType: string;
-  handleCardHover?: (cardId?: string) => void;
 };
 
-export default function OfferCard({cardData, cardType, handleCardHover}: TPlaceCardProps): JSX.Element {
+export default function OfferCard({cardData, cardType}: TPlaceCardProps): JSX.Element {
   const {
     id,
     title,
@@ -25,25 +24,25 @@ export default function OfferCard({cardData, cardType, handleCardHover}: TPlaceC
     isPremium
   }: TOfferPreview = cardData;
 
-  const dispatch = useAppDispatch();
+  const {changeActiveOfferId} = useActionCreators(appProcessActions);
 
   const cardParentBlockName = getParentBlockName(cardType);
 
   const mouseEnterHandler = () => {
-    if (handleCardHover) {
-      handleCardHover(id);
+    if (cardType === OfferCardParams.type.default) {
+      changeActiveOfferId(id);
     }
   };
 
   const mouseLeaveHandler = () => {
-    if (handleCardHover) {
-      handleCardHover();
+    if (cardType === OfferCardParams.type.default) {
+      changeActiveOfferId(null);
     }
   };
 
   const cardClickHandler = () => {
     if (cardType === OfferCardParams.type.default) {
-      dispatch(changeCurrentOffer({offerId: id}));
+      changeActiveOfferId(id);
     }
   };
 

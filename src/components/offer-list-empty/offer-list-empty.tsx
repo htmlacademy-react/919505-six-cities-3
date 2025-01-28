@@ -1,4 +1,4 @@
-import {TCityName} from '../../utils/types';
+import {TCityName} from '../../types/offers';
 
 type TOfferListEmptyProps = {
   currentCity: TCityName;

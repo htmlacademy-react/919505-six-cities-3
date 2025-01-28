@@ -1,6 +1,6 @@
-import {useAppDispatch} from '../../hooks/store';
-import {changeCity} from '../../store/app-process/app-process';
-import {TCityName} from '../../utils/types';
+import {useActionCreators} from '../../hooks/store';
+import {appProcessActions} from '../../store/app-process';
+import {TCityName} from '../../types/offers';
 
 type TCitiesNavItemProps = {
   city: TCityName;
@@ -8,14 +8,18 @@ type TCitiesNavItemProps = {
 }
 
 export default function CitiesNavItem({city, currentCity}: TCitiesNavItemProps): JSX.Element {
-  const dispatch = useAppDispatch();
+  const {changeCity} = useActionCreators(appProcessActions);
+
+  const cityClickHandler = () => {
+    changeCity(city);
+  };
 
   return (
     <li className="locations__item">
       <a
         className={`locations__item-link tabs__item ${city === currentCity ? 'tabs__item--active' : ''}`}
         href="#"
-        onClick={() => dispatch(changeCity({city}))}
+        onClick={cityClickHandler}
       >
         <span>{city}</span>
       </a>

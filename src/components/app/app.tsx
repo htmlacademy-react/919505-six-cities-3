@@ -1,6 +1,6 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import {getAuthorizationStatus} from '../../utils/common';
-import {AppRoute} from '../../utils/const';
+import {getAuthorizationStatus} from '../../common/utils';
+import {AppRoute} from '../../common/const';
 import Layout from '../layout';
 import MainScreen from '../../pages/main-screen';
 import LoginScreen from '../../pages/login-screen';
@@ -9,7 +9,7 @@ import FavoritesScreen from '../../pages/favorites-screen';
 import OfferScreen from '../../pages/offer-screen';
 import NotFoundScreen from '../../pages/not-found-screen';
 import ScrollToTop from '../scroll-to-top';
-import {TFavoritesObject} from '../../utils/types';
+import {TFavoritesObject} from '../../types/offers';
 
 type TAppProps = {
   favoritesObject: TFavoritesObject;

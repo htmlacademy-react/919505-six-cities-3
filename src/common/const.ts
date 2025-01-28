@@ -6,6 +6,19 @@ export const REVIEW_DATE_FORMAT = 'MMMM YYYY';
 
 export const RatingInputTitles = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
 
+export const CardType = {
+  CITIES: 'cities',
+  NEAR_PLACES: 'near-places',
+  FAVORITES: 'favorites'
+} as const;
+
+export const SortingType = {
+  POPULAR: 'Popular',
+  LOW_TO_HIGH: 'Price: low to high',
+  HIGH_TO_LOW: 'Price: high to low',
+  TOP_RATED_FIRST: 'Top rated first'
+} as const;
+
 export enum NameSpace {
   App = 'APP',
   Data = 'DATA'
@@ -19,7 +32,6 @@ export enum MapType {
 export enum AuthorizationStatus {
   Auth = 'Auth',
   NoAuth = 'NoAuth',
-  Unknown = 'Unknown',
 }
 
 export enum AppRoute {

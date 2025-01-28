@@ -1,18 +1,31 @@
 import OfferNearPlaces from '../../components/offer-near-places';
 import OfferDetails from '../../components/offer-details';
 import {offer} from '../../mocks/offer';
-import {useAppSelector} from '../../hooks/store';
-import {getOffers} from '../../store/app-data/selectors';
-import {getCurrentCity, getCurrentOffer} from '../../store/app-process/selectors';
-import {MAX_NEARBY_OFFERS} from '../../utils/const';
+import {useActionCreators, useAppSelector} from '../../hooks/store';
+import {MAX_NEARBY_OFFERS} from '../../common/const';
+import {appProcessActions, appProcessSelectors} from '../../store/app-process';
+import {appDataSelectors} from '../../store/app-data';
+import {useEffect} from 'react';
+import {useLocation} from 'react-router-dom';
 
 export default function OfferScreen(): JSX.Element {
-  const currentOffer = useAppSelector(getCurrentOffer);
-  const currentCity = useAppSelector(getCurrentCity);
-  const offers = useAppSelector(getOffers);
+  const activeOfferId = useAppSelector(appProcessSelectors.activeOfferId);
+  const currentCity = useAppSelector(appProcessSelectors.currentCity);
+  const offers = useAppSelector(appDataSelectors.currentCitySortedOffers);
+  const {changeActiveOfferId} = useActionCreators(appProcessActions);
+
+  const currentPage = useLocation().pathname;
+
+  // Если на страницу зашли по прямой ссылке, минуя главную, то добавляем в стор ID текущей карточки
+  useEffect(() => {
+    if (!activeOfferId) {
+      const offerId = currentPage.substring(currentPage.lastIndexOf('/') + 1, currentPage.length);
+      changeActiveOfferId(offerId);
+    }
+  }, [currentPage, changeActiveOfferId, activeOfferId]);
 
   const nearOffers = offers.filter((item) =>
-    item.city.name === currentCity && item.id !== currentOffer)
+    item.city.name === currentCity && item.id !== activeOfferId)
     .slice(0, MAX_NEARBY_OFFERS);
 
   return (

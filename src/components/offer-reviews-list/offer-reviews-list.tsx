@@ -1,4 +1,4 @@
-import {TReview} from '../../utils/types';
+import {TReview} from '../../types/reviews';
 import OfferReviewsItem from '../offer-reviews-item';
 
 type TOfferReviewsListProps = {

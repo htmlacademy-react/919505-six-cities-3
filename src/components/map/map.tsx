@@ -1,16 +1,17 @@
 import {useRef, useEffect} from 'react';
 import {Icon, Marker, layerGroup} from 'leaflet';
-import {TMapCity, TMapPoint} from '../../utils/types';
-import {MapType} from '../../utils/const';
+import {MapType} from '../../common/const';
 import useMap from '../../hooks/use-map';
 import 'leaflet/dist/leaflet.css';
+import {TOfferPreview} from '../../types/offers';
+import {useAppSelector} from '../../hooks/store';
+import {appProcessSelectors} from '../../store/app-process';
+import getMapData from './utils';
 
 type TMapProps = {
-  city: TMapCity;
-  points: TMapPoint[];
-  selectedPoint: TMapPoint | null;
+  offers: TOfferPreview[];
   mapType?: MapType;
-};
+}
 
 const URL_MARKER_DEFAULT = 'img/pin.svg';
 const URL_MARKER_CURRENT = 'img/pin-active.svg';
@@ -42,8 +43,11 @@ function getStyle(mapType?: MapType) {
   }
 }
 
-export default function Map(props: TMapProps): JSX.Element {
-  const {city, points, selectedPoint, mapType} = props;
+export default function Map({offers, mapType}: TMapProps): JSX.Element {
+  const hoveredCardId = useAppSelector(appProcessSelectors.activeOfferId);
+  const hoveredCardObject = offers.find((offer) => offer.id === hoveredCardId);
+
+  const [city, points] = getMapData(offers, hoveredCardObject);
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
@@ -65,7 +69,7 @@ export default function Map(props: TMapProps): JSX.Element {
 
         marker
           .setIcon(
-            selectedPoint && point.id === selectedPoint.id
+            hoveredCardId && point.id === hoveredCardId
               ? currentCustomIcon
               : defaultCustomIcon
           )
@@ -76,7 +80,7 @@ export default function Map(props: TMapProps): JSX.Element {
         map.removeLayer(markerLayer);
       };
     }
-  }, [map, points, selectedPoint]);
+  }, [map, points, hoveredCardId]);
 
   return <div style={getStyle(mapType)} ref={mapRef}></div>;
 }
