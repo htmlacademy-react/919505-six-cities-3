@@ -1,13 +1,12 @@
 import {createSelector, createSlice} from '@reduxjs/toolkit';
 import {NameSpace} from '../../common/const';
 import {TAppDataState} from '../../types/state';
-import {offerPreviews} from '../../mocks/offer-previews';
 import {TOfferPreview} from '../../types/offers';
 import {appProcess} from '../app-process';
 import {getProcessedOffers} from '../../common/utils';
 
 const initialState: TAppDataState = {
-  offers: offerPreviews
+  offers: []
 };
 
 const appData = createSlice({

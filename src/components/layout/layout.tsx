@@ -1,15 +1,13 @@
-import {PropsWithChildren} from 'react';
 import {Outlet, useLocation} from 'react-router-dom';
 import {AppRoute} from '../../common/const';
 import {getLayoutState} from './utils';
 import Footer from '../footer';
 import Header from '../header';
+import {appDataSelectors} from '../../store/app-data';
+import {useAppSelector} from '../../hooks/store';
 
-type TLayoutProps = {
-  favoritesQuantity: number;
-};
-
-export default function Layout({favoritesQuantity}: PropsWithChildren<TLayoutProps>): JSX.Element {
+export default function Layout(): JSX.Element {
+  const favoritesQuantity = useAppSelector(appDataSelectors.offers).length;
   const currentPage = useLocation().pathname;
 
   const {rootClassName,

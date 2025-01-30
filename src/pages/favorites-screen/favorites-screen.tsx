@@ -1,13 +1,16 @@
-import {TFavoritesObject} from '../../types/offers';
 import FavoritesList from '../../components/favorites-list';
 import FavoritesListEmpty from '../../components/favorites-list-empty';
+import {useAppSelector} from '../../hooks/store';
+import {appDataSelectors} from '../../store/app-data';
+import {generateFavoriteOffersObject} from '../../common/utils';
 
-type TFavoritesPageProps = {
-  favoritesObject: TFavoritesObject;
-}
+export default function FavoritesScreen(): JSX.Element {
+  const offers = useAppSelector(appDataSelectors.offers);
+  const favoriteOffers = offers.filter((offer) => offer.isFavorite);
+  const favoritesObject = generateFavoriteOffersObject(favoriteOffers);
 
-export default function FavoritesScreen({favoritesObject}: TFavoritesPageProps): JSX.Element {
   const isEmpty = Object.keys(favoritesObject).length === 0;
+
   return (
     <main className={`page__main page__main--favorites ${isEmpty ? 'page__main--favorites-empty' : ''}`}>
       <div className="page__favorites-container container">
