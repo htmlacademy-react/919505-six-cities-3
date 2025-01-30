@@ -1,8 +1,10 @@
 import {store} from '../store';
 import {TCityName, TOfferPreview, TOfferSortType} from './offers';
+import {RequestStatus} from '../common/const';
 
 export type TAppDataState = {
   offers: TOfferPreview[];
+  requestStatus: RequestStatus;
 }
 
 export type TAppProcessState = {

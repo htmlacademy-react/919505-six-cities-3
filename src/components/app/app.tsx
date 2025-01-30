@@ -9,8 +9,18 @@ import FavoritesScreen from '../../pages/favorites-screen';
 import OfferScreen from '../../pages/offer-screen';
 import NotFoundScreen from '../../pages/not-found-screen';
 import ScrollToTop from '../scroll-to-top';
+import {useEffect} from 'react';
+import {useAppDispatch} from '../../hooks/store';
+
+import {fetchAllOffers} from '../../store/thunks/offers';
 
 export default function App() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllOffers());
+  });
+
   return(
     <BrowserRouter>
       <ScrollToTop/>

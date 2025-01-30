@@ -19,6 +19,21 @@ export const SortingType = {
   TOP_RATED_FIRST: 'Top rated first'
 } as const;
 
+export enum EndPoint {
+  Offers = '/offers',
+  Favorite = '/favorite',
+  Login = '/login',
+  Logout = '/logout',
+  Reviews = '/comments',
+}
+
+export enum RequestStatus {
+  Idle= 'IDLE',
+  Loading = ' LOADING',
+  Success = ' SUCCESS',
+  Failed = 'FAILED'
+}
+
 export enum NameSpace {
   App = 'APP',
   Data = 'DATA'

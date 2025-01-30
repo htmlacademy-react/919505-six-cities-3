@@ -7,8 +7,10 @@ import {appDataSelectors} from '../../store/app-data';
 import {useAppSelector} from '../../hooks/store';
 
 export default function Layout(): JSX.Element {
-  const favoritesQuantity = useAppSelector(appDataSelectors.offers).length;
+  const offers = useAppSelector(appDataSelectors.offers);
   const currentPage = useLocation().pathname;
+
+  const favoritesQuantity = offers.filter((offer) => offer.isFavorite).length;
 
   const {rootClassName,
     linkClassName,
