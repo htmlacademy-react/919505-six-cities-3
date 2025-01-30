@@ -1,12 +1,11 @@
 import CitiesNavList from '../../components/cities-nav-list';
 import MainContainer from '../../components/main-container';
 import {useActionCreators, useAppSelector} from '../../hooks/store';
-import {appProcessActions, appProcessSelectors} from '../../store/app-process';
+import {appProcessActions} from '../../store/app-process';
 import {appDataSelectors} from '../../store/app-data';
 import {useEffect} from 'react';
 
 function MainScreen(): JSX.Element {
-  const currentCity = useAppSelector(appProcessSelectors.currentCity);
   const offers = useAppSelector(appDataSelectors.currentCitySortedOffers);
   const {changeActiveOfferId} = useActionCreators(appProcessActions);
 
@@ -21,10 +20,10 @@ function MainScreen(): JSX.Element {
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <CitiesNavList currentCity={currentCity}/>
+          <CitiesNavList/>
         </section>
       </div>
-      <MainContainer currentCityName={currentCity} offers={offers} isEmpty={isEmpty}/>
+      <MainContainer offers={offers} isEmpty={isEmpty}/>
     </main>
   );
 }
