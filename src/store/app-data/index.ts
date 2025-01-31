@@ -28,15 +28,17 @@ const appData = createSlice({
         state.offersStatus = RequestStatus.Loading;
       })
       .addCase(fetchAllOffers.fulfilled, (state, action) => {
-        state.requestStatus = RequestStatus.Success;
+        state.requestStatus = RequestStatus.Idle;
         state.offersStatus = RequestStatus.Success;
         state.offers = action.payload;
       })
       .addCase(fetchAllOffers.rejected, (state) => {
-        state.requestStatus = RequestStatus.Failed;
+        state.requestStatus = RequestStatus.Idle;
         state.offersStatus = RequestStatus.Failed;
       })
 });
+
+const appDataActions = {...appData.actions, fetchAllOffers};
 
 const appDataSelectors = {
   ...appData.selectors,
@@ -47,4 +49,4 @@ const appDataSelectors = {
     (offers, city, sortType) => getProcessedOffers(offers, city, sortType))
 };
 
-export {appData, appDataSelectors};
+export {appData, appDataActions, appDataSelectors};

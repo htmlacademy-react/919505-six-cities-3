@@ -10,16 +10,18 @@ import OfferScreen from '../../pages/offer-screen';
 import NotFoundScreen from '../../pages/not-found-screen';
 import ScrollToTop from '../scroll-to-top';
 import {useEffect} from 'react';
-import {useAppDispatch} from '../../hooks/store';
-
-import {fetchAllOffers} from '../../store/thunks/offers';
+import {useActionCreators} from '../../hooks/store';
+import {appDataActions} from '../../store/app-data';
 
 export default function App() {
-  const dispatch = useAppDispatch();
+  const {fetchAllOffers} = useActionCreators(appDataActions);
 
   useEffect(() => {
-    dispatch(fetchAllOffers());
-  }, [dispatch]);
+    fetchAllOffers()
+      .unwrap()
+      .then(() => console.log('success'))
+      .catch(() => console.log('error'));
+  });
 
   return(
     <BrowserRouter>
