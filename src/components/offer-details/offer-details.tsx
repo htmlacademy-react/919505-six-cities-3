@@ -10,15 +10,15 @@ import OfferReviewsSection from '../offer-reviews-section';
 import Map from '../map';
 import {useAppSelector} from '../../hooks/store';
 import {appDataSelectors} from '../../store/app-data';
-import {appProcessSelectors} from '../../store/app-process';
 
 type TOfferProps = {
   offer: TOffer;
-  nearOffers: TOfferPreview[];
+  nearbyOffers: TOfferPreview[];
 };
 
-export default function OfferDetails({offer, nearOffers}: TOfferProps): JSX.Element {
+export default function OfferDetails({offer, nearbyOffers}: TOfferProps): JSX.Element {
   const {
+    id,
     images,
     type,
     isPremium,
@@ -34,10 +34,9 @@ export default function OfferDetails({offer, nearOffers}: TOfferProps): JSX.Elem
   } = offer;
 
   const offers = useAppSelector(appDataSelectors.offers);
-  const activeOfferId = useAppSelector(appProcessSelectors.activeOfferId);
-  const currentOfferPreview = offers.find((item) => item.id === activeOfferId);
+  const currentOfferPreview = offers.find((item) => item.id === id);
 
-  const offersForMap = [...nearOffers];
+  const offersForMap = [...nearbyOffers];
 
   if (currentOfferPreview) {
     offersForMap.push(currentOfferPreview);
@@ -76,7 +75,7 @@ export default function OfferDetails({offer, nearOffers}: TOfferProps): JSX.Elem
         </div>
       </div>
       <section className="offer__map map">
-        <Map offers={offersForMap} mapType={MapType.Offer}/>
+        {offersForMap.length > 0 && <Map offers={offersForMap} mapType={MapType.Offer}/>}
       </section>
     </section>
   );

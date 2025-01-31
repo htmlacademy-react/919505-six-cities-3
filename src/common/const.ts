@@ -1,7 +1,7 @@
 export const RATING_COEFFICIENT = 20;
 export const MAX_OFFER_PHOTOS = 6;
-export const OFFER_DETAILS_CHECK_NUMBER = 1;
 export const MAX_NEARBY_OFFERS = 3;
+export const OFFER_DETAILS_CHECK_NUMBER = 1;
 export const REVIEW_DATE_FORMAT = 'MMMM YYYY';
 
 export const RatingInputTitles = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
@@ -18,6 +18,21 @@ export const SortingType = {
   HIGH_TO_LOW: 'Price: high to low',
   TOP_RATED_FIRST: 'Top rated first'
 } as const;
+
+export enum EndPoint {
+  Offers = '/offers',
+  Favorite = '/favorite',
+  Login = '/login',
+  Logout = '/logout',
+  Reviews = '/comments',
+}
+
+export enum RequestStatus {
+  Idle= 'IDLE',
+  Loading = ' LOADING',
+  Success = ' SUCCESS',
+  Failed = 'FAILED'
+}
 
 export enum NameSpace {
   App = 'APP',

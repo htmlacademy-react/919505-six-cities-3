@@ -9,22 +9,24 @@ import FavoritesScreen from '../../pages/favorites-screen';
 import OfferScreen from '../../pages/offer-screen';
 import NotFoundScreen from '../../pages/not-found-screen';
 import ScrollToTop from '../scroll-to-top';
-import {TFavoritesObject} from '../../types/offers';
+import {useEffect} from 'react';
+import {useActionCreators} from '../../hooks/store';
+import {appDataActions} from '../../store/app-data';
 
-type TAppProps = {
-  favoritesObject: TFavoritesObject;
-  favoritesQuantity: number;
-};
+export default function App() {
+  const {fetchAllOffers} = useActionCreators(appDataActions);
 
-export default function App(props: TAppProps) {
-  const {favoritesObject, favoritesQuantity} = props;
+  useEffect(() => {
+    fetchAllOffers();
+  });
+
   return(
     <BrowserRouter>
       <ScrollToTop/>
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<Layout favoritesQuantity={favoritesQuantity}/>}
+          element={<Layout/>}
         >
 
           <Route
@@ -45,7 +47,7 @@ export default function App(props: TAppProps) {
             path={AppRoute.Favorites}
             element={(
               <PrivateRoute authorizationStatus={getAuthorizationStatus()}>
-                <FavoritesScreen favoritesObject={favoritesObject}/>
+                <FavoritesScreen/>
               </PrivateRoute>
             )}
           />

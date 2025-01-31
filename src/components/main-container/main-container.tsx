@@ -1,28 +1,25 @@
-import {TCityName, TOfferPreview} from '../../types/offers';
-import OfferListEmpty from '../offer-list-empty';
-import OfferList from '../offer-list';
-import Map from '../map';
+import {TOfferPreview} from '../../types/offers';
+import {useAppSelector} from '../../hooks/store';
+import {appDataSelectors} from '../../store/app-data';
+import {RequestStatus} from '../../common/const';
+import PlacesContainer from '../places-container';
+import Spinner from '../spinner';
 
 type TMainContainerProps = {
-  currentCityName: TCityName;
   offers: TOfferPreview[];
   isEmpty: boolean;
 }
 
-export default function MainContainer({currentCityName, offers, isEmpty}: TMainContainerProps): JSX.Element {
+export default function MainContainer({offers, isEmpty}: TMainContainerProps): JSX.Element {
+  const offersStatus = useAppSelector(appDataSelectors.requestStatus);
+  const isLoading = offersStatus === RequestStatus.Loading;
 
   return (
     <div className="cities">
       <div className={`cities__places-container ${isEmpty ? 'cities__places-container--empty' : ''} container`}>
-        {isEmpty
-          ? <OfferListEmpty currentCity={currentCityName}/>
-          : <OfferList currentCityName={currentCityName} offers={offers}/>}
-        <div className="cities__right-section">
-          {!isEmpty &&
-            <section className="cities__map map">
-              <Map offers={offers}/>
-            </section>}
-        </div>
+        {isLoading
+          ? <Spinner/>
+          : <PlacesContainer offers={offers} isEmpty={isEmpty}/>}
       </div>
     </div>
   );
