@@ -11,7 +11,7 @@ type TMainContainerProps = {
 }
 
 export default function MainContainer({offers, isEmpty}: TMainContainerProps): JSX.Element {
-  const offersStatus = useAppSelector(appDataSelectors.offersStatus);
+  const offersStatus = useAppSelector(appDataSelectors.requestStatus);
   const isLoading = offersStatus === RequestStatus.Loading;
 
   return (

@@ -8,10 +8,6 @@ export type TAppDataState = {
   offer: TOffer | null;
   nearbyOffers: TOfferPreview[];
   reviews: TReview[];
-  reviewsStatus: RequestStatus;
-  offersStatus: RequestStatus;
-  offerStatus: RequestStatus;
-  nearbyOffersStatus: RequestStatus;
   requestStatus: RequestStatus;
 }
 

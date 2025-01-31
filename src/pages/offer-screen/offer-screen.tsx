@@ -11,7 +11,7 @@ import NotFoundScreen from '../not-found-screen';
 
 export default function OfferScreen(): JSX.Element {
   const offer = useAppSelector(appDataSelectors.offer);
-  const offerRequestStatus = useAppSelector(appDataSelectors.offerStatus);
+  const offerRequestStatus = useAppSelector(appDataSelectors.requestStatus);
   const nearbyOffers = useAppSelector(appDataSelectors.nearbyOffers);
 
   const {fetchOffer, fetchNearbyOffers, fetchReviews} = useActionCreators(appDataActions);
