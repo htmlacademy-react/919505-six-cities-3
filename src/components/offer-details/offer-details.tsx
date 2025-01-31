@@ -75,7 +75,7 @@ export default function OfferDetails({offer, nearbyOffers}: TOfferProps): JSX.El
         </div>
       </div>
       <section className="offer__map map">
-        <Map offers={offersForMap} mapType={MapType.Offer}/>
+        {offersForMap.length > 0 && <Map offers={offersForMap} mapType={MapType.Offer}/>}
       </section>
     </section>
   );

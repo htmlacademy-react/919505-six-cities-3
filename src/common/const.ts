@@ -1,5 +1,6 @@
 export const RATING_COEFFICIENT = 20;
 export const MAX_OFFER_PHOTOS = 6;
+export const MAX_NEARBY_OFFERS = 3;
 export const OFFER_DETAILS_CHECK_NUMBER = 1;
 export const REVIEW_DATE_FORMAT = 'MMMM YYYY';
 
