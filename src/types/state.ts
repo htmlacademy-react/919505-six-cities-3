@@ -4,6 +4,7 @@ import {RequestStatus} from '../common/const';
 
 export type TAppDataState = {
   offers: TOfferPreview[];
+  offersStatus: RequestStatus;
   requestStatus: RequestStatus;
 }
 

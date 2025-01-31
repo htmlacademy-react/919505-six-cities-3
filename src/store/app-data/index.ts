@@ -8,6 +8,7 @@ import {fetchAllOffers} from '../thunks/offers';
 
 const initialState: TAppDataState = {
   offers: [],
+  offersStatus: RequestStatus.Idle,
   requestStatus: RequestStatus.Idle
 };
 
@@ -16,20 +17,24 @@ const appData = createSlice({
   initialState,
   reducers: {},
   selectors: {
-    offers: (state: TAppDataState): TOfferPreview[] => state.offers
+    offers: (state: TAppDataState): TOfferPreview[] => state.offers,
+    offersStatus: (state: TAppDataState): RequestStatus => state.offersStatus
   },
 
   extraReducers: (builder) =>
     builder
       .addCase(fetchAllOffers.pending, (state) => {
         state.requestStatus = RequestStatus.Loading;
+        state.offersStatus = RequestStatus.Loading;
       })
       .addCase(fetchAllOffers.fulfilled, (state, action) => {
         state.requestStatus = RequestStatus.Success;
+        state.offersStatus = RequestStatus.Success;
         state.offers = action.payload;
       })
       .addCase(fetchAllOffers.rejected, (state) => {
         state.requestStatus = RequestStatus.Failed;
+        state.offersStatus = RequestStatus.Failed;
       })
 });
 

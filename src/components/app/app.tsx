@@ -19,7 +19,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(fetchAllOffers());
-  });
+  }, [dispatch]);
 
   return(
     <BrowserRouter>
