@@ -17,10 +17,7 @@ export default function App() {
   const {fetchAllOffers} = useActionCreators(appDataActions);
 
   useEffect(() => {
-    fetchAllOffers()
-      .unwrap()
-      .then(() => console.log('success'))
-      .catch(() => console.log('error'));
+    fetchAllOffers();
   });
 
   return(

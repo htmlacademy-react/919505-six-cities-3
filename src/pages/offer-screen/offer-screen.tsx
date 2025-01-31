@@ -1,42 +1,45 @@
 import OfferNearPlaces from '../../components/offer-near-places';
 import OfferDetails from '../../components/offer-details';
-import {offer} from '../../mocks/offer';
 import {useActionCreators, useAppSelector} from '../../hooks/store';
-import {MAX_NEARBY_OFFERS} from '../../common/const';
-import {appProcessActions, appProcessSelectors} from '../../store/app-process';
-import {appDataSelectors} from '../../store/app-data';
+import {appProcessActions} from '../../store/app-process';
+import {appDataActions, appDataSelectors} from '../../store/app-data';
 import {useEffect} from 'react';
-import {useLocation} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
+import {RequestStatus} from '../../common/const';
+import Spinner from '../../components/spinner';
+import NotFoundScreen from '../not-found-screen';
 
 export default function OfferScreen(): JSX.Element {
-  const activeOfferId = useAppSelector(appProcessSelectors.activeOfferId);
-  const currentCity = useAppSelector(appProcessSelectors.currentCity);
-  const offers = useAppSelector(appDataSelectors.currentCitySortedOffers);
+  const offer = useAppSelector(appDataSelectors.offer);
+  const offerRequestStatus = useAppSelector(appDataSelectors.offerStatus);
+  const nearbyOffers = useAppSelector(appDataSelectors.nearbyOffers);
+
+  const {fetchOffer, fetchNearbyOffers, fetchReviews} = useActionCreators(appDataActions);
   const {changeActiveOfferId} = useActionCreators(appProcessActions);
+  const {id} = useParams();
 
-  const currentPage = useLocation().pathname;
-
-  // Если на страницу зашли по прямой ссылке, минуя главную, то добавляем в стор ID текущей карточки
   useEffect(() => {
-    if (!activeOfferId) {
-      const offerId = currentPage.substring(currentPage.lastIndexOf('/') + 1, currentPage.length);
-      changeActiveOfferId(offerId);
-    }
-  }, [currentPage, changeActiveOfferId, activeOfferId]);
+    Promise.all([fetchOffer(id as string), fetchNearbyOffers(id as string), fetchReviews(id as string)]);
+  }, [id, fetchOffer, fetchNearbyOffers, fetchReviews]);
 
-  const nearOffers = offers.filter((item) =>
-    item.city.name === currentCity && item.id !== activeOfferId)
-    .slice(0, MAX_NEARBY_OFFERS);
+  useEffect(() => {
+    if (id) {
+      changeActiveOfferId(id);
+    }
+  }, [changeActiveOfferId, id]);
+
+  if (offerRequestStatus === RequestStatus.Loading) {
+    return <Spinner/>;
+  }
+
+  if (offerRequestStatus === RequestStatus.Failed || !offer) {
+    return <NotFoundScreen/>;
+  }
 
   return (
     <main className="page__main page__main--offer">
-      <OfferDetails
-        offer={offer}
-        nearOffers={nearOffers}
-      />
-      <div className="container">
-        <OfferNearPlaces nearOffers={nearOffers}/>
-      </div>
+      <OfferDetails offer={offer} nearbyOffers={nearbyOffers}/>
+      <OfferNearPlaces nearbyOffers={nearbyOffers}/>
     </main>
   );
 }
