@@ -57,6 +57,10 @@ export type TServerOffer = {
   'maxAdults': number;
 }
 
+export type TServerFavoriteOffer = TServerOffer & {
+  'previewImage': string;
+}
+
 export type TServerReview = {
   'id': string;
   'date': string;

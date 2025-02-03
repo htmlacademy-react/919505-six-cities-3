@@ -1,9 +1,16 @@
-import {TServerOffer, TServerOfferPreview, TServerReview} from '../types/server';
+import {TServerFavoriteOffer, TServerOffer, TServerOfferPreview, TServerReview} from '../types/server';
 import {TOffer, TOfferPreview} from '../types/offers';
 import {TReview} from '../types/reviews';
 
+const adaptReviewToApp = (review: TServerReview): TReview => ({
+  id: review.id,
+  date: review.date,
+  user: review.user,
+  comment: review.comment,
+  rating: review.rating,
+});
 
-const adaptOfferPreviewToApp = (offer: TServerOfferPreview): TOfferPreview => ({
+export const adaptOfferPreviewToApp = (offer: TServerOfferPreview | TServerFavoriteOffer): TOfferPreview => ({
   id: offer.id,
   title: offer.title,
   type: offer.type,
@@ -16,13 +23,6 @@ const adaptOfferPreviewToApp = (offer: TServerOfferPreview): TOfferPreview => ({
   previewImage: offer.previewImage
 });
 
-const adaptReviewToApp = (review: TServerReview): TReview => ({
-  id: review.id,
-  date: review.date,
-  user: review.user,
-  comment: review.comment,
-  rating: review.rating,
-});
 
 export const adaptOfferToApp = (offer: TServerOffer): TOffer => ({
   id: offer.id,

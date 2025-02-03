@@ -34,9 +34,15 @@ export enum RequestStatus {
   Failed = 'FAILED'
 }
 
+export enum FavoriteStatus {
+  Added = 1,
+  Removed = 0
+}
+
 export enum NameSpace {
   App = 'APP',
   Data = 'DATA',
+  Favorites = 'Favorites',
   User = 'USER'
 }
 
@@ -65,6 +71,11 @@ export enum RatingPanelType {
   Card = 'Card'
 }
 
+export enum BookmarkButton {
+  Card = 'Card',
+  View = 'View',
+}
+
 export const ReviewLength = {
   MIN: 50,
   MAX: 300
@@ -89,10 +100,7 @@ export const OfferCardParams = {
 };
 
 export const BookmarkButtonParams = {
-  type: {
-    card: 'card',
-    view: 'view',
-  },
+  type: BookmarkButton,
 
   width: {
     little: '18',

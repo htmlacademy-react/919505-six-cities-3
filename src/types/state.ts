@@ -12,6 +12,11 @@ export type TAppDataState = {
   requestStatus: RequestStatus;
 }
 
+export type TFavoritesState = {
+  offers: TOfferPreview[];
+  requestStatus: RequestStatus;
+}
+
 export type TAppProcessState = {
   currentCity: TCityName;
   activeOfferId: string | null;

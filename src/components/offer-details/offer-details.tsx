@@ -1,4 +1,4 @@
-import {BookmarkButtonParams, MapType, MAX_OFFER_PHOTOS, RatingPanelType} from '../../common/const.ts';
+import {BookmarkButton, MapType, MAX_OFFER_PHOTOS, RatingPanelType} from '../../common/const.ts';
 import {TOffer, TOfferPreview} from '../../types/offers';
 import OfferImage from '../offer-image';
 import ButtonBookmark from '../button-bookmark';
@@ -60,7 +60,7 @@ export default function OfferDetails({offer, nearbyOffers}: TOfferProps): JSX.El
             : ''}
           <div className="offer__name-wrapper">
             <h1 className="offer__name">{title}</h1>
-            <ButtonBookmark type={BookmarkButtonParams.type.view} isActive={isFavorite}/>
+            <ButtonBookmark offerId={id} isFavorite={isFavorite} type={BookmarkButton.View}/>
           </div>
 
           <RatingPanel type={RatingPanelType.Offer} rating={rating}/>
