@@ -1,10 +1,10 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import {NameSpace} from '../common/const';
-import {appData} from './app-data';
-import {appProcess} from './app-process';
+import {appData} from './slice/app-data';
+import {appProcess} from './slice/app-process';
 import {createAPI} from '../services/api';
 import {redirect} from './middlewares/redirect';
-import {userProcess} from './user-process';
+import {userProcess} from './slice/user-process';
 
 export const rootReducer = combineReducers({
   [NameSpace.Data]: appData.reducer,

@@ -5,7 +5,7 @@ import {getParentBlockName} from './utils';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
 import {useActionCreators} from '../../hooks/store';
-import {appProcessActions} from '../../store/app-process';
+import {appProcessActions} from '../../store/slice/app-process';
 import {makeFirstLetterToUpperCase} from '../../common/utils';
 
 type TPlaceCardProps = {

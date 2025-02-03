@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {Cities, NameSpace, SortingType} from '../../common/const';
-import {TCityName, TOfferSortType} from '../../types/offers';
-import {TAppProcessState} from '../../types/state';
+import {Cities, NameSpace, SortingType} from '../../../common/const';
+import {TCityName, TOfferSortType} from '../../../types/offers';
+import {TAppProcessState} from '../../../types/state';
 
 const initialState: TAppProcessState = {
   currentCity: Cities[0],

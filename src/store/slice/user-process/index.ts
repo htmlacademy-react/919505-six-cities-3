@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {AuthorizationStatus, NameSpace} from '../../common/const';
-import {TUserState} from '../../types/state';
+import {AuthorizationStatus, NameSpace} from '../../../common/const';
+import {TUserState} from '../../../types/state';
 
 const initialState: TUserState = {
   AuthorizationStatus: AuthorizationStatus.NoAuth

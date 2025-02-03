@@ -3,7 +3,7 @@ import {AppRoute} from '../../common/const';
 import {getLayoutState} from './utils';
 import Footer from '../footer';
 import Header from '../header';
-import {appDataSelectors} from '../../store/app-data';
+import {appDataSelectors} from '../../store/slice/app-data';
 import {useAppSelector} from '../../hooks/store';
 
 export default function Layout(): JSX.Element {

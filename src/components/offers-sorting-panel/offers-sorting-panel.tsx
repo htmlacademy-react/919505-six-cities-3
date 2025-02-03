@@ -1,7 +1,7 @@
 import OffersSortingPanelList from '../offers-sorting-panel-list';
 import {TSpanClickHandler} from '../../types/event-handlers';
 import {useAppSelector} from '../../hooks/store';
-import {appProcessSelectors} from '../../store/app-process';
+import {appProcessSelectors} from '../../store/slice/app-process';
 import {useState} from 'react';
 
 export default function OffersSortingPanel(): JSX.Element {

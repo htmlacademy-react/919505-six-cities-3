@@ -1,7 +1,7 @@
 import {Cities} from '../../common/const';
 import CitiesNavItem from '../cities-nav-item';
 import {useAppSelector} from '../../hooks/store';
-import {appProcessSelectors} from '../../store/app-process';
+import {appProcessSelectors} from '../../store/slice/app-process';
 
 export default function CitiesNavList(): JSX.Element {
   const currentCity = useAppSelector(appProcessSelectors.currentCity);

@@ -3,7 +3,7 @@ import OffersSortingPanel from '../offers-sorting-panel';
 import OfferCardList from '../offer-card-list';
 import {OfferCardParams} from '../../common/const';
 import {useAppSelector} from '../../hooks/store';
-import {appProcessSelectors} from '../../store/app-process';
+import {appProcessSelectors} from '../../store/slice/app-process';
 
 type TOfferListProps = {
   offers: TOfferPreview[];

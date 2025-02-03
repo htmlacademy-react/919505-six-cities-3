@@ -3,7 +3,7 @@ import {AuthorizationStatus} from '../../common/const';
 import OfferReviewForm from '../offer-review-form';
 import {getAuthorizationStatus} from '../../common/utils';
 import {useAppSelector} from '../../hooks/store';
-import {appDataSelectors} from '../../store/app-data';
+import {appDataSelectors} from '../../store/slice/app-data';
 
 export default function OfferReviewsSection(): JSX.Element {
   const reviews = useAppSelector(appDataSelectors.reviews);

@@ -9,7 +9,7 @@ import OfferHost from '../offer-host';
 import OfferReviewsSection from '../offer-reviews-section';
 import Map from '../map';
 import {useAppSelector} from '../../hooks/store';
-import {appDataSelectors} from '../../store/app-data';
+import {appDataSelectors} from '../../store/slice/app-data';
 import {makeFirstLetterToUpperCase} from '../../common/utils';
 
 type TOfferProps = {

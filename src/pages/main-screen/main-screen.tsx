@@ -1,8 +1,8 @@
 import CitiesNavList from '../../components/cities-nav-list';
 import MainContainer from '../../components/main-container';
 import {useActionCreators, useAppSelector} from '../../hooks/store';
-import {appProcessActions} from '../../store/app-process';
-import {appDataSelectors} from '../../store/app-data';
+import {appProcessActions} from '../../store/slice/app-process';
+import {appDataSelectors} from '../../store/slice/app-data';
 import {useEffect} from 'react';
 
 function MainScreen(): JSX.Element {

@@ -1,5 +1,5 @@
 import {useActionCreators} from '../../hooks/store';
-import {appProcessActions} from '../../store/app-process';
+import {appProcessActions} from '../../store/slice/app-process';
 import {TCityName} from '../../types/offers';
 
 type TCitiesNavItemProps = {
