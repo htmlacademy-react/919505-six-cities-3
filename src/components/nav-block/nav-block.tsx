@@ -22,7 +22,7 @@ export default function NavBlock({favoritesQuantity}: TNavBlockProps): JSX.Eleme
             {isAuthorized
               ? (
                 <>
-                  <span className="header__user-name user__name">{user?.email}</span>
+                  <span className="header__user-name user__name">{user?.name}</span>
                   <span className="header__favorite-count">{favoritesQuantity}</span>
                 </>)
               : <span className="header__login">Sign in</span>}
