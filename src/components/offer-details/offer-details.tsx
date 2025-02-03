@@ -10,6 +10,7 @@ import OfferReviewsSection from '../offer-reviews-section';
 import Map from '../map';
 import {useAppSelector} from '../../hooks/store';
 import {appDataSelectors} from '../../store/app-data';
+import {makeFirstLetterToUpperCase} from '../../common/utils';
 
 type TOfferProps = {
   offer: TOffer;
@@ -63,7 +64,7 @@ export default function OfferDetails({offer, nearbyOffers}: TOfferProps): JSX.El
           </div>
 
           <RatingPanel type={RatingPanelType.Offer} rating={rating}/>
-          <OfferFeaturesList type={type} bedrooms={bedrooms} maxAdults={maxAdults}/>
+          <OfferFeaturesList type={makeFirstLetterToUpperCase(type)} bedrooms={bedrooms} maxAdults={maxAdults}/>
 
           <div className="offer__price">
             <b className="offer__price-value">&euro;{price}</b> <span className="offer__price-text">&nbsp;night</span>

@@ -6,6 +6,7 @@ import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
 import {useActionCreators} from '../../hooks/store';
 import {appProcessActions} from '../../store/app-process';
+import {makeFirstLetterToUpperCase} from '../../common/utils';
 
 type TPlaceCardProps = {
   cardData: TOfferPreview;
@@ -73,7 +74,7 @@ export default function OfferCard({cardData, cardType}: TPlaceCardProps): JSX.El
         <h2 className="place-card__name">
           <Link to={AppRoute.Offer + id} onClick={cardClickHandler}>{title}</Link>
         </h2>
-        <p className="place-card__type">{type}</p>
+        <p className="place-card__type">{makeFirstLetterToUpperCase(type)}</p>
       </div>
     </article>
   );
