@@ -17,7 +17,9 @@ export const checkAuth = createAppAsyncThunk<TUser, undefined>
 export const login = createAppAsyncThunk<TUser, LoginData>
 ('user/login', async (body, {extra: api}) => {
   const response = await api.post<TUser>(EndPoint.Login, body);
-  saveToken(response.data.token);
+  if (response.data.token) {
+    saveToken(response.data.token);
+  }
   return response.data;
 });
 
