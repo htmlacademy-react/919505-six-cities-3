@@ -1,13 +1,17 @@
 import {Link} from 'react-router-dom';
-import {getAuthorizationStatus} from '../../common/utils';
-import {AppRoute, AuthorizationStatus} from '../../common/const';
+import {AppRoute} from '../../common/const';
+import {useAuth} from '../../hooks/user-authorisation';
+import {useActionCreators, useAppSelector} from '../../hooks/store';
+import {userProcessActions, userProcessSelectors} from '../../store/slice/user-process';
 
 type TNavBlockProps = {
   favoritesQuantity: number;
 }
 
 export default function NavBlock({favoritesQuantity}: TNavBlockProps): JSX.Element {
-  const isAuthorized = getAuthorizationStatus() === AuthorizationStatus.Auth;
+  const isAuthorized = useAuth();
+  const user = useAppSelector(userProcessSelectors.info);
+  const {logout} = useActionCreators(userProcessActions);
 
   return (
     <nav className="header__nav">
@@ -18,17 +22,16 @@ export default function NavBlock({favoritesQuantity}: TNavBlockProps): JSX.Eleme
             {isAuthorized
               ? (
                 <>
-                  <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                  <span className="header__user-name user__name">{user?.email}</span>
                   <span className="header__favorite-count">{favoritesQuantity}</span>
                 </>)
               : <span className="header__login">Sign in</span>}
           </Link>
         </li>
-        {isAuthorized ? (
+        {isAuthorized && (
           <li className="header__nav-item">
-            <a className="header__nav-link" href="#"> <span className="header__signout">Sign out</span> </a>
-          </li>)
-          : ''}
+            <Link to={'#'} className="header__nav-link" onClick={() => logout()}> <span className="header__signout">Sign out</span> </Link>
+          </li>)}
       </ul>
     </nav>
   );

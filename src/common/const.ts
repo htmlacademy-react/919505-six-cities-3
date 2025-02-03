@@ -47,7 +47,7 @@ export enum MapType {
 
 export enum AuthorizationStatus {
   Auth = 'Auth',
-  NoAuth = 'NoAuth',
+  NoAuth = 'NoAuth'
 }
 
 export enum AppRoute {

@@ -1,6 +1,7 @@
 import {EndPoint} from '../../../common/const';
 import {createAppAsyncThunk} from '../../../hooks/store';
 import {TUser} from '../../../types/user';
+import {deleteToken, saveToken} from '../../../services/token';
 
 interface LoginData {
   email: string;
@@ -16,10 +17,12 @@ export const checkAuth = createAppAsyncThunk<TUser, undefined>
 export const login = createAppAsyncThunk<TUser, LoginData>
 ('user/login', async (body, {extra: api}) => {
   const response = await api.post<TUser>(EndPoint.Login, body);
+  saveToken(response.data.token);
   return response.data;
 });
 
 export const logout = createAppAsyncThunk<unknown, undefined>
 ('user/logout', async (_, {extra: api}) => {
   await api.delete(EndPoint.Logout);
+  deleteToken();
 });
