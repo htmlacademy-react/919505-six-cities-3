@@ -4,10 +4,12 @@ import {appData} from './app-data';
 import {appProcess} from './app-process';
 import {createAPI} from '../services/api';
 import {redirect} from './middlewares/redirect';
+import {userProcess} from './user-process';
 
 export const rootReducer = combineReducers({
   [NameSpace.Data]: appData.reducer,
-  [NameSpace.App]: appProcess.reducer
+  [NameSpace.App]: appProcess.reducer,
+  [NameSpace.User]: userProcess.reducer
 });
 
 export const store = configureStore({

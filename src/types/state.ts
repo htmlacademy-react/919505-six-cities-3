@@ -1,6 +1,6 @@
 import {store} from '../store';
 import {TCityName, TOffer, TOfferPreview, TOfferSortType} from './offers';
-import {RequestStatus} from '../common/const';
+import {AuthorizationStatus, RequestStatus} from '../common/const';
 import {TReview} from './reviews';
 
 export type TAppDataState = {
@@ -15,6 +15,10 @@ export type TAppProcessState = {
   currentCity: TCityName;
   activeOfferId: string | null;
   currentOffersSortType: TOfferSortType;
+}
+
+export type TUserState = {
+  AuthorizationStatus: AuthorizationStatus;
 }
 
 export type State = ReturnType<typeof store.getState>;

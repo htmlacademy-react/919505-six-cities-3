@@ -36,7 +36,8 @@ export enum RequestStatus {
 
 export enum NameSpace {
   App = 'APP',
-  Data = 'DATA'
+  Data = 'DATA',
+  User = 'USER'
 }
 
 export enum MapType {
