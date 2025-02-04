@@ -90,11 +90,11 @@ const offersSlice = createSlice({
         const offerIndex = getItemIndex(state.offers, newOffer.id);
         const nearByOfferIndex = getItemIndex(state.nearbyOffers, newOffer.id);
 
-        if (offerIndex || offerIndex === 0) {
+        if (typeof offerIndex === 'number') {
           state.offers = [...state.offers.slice(0, offerIndex), newOffer, ...state.offers.slice(offerIndex + 1)];
         }
 
-        if (nearByOfferIndex || nearByOfferIndex === 0) {
+        if (typeof nearByOfferIndex === 'number') {
           state.nearbyOffers = [...state.nearbyOffers.slice(0, nearByOfferIndex), newOffer, ...state.nearbyOffers.slice(nearByOfferIndex + 1)];
         }
       })
