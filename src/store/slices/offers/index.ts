@@ -1,17 +1,15 @@
 import {createSelector, createSlice} from '@reduxjs/toolkit';
 import {NameSpace, RequestStatus} from '../../../common/const';
-import {TAppDataState} from '../../../types/state';
+import {TOffersState} from '../../../types/state';
 import {TOffer, TOfferPreview} from '../../../types/offers';
 import {appSlice} from '../app';
 import {getProcessedOffers} from '../../../common/utils';
-import {fetchAllOffers, fetchOffer, fetchNearbyOffers, fetchReviews} from '../../thunks/offers';
-import {TReview} from '../../../types/reviews';
+import {fetchAllOffers, fetchOffer, fetchNearbyOffers} from '../../thunks/offers';
 
-const initialState: TAppDataState = {
+const initialState: TOffersState = {
   offers: [],
   offer: null,
   nearbyOffers: [],
-  reviews: [],
   requestStatus: RequestStatus.Idle
 };
 
@@ -20,11 +18,10 @@ const offersSlice = createSlice({
   initialState,
   reducers: {},
   selectors: {
-    offers: (state: TAppDataState): TOfferPreview[] => state.offers,
-    offer: (state: TAppDataState): TOffer | null => state.offer,
-    nearbyOffers: (state: TAppDataState): TOfferPreview[] => state.nearbyOffers,
-    reviews: (state: TAppDataState): TReview[] => state.reviews,
-    requestStatus: (state: TAppDataState): RequestStatus => state.requestStatus,
+    offers: (state: TOffersState): TOfferPreview[] => state.offers,
+    offer: (state: TOffersState): TOffer | null => state.offer,
+    nearbyOffers: (state: TOffersState): TOfferPreview[] => state.nearbyOffers,
+    requestStatus: (state: TOffersState): RequestStatus => state.requestStatus,
   },
 
   extraReducers: (builder) =>
@@ -50,18 +47,13 @@ const offersSlice = createSlice({
         state.requestStatus = RequestStatus.Idle;
         state.nearbyOffers = action.payload;
       })
-      .addCase(fetchReviews.fulfilled, (state, action) => {
-        state.requestStatus = RequestStatus.Idle;
-        state.reviews = action.payload;
-      })
 });
 
 const offersSliceActions = {
   ...offersSlice.actions,
   fetchAllOffers,
   fetchOffer,
-  fetchNearbyOffers,
-  fetchReviews
+  fetchNearbyOffers
 };
 
 const offersSliceSelectors = {

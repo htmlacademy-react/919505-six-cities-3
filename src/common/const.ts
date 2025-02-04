@@ -43,7 +43,8 @@ export enum NameSpace {
   App = 'APP',
   Offers = 'Offers',
   Favorites = 'Favorites',
-  User = 'USER'
+  Reviews = 'Reviews',
+  User = 'User'
 }
 
 export enum MapType {

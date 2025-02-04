@@ -4,16 +4,20 @@ import {AuthorizationStatus, RequestStatus} from '../common/const';
 import {TReview} from './reviews';
 import {TUser} from './user';
 
-export type TAppDataState = {
+export type TOffersState = {
   offers: TOfferPreview[];
   offer: TOffer | null;
   nearbyOffers: TOfferPreview[];
-  reviews: TReview[];
   requestStatus: RequestStatus;
 }
 
 export type TFavoritesState = {
   offers: TOfferPreview[];
+  requestStatus: RequestStatus;
+}
+
+export type TReviewsState = {
+  reviews: TReview[];
   requestStatus: RequestStatus;
 }
 

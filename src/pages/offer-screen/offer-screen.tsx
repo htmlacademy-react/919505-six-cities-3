@@ -8,13 +8,15 @@ import {useParams} from 'react-router-dom';
 import {MAX_NEARBY_OFFERS, RequestStatus} from '../../common/const';
 import Spinner from '../../components/spinner';
 import NotFoundScreen from '../not-found-screen';
+import {reviewsSliceActions} from '../../store/slices/reviews';
 
 export default function OfferScreen(): JSX.Element {
   const offer = useAppSelector(offersSliceSelectors.offer);
   const offerRequestStatus = useAppSelector(offersSliceSelectors.requestStatus);
   const nearbyOffers = useAppSelector(offersSliceSelectors.nearbyOffers);
 
-  const {fetchOffer, fetchNearbyOffers, fetchReviews} = useActionCreators(offersSliceActions);
+  const {fetchOffer, fetchNearbyOffers} = useActionCreators(offersSliceActions);
+  const {fetchReviews} = useActionCreators(reviewsSliceActions);
   const {changeActiveOfferId, changeCity} = useActionCreators(appSliceActions);
   const {id} = useParams();
 
