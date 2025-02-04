@@ -15,13 +15,13 @@ import {userSliceActions} from '../../store/slices/user';
 import {getToken} from '../../services/token';
 
 export default function App() {
-  const {fetchAllOffers} = useActionCreators(offersSliceActions);
+  const {fetchAllOffers, fetchFavorites} = useActionCreators(offersSliceActions);
   const {checkAuth} = useActionCreators(userSliceActions);
 
   const token = getToken();
 
   useEffect(() => {
-    fetchAllOffers();
+    Promise.all([fetchAllOffers(), fetchFavorites()]);
   });
 
   useEffect(() => {

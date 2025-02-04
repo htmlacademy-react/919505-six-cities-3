@@ -1,17 +1,37 @@
 import {createSelector, createSlice} from '@reduxjs/toolkit';
-import {NameSpace, RequestStatus} from '../../../common/const';
+import {FavoriteStatus, NameSpace, RequestStatus} from '../../../common/const';
 import {TOffersState} from '../../../types/state';
 import {TOffer, TOfferPreview} from '../../../types/offers';
 import {appSlice} from '../app';
 import {getProcessedOffers} from '../../../common/utils';
 import {fetchAllOffers, fetchOffer, fetchNearbyOffers} from '../../thunks/offers';
+import {changeFavorite, fetchFavorites} from '../../thunks/favorites';
 
 const initialState: TOffersState = {
   offers: [],
+  favoriteOffers: [],
   offer: null,
   nearbyOffers: [],
   requestStatus: RequestStatus.Idle
 };
+
+function getItemIndex(offers: TOfferPreview[], offerId : string) {
+  let index = null;
+
+  const newOffer = offers
+    .find((offer) => offer.id === offerId);
+
+  if (newOffer) {
+    for (let i = 0; i < offers.length; i++) {
+      if (offers[i].id === newOffer.id) {
+        index = i;
+        break;
+      }
+    }
+
+    return index;
+  }
+}
 
 const offersSlice = createSlice({
   name: NameSpace.Offers,
@@ -19,6 +39,7 @@ const offersSlice = createSlice({
   reducers: {},
   selectors: {
     offers: (state: TOffersState): TOfferPreview[] => state.offers,
+    favoriteOffers: (state: TOffersState): TOfferPreview[] => state.favoriteOffers,
     offer: (state: TOffersState): TOffer | null => state.offer,
     nearbyOffers: (state: TOffersState): TOfferPreview[] => state.nearbyOffers,
     requestStatus: (state: TOffersState): RequestStatus => state.requestStatus,
@@ -47,13 +68,40 @@ const offersSlice = createSlice({
         state.requestStatus = RequestStatus.Idle;
         state.nearbyOffers = action.payload;
       })
+      .addCase(fetchFavorites.fulfilled, (state, action) => {
+        state.favoriteOffers = action.payload;
+      })
+      .addCase(changeFavorite.fulfilled, (state, action) => {
+        const newOffer = action.payload.offer;
+
+        if (newOffer.id === state.offer?.id) {
+          state.offer.isFavorite = Boolean(action.payload.status);
+        }
+
+        switch (action.payload.status) {
+          case FavoriteStatus.Added:
+            state.favoriteOffers.push(newOffer);
+            break;
+          case FavoriteStatus.Removed:
+            state.favoriteOffers = state.favoriteOffers.filter(({id}) => id !== newOffer.id);
+            break;
+        }
+
+        const index = getItemIndex(state.offers, newOffer.id);
+
+        if (index) {
+          state.offers = [...state.offers.slice(0, index), newOffer, ...state.offers.slice(index + 1)];
+        }
+      })
 });
 
 const offersSliceActions = {
   ...offersSlice.actions,
   fetchAllOffers,
   fetchOffer,
-  fetchNearbyOffers
+  fetchNearbyOffers,
+  fetchFavorites,
+  changeFavorite
 };
 
 const offersSliceSelectors = {
