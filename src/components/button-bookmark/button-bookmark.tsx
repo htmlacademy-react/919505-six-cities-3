@@ -1,7 +1,9 @@
 import {getButtonAttributes} from './utils';
-import {BookmarkButton} from '../../common/const';
-import {useActionCreators} from '../../hooks/store';
+import {AppRoute, AuthorizationStatus, BookmarkButton} from '../../common/const';
+import {useActionCreators, useAppSelector} from '../../hooks/store';
 import {favoritesSliceActions} from '../../store/slices/favorites';
+import {userSliceSelectors} from '../../store/slices/user';
+import {useNavigate} from 'react-router-dom';
 
 type TButtonBookmarkProps = {
   offerId: string;
@@ -10,11 +12,18 @@ type TButtonBookmarkProps = {
 }
 
 export default function ButtonBookmark({offerId, isFavorite, type}: TButtonBookmarkProps): JSX.Element {
-  const {classNamePrefix, width, height} = getButtonAttributes(type);
+  const AuthStatus = useAppSelector(userSliceSelectors.authorizationStatus);
   const {changeFavorite} = useActionCreators(favoritesSliceActions);
+  const {classNamePrefix, width, height} = getButtonAttributes(type);
+
+  const navigate = useNavigate();
 
   const clickHandler = () => {
-    changeFavorite({offerId, status: Number(!isFavorite)});
+    if (AuthStatus === AuthorizationStatus.Auth) {
+      changeFavorite({offerId, status: Number(!isFavorite)});
+    } else {
+      navigate(AppRoute.Login);
+    }
   };
 
   return (
