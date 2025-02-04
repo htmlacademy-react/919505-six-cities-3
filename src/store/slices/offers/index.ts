@@ -87,10 +87,15 @@ const offersSlice = createSlice({
             break;
         }
 
-        const index = getItemIndex(state.offers, newOffer.id);
+        const offerIndex = getItemIndex(state.offers, newOffer.id);
+        const nearByOfferIndex = getItemIndex(state.nearbyOffers, newOffer.id);
 
-        if (index) {
-          state.offers = [...state.offers.slice(0, index), newOffer, ...state.offers.slice(index + 1)];
+        if (offerIndex || offerIndex === 0) {
+          state.offers = [...state.offers.slice(0, offerIndex), newOffer, ...state.offers.slice(offerIndex + 1)];
+        }
+
+        if (nearByOfferIndex || nearByOfferIndex === 0) {
+          state.nearbyOffers = [...state.nearbyOffers.slice(0, nearByOfferIndex), newOffer, ...state.nearbyOffers.slice(nearByOfferIndex + 1)];
         }
       })
 });
