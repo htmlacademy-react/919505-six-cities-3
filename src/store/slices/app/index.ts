@@ -9,7 +9,7 @@ const initialState: TAppProcessState = {
   currentOffersSortType: SortingType.POPULAR
 };
 
-const appProcess = createSlice({
+const appSlice = createSlice({
   name: NameSpace.App,
   initialState,
   reducers: {
@@ -33,7 +33,7 @@ const appProcess = createSlice({
   }
 });
 
-const appProcessActions = appProcess.actions;
-const appProcessSelectors = appProcess.selectors;
+const appSliceActions = appSlice.actions;
+const appSliceSelectors = appSlice.selectors;
 
-export {appProcess, appProcessActions, appProcessSelectors};
+export {appSlice, appSliceActions, appSliceSelectors};

@@ -4,7 +4,7 @@ import {getLayoutState} from './utils';
 import Footer from '../footer';
 import Header from '../header';
 import {useAppSelector} from '../../hooks/store';
-import {favoritesSliceSelectors} from '../../store/slice/favorites/favorites-slice';
+import {favoritesSliceSelectors} from '../../store/slices/favorites';
 
 export default function Layout(): JSX.Element {
   const favoritesQuantity = useAppSelector(favoritesSliceSelectors.offers).length;

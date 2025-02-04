@@ -1,15 +1,15 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import {NameSpace} from '../common/const';
-import {appData} from './slice/app-data';
-import {appProcess} from './slice/app-process';
+import {offersSlice} from './slices/offers';
+import {appSlice} from './slices/app';
 import {createAPI} from '../services/api';
-import {userProcess} from './slice/user-process';
-import {favoritesSlice} from './slice/favorites/favorites-slice';
+import {userSlice} from './slices/user';
+import {favoritesSlice} from './slices/favorites';
 
 export const rootReducer = combineReducers({
-  [NameSpace.Data]: appData.reducer,
-  [NameSpace.App]: appProcess.reducer,
-  [NameSpace.User]: userProcess.reducer,
+  [NameSpace.Offers]: offersSlice.reducer,
+  [NameSpace.App]: appSlice.reducer,
+  [NameSpace.User]: userSlice.reducer,
   [NameSpace.Favorites]: favoritesSlice.reducer
 });
 

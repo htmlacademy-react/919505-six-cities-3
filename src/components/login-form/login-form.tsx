@@ -1,13 +1,13 @@
 import {FormEvent} from 'react';
 import {useActionCreators} from '../../hooks/store';
-import {userProcessActions} from '../../store/slice/user-process';
+import {userSliceActions} from '../../store/slices/user';
 import useForm from '../../hooks/use-form';
 import {TLoginForm, TLoginFormData} from '../../types/login';
 import {TFormChangeHandler} from '../../types/event-handlers';
 
 export default function LoginForm(): JSX.Element {
   const {formData, handleFormChange} = useForm<TLoginFormData>({email: '', password: ''});
-  const {login} = useActionCreators(userProcessActions);
+  const {login} = useActionCreators(userSliceActions);
 
   const inputChangeHandler: TFormChangeHandler = (evt) => {
     handleFormChange(evt);

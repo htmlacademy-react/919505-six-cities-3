@@ -1,7 +1,7 @@
 import {Navigate} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../../common/const';
 import {useAppSelector} from '../../hooks/store';
-import {userProcessSelectors} from '../../store/slice/user-process';
+import {userSliceSelectors} from '../../store/slices/user';
 
 type TPrivateRouteProps = {
   isReverse?: boolean;
@@ -9,7 +9,7 @@ type TPrivateRouteProps = {
 }
 
 export default function PrivateRoute({isReverse, children}: TPrivateRouteProps): JSX.Element {
-  const authorizationStatus = useAppSelector(userProcessSelectors.authorizationStatus);
+  const authorizationStatus = useAppSelector(userSliceSelectors.authorizationStatus);
 
   return (
     authorizationStatus === (isReverse ? AuthorizationStatus.NoAuth : AuthorizationStatus.Auth)

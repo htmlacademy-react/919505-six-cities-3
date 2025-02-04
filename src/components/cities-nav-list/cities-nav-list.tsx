@@ -1,10 +1,10 @@
 import {Cities} from '../../common/const';
 import CitiesNavItem from '../cities-nav-item';
 import {useAppSelector} from '../../hooks/store';
-import {appProcessSelectors} from '../../store/slice/app-process';
+import {appSliceSelectors} from '../../store/slices/app';
 
 export default function CitiesNavList(): JSX.Element {
-  const currentCity = useAppSelector(appProcessSelectors.currentCity);
+  const currentCity = useAppSelector(appSliceSelectors.currentCity);
 
   return (
     <ul className="locations__list tabs__list">

@@ -5,7 +5,7 @@ import useMap from '../../hooks/use-map';
 import 'leaflet/dist/leaflet.css';
 import {TOfferPreview} from '../../types/offers';
 import {useAppSelector} from '../../hooks/store';
-import {appProcessSelectors} from '../../store/slice/app-process';
+import {appSliceSelectors} from '../../store/slices/app';
 import getMapData from './utils';
 
 type TMapProps = {
@@ -44,7 +44,7 @@ function getStyle(mapType?: MapType) {
 }
 
 export default function Map({offers, mapType}: TMapProps): JSX.Element {
-  const hoveredCardId = useAppSelector(appProcessSelectors.activeOfferId);
+  const hoveredCardId = useAppSelector(appSliceSelectors.activeOfferId);
   const hoveredCardObject = offers.find((offer) => offer.id === hoveredCardId);
 
   const [city, points] = getMapData(offers, hoveredCardObject);

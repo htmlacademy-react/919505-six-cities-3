@@ -1,7 +1,7 @@
 import {getButtonAttributes} from './utils';
 import {BookmarkButton} from '../../common/const';
 import {useActionCreators} from '../../hooks/store';
-import {favoritesSliceActions} from '../../store/slice/favorites/favorites-slice';
+import {favoritesSliceActions} from '../../store/slices/favorites';
 
 type TButtonBookmarkProps = {
   offerId: string;

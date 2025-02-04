@@ -1,11 +1,11 @@
 import OffersSortingPanelList from '../offers-sorting-panel-list';
 import {TSpanClickHandler} from '../../types/event-handlers';
 import {useAppSelector} from '../../hooks/store';
-import {appProcessSelectors} from '../../store/slice/app-process';
+import {appSliceSelectors} from '../../store/slices/app';
 import {useState} from 'react';
 
 export default function OffersSortingPanel(): JSX.Element {
-  const currentSortType = useAppSelector(appProcessSelectors.currentOffersSortType);
+  const currentSortType = useAppSelector(appSliceSelectors.currentOffersSortType);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 

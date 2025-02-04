@@ -9,7 +9,7 @@ import OfferHost from '../offer-host';
 import OfferReviewsSection from '../offer-reviews-section';
 import Map from '../map';
 import {useAppSelector} from '../../hooks/store';
-import {appDataSelectors} from '../../store/slice/app-data';
+import {offersSliceSelectors} from '../../store/slices/offers';
 import {makeFirstLetterToUpperCase} from '../../common/utils';
 
 type TOfferProps = {
@@ -34,7 +34,7 @@ export default function OfferDetails({offer, nearbyOffers}: TOfferProps): JSX.El
     description
   } = offer;
 
-  const offers = useAppSelector(appDataSelectors.offers);
+  const offers = useAppSelector(offersSliceSelectors.offers);
   const currentOfferPreview = offers.find((item) => item.id === id);
 
   const offersForMap = [...nearbyOffers];

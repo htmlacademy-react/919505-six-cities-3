@@ -1,6 +1,6 @@
 import {TOfferPreview} from '../../types/offers';
 import {useAppSelector} from '../../hooks/store';
-import {appDataSelectors} from '../../store/slice/app-data';
+import {offersSliceSelectors} from '../../store/slices/offers';
 import {RequestStatus} from '../../common/const';
 import PlacesContainer from '../places-container';
 import Spinner from '../spinner';
@@ -11,7 +11,7 @@ type TMainContainerProps = {
 }
 
 export default function MainContainer({offers, isEmpty}: TMainContainerProps): JSX.Element {
-  const offersStatus = useAppSelector(appDataSelectors.requestStatus);
+  const offersStatus = useAppSelector(offersSliceSelectors.requestStatus);
   const isLoading = offersStatus === RequestStatus.Loading;
 
   return (

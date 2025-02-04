@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 import {AppRoute} from '../../common/const';
 import {useAuth} from '../../hooks/user-authorisation';
 import {useActionCreators, useAppSelector} from '../../hooks/store';
-import {userProcessActions, userProcessSelectors} from '../../store/slice/user-process';
+import {userSliceActions, userSliceSelectors} from '../../store/slices/user';
 
 type TNavBlockProps = {
   favoritesQuantity: number;
@@ -10,8 +10,8 @@ type TNavBlockProps = {
 
 export default function NavBlock({favoritesQuantity}: TNavBlockProps): JSX.Element {
   const isAuthorized = useAuth();
-  const user = useAppSelector(userProcessSelectors.info);
-  const {logout} = useActionCreators(userProcessActions);
+  const user = useAppSelector(userSliceSelectors.info);
+  const {logout} = useActionCreators(userSliceActions);
 
   return (
     <nav className="header__nav">

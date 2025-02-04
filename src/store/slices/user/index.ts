@@ -31,7 +31,7 @@ function processLogout(state: TUserState) {
   state.requestStatus = RequestStatus.Idle;
 }
 
-const userProcess = createSlice({
+const userSlice = createSlice({
   name: NameSpace.User,
   initialState,
   reducers: {
@@ -56,13 +56,13 @@ const userProcess = createSlice({
   }
 });
 
-const userProcessActions = {
-  ...userProcess.actions,
+const userSliceActions = {
+  ...userSlice.actions,
   checkAuth,
   login,
   logout
 };
 
-const userProcessSelectors = userProcess.selectors;
+const userSliceSelectors = userSlice.selectors;
 
-export {userProcess, userProcessActions, userProcessSelectors};
+export {userSlice, userSliceActions, userSliceSelectors};
