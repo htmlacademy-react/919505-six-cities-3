@@ -2,11 +2,11 @@ import {useRef, useEffect} from 'react';
 import {Icon, Marker, layerGroup} from 'leaflet';
 import {MapType} from '../../common/const';
 import useMap from '../../hooks/use-map';
-import 'leaflet/dist/leaflet.css';
 import {TOfferPreview} from '../../types/offers';
 import {useAppSelector} from '../../hooks/store';
 import {appSliceSelectors} from '../../store/slices/app';
 import getMapData from './utils';
+import 'leaflet/dist/leaflet.css';
 
 type TMapProps = {
   offers: TOfferPreview[];
