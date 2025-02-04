@@ -5,9 +5,10 @@ type TRatingInputProps = {
   rating: string;
   title: string;
   onRatingChange: TInputChangeHandler;
+  isDisabled: boolean;
 }
 
-export default function RatingInput({value, rating, title, onRatingChange}: TRatingInputProps): JSX.Element {
+export default function RatingInput({value, rating, title, onRatingChange, isDisabled}: TRatingInputProps): JSX.Element {
   const ratingChangeHandler: TInputChangeHandler = (evt) => {
     onRatingChange(evt);
   };
@@ -22,6 +23,7 @@ export default function RatingInput({value, rating, title, onRatingChange}: TRat
         type="radio"
         checked={rating === value}
         onChange={ratingChangeHandler}
+        disabled={isDisabled}
       />
       <label
         htmlFor={`${value}-stars`}

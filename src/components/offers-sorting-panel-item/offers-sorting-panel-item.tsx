@@ -1,6 +1,6 @@
 import {TOfferSortType} from '../../types/offers';
 import {useActionCreators} from '../../hooks/store';
-import {appProcessActions} from '../../store/slice/app-process';
+import {appSliceActions} from '../../store/slices/app';
 
 type TOffersSortingPanelItemProps = {
   sortType: TOfferSortType;
@@ -9,7 +9,7 @@ type TOffersSortingPanelItemProps = {
 }
 
 export default function OffersSortingPanelItem({sortType, currentSortType, setIsOpen}: TOffersSortingPanelItemProps): JSX.Element {
-  const {changeOffersSortType} = useActionCreators(appProcessActions);
+  const {changeOffersSortType} = useActionCreators(appSliceActions);
 
   const sortTypeClickHandler = () => {
     changeOffersSortType(sortType);

@@ -1,30 +1,27 @@
 import {createSelector, createSlice} from '@reduxjs/toolkit';
 import {NameSpace, RequestStatus} from '../../../common/const';
-import {TAppDataState} from '../../../types/state';
+import {TOffersState} from '../../../types/state';
 import {TOffer, TOfferPreview} from '../../../types/offers';
-import {appProcess} from '../app-process';
+import {appSlice} from '../app';
 import {getProcessedOffers} from '../../../common/utils';
-import {fetchAllOffers, fetchOffer, fetchNearbyOffers, fetchReviews} from '../../thunks/offers';
-import {TReview} from '../../../types/reviews';
+import {fetchAllOffers, fetchOffer, fetchNearbyOffers} from '../../thunks/offers';
 
-const initialState: TAppDataState = {
+const initialState: TOffersState = {
   offers: [],
   offer: null,
   nearbyOffers: [],
-  reviews: [],
   requestStatus: RequestStatus.Idle
 };
 
-const appData = createSlice({
-  name: NameSpace.Data,
+const offersSlice = createSlice({
+  name: NameSpace.Offers,
   initialState,
   reducers: {},
   selectors: {
-    offers: (state: TAppDataState): TOfferPreview[] => state.offers,
-    offer: (state: TAppDataState): TOffer | null => state.offer,
-    nearbyOffers: (state: TAppDataState): TOfferPreview[] => state.nearbyOffers,
-    reviews: (state: TAppDataState): TReview[] => state.reviews,
-    requestStatus: (state: TAppDataState): RequestStatus => state.requestStatus,
+    offers: (state: TOffersState): TOfferPreview[] => state.offers,
+    offer: (state: TOffersState): TOffer | null => state.offer,
+    nearbyOffers: (state: TOffersState): TOfferPreview[] => state.nearbyOffers,
+    requestStatus: (state: TOffersState): RequestStatus => state.requestStatus,
   },
 
   extraReducers: (builder) =>
@@ -50,27 +47,22 @@ const appData = createSlice({
         state.requestStatus = RequestStatus.Idle;
         state.nearbyOffers = action.payload;
       })
-      .addCase(fetchReviews.fulfilled, (state, action) => {
-        state.requestStatus = RequestStatus.Idle;
-        state.reviews = action.payload;
-      })
 });
 
-const appDataActions = {
-  ...appData.actions,
+const offersSliceActions = {
+  ...offersSlice.actions,
   fetchAllOffers,
   fetchOffer,
-  fetchNearbyOffers,
-  fetchReviews
+  fetchNearbyOffers
 };
 
-const appDataSelectors = {
-  ...appData.selectors,
+const offersSliceSelectors = {
+  ...offersSlice.selectors,
   currentCitySortedOffers: createSelector(
-    appData.selectors.offers,
-    appProcess.selectors.currentCity,
-    appProcess.selectors.currentOffersSortType,
+    offersSlice.selectors.offers,
+    appSlice.selectors.currentCity,
+    appSlice.selectors.currentOffersSortType,
     (offers, city, sortType) => getProcessedOffers(offers, city, sortType))
 };
 
-export {appData, appDataActions, appDataSelectors};
+export {offersSlice, offersSliceActions, offersSliceSelectors};

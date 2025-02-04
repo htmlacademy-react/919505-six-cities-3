@@ -5,7 +5,7 @@ import {getParentBlockName} from './utils';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
 import {useActionCreators} from '../../hooks/store';
-import {appProcessActions} from '../../store/slice/app-process';
+import {appSliceActions} from '../../store/slices/app';
 import {makeFirstLetterToUpperCase} from '../../common/utils';
 
 type TPlaceCardProps = {
@@ -25,7 +25,7 @@ export default function OfferCard({cardData, cardType}: TPlaceCardProps): JSX.El
     isPremium
   }: TOfferPreview = cardData;
 
-  const {changeActiveOfferId} = useActionCreators(appProcessActions);
+  const {changeActiveOfferId} = useActionCreators(appSliceActions);
 
   const cardParentBlockName = getParentBlockName(cardType);
 

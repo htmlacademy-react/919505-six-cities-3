@@ -3,14 +3,14 @@ import OffersSortingPanel from '../offers-sorting-panel';
 import OfferCardList from '../offer-card-list';
 import {OfferCardParams} from '../../common/const';
 import {useAppSelector} from '../../hooks/store';
-import {appProcessSelectors} from '../../store/slice/app-process';
+import {appSliceSelectors} from '../../store/slices/app';
 
 type TOfferListProps = {
   offers: TOfferPreview[];
 }
 
 export default function OfferList({offers}: TOfferListProps) {
-  const currentCity = useAppSelector(appProcessSelectors.currentCity);
+  const currentCity = useAppSelector(appSliceSelectors.currentCity);
 
   return (
     <section className="cities__places places">

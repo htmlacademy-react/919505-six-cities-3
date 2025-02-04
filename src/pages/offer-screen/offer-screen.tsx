@@ -1,21 +1,23 @@
 import OfferNearPlaces from '../../components/offer-near-places';
 import OfferDetails from '../../components/offer-details';
 import {useActionCreators, useAppSelector} from '../../hooks/store';
-import {appProcessActions} from '../../store/slice/app-process';
-import {appDataActions, appDataSelectors} from '../../store/slice/app-data';
+import {appSliceActions} from '../../store/slices/app';
+import {offersSliceActions, offersSliceSelectors} from '../../store/slices/offers';
 import {useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import {MAX_NEARBY_OFFERS, RequestStatus} from '../../common/const';
 import Spinner from '../../components/spinner';
 import NotFoundScreen from '../not-found-screen';
+import {reviewsSliceActions} from '../../store/slices/reviews';
 
 export default function OfferScreen(): JSX.Element {
-  const offer = useAppSelector(appDataSelectors.offer);
-  const offerRequestStatus = useAppSelector(appDataSelectors.requestStatus);
-  const nearbyOffers = useAppSelector(appDataSelectors.nearbyOffers);
+  const offer = useAppSelector(offersSliceSelectors.offer);
+  const offerRequestStatus = useAppSelector(offersSliceSelectors.requestStatus);
+  const nearbyOffers = useAppSelector(offersSliceSelectors.nearbyOffers);
 
-  const {fetchOffer, fetchNearbyOffers, fetchReviews} = useActionCreators(appDataActions);
-  const {changeActiveOfferId, changeCity} = useActionCreators(appProcessActions);
+  const {fetchOffer, fetchNearbyOffers} = useActionCreators(offersSliceActions);
+  const {fetchReviews} = useActionCreators(reviewsSliceActions);
+  const {changeActiveOfferId, changeCity} = useActionCreators(appSliceActions);
   const {id} = useParams();
 
   const slicedNearbyOffers = nearbyOffers.filter((item) => item.id !== id)

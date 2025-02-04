@@ -1,11 +1,11 @@
 import OfferReviewsList from '../offer-reviews-list';
 import OfferReviewForm from '../offer-review-form';
 import {useAppSelector} from '../../hooks/store';
-import {appDataSelectors} from '../../store/slice/app-data';
 import {useAuth} from '../../hooks/user-authorisation';
+import {reviewsSliceSelectors} from '../../store/slices/reviews';
 
 export default function OfferReviewsSection(): JSX.Element {
-  const reviews = useAppSelector(appDataSelectors.reviews);
+  const reviews = useAppSelector(reviewsSliceSelectors.reviews);
   const isAuthorized = useAuth();
 
   return (

@@ -1,13 +1,13 @@
 import CitiesNavList from '../../components/cities-nav-list';
 import MainContainer from '../../components/main-container';
 import {useActionCreators, useAppSelector} from '../../hooks/store';
-import {appProcessActions} from '../../store/slice/app-process';
-import {appDataSelectors} from '../../store/slice/app-data';
+import {appSliceActions} from '../../store/slices/app';
+import {offersSliceSelectors} from '../../store/slices/offers';
 import {useEffect} from 'react';
 
 function MainScreen(): JSX.Element {
-  const offers = useAppSelector(appDataSelectors.currentCitySortedOffers);
-  const {changeActiveOfferId} = useActionCreators(appProcessActions);
+  const offers = useAppSelector(offersSliceSelectors.currentCitySortedOffers);
+  const {changeActiveOfferId} = useActionCreators(appSliceActions);
 
   const isEmpty = offers.length === 0;
 

@@ -10,13 +10,13 @@ import NotFoundScreen from '../../pages/not-found-screen';
 import ScrollToTop from '../scroll-to-top';
 import {useEffect} from 'react';
 import {useActionCreators} from '../../hooks/store';
-import {appDataActions} from '../../store/slice/app-data';
-import {userProcessActions} from '../../store/slice/user-process';
+import {offersSliceActions} from '../../store/slices/offers';
+import {userSliceActions} from '../../store/slices/user';
 import {getToken} from '../../services/token';
 
 export default function App() {
-  const {fetchAllOffers} = useActionCreators(appDataActions);
-  const {checkAuth} = useActionCreators(userProcessActions);
+  const {fetchAllOffers} = useActionCreators(offersSliceActions);
+  const {checkAuth} = useActionCreators(userSliceActions);
 
   const token = getToken();
 

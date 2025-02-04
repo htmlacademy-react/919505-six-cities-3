@@ -1,5 +1,5 @@
 import {useActionCreators} from '../../hooks/store';
-import {appProcessActions} from '../../store/slice/app-process';
+import {appSliceActions} from '../../store/slices/app';
 import {TCityName} from '../../types/offers';
 
 type TCitiesNavItemProps = {
@@ -8,7 +8,7 @@ type TCitiesNavItemProps = {
 }
 
 export default function CitiesNavItem({city, currentCity}: TCitiesNavItemProps): JSX.Element {
-  const {changeCity} = useActionCreators(appProcessActions);
+  const {changeCity} = useActionCreators(appSliceActions);
 
   const cityClickHandler = () => {
     changeCity(city);
