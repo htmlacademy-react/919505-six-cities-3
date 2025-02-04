@@ -3,14 +3,12 @@ import {AppRoute} from '../../common/const';
 import {getLayoutState} from './utils';
 import Footer from '../footer';
 import Header from '../header';
-import {appDataSelectors} from '../../store/app-data';
 import {useAppSelector} from '../../hooks/store';
+import {favoritesSliceSelectors} from '../../store/slice/favorites/favorites-slice';
 
 export default function Layout(): JSX.Element {
-  const offers = useAppSelector(appDataSelectors.offers);
+  const favoritesQuantity = useAppSelector(favoritesSliceSelectors.offers).length;
   const currentPage = useLocation().pathname;
-
-  const favoritesQuantity = offers.filter((offer) => offer.isFavorite).length;
 
   const {rootClassName,
     linkClassName,

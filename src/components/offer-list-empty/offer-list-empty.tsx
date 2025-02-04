@@ -1,5 +1,5 @@
 import {useAppSelector} from '../../hooks/store';
-import {appProcessSelectors} from '../../store/app-process';
+import {appProcessSelectors} from '../../store/slice/app-process';
 
 export default function OfferListEmpty(): JSX.Element {
   const currentCity = useAppSelector(appProcessSelectors.currentCity);

@@ -10,12 +10,10 @@ import {
 import {useMemo} from 'react';
 import {AxiosInstance} from 'axios';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type BoundAsyncThunk<Thunk extends AsyncThunk<any, any, any>> = (...args: Parameters<Thunk>) => ReturnType<ReturnType<Thunk>>;
+type BoundAsyncThunk<Thunk extends AsyncThunk<unknown, unknown, AsyncThunkConfig>> = (...args: Parameters<Thunk>) => ReturnType<ReturnType<Thunk>>;
 
 type BoundActions<Actions extends ActionCreatorsMapObject> = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key in keyof Actions]: Actions[key] extends AsyncThunk<any, any, any> ? BoundAsyncThunk<Actions[key]> : Actions[key];
+  [key in keyof Actions]: Actions[key] extends AsyncThunk<unknown, unknown, AsyncThunkConfig> ? BoundAsyncThunk<Actions[key]> : Actions[key];
 }
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();

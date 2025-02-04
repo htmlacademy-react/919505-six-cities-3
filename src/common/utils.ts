@@ -67,3 +67,7 @@ export function getProcessedOffers(offers: TOfferPreview[], city: TCityName, sor
       return currentCityOffers;
   }
 }
+
+export function makeFirstLetterToUpperCase (str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}

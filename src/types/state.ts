@@ -1,7 +1,8 @@
 import {store} from '../store';
 import {TCityName, TOffer, TOfferPreview, TOfferSortType} from './offers';
-import {RequestStatus} from '../common/const';
+import {AuthorizationStatus, RequestStatus} from '../common/const';
 import {TReview} from './reviews';
+import {TUser} from './user';
 
 export type TAppDataState = {
   offers: TOfferPreview[];
@@ -11,10 +12,21 @@ export type TAppDataState = {
   requestStatus: RequestStatus;
 }
 
+export type TFavoritesState = {
+  offers: TOfferPreview[];
+  requestStatus: RequestStatus;
+}
+
 export type TAppProcessState = {
   currentCity: TCityName;
   activeOfferId: string | null;
   currentOffersSortType: TOfferSortType;
+}
+
+export type TUserState = {
+  info: TUser | null;
+  authorizationStatus: AuthorizationStatus;
+  requestStatus: RequestStatus;
 }
 
 export type State = ReturnType<typeof store.getState>;

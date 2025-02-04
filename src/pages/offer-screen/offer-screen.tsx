@@ -1,8 +1,8 @@
 import OfferNearPlaces from '../../components/offer-near-places';
 import OfferDetails from '../../components/offer-details';
 import {useActionCreators, useAppSelector} from '../../hooks/store';
-import {appProcessActions} from '../../store/app-process';
-import {appDataActions, appDataSelectors} from '../../store/app-data';
+import {appProcessActions} from '../../store/slice/app-process';
+import {appDataActions, appDataSelectors} from '../../store/slice/app-data';
 import {useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import {MAX_NEARBY_OFFERS, RequestStatus} from '../../common/const';

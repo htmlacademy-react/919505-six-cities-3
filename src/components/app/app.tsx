@@ -1,5 +1,4 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import {getAuthorizationStatus} from '../../common/utils';
 import {AppRoute} from '../../common/const';
 import Layout from '../layout';
 import MainScreen from '../../pages/main-screen';
@@ -11,14 +10,25 @@ import NotFoundScreen from '../../pages/not-found-screen';
 import ScrollToTop from '../scroll-to-top';
 import {useEffect} from 'react';
 import {useActionCreators} from '../../hooks/store';
-import {appDataActions} from '../../store/app-data';
+import {appDataActions} from '../../store/slice/app-data';
+import {userProcessActions} from '../../store/slice/user-process';
+import {getToken} from '../../services/token';
 
 export default function App() {
   const {fetchAllOffers} = useActionCreators(appDataActions);
+  const {checkAuth} = useActionCreators(userProcessActions);
+
+  const token = getToken();
 
   useEffect(() => {
     fetchAllOffers();
   });
+
+  useEffect(() => {
+    if (token) {
+      checkAuth();
+    }
+  }, [token, checkAuth]);
 
   return(
     <BrowserRouter>
@@ -37,7 +47,7 @@ export default function App() {
           <Route
             path={AppRoute.Login}
             element={(
-              <PrivateRoute authorizationStatus={getAuthorizationStatus()} isReverse>
+              <PrivateRoute isReverse>
                 <LoginScreen/>
               </PrivateRoute>
             )}
@@ -46,7 +56,7 @@ export default function App() {
           <Route
             path={AppRoute.Favorites}
             element={(
-              <PrivateRoute authorizationStatus={getAuthorizationStatus()}>
+              <PrivateRoute>
                 <FavoritesScreen/>
               </PrivateRoute>
             )}

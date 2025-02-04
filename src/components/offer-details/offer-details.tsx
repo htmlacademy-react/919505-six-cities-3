@@ -1,4 +1,4 @@
-import {BookmarkButtonParams, MapType, MAX_OFFER_PHOTOS, RatingPanelType} from '../../common/const.ts';
+import {BookmarkButton, MapType, MAX_OFFER_PHOTOS, RatingPanelType} from '../../common/const.ts';
 import {TOffer, TOfferPreview} from '../../types/offers';
 import OfferImage from '../offer-image';
 import ButtonBookmark from '../button-bookmark';
@@ -9,7 +9,8 @@ import OfferHost from '../offer-host';
 import OfferReviewsSection from '../offer-reviews-section';
 import Map from '../map';
 import {useAppSelector} from '../../hooks/store';
-import {appDataSelectors} from '../../store/app-data';
+import {appDataSelectors} from '../../store/slice/app-data';
+import {makeFirstLetterToUpperCase} from '../../common/utils';
 
 type TOfferProps = {
   offer: TOffer;
@@ -59,11 +60,11 @@ export default function OfferDetails({offer, nearbyOffers}: TOfferProps): JSX.El
             : ''}
           <div className="offer__name-wrapper">
             <h1 className="offer__name">{title}</h1>
-            <ButtonBookmark type={BookmarkButtonParams.type.view} isActive={isFavorite}/>
+            <ButtonBookmark offerId={id} isFavorite={isFavorite} type={BookmarkButton.View}/>
           </div>
 
           <RatingPanel type={RatingPanelType.Offer} rating={rating}/>
-          <OfferFeaturesList type={type} bedrooms={bedrooms} maxAdults={maxAdults}/>
+          <OfferFeaturesList type={makeFirstLetterToUpperCase(type)} bedrooms={bedrooms} maxAdults={maxAdults}/>
 
           <div className="offer__price">
             <b className="offer__price-value">&euro;{price}</b> <span className="offer__price-text">&nbsp;night</span>

@@ -5,7 +5,7 @@ import useMap from '../../hooks/use-map';
 import 'leaflet/dist/leaflet.css';
 import {TOfferPreview} from '../../types/offers';
 import {useAppSelector} from '../../hooks/store';
-import {appProcessSelectors} from '../../store/app-process';
+import {appProcessSelectors} from '../../store/slice/app-process';
 import getMapData from './utils';
 
 type TMapProps = {

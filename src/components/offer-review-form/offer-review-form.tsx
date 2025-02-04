@@ -5,10 +5,7 @@ import RatingInput from '../rating-input';
 import useForm from '../../hooks/use-form';
 
 export default function OfferReviewForm(): JSX.Element {
-  const {
-    formData,
-    handleFormChange,
-  } = useForm<TReviewFormData>({rating: 0, review: ''});
+  const {formData, handleFormChange} = useForm<TReviewFormData>({rating: 0, review: ''});
 
   const isSubmitButtonDisabled = formData.rating === 0 || formData.review.length < ReviewLength.MIN;
 

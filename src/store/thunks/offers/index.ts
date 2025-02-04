@@ -3,6 +3,7 @@ import {EndPoint} from '../../../common/const';
 import {adaptOfferPreviewsToApp, adaptOfferToApp, adaptReviewsToApp} from '../../../common/adapters';
 import {createAppAsyncThunk} from '../../../hooks/store';
 import {TReview} from '../../../types/reviews';
+import {TOffer} from '../../../types/offers';
 
 interface PostReviewsProps {
   body: {
@@ -18,7 +19,7 @@ export const fetchAllOffers = createAppAsyncThunk<TServerOfferPreview[], undefin
   return adaptOfferPreviewsToApp(response.data);
 });
 
-export const fetchOffer = createAppAsyncThunk<TServerOffer, string>
+export const fetchOffer = createAppAsyncThunk<TOffer, string>
 ('fetchOffers/current', async (offerId, {extra: api}) => {
   const response = await api.get<TServerOffer>(`${EndPoint.Offers}/${offerId}`);
   return adaptOfferToApp(response.data);
@@ -30,7 +31,7 @@ export const fetchNearbyOffers = createAppAsyncThunk<TServerOfferPreview[], stri
   return adaptOfferPreviewsToApp(response.data);
 });
 
-export const fetchReviews = createAppAsyncThunk<TServerReview[], string>
+export const fetchReviews = createAppAsyncThunk<TReview[], string>
 ('reviews/fetch', async (offerId, {extra: api}) => {
   const response = await api.get<TServerReview[]>(`${EndPoint.Reviews}/${offerId}`);
   return adaptReviewsToApp(response.data);

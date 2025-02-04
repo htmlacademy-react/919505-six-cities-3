@@ -1,11 +1,12 @@
 import {Link} from 'react-router-dom';
-import {AppRoute, BookmarkButtonParams, OfferCardParams, RatingPanelType} from '../../common/const';
+import {AppRoute, BookmarkButton, OfferCardParams, RatingPanelType} from '../../common/const';
 import {TOfferPreview} from '../../types/offers';
 import {getParentBlockName} from './utils';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
 import {useActionCreators} from '../../hooks/store';
-import {appProcessActions} from '../../store/app-process';
+import {appProcessActions} from '../../store/slice/app-process';
+import {makeFirstLetterToUpperCase} from '../../common/utils';
 
 type TPlaceCardProps = {
   cardData: TOfferPreview;
@@ -67,13 +68,13 @@ export default function OfferCard({cardData, cardType}: TPlaceCardProps): JSX.El
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <ButtonBookmark type={BookmarkButtonParams.type.card} isActive={isFavorite}/>
+          <ButtonBookmark offerId={id} isFavorite={isFavorite} type={BookmarkButton.Card}/>
         </div>
         <RatingPanel type={RatingPanelType.Card} rating={rating}/>
         <h2 className="place-card__name">
           <Link to={AppRoute.Offer + id} onClick={cardClickHandler}>{title}</Link>
         </h2>
-        <p className="place-card__type">{type}</p>
+        <p className="place-card__type">{makeFirstLetterToUpperCase(type)}</p>
       </div>
     </article>
   );

@@ -1,13 +1,12 @@
 import OfferReviewsList from '../offer-reviews-list';
-import {AuthorizationStatus} from '../../common/const';
 import OfferReviewForm from '../offer-review-form';
-import {getAuthorizationStatus} from '../../common/utils';
 import {useAppSelector} from '../../hooks/store';
-import {appDataSelectors} from '../../store/app-data';
+import {appDataSelectors} from '../../store/slice/app-data';
+import {useAuth} from '../../hooks/user-authorisation';
 
 export default function OfferReviewsSection(): JSX.Element {
   const reviews = useAppSelector(appDataSelectors.reviews);
-  const isAuthorized = getAuthorizationStatus() === AuthorizationStatus.Auth;
+  const isAuthorized = useAuth();
 
   return (
     <section className="offer__reviews reviews">

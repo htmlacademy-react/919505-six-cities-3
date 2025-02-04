@@ -1,11 +1,11 @@
 import {createSelector, createSlice} from '@reduxjs/toolkit';
-import {NameSpace, RequestStatus} from '../../common/const';
-import {TAppDataState} from '../../types/state';
-import {TOffer, TOfferPreview} from '../../types/offers';
+import {NameSpace, RequestStatus} from '../../../common/const';
+import {TAppDataState} from '../../../types/state';
+import {TOffer, TOfferPreview} from '../../../types/offers';
 import {appProcess} from '../app-process';
-import {getProcessedOffers} from '../../common/utils';
-import {fetchAllOffers, fetchOffer, fetchNearbyOffers, fetchReviews} from '../thunks/offers';
-import {TReview} from '../../types/reviews';
+import {getProcessedOffers} from '../../../common/utils';
+import {fetchAllOffers, fetchOffer, fetchNearbyOffers, fetchReviews} from '../../thunks/offers';
+import {TReview} from '../../../types/reviews';
 
 const initialState: TAppDataState = {
   offers: [],
