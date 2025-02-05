@@ -6,6 +6,7 @@ import {TUser} from './user';
 
 export type TOffersState = {
   offers: TOfferPreview[];
+  favoriteOffers: TOfferPreview[];
   offer: TOffer | null;
   nearbyOffers: TOfferPreview[];
   requestStatus: RequestStatus;

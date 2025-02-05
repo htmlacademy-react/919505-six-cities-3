@@ -6,8 +6,13 @@ import {TLoginForm, TLoginFormData} from '../../types/login';
 import {TFormChangeHandler} from '../../types/event-handlers';
 
 export default function LoginForm(): JSX.Element {
-  const {formData, handleFormChange} = useForm<TLoginFormData>({email: '', password: ''});
+  const [handleFormChange, formData] = useForm<TLoginFormData>({email: '', password: ''});
   const {login} = useActionCreators(userSliceActions);
+
+  const validatePassword = (password: string) => {
+    const regExp = /^(?=.*[a-zA-Z])(?=.*\d).+$/;
+    return regExp.test(String(password));
+  };
 
   const inputChangeHandler: TFormChangeHandler = (evt) => {
     handleFormChange(evt);
@@ -15,7 +20,10 @@ export default function LoginForm(): JSX.Element {
 
   const submitHandler = (evt: FormEvent<TLoginForm>) => {
     evt.preventDefault();
-    login(formData);
+
+    if (validatePassword(formData.password)) {
+      login(formData);
+    }
   };
 
   return (

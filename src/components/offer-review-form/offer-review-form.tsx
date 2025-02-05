@@ -3,14 +3,14 @@ import {TFormChangeHandler} from '../../types/event-handlers';
 import {TReviewFormData} from '../../types/reviews';
 import RatingInput from '../rating-input';
 import useForm from '../../hooks/use-form';
-import {FormEvent} from 'react';
+import {FormEvent, useEffect} from 'react';
 import {TLoginForm} from '../../types/login';
 import {useActionCreators, useAppSelector} from '../../hooks/store';
 import {reviewsSliceActions, reviewsSliceSelectors} from '../../store/slices/reviews';
 import {useParams} from 'react-router-dom';
 
 export default function OfferReviewForm(): JSX.Element {
-  const {formData, handleFormChange} = useForm<TReviewFormData>({rating: 0, review: ''});
+  const [handleFormChange, formData, setFormData] = useForm<TReviewFormData>({rating: 0, review: ''});
   const requestStatus = useAppSelector(reviewsSliceSelectors.requestStatus);
   const {postReview} = useActionCreators(reviewsSliceActions);
   const {id} = useParams();
@@ -28,6 +28,12 @@ export default function OfferReviewForm(): JSX.Element {
       postReview({body: {rating: Number(formData.rating), comment: formData.review}, offerId: id});
     }
   };
+
+  useEffect(() => {
+    if (requestStatus === RequestStatus.Success) {
+      setFormData({rating: 0, review: ''});
+    }
+  }, [requestStatus, setFormData]);
 
   return (
     <form className="reviews__form form" action="#" method="post" onSubmit={submitHandler}>

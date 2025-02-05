@@ -24,7 +24,6 @@ export default function OfferDetails({offer, nearbyOffers}: TOfferProps): JSX.El
     type,
     isPremium,
     title,
-    isFavorite,
     rating,
     bedrooms,
     maxAdults,
@@ -60,7 +59,7 @@ export default function OfferDetails({offer, nearbyOffers}: TOfferProps): JSX.El
             : ''}
           <div className="offer__name-wrapper">
             <h1 className="offer__name">{title}</h1>
-            <ButtonBookmark offerId={id} isFavorite={isFavorite} type={BookmarkButton.View}/>
+            <ButtonBookmark offerId={id} type={BookmarkButton.View}/>
           </div>
 
           <RatingPanel type={RatingPanelType.Offer} rating={rating}/>

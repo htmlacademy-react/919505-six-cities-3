@@ -1,5 +1,6 @@
 import LoginForm from '../../components/login-form';
 import {Cities} from '../../common/const';
+import CityLink from '../../components/city-link';
 
 function LoginScreen(): JSX.Element {
   const randomCity = Cities[Math.floor(Math.random() * Cities.length)];
@@ -13,7 +14,7 @@ function LoginScreen(): JSX.Element {
         </section>
         <section className="locations locations--login locations--current">
           <div className="locations__item">
-            <a className="locations__item-link" href="#"> <span>{randomCity}</span> </a>
+            <CityLink city={randomCity}/>
           </div>
         </section>
       </div>

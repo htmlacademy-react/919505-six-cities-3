@@ -9,5 +9,5 @@ export default function useForm<T>(initialState: T) {
     setFormData({...formData, [name]: value});
   };
 
-  return {formData, handleFormChange};
+  return [handleFormChange, formData, setFormData] as const;
 }
