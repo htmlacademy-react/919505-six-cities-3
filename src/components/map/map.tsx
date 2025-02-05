@@ -54,7 +54,7 @@ export default function Map({offers, mapType}: TMapProps): JSX.Element {
 
   useEffect(() => {
     if (map) {
-      map.setView([city.lat, city.lng], city.zoom);
+      map.setView([city.lat, city.lng]);
     }
   }, [city, map]);
 
