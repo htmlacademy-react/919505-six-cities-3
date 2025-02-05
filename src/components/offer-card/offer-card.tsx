@@ -20,7 +20,6 @@ export default function OfferCard({cardData, cardType}: TPlaceCardProps): JSX.El
     type,
     price,
     previewImage,
-    isFavorite,
     rating,
     isPremium
   }: TOfferPreview = cardData;
@@ -68,7 +67,7 @@ export default function OfferCard({cardData, cardType}: TPlaceCardProps): JSX.El
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <ButtonBookmark offerId={id} isFavorite={isFavorite} type={BookmarkButton.Card}/>
+          <ButtonBookmark offerId={id} type={BookmarkButton.Card}/>
         </div>
         <RatingPanel type={RatingPanelType.Card} rating={rating}/>
         <h2 className="place-card__name">
