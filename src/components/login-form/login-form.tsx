@@ -9,13 +9,21 @@ export default function LoginForm(): JSX.Element {
   const [handleFormChange, formData] = useForm<TLoginFormData>({email: '', password: ''});
   const {login} = useActionCreators(userSliceActions);
 
+  const validatePassword = (password: string) => {
+    const regExp = /^(?=.*[a-zA-Z])(?=.*\d).+$/;
+    return regExp.test(String(password));
+  };
+
   const inputChangeHandler: TFormChangeHandler = (evt) => {
     handleFormChange(evt);
   };
 
   const submitHandler = (evt: FormEvent<TLoginForm>) => {
     evt.preventDefault();
-    login(formData);
+
+    if (validatePassword(formData.password)) {
+      login(formData);
+    }
   };
 
   return (
