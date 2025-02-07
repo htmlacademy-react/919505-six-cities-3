@@ -1,31 +1,9 @@
-import {TCity, TCityName, TFavoritesObject, TOffer, TOfferPreview, TOfferSortType} from '../types/offers';
+import {TCity, TOffer, TOfferPreview} from '../types/offers';
 import {TMapCity, TMapPoint} from '../types/map';
-import {AuthorizationStatus, RATING_COEFFICIENT, SortingType} from './const.ts';
+import {RATING_COEFFICIENT} from './const.ts';
 
 export function calculateRatingWidth(rating: number): number {
   return Math.round(rating) * RATING_COEFFICIENT;
-}
-
-export function generateFavoriteOffersObject(offers: TOfferPreview[]): TFavoritesObject {
-  const result: TFavoritesObject = {};
-
-  offers.forEach((offer) => {
-    if (result[offer.city.name]) {
-      result[offer.city.name].push(offer);
-    } else {
-      result[offer.city.name] = [offer];
-    }
-  });
-
-  return result;
-}
-
-export function getAuthorizationStatus() {
-  return AuthorizationStatus.NoAuth;
-}
-
-export function filterOffersByCity(offers: TOfferPreview[], city: string) {
-  return offers.filter((offerPreview) => offerPreview.city.name === city);
 }
 
 export function adaptCityObjectToMap(city: TCity): TMapCity {
@@ -48,24 +26,6 @@ export function adaptOfferToMapPoint(offer: TOfferPreview | TOffer): TMapPoint {
 
 export function adaptOffersToMapPoints(offers: Array<TOfferPreview | TOffer>): TMapPoint[] {
   return offers.map((offer) => adaptOfferToMapPoint(offer));
-}
-
-export function getProcessedOffers(offers: TOfferPreview[], city: TCityName, sortType: TOfferSortType) {
-  const currentCityOffers = offers
-    .filter((offer) => offer.city.name === city);
-
-  switch (sortType) {
-    case SortingType.POPULAR:
-      return currentCityOffers;
-    case SortingType.HIGH_TO_LOW:
-      return currentCityOffers.sort((a, b) => b.price - a.price);
-    case SortingType.LOW_TO_HIGH:
-      return currentCityOffers.sort((a, b) => a.price - b.price);
-    case SortingType.TOP_RATED_FIRST:
-      return currentCityOffers.sort((a, b) => b.rating - a.rating);
-    default:
-      return currentCityOffers;
-  }
 }
 
 export function makeFirstLetterToUpperCase (str: string): string {

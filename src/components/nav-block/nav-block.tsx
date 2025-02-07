@@ -3,12 +3,10 @@ import {AppRoute} from '../../common/const';
 import {useAuth} from '../../hooks/user-authorisation';
 import {useActionCreators, useAppSelector} from '../../hooks/store';
 import {userSliceActions, userSliceSelectors} from '../../store/slices/user';
+import {offersSliceSelectors} from '../../store/slices/offers';
 
-type TNavBlockProps = {
-  favoritesQuantity: number;
-}
-
-export default function NavBlock({favoritesQuantity}: TNavBlockProps): JSX.Element {
+export default function NavBlock(): JSX.Element {
+  const favoritesQuantity = useAppSelector(offersSliceSelectors.favoriteOffers).length;
   const isAuthorized = useAuth();
   const user = useAppSelector(userSliceSelectors.info);
   const {logout} = useActionCreators(userSliceActions);

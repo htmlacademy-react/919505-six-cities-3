@@ -1,6 +1,14 @@
-import {AppRoute} from '../../common/const';
+import {AppRoute} from '../common/const';
+import {useLocation} from 'react-router-dom';
+import {useAppSelector} from './store';
+import {offersSliceSelectors} from '../store/slices/offers';
 
-export function getLayoutState(pathName: AppRoute, favoritesQuantity: number) {
+export function useLayout() {
+  const favorites = useAppSelector(offersSliceSelectors.favoriteOffers);
+  const pathName = useLocation().pathname;
+
+  const favoritesQuantity = favorites.length;
+
   let rootClassName = '';
   let linkClassName = '';
   let shouldRenderUser = true;

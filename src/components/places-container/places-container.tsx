@@ -1,7 +1,8 @@
 import OfferListEmpty from '../offer-list-empty';
 import OfferList from '../offer-list';
-import Map from '../map';
 import {TOfferPreview} from '../../types/offers';
+import {MapType} from '../../common/const';
+import Map from '../map';
 
 type TPlacesContainerProps = {
   offers: TOfferPreview[];
@@ -15,10 +16,7 @@ export default function PlacesContainer({offers, isEmpty}: TPlacesContainerProps
         ? <OfferListEmpty/>
         : <OfferList offers={offers}/>}
       <div className="cities__right-section">
-        {!isEmpty &&
-          <section className="cities__map map">
-            <Map offers={offers}/>
-          </section>}
+        {!isEmpty && <Map offers={offers} mapType={MapType.Main}/>}
       </div>
     </>
   );

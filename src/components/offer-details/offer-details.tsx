@@ -7,10 +7,10 @@ import OfferFeaturesList from '../offer-features-list';
 import OfferInsideList from '../offer-inside-list';
 import OfferHost from '../offer-host';
 import OfferReviewsSection from '../offer-reviews-section';
-import Map from '../map';
 import {useAppSelector} from '../../hooks/store';
 import {offersSliceSelectors} from '../../store/slices/offers';
 import {makeFirstLetterToUpperCase} from '../../common/utils';
+import Map from '../map';
 
 type TOfferProps = {
   offer: TOffer;
@@ -74,9 +74,7 @@ export default function OfferDetails({offer, nearbyOffers}: TOfferProps): JSX.El
           <OfferReviewsSection/>
         </div>
       </div>
-      <section className="offer__map map">
-        {offersForMap.length > 0 && <Map offers={offersForMap} mapType={MapType.Offer}/>}
-      </section>
+      {offersForMap.length > 0 && <Map offers={offersForMap} mapType={MapType.Offer} defaultActiveId={id}/>}
     </section>
   );
 }

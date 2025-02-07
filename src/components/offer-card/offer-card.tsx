@@ -42,7 +42,7 @@ export default function OfferCard({cardData, cardType}: TPlaceCardProps): JSX.El
 
   const cardClickHandler = () => {
     if (cardType === OfferCardParams.type.default) {
-      changeActiveOfferId(id);
+      changeActiveOfferId(null);
     }
   };
 

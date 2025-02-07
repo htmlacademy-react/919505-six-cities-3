@@ -6,7 +6,6 @@ type TFavoritesListProps = {
 }
 
 export default function FavoritesList({favoritesObject}: TFavoritesListProps): JSX.Element {
-
   return (
     <>
       <h1 className="favorites__title">Saved listing</h1>

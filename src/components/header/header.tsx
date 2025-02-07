@@ -5,10 +5,9 @@ import NavBlock from '../nav-block';
 type THeaderProps = {
   linkClassName: string;
   shouldRenderUser: boolean;
-  favoritesQuantity: number;
 };
 
-export default function Header({linkClassName, shouldRenderUser, favoritesQuantity}: THeaderProps): JSX.Element {
+export default function Header({linkClassName, shouldRenderUser}: THeaderProps): JSX.Element {
   return (
     <header className="header">
       <div className="container">
@@ -19,7 +18,7 @@ export default function Header({linkClassName, shouldRenderUser, favoritesQuanti
             </Link>
           </div>
           {shouldRenderUser
-            ? <NavBlock favoritesQuantity={favoritesQuantity}/>
+            ? <NavBlock/>
             : ''}
         </div>
       </div>
