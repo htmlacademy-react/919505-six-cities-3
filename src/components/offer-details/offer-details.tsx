@@ -30,7 +30,10 @@ export default function OfferDetails({offer, nearbyOffers}: TOfferProps): JSX.El
     price,
     goods,
     host,
-    description
+    description,
+    city,
+    location,
+    isFavorite
   } = offer;
 
   const offers = useAppSelector(offersSliceSelectors.offers);
@@ -40,6 +43,19 @@ export default function OfferDetails({offer, nearbyOffers}: TOfferProps): JSX.El
 
   if (currentOfferPreview) {
     offersForMap.push(currentOfferPreview);
+  } else {
+    offersForMap.push({
+      id,
+      title,
+      type,
+      price,
+      city,
+      location,
+      isFavorite,
+      isPremium,
+      rating,
+      previewImage: ''
+    });
   }
 
   return (

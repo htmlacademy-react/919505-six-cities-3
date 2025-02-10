@@ -48,8 +48,7 @@ function Map({offers, mapType, defaultActiveId}: TMapProps): JSX.Element {
   const activeOfferId = useAppSelector(appSliceSelectors.activeOfferId);
   const activeId = defaultActiveId ? defaultActiveId : activeOfferId;
 
-  const hoveredCardObject = offers.find((offer) => offer.id === activeId);
-  const [city, points] = getMapData(offers, hoveredCardObject);
+  const [city, points] = getMapData(offers, activeId);
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
