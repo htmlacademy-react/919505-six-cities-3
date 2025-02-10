@@ -1,4 +1,4 @@
-import {OfferCardParams} from '../../common/const';
+import {OfferCardParams} from '../../const';
 
 export function getContainerClassName(cardType: string) {
   switch (cardType) {

@@ -1,4 +1,4 @@
-import {AppRoute} from '../common/const';
+import {AppRoute} from '../const';
 import {useLocation} from 'react-router-dom';
 import {useAppSelector} from './store';
 import {offersSliceSelectors} from '../store/slices/offers';

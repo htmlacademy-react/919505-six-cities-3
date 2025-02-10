@@ -1,7 +1,7 @@
 import {createAppAsyncThunk} from '../../../hooks/store';
 import {TServerFavoriteOffer, TServerOfferPreview} from '../../../types/server';
-import {EndPoint, FavoriteStatus} from '../../../common/const';
-import {adaptOfferPreviewsToApp, adaptOfferPreviewToApp} from '../../../common/adapters';
+import {EndPoint, FavoriteStatus} from '../../../const';
+import {adaptOfferPreviewsToApp, adaptOfferPreviewToApp} from '../../../services/adapters';
 import {TOfferPreview} from '../../../types/offers';
 
 interface ChangeProps {

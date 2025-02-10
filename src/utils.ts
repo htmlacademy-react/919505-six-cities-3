@@ -1,5 +1,5 @@
-import {TCity, TOffer, TOfferPreview} from '../types/offers';
-import {TMapCity, TMapPoint} from '../types/map';
+import {TCity, TOffer, TOfferPreview} from './types/offers';
+import {TMapCity, TMapPoint} from './types/map';
 import {RATING_COEFFICIENT} from './const.ts';
 
 export function calculateRatingWidth(rating: number): number {

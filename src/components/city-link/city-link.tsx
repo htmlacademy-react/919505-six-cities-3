@@ -1,4 +1,4 @@
-import {AppRoute} from '../../common/const';
+import {AppRoute} from '../../const';
 import {Link} from 'react-router-dom';
 import {useActionCreators} from '../../hooks/store';
 import {appSliceActions} from '../../store/slices/app';

@@ -1,4 +1,4 @@
-import {BookmarkButton, BookmarkButtonParams} from '../../common/const';
+import {BookmarkButton, BookmarkButtonParams} from '../../const';
 import {TOfferPreview} from '../../types/offers';
 
 export function getButtonAttributes(type: BookmarkButton) {

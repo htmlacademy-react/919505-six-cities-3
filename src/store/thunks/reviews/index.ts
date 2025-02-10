@@ -1,8 +1,8 @@
 import {createAppAsyncThunk} from '../../../hooks/store';
 import {TReview} from '../../../types/reviews';
 import {TServerReview} from '../../../types/server';
-import {EndPoint} from '../../../common/const';
-import {adaptReviewsToApp} from '../../../common/adapters';
+import {EndPoint} from '../../../const';
+import {adaptReviewsToApp} from '../../../services/adapters';
 
 interface PostReviewsProps {
   body: {

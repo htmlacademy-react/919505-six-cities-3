@@ -1,4 +1,4 @@
-import {Cities} from '../../common/const';
+import {Cities} from '../../const';
 import CitiesNavItem from '../cities-nav-item';
 import {useAppSelector} from '../../hooks/store';
 import {appSliceSelectors} from '../../store/slices/app';

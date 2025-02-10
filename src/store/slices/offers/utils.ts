@@ -1,5 +1,5 @@
 import {TCityName, TFavoritesObject, TOfferPreview, TOfferSortType} from '../../../types/offers';
-import {SortingType} from '../../../common/const';
+import {SortingType} from '../../../const';
 
 export function generateFavoriteOffersObject(offers: TOfferPreview[]): TFavoritesObject {
   const result: TFavoritesObject = {};

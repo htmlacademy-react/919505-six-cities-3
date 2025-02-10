@@ -1,4 +1,4 @@
-import {RatingPanelType} from '../../common/const';
+import {RatingPanelType} from '../../const';
 
 export function getClassNamePrefix(type: string) {
   switch (type) {

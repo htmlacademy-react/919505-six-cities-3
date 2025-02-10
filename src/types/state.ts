@@ -1,6 +1,6 @@
 import {store} from '../store';
 import {TCityName, TOffer, TOfferPreview, TOfferSortType} from './offers';
-import {AuthorizationStatus, RequestStatus} from '../common/const';
+import {AuthorizationStatus, RequestStatus} from '../const';
 import {TReview} from './reviews';
 import {TUser} from './user';
 

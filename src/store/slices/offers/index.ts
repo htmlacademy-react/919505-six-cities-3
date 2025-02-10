@@ -1,5 +1,5 @@
 import {createSelector, createSlice} from '@reduxjs/toolkit';
-import {FavoriteStatus, NameSpace, RequestStatus} from '../../../common/const';
+import {FavoriteStatus, NameSpace, RequestStatus} from '../../../const';
 import {TOffersState} from '../../../types/state';
 import {TFavoritesObject, TOffer, TOfferPreview} from '../../../types/offers';
 import {appSlice} from '../app';

@@ -1,4 +1,4 @@
-import {EndPoint} from '../../../common/const';
+import {EndPoint} from '../../../const';
 import {createAppAsyncThunk} from '../../../hooks/store';
 import {TUser} from '../../../types/user';
 import {deleteToken, saveToken} from '../../../services/token';

@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../../common/const';
+import {AppRoute} from '../../const';
 import NavBlock from '../nav-block';
 
 type THeaderProps = {

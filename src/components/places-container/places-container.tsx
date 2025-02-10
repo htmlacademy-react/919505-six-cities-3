@@ -1,7 +1,7 @@
 import OfferListEmpty from '../offer-list-empty';
 import OfferList from '../offer-list';
 import {TOfferPreview} from '../../types/offers';
-import {MapType} from '../../common/const';
+import {MapType} from '../../const';
 import Map from '../map';
 
 type TPlacesContainerProps = {

@@ -4,7 +4,7 @@ import {useActionCreators, useAppSelector} from '../../hooks/store';
 import {offersSliceActions, offersSliceSelectors} from '../../store/slices/offers';
 import {useEffect} from 'react';
 import {useParams} from 'react-router-dom';
-import {MAX_NEARBY_OFFERS, RequestStatus} from '../../common/const';
+import {MAX_NEARBY_OFFERS, RequestStatus} from '../../const';
 import Spinner from '../../components/spinner';
 import NotFoundScreen from '../not-found-screen';
 import {reviewsSliceActions} from '../../store/slices/reviews';

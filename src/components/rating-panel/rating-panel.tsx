@@ -1,5 +1,5 @@
-import {calculateRatingWidth} from '../../common/utils';
-import {RatingPanelType} from '../../common/const';
+import {calculateRatingWidth} from '../../utils';
+import {RatingPanelType} from '../../const';
 import {getClassNamePrefix} from './utils';
 
 type TRatingPanelProps = {

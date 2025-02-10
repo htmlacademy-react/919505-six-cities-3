@@ -1,7 +1,7 @@
 import {TOfferPreview} from '../../types/offers';
 import {useAppSelector} from '../../hooks/store';
 import {offersSliceSelectors} from '../../store/slices/offers';
-import {RequestStatus} from '../../common/const';
+import {RequestStatus} from '../../const';
 import PlacesContainer from '../places-container';
 import Spinner from '../spinner';
 

@@ -1,12 +1,12 @@
 import {Link} from 'react-router-dom';
-import {AppRoute, BookmarkButton, OfferCardParams, RatingPanelType} from '../../common/const';
+import {AppRoute, BookmarkButton, OfferCardParams, RatingPanelType} from '../../const';
 import {TOfferPreview} from '../../types/offers';
 import {getParentBlockName} from './utils';
 import ButtonBookmark from '../button-bookmark';
 import RatingPanel from '../rating-panel';
 import {useActionCreators} from '../../hooks/store';
 import {appSliceActions} from '../../store/slices/app';
-import {makeFirstLetterToUpperCase} from '../../common/utils';
+import {makeFirstLetterToUpperCase} from '../../utils';
 
 type TPlaceCardProps = {
   cardData: TOfferPreview;

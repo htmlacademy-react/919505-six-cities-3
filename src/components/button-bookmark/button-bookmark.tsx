@@ -1,5 +1,5 @@
 import {checkFavorite, getButtonAttributes} from './utils';
-import {AppRoute, AuthorizationStatus, BookmarkButton} from '../../common/const';
+import {AppRoute, AuthorizationStatus, BookmarkButton} from '../../const';
 import {useActionCreators, useAppSelector} from '../../hooks/store';
 import {userSliceSelectors} from '../../store/slices/user';
 import {useNavigate} from 'react-router-dom';

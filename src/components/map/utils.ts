@@ -1,4 +1,4 @@
-import {adaptCityObjectToMap, adaptOffersToMapPoints, adaptOfferToMapPoint} from '../../common/utils';
+import {adaptCityObjectToMap, adaptOffersToMapPoints, adaptOfferToMapPoint} from '../../utils';
 import {TOffer, TOfferPreview} from '../../types/offers';
 import {TMapPoint} from '../../types/map';
 

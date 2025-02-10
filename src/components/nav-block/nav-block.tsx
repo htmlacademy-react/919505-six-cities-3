@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../../common/const';
+import {AppRoute} from '../../const';
 import {useAuth} from '../../hooks/user-authorisation';
 import {useActionCreators, useAppSelector} from '../../hooks/store';
 import {userSliceActions, userSliceSelectors} from '../../store/slices/user';

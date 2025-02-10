@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {Cities, NameSpace, SortingType} from '../../../common/const';
+import {Cities, NameSpace, SortingType} from '../../../const';
 import {TCityName, TOfferSortType} from '../../../types/offers';
 import {TAppProcessState} from '../../../types/state';
 
