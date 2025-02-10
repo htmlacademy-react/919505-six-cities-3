@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import {checkFavorite, getButtonAttributes} from './utils';
 import {AppRoute, AuthorizationStatus, BookmarkButton} from '../../const';
 import {useActionCreators, useAppSelector} from '../../hooks/store';
@@ -10,7 +11,7 @@ type TButtonBookmarkProps = {
   type: BookmarkButton;
 }
 
-export default function ButtonBookmark({offerId, type}: TButtonBookmarkProps): JSX.Element {
+function ButtonBookmark({offerId, type}: TButtonBookmarkProps): JSX.Element {
   const AuthStatus = useAppSelector(userSliceSelectors.authorizationStatus);
   const favoriteOffers = useAppSelector(offersSliceSelectors.favoriteOffers);
   const {changeFavorite} = useActionCreators(offersSliceActions);
@@ -40,3 +41,6 @@ export default function ButtonBookmark({offerId, type}: TButtonBookmarkProps): J
     </button>
   );
 }
+
+const MemorizedButtonBookmark = memo(ButtonBookmark);
+export default MemorizedButtonBookmark;

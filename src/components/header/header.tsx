@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const';
 import NavBlock from '../nav-block';
@@ -7,7 +8,7 @@ type THeaderProps = {
   shouldRenderUser: boolean;
 };
 
-export default function Header({linkClassName, shouldRenderUser}: THeaderProps): JSX.Element {
+function Header({linkClassName, shouldRenderUser}: THeaderProps): JSX.Element {
   return (
     <header className="header">
       <div className="container">
@@ -26,3 +27,5 @@ export default function Header({linkClassName, shouldRenderUser}: THeaderProps):
   );
 }
 
+const MemorizedHeader = memo(Header);
+export default MemorizedHeader;

@@ -1,10 +1,11 @@
+import {memo} from 'react';
 import CitiesNavList from '../../components/cities-nav-list';
 import MainContainer from '../../components/main-container';
 import {useAppSelector} from '../../hooks/store';
 import {offersSliceSelectors} from '../../store/slices/offers';
 
 function MainScreen(): JSX.Element {
-  const offers = useAppSelector(offersSliceSelectors.currentCitySortedOffers);
+  const offers = useAppSelector(offersSliceSelectors.offers);
   const isEmpty = offers.length === 0;
 
   return (
@@ -15,9 +16,10 @@ function MainScreen(): JSX.Element {
           <CitiesNavList/>
         </section>
       </div>
-      <MainContainer offers={offers} isEmpty={isEmpty}/>
+      <MainContainer isEmpty={isEmpty}/>
     </main>
   );
 }
 
-export default MainScreen;
+const MemorizedMainScreen = memo(MainScreen);
+export default MemorizedMainScreen;

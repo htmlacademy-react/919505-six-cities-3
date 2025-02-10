@@ -1,15 +1,18 @@
+import {memo} from 'react';
 import OfferListEmpty from '../offer-list-empty';
 import OfferList from '../offer-list';
-import {TOfferPreview} from '../../types/offers';
 import {MapType} from '../../const';
 import Map from '../map';
+import {useAppSelector} from '../../hooks/store';
+import {offersSliceSelectors} from '../../store/slices/offers';
 
 type TPlacesContainerProps = {
-  offers: TOfferPreview[];
   isEmpty: boolean;
 }
 
-export default function PlacesContainer({offers, isEmpty}: TPlacesContainerProps): JSX.Element {
+function PlacesContainer({isEmpty}: TPlacesContainerProps): JSX.Element {
+  const offers = useAppSelector(offersSliceSelectors.currentCitySortedOffers);
+
   return (
     <>
       {isEmpty
@@ -21,3 +24,6 @@ export default function PlacesContainer({offers, isEmpty}: TPlacesContainerProps
     </>
   );
 }
+
+const MemorizedPlacesContainer = memo(PlacesContainer);
+export default MemorizedPlacesContainer;

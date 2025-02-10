@@ -1,4 +1,4 @@
-import {useEffect, useRef} from 'react';
+import {memo, useEffect, useRef} from 'react';
 import {Icon, layerGroup, Marker} from 'leaflet';
 import {MapType} from '../../const';
 import useMap from '../../hooks/use-map';
@@ -44,7 +44,7 @@ function getStyle(mapType?: MapType) {
   }
 }
 
-export default function Map({offers, mapType, defaultActiveId}: TMapProps): JSX.Element {
+function Map({offers, mapType, defaultActiveId}: TMapProps): JSX.Element {
   const activeOfferId = useAppSelector(appSliceSelectors.activeOfferId);
   const activeId = defaultActiveId ? defaultActiveId : activeOfferId;
 
@@ -89,3 +89,6 @@ export default function Map({offers, mapType, defaultActiveId}: TMapProps): JSX.
       <div style={getStyle(mapType)} ref={mapRef}></div>
     </section>);
 }
+
+const MemorizedMap = memo(Map);
+export default MemorizedMap;
