@@ -1,20 +1,36 @@
 import {getButtonAttributes} from './utils';
-import {BookmarkButton} from '../../common/const';
-import {useActionCreators} from '../../hooks/store';
-import {favoritesSliceActions} from '../../store/slices/favorites';
+import {AppRoute, AuthorizationStatus, BookmarkButton} from '../../common/const';
+import {useActionCreators, useAppSelector} from '../../hooks/store';
+import {userSliceSelectors} from '../../store/slices/user';
+import {useNavigate} from 'react-router-dom';
+import {offersSliceActions, offersSliceSelectors} from '../../store/slices/offers';
+import {TOfferPreview} from '../../types/offers';
 
 type TButtonBookmarkProps = {
   offerId: string;
-  isFavorite: boolean;
   type: BookmarkButton;
 }
 
-export default function ButtonBookmark({offerId, isFavorite, type}: TButtonBookmarkProps): JSX.Element {
+const checkFavorite = (favoriteOffers: TOfferPreview[], offerId: string) => {
+  const currentOffer = favoriteOffers.find((offer) => offer.id === offerId);
+  return !!currentOffer;
+};
+
+export default function ButtonBookmark({offerId, type}: TButtonBookmarkProps): JSX.Element {
+  const AuthStatus = useAppSelector(userSliceSelectors.authorizationStatus);
+  const favoriteOffers = useAppSelector(offersSliceSelectors.favoriteOffers);
+  const {changeFavorite} = useActionCreators(offersSliceActions);
+  const navigate = useNavigate();
+
+  const isFavorite = checkFavorite(favoriteOffers, offerId);
   const {classNamePrefix, width, height} = getButtonAttributes(type);
-  const {changeFavorite} = useActionCreators(favoritesSliceActions);
 
   const clickHandler = () => {
-    changeFavorite({offerId, status: Number(!isFavorite)});
+    if (AuthStatus === AuthorizationStatus.Auth) {
+      changeFavorite({offerId, status: Number(!isFavorite)});
+    } else {
+      navigate(AppRoute.Login);
+    }
   };
 
   return (

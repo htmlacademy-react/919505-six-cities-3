@@ -1,5 +1,5 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import {AppRoute} from '../../common/const';
+import {AppRoute, AuthorizationStatus} from '../../common/const';
 import Layout from '../layout';
 import MainScreen from '../../pages/main-screen';
 import LoginScreen from '../../pages/login-screen';
@@ -9,19 +9,20 @@ import OfferScreen from '../../pages/offer-screen';
 import NotFoundScreen from '../../pages/not-found-screen';
 import ScrollToTop from '../scroll-to-top';
 import {useEffect} from 'react';
-import {useActionCreators} from '../../hooks/store';
+import {useActionCreators, useAppSelector} from '../../hooks/store';
 import {offersSliceActions} from '../../store/slices/offers';
-import {userSliceActions} from '../../store/slices/user';
+import {userSliceActions, userSliceSelectors} from '../../store/slices/user';
 import {getToken} from '../../services/token';
 
 export default function App() {
-  const {fetchAllOffers} = useActionCreators(offersSliceActions);
+  const {fetchAllOffers, fetchFavorites} = useActionCreators(offersSliceActions);
   const {checkAuth} = useActionCreators(userSliceActions);
+  const authStatus = useAppSelector(userSliceSelectors.authorizationStatus);
 
   const token = getToken();
 
   useEffect(() => {
-    fetchAllOffers();
+    Promise.all([fetchAllOffers(), fetchFavorites()]);
   });
 
   useEffect(() => {
@@ -29,6 +30,12 @@ export default function App() {
       checkAuth();
     }
   }, [token, checkAuth]);
+
+  useEffect(() => {
+    if (authStatus === AuthorizationStatus.Auth) {
+      fetchFavorites();
+    }
+  }, [authStatus, fetchFavorites]);
 
   return(
     <BrowserRouter>

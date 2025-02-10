@@ -1,12 +1,10 @@
 import FavoritesList from '../../components/favorites-list';
 import FavoritesListEmpty from '../../components/favorites-list-empty';
 import {useAppSelector} from '../../hooks/store';
-import {generateFavoriteOffersObject} from '../../common/utils';
-import {favoritesSlice} from '../../store/slices/favorites';
+import {offersSliceSelectors} from '../../store/slices/offers';
 
 export default function FavoritesScreen(): JSX.Element {
-  const favoriteOffers = useAppSelector(favoritesSlice.selectors.offers);
-  const favoritesObject = generateFavoriteOffersObject(favoriteOffers);
+  const favoritesObject = useAppSelector(offersSliceSelectors.favoriteOffersObject);
 
   const isEmpty = Object.keys(favoritesObject).length === 0;
 

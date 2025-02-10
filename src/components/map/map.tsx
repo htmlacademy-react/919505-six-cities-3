@@ -1,16 +1,17 @@
-import {useRef, useEffect} from 'react';
-import {Icon, Marker, layerGroup} from 'leaflet';
+import {useEffect, useRef} from 'react';
+import {Icon, layerGroup, Marker} from 'leaflet';
 import {MapType} from '../../common/const';
 import useMap from '../../hooks/use-map';
-import 'leaflet/dist/leaflet.css';
 import {TOfferPreview} from '../../types/offers';
+import getMapData from './utils';
+import 'leaflet/dist/leaflet.css';
 import {useAppSelector} from '../../hooks/store';
 import {appSliceSelectors} from '../../store/slices/app';
-import getMapData from './utils';
 
 type TMapProps = {
   offers: TOfferPreview[];
-  mapType?: MapType;
+  mapType: MapType;
+  defaultActiveId?: string;
 }
 
 const URL_MARKER_DEFAULT = 'img/pin.svg';
@@ -43,10 +44,11 @@ function getStyle(mapType?: MapType) {
   }
 }
 
-export default function Map({offers, mapType}: TMapProps): JSX.Element {
-  const hoveredCardId = useAppSelector(appSliceSelectors.activeOfferId);
-  const hoveredCardObject = offers.find((offer) => offer.id === hoveredCardId);
+export default function Map({offers, mapType, defaultActiveId}: TMapProps): JSX.Element {
+  const activeOfferId = useAppSelector(appSliceSelectors.activeOfferId);
+  const activeId = defaultActiveId ? defaultActiveId : activeOfferId;
 
+  const hoveredCardObject = offers.find((offer) => offer.id === activeId);
   const [city, points] = getMapData(offers, hoveredCardObject);
 
   const mapRef = useRef(null);
@@ -54,7 +56,7 @@ export default function Map({offers, mapType}: TMapProps): JSX.Element {
 
   useEffect(() => {
     if (map) {
-      map.setView([city.lat, city.lng], city.zoom);
+      map.setView([city.lat, city.lng]);
     }
   }, [city, map]);
 
@@ -69,7 +71,7 @@ export default function Map({offers, mapType}: TMapProps): JSX.Element {
 
         marker
           .setIcon(
-            hoveredCardId && point.id === hoveredCardId
+            activeId && point.id === activeId
               ? currentCustomIcon
               : defaultCustomIcon
           )
@@ -80,7 +82,10 @@ export default function Map({offers, mapType}: TMapProps): JSX.Element {
         map.removeLayer(markerLayer);
       };
     }
-  }, [map, points, hoveredCardId]);
+  }, [map, points, activeId]);
 
-  return <div style={getStyle(mapType)} ref={mapRef}></div>;
+  return (
+    <section className={`${mapType === MapType.Main ? 'cities' : 'offer'}__map map`}>
+      <div style={getStyle(mapType)} ref={mapRef}></div>
+    </section>);
 }
