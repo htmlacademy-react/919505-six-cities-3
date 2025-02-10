@@ -22,8 +22,8 @@ export default function App() {
   const token = getToken();
 
   useEffect(() => {
-    Promise.all([fetchAllOffers(), fetchFavorites()]);
-  });
+    fetchAllOffers();
+  }, [fetchAllOffers]);
 
   useEffect(() => {
     if (token) {
