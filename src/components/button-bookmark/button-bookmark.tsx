@@ -1,6 +1,6 @@
 import {memo} from 'react';
 import {checkFavorite, getButtonAttributes} from './utils';
-import {AppRoute, AuthorizationStatus, BookmarkButton} from '../../const';
+import {AppRoute, AuthorizationStatus, BookmarkButton, RequestStatus} from '../../const';
 import {useActionCreators, useAppSelector} from '../../hooks/store';
 import {userSliceSelectors} from '../../store/slices/user';
 import {useNavigate} from 'react-router-dom';
@@ -14,13 +14,20 @@ type TButtonBookmarkProps = {
 function ButtonBookmark({offerId, type}: TButtonBookmarkProps): JSX.Element {
   const AuthStatus = useAppSelector(userSliceSelectors.authorizationStatus);
   const favoriteOffers = useAppSelector(offersSliceSelectors.favoriteOffers);
+  const requestStatus = useAppSelector(offersSliceSelectors.favoriteRequestStatus);
   const {changeFavorite} = useActionCreators(offersSliceActions);
   const navigate = useNavigate();
+
+  const isButtonBlocked = requestStatus === RequestStatus.Loading;
 
   const isFavorite = checkFavorite(favoriteOffers, offerId);
   const {classNamePrefix, width, height} = getButtonAttributes(type);
 
   const clickHandler = () => {
+    if (isButtonBlocked) {
+      return;
+    }
+
     if (AuthStatus === AuthorizationStatus.Auth) {
       changeFavorite({offerId, status: Number(!isFavorite)});
     } else {
@@ -32,6 +39,7 @@ function ButtonBookmark({offerId, type}: TButtonBookmarkProps): JSX.Element {
     <button
       className={`${classNamePrefix}__bookmark-button ${isFavorite ? `${classNamePrefix}__bookmark-button--active` : ''} button`}
       type="button"
+      disabled={isButtonBlocked}
       onClick={clickHandler}
     >
       <svg className={`${classNamePrefix}__bookmark-icon`} width={width} height={height}>

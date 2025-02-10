@@ -10,6 +10,7 @@ export type TOffersState = {
   offer: TOffer | null;
   nearbyOffers: TOfferPreview[];
   requestStatus: RequestStatus;
+  favoriteRequestStatus: RequestStatus;
 }
 
 export type TFavoritesState = {
