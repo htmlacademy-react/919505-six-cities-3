@@ -34,9 +34,7 @@ function processLogout(state: TUserState) {
 const userSlice = createSlice({
   name: NameSpace.User,
   initialState,
-  reducers: {
-
-  },
+  reducers: {},
 
   extraReducers: (builder) => {
     builder.addCase(checkAuth.pending, processLoading);

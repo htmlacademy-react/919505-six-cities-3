@@ -19,7 +19,11 @@ const initialState: TOffersState = {
 const offersSlice = createSlice({
   name: NameSpace.Offers,
   initialState,
-  reducers: {},
+  reducers: {
+    clearFavoriteOffers: (state) => {
+      state.favoriteOffers = [];
+    },
+  },
   selectors: {
     offers: (state: TOffersState): TOfferPreview[] => state.offers,
     favoriteOffers: (state: TOffersState): TOfferPreview[] => state.favoriteOffers,
