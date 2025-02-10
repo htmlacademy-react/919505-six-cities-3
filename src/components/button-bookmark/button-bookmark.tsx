@@ -1,20 +1,14 @@
-import {getButtonAttributes} from './utils';
+import {checkFavorite, getButtonAttributes} from './utils';
 import {AppRoute, AuthorizationStatus, BookmarkButton} from '../../common/const';
 import {useActionCreators, useAppSelector} from '../../hooks/store';
 import {userSliceSelectors} from '../../store/slices/user';
 import {useNavigate} from 'react-router-dom';
 import {offersSliceActions, offersSliceSelectors} from '../../store/slices/offers';
-import {TOfferPreview} from '../../types/offers';
 
 type TButtonBookmarkProps = {
   offerId: string;
   type: BookmarkButton;
 }
-
-const checkFavorite = (favoriteOffers: TOfferPreview[], offerId: string) => {
-  const currentOffer = favoriteOffers.find((offer) => offer.id === offerId);
-  return !!currentOffer;
-};
 
 export default function ButtonBookmark({offerId, type}: TButtonBookmarkProps): JSX.Element {
   const AuthStatus = useAppSelector(userSliceSelectors.authorizationStatus);
