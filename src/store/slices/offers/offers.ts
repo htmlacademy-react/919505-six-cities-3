@@ -1,9 +1,9 @@
 import {createSelector, createSlice} from '@reduxjs/toolkit';
 import {FavoriteStatus, NameSpace, RequestStatus} from '../../../const';
 import {TOffersState} from '../../../types/state';
-import {TFavoritesObject, TOffer, TOfferPreview} from '../../../types/offers';
+import {TOffer, TOfferPreview} from '../../../types/offers';
 import {appSlice} from '../app';
-import {generateFavoriteOffersObject, getProcessedOffers} from './utils';
+import {getProcessedOffers} from './utils';
 import {fetchAllOffers, fetchNearbyOffers, fetchOffer} from '../../thunks/offers';
 import {changeFavorite, fetchFavorites} from '../../thunks/favorites';
 
@@ -22,7 +22,6 @@ const offersSlice = createSlice({
   selectors: {
     offers: (state: TOffersState): TOfferPreview[] => state.offers,
     favoriteOffers: (state: TOffersState): TOfferPreview[] => state.favoriteOffers,
-    favoriteOffersObject: (state: TOffersState): TFavoritesObject => generateFavoriteOffersObject(state.favoriteOffers),
     offer: (state: TOffersState): TOffer | null => state.offer,
     nearbyOffers: (state: TOffersState): TOfferPreview[] => state.nearbyOffers,
     requestStatus: (state: TOffersState): RequestStatus => state.requestStatus,

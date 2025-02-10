@@ -1,19 +1,5 @@
-import {TCityName, TFavoritesObject, TOfferPreview, TOfferSortType} from '../../../types/offers';
+import {TCityName, TOfferPreview, TOfferSortType} from '../../../types/offers';
 import {SortingType} from '../../../const';
-
-export function generateFavoriteOffersObject(offers: TOfferPreview[]): TFavoritesObject {
-  const result: TFavoritesObject = {};
-
-  offers.forEach((offer) => {
-    if (result[offer.city.name]) {
-      result[offer.city.name].push(offer);
-    } else {
-      result[offer.city.name] = [offer];
-    }
-  });
-
-  return result;
-}
 
 export function getProcessedOffers(offers: TOfferPreview[], city: TCityName, sortType: TOfferSortType) {
   const currentCityOffers = offers
