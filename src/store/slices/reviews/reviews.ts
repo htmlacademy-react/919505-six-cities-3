@@ -29,7 +29,7 @@ const reviewsSlice = createSlice({
       })
       .addCase(postReview.fulfilled, (state, action) => {
         state.requestStatus = RequestStatus.Success;
-        state.reviews.push(action.payload);
+        state.reviews.unshift(action.payload);
       })
       .addCase(postReview.rejected, (state) => {
         state.requestStatus = RequestStatus.Failed;

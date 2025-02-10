@@ -32,7 +32,7 @@ export type TAppProcessState = {
 export type TUserState = {
   info: TUser | null;
   authorizationStatus: AuthorizationStatus;
-  requestStatus: RequestStatus;
+  userRequestStatus: RequestStatus;
 }
 
 export type State = ReturnType<typeof store.getState>;

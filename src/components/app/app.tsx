@@ -26,7 +26,7 @@ export default function App() {
   }, [fetchAllOffers]);
 
   useEffect(() => {
-    if (token) {
+    if (token || AuthorizationStatus.Unknown) {
       checkAuth();
     }
   }, [token, checkAuth]);

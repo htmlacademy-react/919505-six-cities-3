@@ -11,6 +11,10 @@ type TPrivateRouteProps = {
 export default function PrivateRoute({isReverse, children}: TPrivateRouteProps): JSX.Element {
   const authorizationStatus = useAppSelector(userSliceSelectors.authorizationStatus);
 
+  if (authorizationStatus === AuthorizationStatus.Unknown) {
+    return children;
+  }
+
   return (
     authorizationStatus === (isReverse ? AuthorizationStatus.NoAuth : AuthorizationStatus.Auth)
       ? children

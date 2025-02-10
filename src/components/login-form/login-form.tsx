@@ -1,4 +1,4 @@
-import {FormEvent} from 'react';
+import {FormEvent, useEffect} from 'react';
 import {useActionCreators} from '../../hooks/store';
 import {userSliceActions} from '../../store/slices/user';
 import useForm from '../../hooks/use-form';
@@ -6,7 +6,7 @@ import {TLoginForm, TLoginFormData} from '../../types/login';
 import {TFormChangeHandler} from '../../types/event-handlers';
 
 export default function LoginForm(): JSX.Element {
-  const [handleFormChange, formData] = useForm<TLoginFormData>({email: '', password: ''});
+  const [handleFormChange, formData, setFormData] = useForm<TLoginFormData>({email: '', password: ''});
   const {login} = useActionCreators(userSliceActions);
 
   const validatePassword = (password: string) => {
@@ -25,6 +25,10 @@ export default function LoginForm(): JSX.Element {
       login(formData);
     }
   };
+
+  useEffect(() => () => {
+    setFormData({email: '', password: ''});
+  }, [setFormData]);
 
   return (
     <form className="login__form form" action="#" method="post" onSubmit={submitHandler}>
