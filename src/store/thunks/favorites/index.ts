@@ -1,4 +1,4 @@
-import {createAppAsyncThunk} from '../../../hooks/store';
+import {createAppAsyncThunk} from '../../../hooks/store/store';
 import {TServerFavoriteOffer, TServerOfferPreview} from '../../../types/server';
 import {EndPoint, FavoriteStatus} from '../../../const';
 import {adaptOfferPreviewsToApp, adaptOfferPreviewToApp} from '../../../services/adapters';

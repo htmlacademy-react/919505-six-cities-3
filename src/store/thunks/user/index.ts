@@ -1,5 +1,5 @@
 import {EndPoint} from '../../../const';
-import {createAppAsyncThunk} from '../../../hooks/store';
+import {createAppAsyncThunk} from '../../../hooks/store/store';
 import {TUser} from '../../../types/user';
 import {deleteToken, saveToken} from '../../../services/token';
 

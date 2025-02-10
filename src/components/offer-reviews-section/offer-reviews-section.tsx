@@ -1,7 +1,7 @@
 import OfferReviewsList from '../offer-reviews-list';
 import OfferReviewForm from '../offer-review-form';
 import {useAppSelector} from '../../hooks/store';
-import {useAuth} from '../../hooks/user-authorisation';
+import useAuth from '../../hooks/use-auth';
 import {reviewsSliceSelectors} from '../../store/slices/reviews';
 
 export default function OfferReviewsSection(): JSX.Element {

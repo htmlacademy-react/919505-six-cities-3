@@ -1,7 +1,7 @@
 import {TServerOffer, TServerOfferPreview} from '../../../types/server';
 import {EndPoint} from '../../../const';
 import {adaptOfferPreviewsToApp, adaptOfferToApp} from '../../../services/adapters';
-import {createAppAsyncThunk} from '../../../hooks/store';
+import {createAppAsyncThunk} from '../../../hooks/store/store';
 import {TOffer} from '../../../types/offers';
 
 export const fetchAllOffers = createAppAsyncThunk<TServerOfferPreview[], undefined>

@@ -1,4 +1,4 @@
-import {createAppAsyncThunk} from '../../../hooks/store';
+import {createAppAsyncThunk} from '../../../hooks/store/store';
 import {TReview} from '../../../types/reviews';
 import {TServerReview} from '../../../types/server';
 import {EndPoint} from '../../../const';

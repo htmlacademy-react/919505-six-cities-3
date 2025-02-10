@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {TFormChangeHandler} from '../types/event-handlers';
+import {TFormChangeHandler} from '../../types/event-handlers';
 
 export default function useForm<T>(initialState: T) {
   const [formData, setFormData] = useState<T>(initialState);

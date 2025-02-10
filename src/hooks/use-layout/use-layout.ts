@@ -1,9 +1,9 @@
-import {AppRoute} from '../const';
+import {AppRoute} from '../../const';
 import {useLocation} from 'react-router-dom';
-import {useAppSelector} from './store';
-import {offersSliceSelectors} from '../store/slices/offers';
+import {useAppSelector} from '../store';
+import {offersSliceSelectors} from '../../store/slices/offers';
 
-export function useLayout() {
+export default function useLayout() {
   const favorites = useAppSelector(offersSliceSelectors.favoriteOffers);
   const pathName = useLocation().pathname;
 

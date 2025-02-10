@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const';
-import {useAuth} from '../../hooks/user-authorisation';
+import useAuth from '../../hooks/use-auth';
 import {useActionCreators, useAppSelector} from '../../hooks/store';
 import {userSliceActions, userSliceSelectors} from '../../store/slices/user';
 import {offersSliceSelectors} from '../../store/slices/offers';
