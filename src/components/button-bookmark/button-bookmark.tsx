@@ -21,9 +21,7 @@ function ButtonBookmark({offerId, type}: TButtonBookmarkProps): JSX.Element {
   const {classNamePrefix, width, height} = getButtonAttributes(type);
 
   const clickHandler = () => {
-    console.log('clickHandler');
     if (AuthStatus === AuthorizationStatus.Auth) {
-      console.log('changeFavorite');
       changeFavorite({offerId, status: Number(!isFavorite)});
     } else {
       navigate(AppRoute.Login);
