@@ -16,8 +16,7 @@ export default function NavBlock(): JSX.Element {
       <ul className="header__nav-list">
         <li className="header__nav-item user">
           <Link to={isAuthorized ? AppRoute.Favorites : AppRoute.Login} className="header__nav-link header__nav-link--profile">
-            <div className="header__avatar-wrapper user__avatar-wrapper">
-              {isAuthorized && <img src={user?.avatarUrl} alt={user?.name}/>}
+            <div className="header__avatar-wrapper user__avatar-wrapper" style={{backgroundImage: `url(${user?.avatarUrl})`, borderRadius: '50%'}}>
             </div>
             {isAuthorized
               ? (
