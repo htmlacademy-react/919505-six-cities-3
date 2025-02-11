@@ -10,11 +10,10 @@ import NotFoundScreen from '../../pages/not-found-screen';
 import ScrollToTop from '../scroll-to-top';
 import {useEffect} from 'react';
 import {useActionCreators, useAppSelector} from '../../hooks/store';
-import {offersSliceActions, offersSliceSelectors} from '../../store/slices/offers';
+import {offersSliceActions} from '../../store/slices/offers';
 import {userSliceActions, userSliceSelectors} from '../../store/slices/user';
 
 export default function App() {
-  const favorites = useAppSelector(offersSliceSelectors.favoriteOffers);
   const {fetchAllOffers, fetchFavorites, clearFavoriteOffers} = useActionCreators(offersSliceActions);
   const {checkAuth} = useActionCreators(userSliceActions);
   const authStatus = useAppSelector(userSliceSelectors.authorizationStatus);
@@ -31,10 +30,10 @@ export default function App() {
   }, [authStatus, fetchFavorites]);
 
   useEffect(() => {
-    if (authStatus === AuthorizationStatus.NoAuth && favorites.length > 0) {
+    if (authStatus === AuthorizationStatus.NoAuth) {
       clearFavoriteOffers();
     }
-  }, [clearFavoriteOffers, authStatus, favorites.length]);
+  }, [clearFavoriteOffers, authStatus]);
 
   return(
     <BrowserRouter>
