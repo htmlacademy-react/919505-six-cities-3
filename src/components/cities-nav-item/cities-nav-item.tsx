@@ -21,7 +21,7 @@ export default function CitiesNavItem({city, currentCity}: TCitiesNavItemProps):
         href="#"
         onClick={cityClickHandler}
       >
-        <span>{` ${city} `}</span>
+        <span>{city}</span>
       </a>
     </li>
   );

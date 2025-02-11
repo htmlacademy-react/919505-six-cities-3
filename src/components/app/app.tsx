@@ -12,7 +12,6 @@ import {useEffect} from 'react';
 import {useActionCreators, useAppSelector} from '../../hooks/store';
 import {offersSliceActions, offersSliceSelectors} from '../../store/slices/offers';
 import {userSliceActions, userSliceSelectors} from '../../store/slices/user';
-import {getToken} from '../../services/token';
 
 export default function App() {
   const favorites = useAppSelector(offersSliceSelectors.favoriteOffers);
@@ -20,17 +19,10 @@ export default function App() {
   const {checkAuth} = useActionCreators(userSliceActions);
   const authStatus = useAppSelector(userSliceSelectors.authorizationStatus);
 
-  const token = getToken();
-
   useEffect(() => {
     fetchAllOffers();
-  }, [fetchAllOffers]);
-
-  useEffect(() => {
-    if (token || AuthorizationStatus.Unknown) {
-      checkAuth();
-    }
-  }, [token, checkAuth]);
+    checkAuth();
+  }, [fetchAllOffers, checkAuth]);
 
   useEffect(() => {
     if (authStatus === AuthorizationStatus.Auth) {

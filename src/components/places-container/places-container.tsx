@@ -3,16 +3,14 @@ import OfferListEmpty from '../offer-list-empty';
 import OfferList from '../offer-list';
 import {MapType} from '../../const';
 import Map from '../map';
-import {useAppSelector} from '../../hooks/store';
-import {offersSliceSelectors} from '../../store/slices/offers';
+import {TOfferPreview} from '../../types/offers';
 
 type TPlacesContainerProps = {
+  offers: TOfferPreview[];
   isEmpty: boolean;
 }
 
-function PlacesContainer({isEmpty}: TPlacesContainerProps): JSX.Element {
-  const offers = useAppSelector(offersSliceSelectors.currentCitySortedOffers);
-
+function PlacesContainer({offers, isEmpty}: TPlacesContainerProps): JSX.Element {
   return (
     <>
       {isEmpty

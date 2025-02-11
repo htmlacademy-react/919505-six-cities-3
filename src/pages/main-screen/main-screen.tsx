@@ -5,7 +5,7 @@ import {useAppSelector} from '../../hooks/store';
 import {offersSliceSelectors} from '../../store/slices/offers';
 
 function MainScreen(): JSX.Element {
-  const offers = useAppSelector(offersSliceSelectors.offers);
+  const offers = useAppSelector(offersSliceSelectors.currentCitySortedOffers);
   const isEmpty = offers.length === 0;
 
   return (
@@ -16,7 +16,7 @@ function MainScreen(): JSX.Element {
           <CitiesNavList/>
         </section>
       </div>
-      <MainContainer isEmpty={isEmpty}/>
+      <MainContainer offers={offers} isEmpty={isEmpty}/>
     </main>
   );
 }
