@@ -1,5 +1,5 @@
 import LoginForm from '../../components/login-form';
-import {Cities} from '../../common/const';
+import {Cities} from '../../const';
 import CityLink from '../../components/city-link';
 
 function LoginScreen(): JSX.Element {

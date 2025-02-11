@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import CitiesNavList from '../../components/cities-nav-list';
 import MainContainer from '../../components/main-container';
 import {useAppSelector} from '../../hooks/store';
@@ -20,4 +21,5 @@ function MainScreen(): JSX.Element {
   );
 }
 
-export default MainScreen;
+const MemorizedMainScreen = memo(MainScreen);
+export default MemorizedMainScreen;

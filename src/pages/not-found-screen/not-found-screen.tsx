@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../../common/const';
+import {AppRoute} from '../../const';
 
 export default function NotFoundScreen(): JSX.Element {
   return (

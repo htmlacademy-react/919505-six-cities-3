@@ -1,4 +1,4 @@
-import {RatingInputTitles, RequestStatus, ReviewLength} from '../../common/const';
+import {RatingInputTitles, RequestStatus, ReviewLength} from '../../const';
 import {TFormChangeHandler} from '../../types/event-handlers';
 import {TReviewFormData} from '../../types/reviews';
 import RatingInput from '../rating-input';
@@ -15,7 +15,9 @@ export default function OfferReviewForm(): JSX.Element {
   const {postReview} = useActionCreators(reviewsSliceActions);
   const {id} = useParams();
 
-  const isSubmitButtonDisabled = formData.rating === 0 || formData.review.length < ReviewLength.MIN;
+  const isSubmitButtonDisabled =
+    formData.rating === 0 || formData.review.length < ReviewLength.MIN || formData.review.length > ReviewLength.MAX;
+
   const isFormBlocked = requestStatus === RequestStatus.Loading;
 
   const reviewChangeHandler: TFormChangeHandler = (evt) => {
@@ -56,7 +58,6 @@ export default function OfferReviewForm(): JSX.Element {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        maxLength={ReviewLength.MAX}
         onChange={reviewChangeHandler}
         value={formData.review}
         disabled={isFormBlocked}

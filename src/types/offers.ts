@@ -1,4 +1,4 @@
-import {CardType, Cities, SortingType} from '../common/const';
+import {CardType, Cities, SortingType} from '../const';
 import {TUser} from './user';
 
 type TLocation = {

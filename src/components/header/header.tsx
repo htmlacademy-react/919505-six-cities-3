@@ -1,21 +1,19 @@
-import {Link} from 'react-router-dom';
-import {AppRoute} from '../../common/const';
+import {memo} from 'react';
 import NavBlock from '../nav-block';
+import LogoLink from '../logo-link';
 
 type THeaderProps = {
   linkClassName: string;
   shouldRenderUser: boolean;
 };
 
-export default function Header({linkClassName, shouldRenderUser}: THeaderProps): JSX.Element {
+function Header({linkClassName, shouldRenderUser}: THeaderProps): JSX.Element {
   return (
     <header className="header">
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-            <Link className={`header__logo-link ${linkClassName}`} to={AppRoute.Root}>
-              <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
-            </Link>
+            <LogoLink linkClassName={linkClassName}/>
           </div>
           {shouldRenderUser
             ? <NavBlock/>
@@ -26,3 +24,5 @@ export default function Header({linkClassName, shouldRenderUser}: THeaderProps):
   );
 }
 
+const MemorizedHeader = memo(Header);
+export default MemorizedHeader;

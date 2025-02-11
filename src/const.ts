@@ -1,10 +1,22 @@
+import {TCity} from './types/offers';
+
 export const RATING_COEFFICIENT = 20;
+export const MAX_REVIEWS = 10;
 export const MAX_OFFER_PHOTOS = 6;
 export const MAX_NEARBY_OFFERS = 3;
 export const OFFER_DETAILS_CHECK_NUMBER = 1;
 export const REVIEW_DATE_FORMAT = 'MMMM YYYY';
 
 export const RatingInputTitles = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
+
+export const DefaultCity: TCity = {
+  name: 'Paris',
+  location: {
+    'latitude': 48.85661,
+    'longitude': 2.351499,
+    'zoom': 13
+  }
+};
 
 export const CardType = {
   CITIES: 'cities',
@@ -53,7 +65,8 @@ export enum MapType {
 
 export enum AuthorizationStatus {
   Auth = 'Auth',
-  NoAuth = 'NoAuth'
+  NoAuth = 'NoAuth',
+  Unknown = 'Unknown'
 }
 
 export enum AppRoute {
@@ -78,7 +91,7 @@ export enum BookmarkButton {
 
 export const ReviewLength = {
   MIN: 50,
-  MAX: 300
+  MAX: 250
 };
 
 export const OfferCardParams = {

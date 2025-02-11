@@ -1,5 +1,5 @@
 import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
-import type {State, AppDispatch} from '../types/state';
+import type {State, AppDispatch} from '../../types/state';
 import {
   ActionCreatorsMapObject,
   AsyncThunk,
@@ -16,7 +16,8 @@ type BoundActions<Actions extends ActionCreatorsMapObject> = {
   [key in keyof Actions]: Actions[key] extends AsyncThunk<unknown, unknown, AsyncThunkConfig> ? BoundAsyncThunk<Actions[key]> : Actions[key];
 }
 
-export const useAppDispatch = () => useDispatch<AppDispatch>();
+const useAppDispatch = () => useDispatch<AppDispatch>();
+
 export const useAppSelector: TypedUseSelectorHook<State> = useSelector;
 
 export const useActionCreators = <Actions extends ActionCreatorsMapObject>(actions: Actions): BoundActions<Actions> => {

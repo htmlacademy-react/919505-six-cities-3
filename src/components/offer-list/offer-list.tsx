@@ -1,7 +1,7 @@
 import {TOfferPreview} from '../../types/offers';
 import OffersSortingPanel from '../offers-sorting-panel';
 import OfferCardList from '../offer-card-list';
-import {OfferCardParams} from '../../common/const';
+import {OfferCardParams} from '../../const';
 import {useAppSelector} from '../../hooks/store';
 import {appSliceSelectors} from '../../store/slices/app';
 

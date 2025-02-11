@@ -1,5 +1,5 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
-import {NameSpace} from '../common/const';
+import {NameSpace} from '../const';
 import {offersSlice} from './slices/offers';
 import {appSlice} from './slices/app';
 import {createAPI} from '../services/api';

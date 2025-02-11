@@ -1,16 +1,17 @@
-import {TOfferPreview} from '../../types/offers';
+import {memo} from 'react';
 import {useAppSelector} from '../../hooks/store';
 import {offersSliceSelectors} from '../../store/slices/offers';
-import {RequestStatus} from '../../common/const';
-import PlacesContainer from '../places-container';
+import {RequestStatus} from '../../const';
 import Spinner from '../spinner';
+import {TOfferPreview} from '../../types/offers';
+import PlacesContainer from '../places-container';
 
 type TMainContainerProps = {
   offers: TOfferPreview[];
   isEmpty: boolean;
 }
 
-export default function MainContainer({offers, isEmpty}: TMainContainerProps): JSX.Element {
+function MainContainer({offers, isEmpty}: TMainContainerProps): JSX.Element {
   const offersStatus = useAppSelector(offersSliceSelectors.requestStatus);
   const isLoading = offersStatus === RequestStatus.Loading;
 
@@ -24,3 +25,6 @@ export default function MainContainer({offers, isEmpty}: TMainContainerProps): J
     </div>
   );
 }
+
+const MemorizedMainContainer = memo(MainContainer);
+export default MemorizedMainContainer;

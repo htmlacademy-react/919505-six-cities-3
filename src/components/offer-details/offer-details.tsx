@@ -1,4 +1,4 @@
-import {BookmarkButton, MapType, MAX_OFFER_PHOTOS, RatingPanelType} from '../../common/const.ts';
+import {BookmarkButton, MapType, MAX_OFFER_PHOTOS, RatingPanelType} from '../../const.ts';
 import {TOffer, TOfferPreview} from '../../types/offers';
 import OfferImage from '../offer-image';
 import ButtonBookmark from '../button-bookmark';
@@ -9,7 +9,7 @@ import OfferHost from '../offer-host';
 import OfferReviewsSection from '../offer-reviews-section';
 import {useAppSelector} from '../../hooks/store';
 import {offersSliceSelectors} from '../../store/slices/offers';
-import {makeFirstLetterToUpperCase} from '../../common/utils';
+import {makeFirstLetterToUpperCase} from '../../utils';
 import Map from '../map';
 
 type TOfferProps = {
@@ -30,7 +30,10 @@ export default function OfferDetails({offer, nearbyOffers}: TOfferProps): JSX.El
     price,
     goods,
     host,
-    description
+    description,
+    city,
+    location,
+    isFavorite
   } = offer;
 
   const offers = useAppSelector(offersSliceSelectors.offers);
@@ -40,6 +43,19 @@ export default function OfferDetails({offer, nearbyOffers}: TOfferProps): JSX.El
 
   if (currentOfferPreview) {
     offersForMap.push(currentOfferPreview);
+  } else {
+    offersForMap.push({
+      id,
+      title,
+      type,
+      price,
+      city,
+      location,
+      isFavorite,
+      isPremium,
+      rating,
+      previewImage: ''
+    });
   }
 
   return (

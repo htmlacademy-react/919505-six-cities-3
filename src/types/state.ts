@@ -1,6 +1,6 @@
 import {store} from '../store';
 import {TCityName, TOffer, TOfferPreview, TOfferSortType} from './offers';
-import {AuthorizationStatus, RequestStatus} from '../common/const';
+import {AuthorizationStatus, RequestStatus} from '../const';
 import {TReview} from './reviews';
 import {TUser} from './user';
 
@@ -10,6 +10,7 @@ export type TOffersState = {
   offer: TOffer | null;
   nearbyOffers: TOfferPreview[];
   requestStatus: RequestStatus;
+  favoriteRequestStatus: RequestStatus;
 }
 
 export type TFavoritesState = {
@@ -31,7 +32,7 @@ export type TAppProcessState = {
 export type TUserState = {
   info: TUser | null;
   authorizationStatus: AuthorizationStatus;
-  requestStatus: RequestStatus;
+  userRequestStatus: RequestStatus;
 }
 
 export type State = ReturnType<typeof store.getState>;

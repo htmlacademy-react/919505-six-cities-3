@@ -1,12 +1,15 @@
-import {FormEvent} from 'react';
+import {FormEvent, useEffect} from 'react';
 import {useActionCreators} from '../../hooks/store';
 import {userSliceActions} from '../../store/slices/user';
 import useForm from '../../hooks/use-form';
 import {TLoginForm, TLoginFormData} from '../../types/login';
 import {TFormChangeHandler} from '../../types/event-handlers';
+import {toast} from 'react-toastify';
+
+const PASSWORD_INVALID_MESSAGE = 'Пароль должен состоять минимум из одной буквы и цифры';
 
 export default function LoginForm(): JSX.Element {
-  const [handleFormChange, formData] = useForm<TLoginFormData>({email: '', password: ''});
+  const [handleFormChange, formData, setFormData] = useForm<TLoginFormData>({email: '', password: ''});
   const {login} = useActionCreators(userSliceActions);
 
   const validatePassword = (password: string) => {
@@ -23,8 +26,14 @@ export default function LoginForm(): JSX.Element {
 
     if (validatePassword(formData.password)) {
       login(formData);
+    } else {
+      toast.warn(PASSWORD_INVALID_MESSAGE);
     }
   };
+
+  useEffect(() => () => {
+    setFormData({email: '', password: ''});
+  }, [setFormData]);
 
   return (
     <form className="login__form form" action="#" method="post" onSubmit={submitHandler}>

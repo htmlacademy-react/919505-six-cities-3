@@ -1,5 +1,5 @@
 import {Outlet} from 'react-router-dom';
-import {useLayout} from '../../hooks/use-layout';
+import useLayout from '../../hooks/use-layout';
 import Footer from '../footer';
 import Header from '../header';
 

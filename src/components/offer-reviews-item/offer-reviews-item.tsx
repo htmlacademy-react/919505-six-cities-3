@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import {REVIEW_DATE_FORMAT, RatingPanelType} from '../../common/const';
+import {REVIEW_DATE_FORMAT, RatingPanelType} from '../../const';
 import {TReview} from '../../types/reviews';
 import RatingPanel from '../rating-panel';
 

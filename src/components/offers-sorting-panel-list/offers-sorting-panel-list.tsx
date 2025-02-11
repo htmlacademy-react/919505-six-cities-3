@@ -1,4 +1,4 @@
-import {SortingType} from '../../common/const';
+import {SortingType} from '../../const';
 import OffersSortingPanelItem from '../offers-sorting-panel-item';
 import {TOfferSortType} from '../../types/offers';
 

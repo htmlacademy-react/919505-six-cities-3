@@ -1,6 +1,6 @@
-import {TServerFavoriteOffer, TServerOffer, TServerOfferPreview, TServerReview} from '../types/server';
-import {TOffer, TOfferPreview} from '../types/offers';
-import {TReview} from '../types/reviews';
+import {TServerFavoriteOffer, TServerOffer, TServerOfferPreview, TServerReview} from '../../types/server';
+import {TOffer, TOfferPreview} from '../../types/offers';
+import {TReview} from '../../types/reviews';
 
 const adaptReviewToApp = (review: TServerReview): TReview => ({
   id: review.id,
