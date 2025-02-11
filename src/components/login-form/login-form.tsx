@@ -27,7 +27,7 @@ export default function LoginForm(): JSX.Element {
     if (validatePassword(formData.password)) {
       login(formData);
     } else {
-      toast.warn(PASSWORD_INVALID_MESSAGE);
+      toast.warn(PASSWORD_INVALID_MESSAGE, {position: 'bottom-right'});
     }
   };
 

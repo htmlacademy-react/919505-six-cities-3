@@ -12,8 +12,7 @@ const initialState: TOffersState = {
   favoriteOffers: [],
   offer: null,
   nearbyOffers: [],
-  requestStatus: RequestStatus.Idle,
-  favoriteRequestStatus: RequestStatus.Idle
+  requestStatus: RequestStatus.Idle
 };
 
 const offersSlice = createSlice({
@@ -30,7 +29,6 @@ const offersSlice = createSlice({
     offer: (state: TOffersState): TOffer | null => state.offer,
     nearbyOffers: (state: TOffersState): TOfferPreview[] => state.nearbyOffers,
     requestStatus: (state: TOffersState): RequestStatus => state.requestStatus,
-    favoriteRequestStatus: (state: TOffersState): RequestStatus => state.favoriteRequestStatus
   },
 
   extraReducers: (builder) =>
@@ -56,15 +54,8 @@ const offersSlice = createSlice({
         state.requestStatus = RequestStatus.Idle;
         state.nearbyOffers = action.payload;
       })
-      .addCase(fetchFavorites.pending, (state) => {
-        state.favoriteRequestStatus = RequestStatus.Loading;
-      })
       .addCase(fetchFavorites.fulfilled, (state, action) => {
         state.favoriteOffers = action.payload;
-        state.favoriteRequestStatus = RequestStatus.Idle;
-      })
-      .addCase(changeFavorite.pending, (state) => {
-        state.favoriteRequestStatus = RequestStatus.Loading;
       })
       .addCase(changeFavorite.fulfilled, (state, action) => {
         const newOffer = action.payload.offer;
@@ -74,8 +65,6 @@ const offersSlice = createSlice({
         } else {
           state.favoriteOffers = state.favoriteOffers.filter(({id}) => id !== newOffer.id);
         }
-
-        state.favoriteRequestStatus = RequestStatus.Idle;
       })
 });
 
