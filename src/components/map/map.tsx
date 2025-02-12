@@ -16,9 +16,9 @@ type TMapProps = {
 
 const URL_MARKER_DEFAULT = 'img/pin.svg';
 const URL_MARKER_CURRENT = 'img/pin-active.svg';
-const ICON_ANCHOR = 14;
-const ICON_WIDTH = 28;
-const ICON_HEIGHT = 40;
+const ICON_ANCHOR = 13.5;
+const ICON_WIDTH = 27;
+const ICON_HEIGHT = 39;
 
 
 const defaultCustomIcon = new Icon({
@@ -32,17 +32,6 @@ const currentCustomIcon = new Icon({
   iconSize: [ICON_WIDTH, ICON_HEIGHT],
   iconAnchor: [ICON_ANCHOR, ICON_HEIGHT]
 });
-
-function getStyle(mapType?: MapType) {
-  switch (mapType) {
-    case MapType.Main:
-      return {height: '100%'};
-    case MapType.Offer:
-      return {width: '1144px', height: '100%', margin: 'auto'};
-    default:
-      return {height: '100%'};
-  }
-}
 
 function Map({offers, mapType, defaultActiveId}: TMapProps): JSX.Element {
   const activeOfferId = useAppSelector(appSliceSelectors.activeOfferId);
@@ -85,7 +74,7 @@ function Map({offers, mapType, defaultActiveId}: TMapProps): JSX.Element {
 
   return (
     <section className={`${mapType === MapType.Main ? 'cities' : 'offer'}__map map`}>
-      <div style={getStyle(mapType)} ref={mapRef}></div>
+      <div style={{height: '100%'}} ref={mapRef}></div>
     </section>);
 }
 

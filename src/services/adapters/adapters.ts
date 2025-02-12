@@ -1,4 +1,4 @@
-import {TServerFavoriteOffer, TServerOffer, TServerOfferPreview, TServerReview} from '../../types/server';
+import {TServerFavoriteOffer, TServerOffer, TServerOfferPreview, TServerReview} from '../../types/server-entities';
 import {TOffer, TOfferPreview} from '../../types/offers';
 import {TReview} from '../../types/reviews';
 

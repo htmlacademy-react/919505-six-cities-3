@@ -1,5 +1,4 @@
 import {RatingInputTitles, RequestStatus, ReviewLength} from '../../const';
-import {TFormChangeHandler} from '../../types/event-handlers';
 import {TReviewFormData} from '../../types/reviews';
 import RatingInput from '../rating-input';
 import useForm from '../../hooks/use-form';
@@ -10,21 +9,17 @@ import {reviewsSliceActions, reviewsSliceSelectors} from '../../store/slices/rev
 import {useParams} from 'react-router-dom';
 
 export default function OfferReviewForm(): JSX.Element {
-  const [handleFormChange, formData, setFormData] = useForm<TReviewFormData>({rating: 0, review: ''});
+  const [handleInputChange, formData, setFormData] = useForm<TReviewFormData>({rating: 0, review: ''});
   const requestStatus = useAppSelector(reviewsSliceSelectors.requestStatus);
   const {postReview} = useActionCreators(reviewsSliceActions);
   const {id} = useParams();
 
   const isSubmitButtonDisabled =
-    formData.rating === 0 || formData.review.length < ReviewLength.MIN || formData.review.length > ReviewLength.MAX;
+    formData.rating === 0 || formData.review.length < ReviewLength.Min || formData.review.length > ReviewLength.Max;
 
   const isFormBlocked = requestStatus === RequestStatus.Loading;
 
-  const reviewChangeHandler: TFormChangeHandler = (evt) => {
-    handleFormChange(evt);
-  };
-
-  const submitHandler = (evt: FormEvent<TLoginForm>) => {
+  const handleFormSubmit = (evt: FormEvent<TLoginForm>) => {
     evt.preventDefault();
     if (id) {
       postReview({body: {rating: Number(formData.rating), comment: formData.review}, offerId: id});
@@ -38,7 +33,7 @@ export default function OfferReviewForm(): JSX.Element {
   }, [requestStatus, setFormData]);
 
   return (
-    <form className="reviews__form form" action="#" method="post" onSubmit={submitHandler}>
+    <form className="reviews__form form" action="#" method="post" onSubmit={handleFormSubmit}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
         {RatingInputTitles.map((title, i) => (
@@ -47,7 +42,7 @@ export default function OfferReviewForm(): JSX.Element {
             value={(RatingInputTitles.length - i).toString()}
             rating={formData.rating.toString()}
             title={title}
-            onRatingChange={reviewChangeHandler}
+            onRatingChange={handleInputChange}
             isDisabled={isFormBlocked}
           />)
         )}
@@ -58,13 +53,13 @@ export default function OfferReviewForm(): JSX.Element {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        onChange={reviewChangeHandler}
+        onChange={handleInputChange}
         value={formData.review}
         disabled={isFormBlocked}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
-          To submit review please make sure to set <span className="reviews__star">rating</span>and describe your stay with at least <b className="reviews__text-amount">{ReviewLength.MIN} characters</b>.
+          To submit review please make sure to set <span className="reviews__star">rating</span>and describe your stay with at least <b className="reviews__text-amount">{ReviewLength.Min} characters</b>.
         </p>
         <button className="reviews__submit form__submit button" type="submit" disabled={isSubmitButtonDisabled || isFormBlocked}>Submit</button>
       </div>

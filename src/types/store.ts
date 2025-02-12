@@ -10,12 +10,6 @@ export type TOffersState = {
   offer: TOffer | null;
   nearbyOffers: TOfferPreview[];
   requestStatus: RequestStatus;
-  favoriteRequestStatus: RequestStatus;
-}
-
-export type TFavoritesState = {
-  offers: TOfferPreview[];
-  requestStatus: RequestStatus;
 }
 
 export type TReviewsState = {
@@ -35,5 +29,5 @@ export type TUserState = {
   userRequestStatus: RequestStatus;
 }
 
-export type State = ReturnType<typeof store.getState>;
+export type Store = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

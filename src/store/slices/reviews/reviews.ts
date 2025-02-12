@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {NameSpace, RequestStatus} from '../../../const';
-import {TReviewsState} from '../../../types/state';
+import {TReviewsState} from '../../../types/store';
 import {fetchReviews, postReview} from '../../thunks/reviews';
 import {TReview} from '../../../types/reviews';
 

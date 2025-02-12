@@ -1,17 +1,14 @@
-import {TOfferPreview} from '../../types/offers';
+import {TCityName, TOfferPreview} from '../../types/offers';
 import OffersSortingPanel from '../offers-sorting-panel';
 import OfferCardList from '../offer-card-list';
 import {OfferCardParams} from '../../const';
-import {useAppSelector} from '../../hooks/store';
-import {appSliceSelectors} from '../../store/slices/app';
 
 type TOfferListProps = {
   offers: TOfferPreview[];
+  currentCity: TCityName;
 }
 
-export default function OfferList({offers}: TOfferListProps) {
-  const currentCity = useAppSelector(appSliceSelectors.currentCity);
-
+export default function OfferList({offers, currentCity}: TOfferListProps) {
   return (
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>

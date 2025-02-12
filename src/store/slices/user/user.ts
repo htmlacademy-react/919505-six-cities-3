@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {AuthorizationStatus, NameSpace, RequestStatus} from '../../../const';
-import {TUserState} from '../../../types/state';
+import {TUserState} from '../../../types/store';
 import {TUser} from '../../../types/user';
 import {checkAuth, login, logout} from '../../thunks/user';
 

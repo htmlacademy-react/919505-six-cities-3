@@ -40,7 +40,7 @@ export const createAPI = (): AxiosInstance => {
     (response) => response,
     (error: AxiosError<DetailMessageType>) => {
       if (error.response && shouldDisplayError(error.response)) {
-        toast.warn(error.message);
+        toast.warn(error.message, {position: 'bottom-right'});
       }
       throw error;
     }

@@ -1,5 +1,5 @@
 import {createAppAsyncThunk} from '../../../hooks/store/store';
-import {TServerFavoriteOffer, TServerOfferPreview} from '../../../types/server';
+import {TServerFavoriteOffer, TServerOfferPreview} from '../../../types/server-entities';
 import {EndPoint, FavoriteStatus} from '../../../const';
 import {adaptOfferPreviewsToApp, adaptOfferPreviewToApp} from '../../../services/adapters';
 import {TOfferPreview} from '../../../types/offers';

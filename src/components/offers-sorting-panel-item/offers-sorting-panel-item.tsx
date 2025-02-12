@@ -5,22 +5,22 @@ import {appSliceActions} from '../../store/slices/app';
 type TOffersSortingPanelItemProps = {
   sortType: TOfferSortType;
   currentSortType: TOfferSortType;
-  setIsOpen: (isOpen: boolean) => void;
+  closePanel: () => void;
 }
 
-export default function OffersSortingPanelItem({sortType, currentSortType, setIsOpen}: TOffersSortingPanelItemProps): JSX.Element {
+export default function OffersSortingPanelItem({sortType, currentSortType, closePanel}: TOffersSortingPanelItemProps): JSX.Element {
   const {changeOffersSortType} = useActionCreators(appSliceActions);
 
-  const sortTypeClickHandler = () => {
+  const handleSortTypeClick = () => {
     changeOffersSortType(sortType);
-    setIsOpen(false);
+    closePanel();
   };
 
   return (
     <li
       className={`places__option ${sortType === currentSortType ? 'places__option--active' : ''}`}
       tabIndex={0}
-      onClick={sortTypeClickHandler}
+      onClick={handleSortTypeClick}
     >{sortType}
     </li>
 

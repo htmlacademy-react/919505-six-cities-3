@@ -3,6 +3,16 @@ import {useLocation} from 'react-router-dom';
 import {useAppSelector} from '../store';
 import {offersSliceSelectors} from '../../store/slices/offers';
 
+enum RootClassName {
+  Default = 'page--gray page--main',
+  Login = 'page--gray page--login',
+  FavoritesEmpty = 'page--favorites-empty',
+}
+
+enum LogoClassName {
+  Root = 'header__logo-link--active'
+}
+
 export default function useLayout() {
   const favorites = useAppSelector(offersSliceSelectors.favoriteOffers);
   const pathName = useLocation().pathname;
@@ -10,29 +20,29 @@ export default function useLayout() {
   const favoritesQuantity = favorites.length;
 
   let rootClassName = '';
-  let linkClassName = '';
+  let logoClassName = '';
   let shouldRenderUser = true;
   let shouldRenderHeader = true;
   let shouldRenderFooter = false;
 
   switch (pathName) {
     case AppRoute.Root:
-      rootClassName = 'page--gray page--main';
-      linkClassName = 'header__logo-link--active';
+      rootClassName = RootClassName.Default;
+      logoClassName = LogoClassName.Root;
       break;
     case AppRoute.Login:
-      rootClassName = 'page--gray page--login';
+      rootClassName = RootClassName.Login;
       shouldRenderUser = false;
       break;
     case AppRoute.Favorites:
-      rootClassName = favoritesQuantity === 0 ? 'page--favorites-empty' : '';
+      rootClassName = favoritesQuantity === 0 ? RootClassName.FavoritesEmpty : '';
       shouldRenderFooter = true;
       break;
     case AppRoute.PageNotFound:
-      rootClassName = 'page--gray page--main';
+      rootClassName = RootClassName.Default;
       shouldRenderHeader = false;
       break;
   }
 
-  return {rootClassName, linkClassName, shouldRenderUser, shouldRenderHeader, shouldRenderFooter};
+  return {rootClassName, logoClassName, shouldRenderUser, shouldRenderHeader, shouldRenderFooter};
 }

@@ -1,6 +1,6 @@
 import {createAppAsyncThunk} from '../../../hooks/store/store';
 import {TReview} from '../../../types/reviews';
-import {TServerReview} from '../../../types/server';
+import {TServerReview} from '../../../types/server-entities';
 import {EndPoint} from '../../../const';
 import {adaptReviewsToApp} from '../../../services/adapters';
 

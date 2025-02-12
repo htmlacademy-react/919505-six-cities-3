@@ -1,6 +1,6 @@
 import LoginForm from '../../components/login-form';
-import {Cities} from '../../const';
 import CityLink from '../../components/city-link';
+import {Cities} from '../../const';
 
 function LoginScreen(): JSX.Element {
   const randomCity = Cities[Math.floor(Math.random() * Cities.length)];

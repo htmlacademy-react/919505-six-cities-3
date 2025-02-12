@@ -11,6 +11,10 @@ export default function NavBlock(): JSX.Element {
   const user = useAppSelector(userSliceSelectors.info);
   const {logout} = useActionCreators(userSliceActions);
 
+  const handleLogoutClick = () => {
+    logout();
+  };
+
   return (
     <nav className="header__nav">
       <ul className="header__nav-list">
@@ -29,7 +33,7 @@ export default function NavBlock(): JSX.Element {
         </li>
         {isAuthorized && (
           <li className="header__nav-item">
-            <Link to={'#'} className="header__nav-link" onClick={() => logout()}> <span className="header__signout">Sign out</span> </Link>
+            <Link to={'#'} className="header__nav-link" onClick={handleLogoutClick}> <span className="header__signout">Sign out</span> </Link>
           </li>)}
       </ul>
     </nav>

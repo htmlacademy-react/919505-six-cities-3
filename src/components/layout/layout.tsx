@@ -6,7 +6,7 @@ import Header from '../header';
 export default function Layout(): JSX.Element {
 
   const {rootClassName,
-    linkClassName,
+    logoClassName,
     shouldRenderUser,
     shouldRenderHeader,
     shouldRenderFooter
@@ -14,7 +14,7 @@ export default function Layout(): JSX.Element {
 
   return (
     <div className={`page ${rootClassName}`}>
-      {shouldRenderHeader && <Header linkClassName={linkClassName} shouldRenderUser={shouldRenderUser}/>}
+      {shouldRenderHeader && <Header logoClassName={logoClassName} shouldRenderUser={shouldRenderUser}/>}
       <Outlet/>
       {shouldRenderFooter && <Footer/>}
     </div>
