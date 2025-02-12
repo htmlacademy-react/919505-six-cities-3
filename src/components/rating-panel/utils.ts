@@ -1,9 +1,13 @@
-import {RatingPanelType} from '../../const';
+import {RATING_COEFFICIENT, RatingPanelType} from '../../const';
 
 enum Prefix {
   Reviews = 'reviews',
   Offer = 'offer',
   PlaceCard = 'place-card'
+}
+
+export function calculateRatingWidth(rating: number): number {
+  return Math.round(rating) * RATING_COEFFICIENT;
 }
 
 export function getClassNamePrefix(type: string) {

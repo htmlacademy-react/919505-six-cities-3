@@ -1,9 +1,9 @@
 import {OfferCardParams} from '../../const';
 
 enum CardType {
-  Cities = 'Cities',
-  NearPlaces = 'NearPlaces',
-  Favorites = 'Favorites'
+  Cities = 'cities',
+  NearPlaces = 'near-places',
+  Favorites = 'favorites'
 }
 
 export function getParentBlockName(cardType: string) {
