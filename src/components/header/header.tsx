@@ -3,17 +3,17 @@ import NavBlock from '../nav-block';
 import LogoLink from '../logo-link';
 
 type THeaderProps = {
-  linkClassName: string;
+  logoClassName: string;
   shouldRenderUser: boolean;
 };
 
-function Header({linkClassName, shouldRenderUser}: THeaderProps): JSX.Element {
+function Header({logoClassName, shouldRenderUser}: THeaderProps): JSX.Element {
   return (
     <header className="header">
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-            <LogoLink linkClassName={linkClassName}/>
+            <LogoLink logoClassName={logoClassName}/>
           </div>
           {shouldRenderUser
             ? <NavBlock/>

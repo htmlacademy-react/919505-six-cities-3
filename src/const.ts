@@ -23,8 +23,7 @@ export enum RequestStatus {
 }
 
 export enum FavoriteStatus {
-  Added = 1,
-  Removed = 0
+  Added = 1
 }
 
 export enum NameSpace {
@@ -72,12 +71,6 @@ export const DefaultCity: TCity = {
     'longitude': 2.351499,
     'zoom': 13
   }
-} as const;
-
-export const CardType = {
-  CITIES: 'cities',
-  NEAR_PLACES: 'near-places',
-  FAVORITES: 'favorites'
 } as const;
 
 export const SortingType = {

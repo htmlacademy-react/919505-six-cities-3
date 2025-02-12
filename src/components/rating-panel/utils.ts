@@ -1,12 +1,18 @@
 import {RatingPanelType} from '../../const';
 
+enum Prefix {
+  Reviews = 'reviews',
+  Offer = 'offer',
+  PlaceCard = 'place-card'
+}
+
 export function getClassNamePrefix(type: string) {
   switch (type) {
     case RatingPanelType.Reviews:
-      return 'reviews';
+      return Prefix.Reviews;
     case RatingPanelType.Offer:
-      return 'offer';
+      return Prefix.Offer;
     case RatingPanelType.Card:
-      return 'place-card';
+      return Prefix.PlaceCard;
   }
 }
