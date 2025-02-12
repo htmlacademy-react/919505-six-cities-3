@@ -3,7 +3,7 @@ import {FavoriteStatus, NameSpace, RequestStatus} from '../../../const';
 import {TOffersState} from '../../../types/store';
 import {TOffer, TOfferPreview} from '../../../types/offers';
 import {appSlice} from '../app';
-import {getProcessedOffers} from './utils';
+import {getProcessedOffers, getFavoriteStatus} from './utils';
 import {fetchAllOffers, fetchNearbyOffers, fetchOffer} from '../../thunks/offers';
 import {changeFavorite, fetchFavorites} from '../../thunks/favorites';
 
@@ -83,7 +83,12 @@ const offersSliceSelectors = {
     offersSlice.selectors.offers,
     appSlice.selectors.currentCity,
     appSlice.selectors.currentOffersSortType,
-    (offers, city, sortType) => getProcessedOffers(offers, city, sortType))
+    (offers, city, sortType) => getProcessedOffers(offers, city, sortType)
+  ),
+  getFavoriteStatus: createSelector(
+    offersSlice.selectors.favoriteOffers,
+    (favoriteOffers) => (offerId: string) => getFavoriteStatus(favoriteOffers, offerId)
+  )
 };
 
 export {offersSlice, offersSliceActions, offersSliceSelectors};
