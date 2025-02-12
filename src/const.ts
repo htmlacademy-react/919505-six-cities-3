@@ -7,30 +7,6 @@ export const MAX_NEARBY_OFFERS = 3;
 export const OFFER_DETAILS_CHECK_NUMBER = 1;
 export const REVIEW_DATE_FORMAT = 'MMMM YYYY';
 
-export const RatingInputTitles = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
-
-export const DefaultCity: TCity = {
-  name: 'Paris',
-  location: {
-    'latitude': 48.85661,
-    'longitude': 2.351499,
-    'zoom': 13
-  }
-};
-
-export const CardType = {
-  CITIES: 'cities',
-  NEAR_PLACES: 'near-places',
-  FAVORITES: 'favorites'
-} as const;
-
-export const SortingType = {
-  POPULAR: 'Popular',
-  LOW_TO_HIGH: 'Price: low to high',
-  HIGH_TO_LOW: 'Price: high to low',
-  TOP_RATED_FIRST: 'Top rated first'
-} as const;
-
 export enum EndPoint {
   Offers = '/offers',
   Favorite = '/favorite',
@@ -40,10 +16,10 @@ export enum EndPoint {
 }
 
 export enum RequestStatus {
-  Idle= 'IDLE',
-  Loading = ' LOADING',
-  Success = ' SUCCESS',
-  Failed = 'FAILED'
+  Idle= 'Idle',
+  Loading = ' Loading',
+  Success = ' Success',
+  Failed = 'Failed'
 }
 
 export enum FavoriteStatus {
@@ -52,10 +28,10 @@ export enum FavoriteStatus {
 }
 
 export enum NameSpace {
-  App = 'APP',
-  Offers = 'OFFERS',
-  Reviews = 'REVIEWS',
-  User = 'USER'
+  App = 'App',
+  Offers = 'Offers',
+  Reviews = 'Reviews',
+  User = 'User'
 }
 
 export enum MapType {
@@ -89,10 +65,32 @@ export enum BookmarkButton {
   View = 'View',
 }
 
+export const DefaultCity: TCity = {
+  name: 'Paris',
+  location: {
+    'latitude': 48.85661,
+    'longitude': 2.351499,
+    'zoom': 13
+  }
+} as const;
+
+export const CardType = {
+  CITIES: 'cities',
+  NEAR_PLACES: 'near-places',
+  FAVORITES: 'favorites'
+} as const;
+
+export const SortingType = {
+  POPULAR: 'Popular',
+  LOW_TO_HIGH: 'Price: low to high',
+  HIGH_TO_LOW: 'Price: high to low',
+  TOP_RATED_FIRST: 'Top rated first'
+} as const;
+
 export const ReviewLength = {
-  MIN: 50,
-  MAX: 250
-};
+  Min: 50,
+  Max: 250
+} as const;
 
 export const OfferCardParams = {
   type: {
@@ -110,7 +108,7 @@ export const OfferCardParams = {
     little: '110',
     big: '200',
   }
-};
+} as const;
 
 export const BookmarkButtonParams = {
   type: BookmarkButton,
@@ -124,7 +122,9 @@ export const BookmarkButtonParams = {
     little: '19',
     big: '33',
   }
-};
+} as const;
+
+export const RatingInputTitles = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
 
 export const Cities = [
   'Paris',

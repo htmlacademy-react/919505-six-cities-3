@@ -1,4 +1,4 @@
-import {TFavoritesObject} from '../../types/offers';
+import {TCityName, TFavoritesObject} from '../../types/offers';
 import FavoritesItem from '../favorites-item';
 
 type TFavoritesListProps = {
@@ -11,7 +11,7 @@ export default function FavoritesList({favoritesObject}: TFavoritesListProps): J
       <h1 className="favorites__title">Saved listing</h1>
       <ul className="favorites__list">
         {Object.keys(favoritesObject).map((city) =>
-          <FavoritesItem city={city} offers={favoritesObject[city]} key={city}/>
+          <FavoritesItem city={city as TCityName} offers={favoritesObject[city]} key={city}/>
         )}
       </ul>
     </>

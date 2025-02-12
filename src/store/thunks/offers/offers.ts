@@ -1,4 +1,4 @@
-import {TServerOffer, TServerOfferPreview} from '../../../types/server';
+import {TServerOffer, TServerOfferPreview} from '../../../types/server-entities';
 import {EndPoint} from '../../../const';
 import {adaptOfferPreviewsToApp, adaptOfferToApp} from '../../../services/adapters';
 import {createAppAsyncThunk} from '../../../hooks/store/store';

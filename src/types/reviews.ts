@@ -1,6 +1,5 @@
 import {TUser} from './user';
 
-
 export type TReviewFormData = {
   review: string;
   rating: number;

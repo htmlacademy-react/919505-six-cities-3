@@ -1,10 +1,10 @@
 import {OfferCardParams} from '../../const';
-import {TOfferPreview} from '../../types/offers';
+import {TCityName, TOfferPreview} from '../../types/offers';
 import OfferCardList from '../offer-card-list';
 import CityLink from '../city-link';
 
 type TFavoritesItemProps = {
-  city: string;
+  city: TCityName;
   offers: TOfferPreview[];
 }
 

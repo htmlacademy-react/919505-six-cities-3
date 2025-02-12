@@ -15,7 +15,7 @@ export default function OfferReviewForm(): JSX.Element {
   const {id} = useParams();
 
   const isSubmitButtonDisabled =
-    formData.rating === 0 || formData.review.length < ReviewLength.MIN || formData.review.length > ReviewLength.MAX;
+    formData.rating === 0 || formData.review.length < ReviewLength.Min || formData.review.length > ReviewLength.Max;
 
   const isFormBlocked = requestStatus === RequestStatus.Loading;
 
@@ -59,7 +59,7 @@ export default function OfferReviewForm(): JSX.Element {
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
-          To submit review please make sure to set <span className="reviews__star">rating</span>and describe your stay with at least <b className="reviews__text-amount">{ReviewLength.MIN} characters</b>.
+          To submit review please make sure to set <span className="reviews__star">rating</span>and describe your stay with at least <b className="reviews__text-amount">{ReviewLength.Min} characters</b>.
         </p>
         <button className="reviews__submit form__submit button" type="submit" disabled={isSubmitButtonDisabled || isFormBlocked}>Submit</button>
       </div>

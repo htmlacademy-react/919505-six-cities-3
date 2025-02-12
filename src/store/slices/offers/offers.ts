@@ -1,6 +1,6 @@
 import {createSelector, createSlice} from '@reduxjs/toolkit';
 import {FavoriteStatus, NameSpace, RequestStatus} from '../../../const';
-import {TOffersState} from '../../../types/state';
+import {TOffersState} from '../../../types/store';
 import {TOffer, TOfferPreview} from '../../../types/offers';
 import {appSlice} from '../app';
 import {getProcessedOffers} from './utils';

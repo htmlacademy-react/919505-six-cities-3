@@ -1,5 +1,7 @@
 import {TCityName} from './offers';
 
+export type TToken = string;
+
 export type TServerOfferPreview = {
   'id': string;
   'title': string;
