@@ -1,5 +1,5 @@
 import {memo} from 'react';
-import {checkFavorite, getButtonAttributes} from './utils';
+import {getButtonAttributes} from './utils';
 import {AppRoute, AuthorizationStatus, BookmarkButton} from '../../const';
 import {useActionCreators, useAppSelector} from '../../hooks/store';
 import {userSliceSelectors} from '../../store/slices/user';
@@ -13,11 +13,11 @@ type TButtonBookmarkProps = {
 
 function ButtonBookmark({offerId, type}: TButtonBookmarkProps): JSX.Element {
   const AuthStatus = useAppSelector(userSliceSelectors.authorizationStatus);
-  const favoriteOffers = useAppSelector(offersSliceSelectors.favoriteOffers);
+  const getFavoriteStatus = useAppSelector(offersSliceSelectors.getFavoriteStatus);
   const {changeFavorite} = useActionCreators(offersSliceActions);
   const navigate = useNavigate();
 
-  const isFavorite = checkFavorite(favoriteOffers, offerId);
+  const isFavorite = getFavoriteStatus(offerId);
   const {classNamePrefix, width, height} = getButtonAttributes(type);
 
   const handleBookmarkClick = () => {
