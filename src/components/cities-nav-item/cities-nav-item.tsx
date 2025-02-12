@@ -18,7 +18,7 @@ export default function CitiesNavItem({city, currentCity}: TCitiesNavItemProps):
     <li className="locations__item">
       <a
         className={`locations__item-link tabs__item ${city === currentCity ? 'tabs__item--active' : ''}`}
-        href="#"
+        tabIndex={0}
         onClick={cityClickHandler}
       >
         <span>{city}</span>
