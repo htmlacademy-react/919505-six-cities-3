@@ -1,9 +1,10 @@
-import {useAppSelector} from '../../hooks/store';
-import {appSliceSelectors} from '../../store/slices/app';
+import {TCityName} from '../../types/offers';
 
-export default function OfferListEmpty(): JSX.Element {
-  const currentCity = useAppSelector(appSliceSelectors.currentCity);
+type TOfferListEmptyProps = {
+  currentCity: TCityName;
+}
 
+export default function OfferListEmpty({currentCity}: TOfferListEmptyProps): JSX.Element {
   return (
     <section className="cities__no-places">
       <div className="cities__status-wrapper tabs__content">

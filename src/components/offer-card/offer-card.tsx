@@ -30,29 +30,29 @@ function OfferCard({cardData, cardType}: TPlaceCardProps): JSX.Element {
 
   const cardParentBlockName = getParentBlockName(cardType);
 
-  const mouseEnterHandler = () => {
+  const handleCardMouseEnter = () => {
     if (cardType === OfferCardParams.type.default) {
       changeActiveOfferId(id);
     }
   };
 
-  const mouseLeaveHandler = () => {
+  const handleCardMouseLeave = () => {
     if (cardType === OfferCardParams.type.default) {
       changeActiveOfferId(null);
     }
   };
 
-  const cardClickHandler = useCallback(() => {
+  const handleCardClick = useCallback(() => {
     if (cardType === OfferCardParams.type.default) {
       changeActiveOfferId(null);
     }
   }, [cardType, changeActiveOfferId]);
 
   return (
-    <article className={`${cardParentBlockName}__card place-card`} onMouseEnter={mouseEnterHandler} onMouseLeave={mouseLeaveHandler}>
+    <article className={`${cardParentBlockName}__card place-card`} onMouseEnter={handleCardMouseEnter} onMouseLeave={handleCardMouseLeave}>
       {isPremium && <div className="place-card__mark"><span>Premium</span></div>}
       <div className={`${cardParentBlockName}__image-wrapper place-card__image-wrapper`}>
-        <OfferCardImage id={id} previewImage={previewImage} cardType={cardType} onCardClick={cardClickHandler}/>
+        <OfferCardImage id={id} previewImage={previewImage} cardType={cardType} onCardClick={handleCardClick}/>
       </div>
 
       <div className={`${cardType === OfferCardParams.type.favorite ? 'favorites__card-info' : ''} place-card__info`}>
@@ -64,7 +64,7 @@ function OfferCard({cardData, cardType}: TPlaceCardProps): JSX.Element {
           <ButtonBookmark offerId={id} type={BookmarkButton.Card}/>
         </div>
         <RatingPanel type={RatingPanelType.Card} rating={rating}/>
-        <OfferCardTitle id={id} title={title} onCardClick={cardClickHandler}/>
+        <OfferCardTitle id={id} title={title} onCardClick={handleCardClick}/>
         <p className="place-card__type">{makeFirstLetterToUpperCase(type)}</p>
       </div>
     </article>

@@ -1,23 +1,20 @@
 import {useActionCreators} from '../../hooks/store';
 import {appSliceActions} from '../../store/slices/app';
-import {TCityName} from '../../types/offers';
 import {useNavigate} from 'react-router-dom';
-import {AppRoute} from '../../const';
+import {AppRoute, Cities} from '../../const';
 
-type TCityLinkProps = {
-  city: string;
-}
-
-export default function CityLink({city}: TCityLinkProps): JSX.Element {
+export default function CityLink(): JSX.Element {
   const {changeCity} = useActionCreators(appSliceActions);
   const navigate = useNavigate();
 
-  const clickHandler = () => {
-    changeCity(city as TCityName);
+  const randomCity = Cities[Math.floor(Math.random() * Cities.length)];
+
+  const handleCityLinkClick = () => {
+    changeCity(randomCity);
     navigate(AppRoute.Root);
   };
 
   return (
-    <a className="locations__item-link" onClick={clickHandler}> <span>{city}</span> </a>
+    <a className="locations__item-link" onClick={handleCityLinkClick}> <span>{randomCity}</span> </a>
   );
 }

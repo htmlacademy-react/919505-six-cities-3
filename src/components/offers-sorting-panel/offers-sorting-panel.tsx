@@ -6,11 +6,14 @@ import {useState} from 'react';
 
 export default function OffersSortingPanel(): JSX.Element {
   const currentSortType = useAppSelector(appSliceSelectors.currentOffersSortType);
-
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const clickHandler: TSpanClickHandler = () => {
+  const handlePanelClick: TSpanClickHandler = () => {
     setIsOpen((prevState) => !prevState);
+  };
+
+  const closePanel = () => {
+    setIsOpen(false);
   };
 
   return (
@@ -19,7 +22,7 @@ export default function OffersSortingPanel(): JSX.Element {
       <span
         className="places__sorting-type"
         tabIndex={0}
-        onClick={clickHandler}
+        onClick={handlePanelClick}
       >
         {currentSortType}
         <svg className="places__sorting-arrow" width="7" height="4">
@@ -27,7 +30,7 @@ export default function OffersSortingPanel(): JSX.Element {
         </svg>
       </span>
 
-      <OffersSortingPanelList currentSortType={currentSortType} isOpen={isOpen} setIsOpen={setIsOpen}/>
+      <OffersSortingPanelList currentSortType={currentSortType} isOpen={isOpen} closePanel={closePanel}/>
     </form>
   );
 }

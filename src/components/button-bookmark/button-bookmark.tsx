@@ -20,7 +20,7 @@ function ButtonBookmark({offerId, type}: TButtonBookmarkProps): JSX.Element {
   const isFavorite = checkFavorite(favoriteOffers, offerId);
   const {classNamePrefix, width, height} = getButtonAttributes(type);
 
-  const clickHandler = () => {
+  const handleBookmarkClick = () => {
     if (AuthStatus === AuthorizationStatus.Auth) {
       changeFavorite({offerId, status: Number(!isFavorite)});
     } else {
@@ -32,7 +32,7 @@ function ButtonBookmark({offerId, type}: TButtonBookmarkProps): JSX.Element {
     <button
       className={`${classNamePrefix}__bookmark-button ${isFavorite ? `${classNamePrefix}__bookmark-button--active` : ''} button`}
       type="button"
-      onClick={clickHandler}
+      onClick={handleBookmarkClick}
     >
       <svg className={`${classNamePrefix}__bookmark-icon`} width={width} height={height}>
         <use xlinkHref="#icon-bookmark"></use>
