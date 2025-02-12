@@ -82,7 +82,7 @@ export const SortingType = {
 
 export const ReviewLength = {
   Min: 50,
-  Max: 250
+  Max: 300
 } as const;
 
 export const OfferCardParams = {
