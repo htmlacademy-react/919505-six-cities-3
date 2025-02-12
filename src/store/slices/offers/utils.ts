@@ -21,10 +21,5 @@ export function getProcessedOffers(offers: TOfferPreview[], city: TCityName, sor
 
 export function getFavoriteStatus(favoriteOffers: TOfferPreview[], offerId: string) {
   const offer = favoriteOffers.find((item) => item.id === offerId);
-
-  if (offer) {
-    return offer.isFavorite;
-  }
-
-  return false;
+  return !!offer;
 }
