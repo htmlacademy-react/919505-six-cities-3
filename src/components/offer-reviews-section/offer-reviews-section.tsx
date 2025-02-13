@@ -14,7 +14,7 @@ export default function OfferReviewsSection(): JSX.Element {
 
   if (copiedReviews.length > 0) {
     copiedReviews
-      .sort((review1, review2) => +new Date(review2.date) - +new Date(review1.date));
+      .sort((review1, review2) => Number(new Date(review2.date)) - Number(new Date(review1.date)));
 
     reviewsToRender = copiedReviews.length > MAX_REVIEWS ? copiedReviews.slice(0, MAX_REVIEWS) : copiedReviews;
   }

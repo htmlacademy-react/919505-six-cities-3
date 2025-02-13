@@ -2,7 +2,6 @@ import {createAppAsyncThunk} from '../../../hooks/store/store';
 import {TReview} from '../../../types/reviews';
 import {TServerReview} from '../../../types/server-entities';
 import {EndPoint} from '../../../const';
-import {adaptReviewsToApp} from '../../../services/adapters';
 
 interface PostReviewsProps {
   body: {
@@ -15,7 +14,7 @@ interface PostReviewsProps {
 export const fetchReviews = createAppAsyncThunk<TReview[], string>
 ('reviews/fetch', async (offerId, {extra: api}) => {
   const response = await api.get<TServerReview[]>(`${EndPoint.Reviews}/${offerId}`);
-  return adaptReviewsToApp(response.data);
+  return response.data;
 });
 
 export const postReview = createAppAsyncThunk<TReview, PostReviewsProps>

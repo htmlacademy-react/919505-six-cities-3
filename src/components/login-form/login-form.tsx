@@ -4,17 +4,13 @@ import {userSliceActions} from '../../store/slices/user';
 import useForm from '../../hooks/use-form';
 import {TLoginForm, TLoginFormData} from '../../types/login';
 import {toast} from 'react-toastify';
+import {validatePassword} from './utils';
 
 const PASSWORD_INVALID_MESSAGE = 'Пароль должен состоять минимум из одной буквы и цифры';
 
 export default function LoginForm(): JSX.Element {
   const [handleInputChange, formData, setFormData] = useForm<TLoginFormData>({email: '', password: ''});
   const {login} = useActionCreators(userSliceActions);
-
-  const validatePassword = (password: string) => {
-    const regExp = /^(?=.*[a-zA-Z])(?=.*\d).+$/;
-    return regExp.test(String(password));
-  };
 
   const handleFormSubmit = (evt: FormEvent<TLoginForm>) => {
     evt.preventDefault();

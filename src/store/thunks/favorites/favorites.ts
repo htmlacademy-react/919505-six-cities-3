@@ -1,7 +1,6 @@
 import {createAppAsyncThunk} from '../../../hooks/store/store';
 import {TServerFavoriteOffer, TServerOfferPreview} from '../../../types/server-entities';
 import {EndPoint, FavoriteStatus} from '../../../const';
-import {adaptOfferPreviewsToApp, adaptOfferPreviewToApp} from '../../../services/adapters';
 import {TOfferPreview} from '../../../types/offers';
 
 interface ChangeProps {
@@ -17,11 +16,11 @@ interface ChangeResponse {
 export const fetchFavorites = createAppAsyncThunk<TServerOfferPreview[], undefined>
 ('favorites/fetchAll', async (_arg, {extra: api}) => {
   const response = await api.get<TServerOfferPreview[]>(EndPoint.Favorite);
-  return adaptOfferPreviewsToApp(response.data);
+  return response.data;
 });
 
 export const changeFavorite = createAppAsyncThunk<ChangeResponse, ChangeProps>
 ('favorites/change', async ({offerId, status}, {extra: api}) => {
   const response = await api.post<TServerFavoriteOffer>(`${EndPoint.Favorite}/${offerId}/${status}`);
-  return {offer: adaptOfferPreviewToApp(response.data), status};
+  return {offer: response.data, status};
 });

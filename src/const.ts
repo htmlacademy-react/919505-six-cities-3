@@ -50,7 +50,8 @@ export enum AppRoute {
   Offer = '/offer/',
   OfferId = '/offer/:id',
   Favorites = '/favorites',
-  PageNotFound = '*',
+  NotFound = '/not-found',
+  NotExistingPage = '*'
 }
 
 export enum RatingPanelType {

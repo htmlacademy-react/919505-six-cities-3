@@ -3,9 +3,8 @@ import {StatusCodes} from 'http-status-codes';
 import {getToken} from '../token';
 import {toast} from 'react-toastify';
 
-type DetailMessageType = {
-  details: { messages: string[] }[];
-  type: string;
+type DetailedMessageType = {
+  errorType: string;
   message: string;
 }
 
@@ -38,9 +37,12 @@ export const createAPI = (): AxiosInstance => {
 
   api.interceptors.response.use(
     (response) => response,
-    (error: AxiosError<DetailMessageType>) => {
+    (error: AxiosError<DetailedMessageType>) => {
       if (error.response && shouldDisplayError(error.response)) {
-        toast.warn(error.message, {position: 'bottom-right'});
+        const responseData = (error.response.data);
+        const message = `${responseData.errorType}: ${responseData.message}`;
+
+        toast.warn(message, {position: 'bottom-right'});
       }
       throw error;
     }

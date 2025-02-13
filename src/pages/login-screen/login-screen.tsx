@@ -1,9 +1,10 @@
+import {useMemo} from 'react';
 import LoginForm from '../../components/login-form';
 import CityLink from '../../components/city-link';
 import {Cities} from '../../const';
 
 function LoginScreen(): JSX.Element {
-  const randomCity = Cities[Math.floor(Math.random() * Cities.length)];
+  const randomCity = useMemo(() => Cities[Math.floor(Math.random() * Cities.length)], []);
 
   return (
     <main className="page__main page__main--login">

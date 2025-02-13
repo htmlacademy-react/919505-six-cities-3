@@ -3,7 +3,7 @@ import {FavoriteStatus, NameSpace, RequestStatus} from '../../../const';
 import {TOffersState} from '../../../types/store';
 import {TOffer, TOfferPreview} from '../../../types/offers';
 import {appSlice} from '../app';
-import {getProcessedOffers, getFavoriteStatus} from './utils';
+import {getFavoriteStatus, getProcessedOffers} from './utils';
 import {fetchAllOffers, fetchNearbyOffers, fetchOffer} from '../../thunks/offers';
 import {changeFavorite, fetchFavorites} from '../../thunks/favorites';
 
@@ -12,7 +12,13 @@ const initialState: TOffersState = {
   favoriteOffers: [],
   offer: null,
   nearbyOffers: [],
-  requestStatus: RequestStatus.Idle
+
+  offersRequestStatus: RequestStatus.Idle,
+
+  favoriteOffersRequestStatus: RequestStatus.Idle,
+  changeFavoriteOffersRequestStatus: RequestStatus.Idle,
+  offerRequestStatus: RequestStatus.Idle,
+  nearbyOffersRequestStatus: RequestStatus.Idle,
 };
 
 const offersSlice = createSlice({
@@ -28,34 +34,59 @@ const offersSlice = createSlice({
     favoriteOffers: (state: TOffersState): TOfferPreview[] => state.favoriteOffers,
     offer: (state: TOffersState): TOffer | null => state.offer,
     nearbyOffers: (state: TOffersState): TOfferPreview[] => state.nearbyOffers,
-    requestStatus: (state: TOffersState): RequestStatus => state.requestStatus,
+    offersRequestStatus: (state: TOffersState): RequestStatus => state.offersRequestStatus,
+    offerRequestStatus: (state: TOffersState): RequestStatus => state.offerRequestStatus,
   },
 
   extraReducers: (builder) =>
     builder
       .addCase(fetchAllOffers.pending, (state) => {
-        state.requestStatus = RequestStatus.Loading;
+        state.offersRequestStatus = RequestStatus.Loading;
       })
       .addCase(fetchAllOffers.fulfilled, (state, action) => {
-        state.requestStatus = RequestStatus.Idle;
+        state.offersRequestStatus = RequestStatus.Idle;
         state.offers = action.payload;
       })
       .addCase(fetchAllOffers.rejected, (state) => {
-        state.requestStatus = RequestStatus.Failed;
+        state.offersRequestStatus = RequestStatus.Failed;
       })
+
       .addCase(fetchOffer.pending, (state) => {
-        state.requestStatus = RequestStatus.Loading;
+        state.offerRequestStatus = RequestStatus.Loading;
       })
       .addCase(fetchOffer.fulfilled, (state, action) => {
-        state.requestStatus = RequestStatus.Idle;
+        state.offerRequestStatus = RequestStatus.Idle;
         state.offer = action.payload;
       })
+      .addCase(fetchOffer.rejected, (state) => {
+        state.offerRequestStatus = RequestStatus.Failed;
+      })
+
+      .addCase(fetchNearbyOffers.pending, (state) => {
+        state.nearbyOffersRequestStatus = RequestStatus.Loading;
+      })
       .addCase(fetchNearbyOffers.fulfilled, (state, action) => {
-        state.requestStatus = RequestStatus.Idle;
+        state.nearbyOffersRequestStatus = RequestStatus.Idle;
         state.nearbyOffers = action.payload;
       })
+      .addCase(fetchNearbyOffers.rejected, (state) => {
+        state.nearbyOffersRequestStatus = RequestStatus.Failed;
+      })
+
+
+      .addCase(fetchFavorites.pending, (state) => {
+        state.favoriteOffersRequestStatus = RequestStatus.Loading;
+      })
       .addCase(fetchFavorites.fulfilled, (state, action) => {
+        state.favoriteOffersRequestStatus = RequestStatus.Idle;
         state.favoriteOffers = action.payload;
+      })
+      .addCase(fetchFavorites.rejected, (state) => {
+        state.favoriteOffersRequestStatus = RequestStatus.Failed;
+      })
+
+      .addCase(changeFavorite.pending, (state) => {
+        state.changeFavoriteOffersRequestStatus = RequestStatus.Loading;
       })
       .addCase(changeFavorite.fulfilled, (state, action) => {
         const newOffer = action.payload.offer;
@@ -65,6 +96,10 @@ const offersSlice = createSlice({
         } else {
           state.favoriteOffers = state.favoriteOffers.filter(({id}) => id !== newOffer.id);
         }
+        state.changeFavoriteOffersRequestStatus = RequestStatus.Idle;
+      })
+      .addCase(changeFavorite.rejected, (state) => {
+        state.changeFavoriteOffersRequestStatus = RequestStatus.Failed;
       })
 });
 
