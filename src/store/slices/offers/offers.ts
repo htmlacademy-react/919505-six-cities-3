@@ -14,7 +14,6 @@ const initialState: TOffersState = {
   nearbyOffers: [],
 
   offersRequestStatus: RequestStatus.Idle,
-
   favoriteOffersRequestStatus: RequestStatus.Idle,
   changeFavoriteOffersRequestStatus: RequestStatus.Idle,
   offerRequestStatus: RequestStatus.Idle,
@@ -35,7 +34,10 @@ const offersSlice = createSlice({
     offer: (state: TOffersState): TOffer | null => state.offer,
     nearbyOffers: (state: TOffersState): TOfferPreview[] => state.nearbyOffers,
     offersRequestStatus: (state: TOffersState): RequestStatus => state.offersRequestStatus,
+    favoriteOffersRequestStatus: (state: TOffersState): RequestStatus => state.favoriteOffersRequestStatus,
+    changeFavoriteOffersRequestStatus: (state: TOffersState): RequestStatus => state.changeFavoriteOffersRequestStatus,
     offerRequestStatus: (state: TOffersState): RequestStatus => state.offerRequestStatus,
+    nearbyOffersRequestStatus: (state: TOffersState): RequestStatus => state.nearbyOffersRequestStatus,
   },
 
   extraReducers: (builder) =>

@@ -7,6 +7,18 @@ export const MAX_NEARBY_OFFERS = 3;
 export const OFFER_DETAILS_CHECK_NUMBER = 1;
 export const REVIEW_DATE_FORMAT = 'MMMM YYYY';
 
+export enum ToastMessage {
+  InvalidPassword = 'Пароль должен состоять минимум из одной буквы и цифры',
+  FavoriteDidNotUpdate = 'Не удалось обновить избранные предложения',
+  NoOffers = 'Не удалось получить предложения',
+  NoOffer = 'Не удалось получить предложение',
+  NoFavoriteOffers = 'Не удалось получить избранные предложения',
+  NoNearbyOffers = 'Не удалось получить предложения неподалеку',
+  NoReviews = 'Не удалось получить комментарии',
+  DidNotPostReview = 'Не удалось отправить комментарий',
+  DidNotAuthorize = 'Пользователь не авторизован'
+}
+
 export enum EndPoint {
   Offers = '/offers',
   Favorite = '/favorite',

@@ -6,7 +6,8 @@ import {TReview} from '../../../types/reviews';
 
 const initialState: TReviewsState = {
   reviews: [],
-  requestStatus: RequestStatus.Idle
+  postReviewRequestStatus: RequestStatus.Idle,
+  fetchReviewsRequestStatus: RequestStatus.Idle
 };
 
 const reviewsSlice = createSlice({
@@ -15,24 +16,28 @@ const reviewsSlice = createSlice({
   reducers: {},
   selectors: {
     reviews: (state: TReviewsState): TReview[] => state.reviews,
-    requestStatus: (state: TReviewsState): RequestStatus => state.requestStatus,
+    postReviewRequestStatus: (state: TReviewsState): RequestStatus => state.postReviewRequestStatus,
+    fetchReviewsRequestStatus: (state: TReviewsState): RequestStatus => state.fetchReviewsRequestStatus,
   },
 
   extraReducers: (builder) =>
     builder
       .addCase(fetchReviews.fulfilled, (state, action) => {
-        state.requestStatus = RequestStatus.Idle;
+        state.fetchReviewsRequestStatus = RequestStatus.Idle;
         state.reviews = action.payload;
       })
+      .addCase(fetchReviews.rejected, (state) => {
+        state.fetchReviewsRequestStatus = RequestStatus.Failed;
+      })
       .addCase(postReview.pending, (state) => {
-        state.requestStatus = RequestStatus.Loading;
+        state.postReviewRequestStatus = RequestStatus.Loading;
       })
       .addCase(postReview.fulfilled, (state, action) => {
-        state.requestStatus = RequestStatus.Success;
+        state.postReviewRequestStatus = RequestStatus.Success;
         state.reviews.unshift(action.payload);
       })
       .addCase(postReview.rejected, (state) => {
-        state.requestStatus = RequestStatus.Failed;
+        state.postReviewRequestStatus = RequestStatus.Failed;
       })
 });
 

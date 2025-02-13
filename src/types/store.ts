@@ -18,7 +18,8 @@ export type TOffersState = {
 
 export type TReviewsState = {
   reviews: TReview[];
-  requestStatus: RequestStatus;
+  postReviewRequestStatus: RequestStatus;
+  fetchReviewsRequestStatus: RequestStatus;
 }
 
 export type TAppProcessState = {
