@@ -51,6 +51,7 @@ const userSlice = createSlice({
   selectors: {
     info: (state: TUserState): TUser | null => state.info,
     authorizationStatus: (state: TUserState): AuthorizationStatus => state.authorizationStatus,
+    userRequestStatus: (state: TUserState): RequestStatus => state.userRequestStatus,
   }
 });
 

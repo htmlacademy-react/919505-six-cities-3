@@ -10,14 +10,14 @@ import {useParams} from 'react-router-dom';
 
 export default function OfferReviewForm(): JSX.Element {
   const [handleInputChange, formData, setFormData] = useForm<TReviewFormData>({rating: 0, review: ''});
-  const requestStatus = useAppSelector(reviewsSliceSelectors.requestStatus);
+  const postReviewRequestStatus = useAppSelector(reviewsSliceSelectors.postReviewRequestStatus);
   const {postReview} = useActionCreators(reviewsSliceActions);
   const {id} = useParams();
 
   const isSubmitButtonDisabled =
     formData.rating === 0 || formData.review.length < ReviewLength.Min || formData.review.length > ReviewLength.Max;
 
-  const isFormBlocked = requestStatus === RequestStatus.Loading;
+  const isFormBlocked = postReviewRequestStatus === RequestStatus.Loading;
 
   const handleFormSubmit = (evt: FormEvent<TLoginForm>) => {
     evt.preventDefault();
@@ -27,10 +27,10 @@ export default function OfferReviewForm(): JSX.Element {
   };
 
   useEffect(() => {
-    if (requestStatus === RequestStatus.Success) {
+    if (postReviewRequestStatus === RequestStatus.Success) {
       setFormData({rating: 0, review: ''});
     }
-  }, [requestStatus, setFormData]);
+  }, [postReviewRequestStatus, setFormData]);
 
   return (
     <form className="reviews__form form" action="#" method="post" onSubmit={handleFormSubmit}>
