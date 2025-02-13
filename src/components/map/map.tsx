@@ -72,10 +72,7 @@ function Map({offers, mapType, defaultActiveId}: TMapProps): JSX.Element {
     }
   }, [map, points, activeId]);
 
-  return (
-    <section className={`${mapType === MapType.Main ? 'cities' : 'offer'}__map map`}>
-      <div style={{height: '100%'}} ref={mapRef}></div>
-    </section>);
+  return <section ref={mapRef} className={`${mapType === MapType.Main ? 'cities' : 'offer'}__map map`}/>;
 }
 
 const MemorizedMap = memo(Map);

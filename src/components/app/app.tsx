@@ -73,7 +73,12 @@ export default function App() {
           />
 
           <Route
-            path={AppRoute.PageNotFound}
+            path={AppRoute.NotFound}
+            element={<NotFoundScreen/>}
+          />
+
+          <Route
+            path={AppRoute.NotExistingPage}
             element={<NotFoundScreen/>}
           />
         </Route>

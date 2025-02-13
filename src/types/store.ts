@@ -9,7 +9,11 @@ export type TOffersState = {
   favoriteOffers: TOfferPreview[];
   offer: TOffer | null;
   nearbyOffers: TOfferPreview[];
-  requestStatus: RequestStatus;
+  offersRequestStatus: RequestStatus;
+  favoriteOffersRequestStatus: RequestStatus;
+  changeFavoriteOffersRequestStatus: RequestStatus;
+  offerRequestStatus: RequestStatus;
+  nearbyOffersRequestStatus: RequestStatus;
 }
 
 export type TReviewsState = {

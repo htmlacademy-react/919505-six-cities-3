@@ -12,7 +12,7 @@ type TMainContainerProps = {
 }
 
 function MainContainer({offers, isEmpty}: TMainContainerProps): JSX.Element {
-  const offersStatus = useAppSelector(offersSliceSelectors.requestStatus);
+  const offersStatus = useAppSelector(offersSliceSelectors.offersRequestStatus);
   const isLoading = offersStatus === RequestStatus.Loading;
 
   return (

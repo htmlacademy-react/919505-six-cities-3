@@ -38,7 +38,11 @@ export default function useLayout() {
       rootClassName = favoritesQuantity === 0 ? RootClassName.FavoritesEmpty : '';
       shouldRenderFooter = true;
       break;
-    case AppRoute.PageNotFound:
+    case AppRoute.NotFound:
+      rootClassName = RootClassName.Default;
+      shouldRenderHeader = false;
+      break;
+    case AppRoute.NotExistingPage:
       rootClassName = RootClassName.Default;
       shouldRenderHeader = false;
       break;
