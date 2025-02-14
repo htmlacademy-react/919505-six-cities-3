@@ -7,23 +7,22 @@ import {reviewsSliceSelectors} from '../../store/slices/reviews';
 import {userSliceSelectors} from '../../store/slices/user';
 
 export default function Toast(): JSX.Element {
-  const changeFavoriteOffersRequestStatus = useAppSelector(offersSliceSelectors.changeFavoriteOffersRequestStatus);
   const offersRequestStatus = useAppSelector(offersSliceSelectors.offersRequestStatus);
-  const favoriteOffersRequestStatus = useAppSelector(offersSliceSelectors.favoriteOffersRequestStatus);
   const offerRequestStatus = useAppSelector(offersSliceSelectors.offerRequestStatus);
   const nearbyOffersRequestStatus = useAppSelector(offersSliceSelectors.nearbyOffersRequestStatus);
+  const favoriteOffersRequestStatus = useAppSelector(offersSliceSelectors.favoriteOffersRequestStatus);
+  const changeFavoriteOffersRequestStatus = useAppSelector(offersSliceSelectors.changeFavoriteOffersRequestStatus);
 
   const fetchReviewsRequestStatus = useAppSelector(reviewsSliceSelectors.fetchReviewsRequestStatus);
   const postReviewRequestStatus = useAppSelector(reviewsSliceSelectors.postReviewRequestStatus);
 
   const userRequestStatus = useAppSelector(userSliceSelectors.userRequestStatus);
 
-
-  useToast(changeFavoriteOffersRequestStatus, ToastMessage.FavoriteDidNotUpdate);
   useToast(offersRequestStatus, ToastMessage.NoOffers);
-  useToast(favoriteOffersRequestStatus, ToastMessage.NoFavoriteOffers);
   useToast(offerRequestStatus, ToastMessage.NoOffer);
   useToast(nearbyOffersRequestStatus, ToastMessage.NoNearbyOffers);
+  useToast(favoriteOffersRequestStatus, ToastMessage.NoFavoriteOffers);
+  useToast(changeFavoriteOffersRequestStatus, ToastMessage.FavoriteDidNotUpdate);
 
   useToast(fetchReviewsRequestStatus, ToastMessage.NoReviews);
   useToast(postReviewRequestStatus, ToastMessage.DidNotPostReview);
