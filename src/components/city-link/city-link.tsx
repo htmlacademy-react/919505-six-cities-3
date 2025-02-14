@@ -18,6 +18,6 @@ export default function CityLink({city}: TCityLinkProps): JSX.Element {
   };
 
   return (
-    <a className="locations__item-link" onClick={handleCityLinkClick}> <span>{city}</span> </a>
+    <a className="locations__item-link" onClick={handleCityLinkClick}><span>{city}</span></a>
   );
 }
