@@ -281,7 +281,7 @@ describe('offersSlice reducer', () => {
     expect(result).toEqual(expectedState);
   });
 
-  it('should update "favoriteOffers" with data and set "changeFavoriteOffersRequestStatus" to "Idle" with "changeFavorite.fulfilled"', () => {
+  it('should update "favoriteOffers" with new card and set "changeFavoriteOffersRequestStatus" to "Idle" with "changeFavorite.fulfilled"', () => {
     const mockFavoriteOffer = createMockOfferPreview(true);
     const expectedState = {
       offers: [],
@@ -296,6 +296,36 @@ describe('offersSlice reducer', () => {
       nearbyOffersRequestStatus: RequestStatus.Idle,
     };
     const result = offersSlice.reducer(undefined, changeFavorite.fulfilled({offer: mockFavoriteOffer, status: FavoriteStatus.Added}, '',{offerId: TEST_ID, status: FavoriteStatus.Added}));
+    expect(result).toEqual(expectedState);
+  });
+
+  it('should remove card from "favoriteOffers" and set "changeFavoriteOffersRequestStatus" to "Idle" with "changeFavorite.fulfilled"', () => {
+    const mockFavoriteOffer = createMockOfferPreview();
+    const initialState = {
+      offers: [],
+      favoriteOffers: [mockFavoriteOffer],
+      offer: null,
+      nearbyOffers: [],
+
+      offersRequestStatus: RequestStatus.Idle,
+      favoriteOffersRequestStatus: RequestStatus.Idle,
+      changeFavoriteOffersRequestStatus: RequestStatus.Idle,
+      offerRequestStatus: RequestStatus.Idle,
+      nearbyOffersRequestStatus: RequestStatus.Idle,
+    };
+    const expectedState = {
+      offers: [],
+      favoriteOffers: [],
+      offer: null,
+      nearbyOffers: [],
+
+      offersRequestStatus: RequestStatus.Idle,
+      favoriteOffersRequestStatus: RequestStatus.Idle,
+      changeFavoriteOffersRequestStatus: RequestStatus.Idle,
+      offerRequestStatus: RequestStatus.Idle,
+      nearbyOffersRequestStatus: RequestStatus.Idle,
+    };
+    const result = offersSlice.reducer(initialState, changeFavorite.fulfilled({offer: mockFavoriteOffer, status: FavoriteStatus.Removed},'',{offerId: TEST_ID, status: FavoriteStatus.Removed}));
     expect(result).toEqual(expectedState);
   });
 

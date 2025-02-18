@@ -92,12 +92,18 @@ describe('userSlice reducer', () => {
 
   it('should reset "info" to "null", set "authorizationStatus" to "NoAuth and "userRequestStatus" to "Idle" with "logout.fulfilled"', () => {
     const mockUser = createMockUser();
+    const initialState = {
+      info: mockUser,
+      authorizationStatus: AuthorizationStatus.Auth,
+      userRequestStatus: RequestStatus.Idle
+    };
+
     const expectedState = {
       info: null,
       authorizationStatus: AuthorizationStatus.NoAuth,
       userRequestStatus: RequestStatus.Idle
     };
-    const result = userSlice.reducer(undefined, logout.fulfilled(mockUser, '', undefined));
+    const result = userSlice.reducer(initialState, logout.fulfilled(mockUser, '', undefined));
     expect(result).toEqual(expectedState);
   });
 });

@@ -35,6 +35,7 @@ export enum RequestStatus {
 }
 
 export enum FavoriteStatus {
+  Removed = 0,
   Added = 1
 }
 
