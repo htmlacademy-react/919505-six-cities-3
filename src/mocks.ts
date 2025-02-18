@@ -2,8 +2,30 @@ import {name, internet, datatype, lorem, address} from 'faker';
 import {TOffer, TOfferPreview} from './types/offers';
 import {Cities} from './const';
 import {TReview} from './types/reviews';
+import {TUser} from './types/user';
 
 export const TEST_ID = 'testId';
+
+export const createMockReviewData = () => ({
+  offerId: datatype.uuid(),
+  body: {
+    comment: datatype.string(51),
+    rating: datatype.number({ min: 1, max: 5})
+  },
+});
+
+export const createMockLoginData = () => ({
+  email: name.title(),
+  password: name.title()
+});
+
+export const createMockUser = (): TUser => ({
+  name: name.title(),
+  avatarUrl: internet.url(),
+  isPro: datatype.boolean(),
+  email: name.title(),
+  token: TEST_ID
+} as TUser);
 
 export const createMockReview = (): TReview => ({
   id: TEST_ID,
@@ -19,14 +41,6 @@ export const createMockReview = (): TReview => ({
 
 export const createMockReviews = (count: number = 3): TReview[] =>
   Array.from({ length: count }, () => createMockReview());
-
-export const createMockReviewData = () => ({
-  offerId: datatype.uuid(),
-  body: {
-    comment: datatype.string(51),
-    rating: datatype.number({ min: 1, max: 5})
-  },
-});
 
 export const createMockOfferPreview = (isFavorite = false): TOfferPreview => ({
   id: TEST_ID,
