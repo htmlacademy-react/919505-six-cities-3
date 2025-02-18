@@ -3,7 +3,7 @@ import {FavoriteStatus, NameSpace, RequestStatus} from '../../../const';
 import {TOffersState} from '../../../types/store';
 import {TOffer, TOfferPreview} from '../../../types/offers';
 import {appSlice} from '../app';
-import {getFavoriteStatus, getProcessedOffers} from './utils';
+import {checkFavoriteStatus, getProcessedOffers} from './utils';
 import {fetchAllOffers, fetchNearbyOffers, fetchOffer} from '../../thunks/offers';
 import {changeFavorite, fetchFavorites} from '../../thunks/favorites';
 
@@ -124,7 +124,7 @@ const offersSliceSelectors = {
   ),
   getFavoriteStatus: createSelector(
     offersSlice.selectors.favoriteOffers,
-    (favoriteOffers) => (offerId: string) => getFavoriteStatus(favoriteOffers, offerId)
+    (favoriteOffers) => (offerId: string) => checkFavoriteStatus(favoriteOffers, offerId)
   )
 };
 

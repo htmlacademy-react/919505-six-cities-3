@@ -1,9 +1,35 @@
 import {name, internet, datatype, lorem, address} from 'faker';
 import {TOffer, TOfferPreview} from './types/offers';
 import {Cities} from './const';
+import {TReview} from './types/reviews';
 
-export const createMockOfferPreview = (): TOfferPreview => ({
-  id: datatype.uuid(),
+export const TEST_ID = 'testId';
+
+export const createMockReview = (): TReview => ({
+  id: TEST_ID,
+  date: new Date().toISOString(),
+  user: {
+    name: name.title(),
+    avatarUrl: internet.url(),
+    isPro: datatype.boolean(),
+  },
+  comment: datatype.string(51),
+  rating: datatype.number({ min: 1, max: 5}),
+} as TReview);
+
+export const createMockReviews = (count: number = 3): TReview[] =>
+  Array.from({ length: count }, () => createMockReview());
+
+export const createMockReviewData = () => ({
+  offerId: datatype.uuid(),
+  body: {
+    comment: datatype.string(51),
+    rating: datatype.number({ min: 1, max: 5})
+  },
+});
+
+export const createMockOfferPreview = (isFavorite = false): TOfferPreview => ({
+  id: TEST_ID,
   title: lorem.sentence(),
   type: lorem.word(),
   price: datatype.number({ min: 200, max: 5000}),
@@ -20,13 +46,13 @@ export const createMockOfferPreview = (): TOfferPreview => ({
     longitude: Number(address.longitude()),
     zoom: datatype.number({ min: 13, max: 16}),
   },
-  isFavorite: datatype.boolean(),
+  isFavorite: isFavorite,
   isPremium: datatype.boolean(),
   previewImage: internet.url(),
 } as TOfferPreview);
 
-export const createMockOffer = (): TOffer => ({
-  id: datatype.uuid(),
+export const createMockOffer = (isFavorite = false): TOffer => ({
+  id: TEST_ID,
   title: lorem.sentence(),
   type: lorem.word(),
   price: datatype.number({ min: 200, max: 5000}),
@@ -43,7 +69,7 @@ export const createMockOffer = (): TOffer => ({
     longitude: Number(address.longitude()),
     zoom: datatype.number({ min: 13, max: 16}),
   },
-  isFavorite: datatype.boolean(),
+  isFavorite: isFavorite,
   isPremium: datatype.boolean(),
   rating: datatype.number({ min: 1, max: 5}),
   previewImage: internet.url(),
@@ -61,6 +87,3 @@ export const createMockOffer = (): TOffer => ({
 
 export const createMockOfferPreviews = (count: number = 3): TOfferPreview[] =>
   Array.from({ length: count }, () => createMockOfferPreview());
-
-export const createMockOffers = (count: number = 3): TOffer[] =>
-  Array.from({ length: count }, () => createMockOffer());

@@ -1,6 +1,7 @@
 import {appSlice, appSliceActions, appSliceSelectors} from './';
 import {Cities, NameSpace, SortingType} from '../../../const';
 import {TAppProcessState} from '../../../types/store';
+import {TEST_ID} from '../../../mocks';
 
 const defaultState: TAppProcessState = {
   currentCity: Cities[0],
@@ -9,9 +10,6 @@ const defaultState: TAppProcessState = {
 };
 
 describe('appSlice reducer', () => {
-  const testCity = Cities[1];
-  const testOfferId = 'testOfferId';
-
   const {
     changeCity,
     changeActiveOfferId,
@@ -34,15 +32,15 @@ describe('appSlice reducer', () => {
 
   it('should return new state based on given city name', () => {
     const initialSate = defaultState;
-    const expectedState = {currentCity: testCity, activeOfferId: null, currentOffersSortType: SortingType.POPULAR};
-    const result = appSlice.reducer(initialSate, changeCity(testCity));
+    const expectedState = {currentCity: Cities[1], activeOfferId: null, currentOffersSortType: SortingType.POPULAR};
+    const result = appSlice.reducer(initialSate, changeCity(Cities[1]));
     expect(result).toEqual(expectedState);
   });
 
   it('should return new state based on given active offer ID', () => {
     const initialSate = defaultState;
-    const expectedState = {currentCity: Cities[0], activeOfferId: testOfferId, currentOffersSortType: SortingType.POPULAR};
-    const result = appSlice.reducer(initialSate, changeActiveOfferId(testOfferId));
+    const expectedState = {currentCity: Cities[0], activeOfferId: TEST_ID, currentOffersSortType: SortingType.POPULAR};
+    const result = appSlice.reducer(initialSate, changeActiveOfferId(TEST_ID));
     expect(result).toEqual(expectedState);
   });
 
