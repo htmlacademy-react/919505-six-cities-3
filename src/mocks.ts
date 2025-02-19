@@ -11,6 +11,7 @@ import {ThunkDispatch} from 'redux-thunk';
 export const TEST_ID = 'testId';
 
 export type AppThunkDispatch = ThunkDispatch<Store, ReturnType<typeof createAPI>, Action>;
+export const extraActionTypes = (actions: Action<string>[]) => actions.map(({type}) => type);
 
 export const createMockReviewData = () => ({
   offerId: datatype.uuid(),
