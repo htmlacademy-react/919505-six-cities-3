@@ -22,7 +22,7 @@ export default function OfferReviewForm(): JSX.Element {
   const handleFormSubmit = (evt: FormEvent<TLoginForm>) => {
     evt.preventDefault();
     if (id) {
-      postReview({body: {rating: Number(formData.rating), comment: formData.review}, offerId: id});
+      postReview({body: {rating: Number(formData.rating), comment: formData.review}, id});
     }
   };
 
