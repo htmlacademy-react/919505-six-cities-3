@@ -14,11 +14,23 @@ export type AppThunkDispatch = ThunkDispatch<Store, ReturnType<typeof createAPI>
 export const extraActionTypes = (actions: Action<string>[]) => actions.map(({type}) => type);
 
 export const createMockReviewData = () => ({
-  offerId: datatype.uuid(),
+  id: datatype.uuid(),
   body: {
     comment: datatype.string(51),
     rating: datatype.number({ min: 1, max: 5})
   },
+});
+
+export const createMockReviewFromServer = () => ({
+  id: TEST_ID,
+  date: new Date().toISOString(),
+  user: {
+    name: name.title(),
+    avatarUrl: internet.url(),
+    isPro: datatype.boolean(),
+  },
+  comment: name.title(),
+  rating: datatype.number({ min: 1, max: 5}),
 });
 
 export const createMockLoginData = () => ({

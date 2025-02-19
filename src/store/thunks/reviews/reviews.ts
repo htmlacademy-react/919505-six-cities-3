@@ -8,7 +8,7 @@ interface PostReviewsProps {
     comment: string;
     rating: number;
   };
-  offerId: string;
+  id: string;
 }
 
 export const fetchReviews = createAppAsyncThunk<TReview[], string>
@@ -18,7 +18,7 @@ export const fetchReviews = createAppAsyncThunk<TReview[], string>
 });
 
 export const postReview = createAppAsyncThunk<TReview, PostReviewsProps>
-('reviews/post', async ({body, offerId}, {extra: api}) => {
-  const response = await api.post<TReview>(`${EndPoint.Reviews}/${offerId}`, body);
+('reviews/post', async ({body, id}, {extra: api}) => {
+  const response = await api.post<TReview>(`${EndPoint.Reviews}/${id}`, body);
   return response.data;
 });
