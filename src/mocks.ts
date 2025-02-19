@@ -1,10 +1,16 @@
 import {name, internet, datatype, lorem, address} from 'faker';
 import {TOffer, TOfferPreview} from './types/offers';
-import {Cities} from './const';
+import {AuthorizationStatus, Cities, NameSpace, RequestStatus, SortingType} from './const';
 import {TReview} from './types/reviews';
 import {TUser} from './types/user';
+import {createAPI} from './services/api';
+import {Action} from 'redux';
+import {Store} from './types/store';
+import {ThunkDispatch} from 'redux-thunk';
 
 export const TEST_ID = 'testId';
+
+export type AppThunkDispatch = ThunkDispatch<Store, ReturnType<typeof createAPI>, Action>;
 
 export const createMockReviewData = () => ({
   offerId: datatype.uuid(),
@@ -43,7 +49,7 @@ export const createMockReviews = (count: number = 3): TReview[] =>
   Array.from({ length: count }, () => createMockReview());
 
 export const createMockOfferPreview = (isFavorite = false): TOfferPreview => ({
-  id: TEST_ID,
+  id: datatype.uuid(),
   title: lorem.sentence(),
   type: lorem.word(),
   price: datatype.number({ min: 200, max: 5000}),
@@ -66,7 +72,7 @@ export const createMockOfferPreview = (isFavorite = false): TOfferPreview => ({
 } as TOfferPreview);
 
 export const createMockOffer = (isFavorite = false): TOffer => ({
-  id: TEST_ID,
+  id: datatype.uuid(),
   title: lorem.sentence(),
   type: lorem.word(),
   price: datatype.number({ min: 200, max: 5000}),
@@ -101,3 +107,34 @@ export const createMockOffer = (isFavorite = false): TOffer => ({
 
 export const createMockOfferPreviews = (count: number = 3): TOfferPreview[] =>
   Array.from({ length: count }, () => createMockOfferPreview());
+
+export const createMockStore = (initialState?: Partial<Store>): Store => ({
+  [NameSpace.App]: {
+    currentCity: Cities[0],
+    activeOfferId: null,
+    currentOffersSortType: SortingType.POPULAR
+  },
+  [NameSpace.Offers]: {
+    offers: createMockOfferPreviews(),
+    favoriteOffers: createMockOfferPreviews(),
+    offer: createMockOffer(),
+    nearbyOffers: createMockOfferPreviews(),
+
+    offersRequestStatus: RequestStatus.Idle,
+    favoriteOffersRequestStatus: RequestStatus.Idle,
+    changeFavoriteOffersRequestStatus: RequestStatus.Idle,
+    offerRequestStatus: RequestStatus.Idle,
+    nearbyOffersRequestStatus: RequestStatus.Idle,
+  },
+  [NameSpace.User]: {
+    info: null,
+    authorizationStatus: AuthorizationStatus.Unknown,
+    userRequestStatus: RequestStatus.Idle
+  },
+  [NameSpace.Reviews]: {
+    reviews: [],
+    postReviewRequestStatus: RequestStatus.Idle,
+    fetchReviewsRequestStatus: RequestStatus.Idle
+  },
+  ...initialState ?? {},
+});
