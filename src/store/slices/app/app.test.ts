@@ -1,7 +1,7 @@
 import {appSlice, appSliceActions, appSliceSelectors} from './';
 import {Cities, NameSpace, SortingType} from '../../../const';
 import {TAppProcessState} from '../../../types/store';
-import {TEST_ID} from '../../../mocks';
+import {TEST_ID} from '../../../mocks/mocks';
 
 const defaultState: TAppProcessState = {
   currentCity: Cities[0],

@@ -1,7 +1,7 @@
 import {userSlice, userSliceSelectors} from './';
 import {AuthorizationStatus, NameSpace, RequestStatus} from '../../../const';
 import {TUserState} from '../../../types/store';
-import {createMockLoginData, createMockUser} from '../../../mocks';
+import {createMockLoginData, createMockUser} from '../../../mocks/mocks';
 import {checkAuth, login, logout} from '../../thunks/user';
 
 const defaultState: TUserState = {

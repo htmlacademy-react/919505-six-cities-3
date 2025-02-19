@@ -1,7 +1,7 @@
 import {reviewsSlice, reviewsSliceSelectors} from './';
 import {NameSpace, RequestStatus} from '../../../const';
 import {TReviewsState} from '../../../types/store';
-import {createMockReview, createMockReviewData, createMockReviews,} from '../../../mocks';
+import {createMockReview, createMockReviewData, createMockReviews,} from '../../../mocks/mocks';
 import {fetchReviews, postReview} from '../../thunks/reviews';
 
 const defaultState: TReviewsState = {

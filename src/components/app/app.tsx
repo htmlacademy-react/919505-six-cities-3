@@ -7,7 +7,6 @@ import PrivateRoute from '../private-route';
 import FavoritesScreen from '../../pages/favorites-screen';
 import OfferScreen from '../../pages/offer-screen';
 import NotFoundScreen from '../../pages/not-found-screen';
-import ScrollToTop from '../scroll-to-top';
 import {useEffect} from 'react';
 import {useActionCreators, useAppSelector} from '../../hooks/store';
 import {offersSliceActions} from '../../store/slices/offers';
@@ -37,7 +36,6 @@ export default function App() {
 
   return(
     <BrowserRouter>
-      <ScrollToTop/>
       <Routes>
         <Route
           path={AppRoute.Root}
