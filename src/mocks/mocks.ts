@@ -1,17 +1,12 @@
 import {name, internet, datatype, lorem, address} from 'faker';
-import {TOffer, TOfferPreview} from './types/offers';
-import {AuthorizationStatus, Cities, NameSpace, RequestStatus, SortingType} from './const';
-import {TReview} from './types/reviews';
-import {TUser} from './types/user';
-import {createAPI} from './services/api';
-import {Action} from 'redux';
-import {Store} from './types/store';
-import {ThunkDispatch} from 'redux-thunk';
+import {TOffer, TOfferPreview} from '../types/offers';
+import {AuthorizationStatus, Cities, NameSpace, RequestStatus, SortingType} from '../const';
+import {TReview} from '../types/reviews';
+import {TUser} from '../types/user';
+import {Store} from '../types/store';
 
 export const TEST_ID = 'testId';
 
-export type AppThunkDispatch = ThunkDispatch<Store, ReturnType<typeof createAPI>, Action>;
-export const extraActionTypes = (actions: Action<string>[]) => actions.map(({type}) => type);
 
 export const createMockReviewData = () => ({
   id: datatype.uuid(),

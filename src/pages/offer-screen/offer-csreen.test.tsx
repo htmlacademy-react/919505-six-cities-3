@@ -1,7 +1,7 @@
 import {render, screen} from '@testing-library/react';
-import {withStore} from '../../mock-component';
+import {withStore} from '../../mocks/mock-component';
 import OfferScreen from './';
-import {createMockStore} from '../../mocks';
+import {createMockStore} from '../../mocks/mocks';
 
 describe('Component: OfferScreen', () => {
   it('should render correctly', () => {

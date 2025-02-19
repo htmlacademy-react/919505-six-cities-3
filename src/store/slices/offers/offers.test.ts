@@ -2,7 +2,7 @@ import {offersSlice, offersSliceActions, offersSliceSelectors} from './';
 import {Cities, FavoriteStatus, NameSpace, RequestStatus, SortingType} from '../../../const';
 import {TOffersState} from '../../../types/store';
 import {fetchAllOffers, fetchNearbyOffers, fetchOffer} from '../../thunks/offers';
-import {createMockOffer, createMockOfferPreview, createMockOfferPreviews, TEST_ID} from '../../../mocks';
+import {createMockOffer, createMockOfferPreview, createMockOfferPreviews, TEST_ID} from '../../../mocks/mocks';
 import {checkFavoriteStatus, getProcessedOffers} from './utils';
 import {changeFavorite, fetchFavorites} from '../../thunks/favorites';
 

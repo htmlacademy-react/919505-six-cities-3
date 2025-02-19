@@ -1,7 +1,7 @@
 import {render, screen} from '@testing-library/react';
-import {withStore} from '../../mock-component';
+import {withStore} from '../../mocks/mock-component';
 import MainScreen from './';
-import {createMockStore} from '../../mocks';
+import {createMockStore} from '../../mocks/mocks';
 
 describe('Component: MainScreen', () => {
   it('should render correctly', () => {

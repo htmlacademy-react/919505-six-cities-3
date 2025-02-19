@@ -1,8 +1,8 @@
 import {MockStore, configureMockStore} from '@jedmao/redux-mock-store';
 import MockAdapter from 'axios-mock-adapter';
-import {Store} from './types/store';
+import {Store} from '../types/store';
 import {Provider} from 'react-redux';
-import {createAPI} from './services/api';
+import {createAPI} from '../services/api';
 import {BrowserRouter} from 'react-router-dom';
 
 type ComponentWithMockStore = {
